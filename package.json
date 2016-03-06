@@ -1,0 +1,26 @@
+{
+  "name": "adminspanel",
+  "version": "0.0.1",
+  "description": "manage notification for app administrators",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jshint": "^2.9.1",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fingerpich/adminsPanel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fingerpich/adminsPanel/issues"
+  },
+  "homepage": "https://github.com/fingerpich/adminsPanel#readme"
+}
