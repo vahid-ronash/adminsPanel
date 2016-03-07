@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       //'app/**/*test.js'
       'app/**/*.js'
+
     ],
 
 
@@ -28,13 +29,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      //'app/**/*.js': ['coverage']
+      'app/**/^((?!test).)*.js': ['coverage']//don't use test unit for coverage(test units have "test" in their name)
     },
 
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
 
     // web server port
