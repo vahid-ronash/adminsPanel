@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admins Panel</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <!--<link rel="apple-touch-icon" href="assets/images/logo.png">-->
+  <meta name="apple-mobile-web-app-title" content="AdminsPanel">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!--<link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">-->
+
+  <!-- style -->
+  <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css" type="text/css" />
+  <!--<link rel="stylesheet" href="assets/libs/glyphicons/glyphicons.css" type="text/css" />-->
+  <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <!--<link rel="stylesheet" href="assets/libs/material-design-icons/material-design-icons.css" type="text/css" />-->
+
+  <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/stylmin.css -->
+  <!--<link rel="stylesheet" href="assets/css/styles/app.css" type="text/css" />-->
+  <!-- endbuild -->
+  <!--<link rel="stylesheet" href="assets/libs/styles/font.css" type="text/css" />-->
+  <!--<link rel="stylesheet" href="assets/libs/bootstrap-rtl/dist/bootstrap-rtl.css" type="text/css" />-->
+  <!--<link rel="stylesheet" href="assets/libs/styles/app.rtl.css" type="text/css" />-->
+</head>
+<body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
+  <div class="app" ui-view></div>
+<!-- build:js scripts/app.angular.js -->
+<!-- jQuery -->
+  <script src="assets/libs/jquery/dist/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="assets/libs/tether/dist/js/tether.min.js"></script>
+  <script src="assets/libs/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="assets/libs/PACE/pace.min.js"></script>
+<!-- Angular -->
+  <script src="assets/libs/angular/angular.js"></script>
+  <script src="assets/libs/angular-animate/angular-animate.js"></script>
+  <script src="assets/libs/angular-resource/angular-resource.js"></script>
+  <script src="assets/libs/angular-sanitize/angular-sanitize.js"></script>
+  <script src="assets/libs/angular-touch/angular-touch.js"></script>
+
+  <!-- router -->
+  <script src="assets/libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- storage -->
+  <script src="assets/libs/ngstorage/ngStorage.js"></script>
+  <!-- utils -->
+  <script src="assets/libs/angular-ui-utils/ui-utils.js"></script>
+  <!-- lazyload -->
+  <script src="assets/libs/oclazyload/dist/ocLazyLoad.js"></script>
+
+<!-- App -->
+  <script src="app/app.js"></script>
+  <!--<script src="app/config.js"></script>-->
+  <!--<script src="app/config.lazyload.js"></script>-->
+  <!--<script src="app/config.router.js"></script>-->
+  <script src="app/app-controller.js"></script>
+<!---->
+  <!--<script src="app/directives/ui-jp.js"></script>-->
+  <!--<script src="app/directives/ui-nav.js"></script>-->
+  <!--<script src="app/directives/ui-fullscreen.js"></script>-->
+  <!--<script src="app/directives/ui-scroll-to.js"></script>-->
+  <!--<script src="app/directives/ui-toggle-class.js"></script>-->
+  <!--<script src="app/directives/ui-include.js"></script>-->
+  <!-- -->
+  <!--<script src="app/filters/fromnow.js"></script>-->
+<!---->
+  <!--<script src="app/services/ngstore.js"></script>-->
+  <!--<script src="app/services/ui-load.js"></script>-->
+  <!--<script src="app/services/palette.js"></script>-->
+<!-- endbuild -->
+</body>
+</html>
