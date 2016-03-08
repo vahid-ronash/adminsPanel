@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: "",
 
 
     // frameworks to use
@@ -16,23 +16,23 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       //'app/**/*test.js'
-      'assets/libs/jquery/dist/jquery.js',
-      'assets/libs/tether/dist/js/tether.min.js',
-      'assets/libs/bootstrap/dist/js/bootstrap.js',
-      'assets/libs/PACE/pace.min.js',
+      "assets/libs/jquery/dist/jquery.js",
+      "assets/libs/tether/dist/js/tether.min.js",
+      "assets/libs/bootstrap/dist/js/bootstrap.js",
+      "assets/libs/PACE/pace.min.js",
 
-      'assets/libs/angular/angular.js',
-      'assets/libs/angular-animate/angular-animate.js',
-      'assets/libs/angular-resource/angular-resource.js',
-      'assets/libs/angular-sanitize/angular-sanitize.js',
-      'assets/libs/angular-touch/angular-touch.js',
-      'assets/libs/angular-ui-router/release/angular-ui-router.js',
-      'assets/libs/ngstorage/ngStorage.js',
-      'assets/libs/angular-ui-utils/ui-utils.js',
-      'assets/libs/oclazyload/dist/ocLazyLoad.js',
+      "assets/libs/angular/angular.js",
+      "assets/libs/angular-animate/angular-animate.js",
+      "assets/libs/angular-resource/angular-resource.js",
+      "assets/libs/angular-sanitize/angular-sanitize.js",
+      "assets/libs/angular-touch/angular-touch.js",
+      "assets/libs/angular-ui-router/release/angular-ui-router.js",
+      "assets/libs/ngstorage/ngStorage.js",
+      "assets/libs/angular-ui-utils/ui-utils.js",
+      "assets/libs/oclazyload/dist/ocLazyLoad.js",
 
-      'app/app.js',
-      'app/**/*.js',
+      "app/app.js",
+      "app/**/*.js"
     ],
 
 
@@ -48,13 +48,13 @@ module.exports = function(config) {
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
       //'app/**/*.js': ['coverage']
-      'app/**/*.js': ['coverage']//don't use test unit for coverage(test units have "test" in their name)
+      "app/**/*.js": ["coverage"]//don't use test unit for coverage(test units have "test" in their name)
     },
 
     // optionally, configure the reporter
     coverageReporter: {
-      type : 'lcov',
-      dir : 'coverage/'
+      type : "lcov",
+      dir : "coverage/"
     },
 
     // test results reporter to use

@@ -17,7 +17,7 @@ gulp.task('test', function (done) {
 });
 
 gulp.task('autotest', function() {
-    return gulp.watch(['app/**/*test.js'], ['test']);
+    return gulp.watch(["app/**/*test.js"], ['test']);
 });
 
 gulp.task('ngdocs', [], function () {

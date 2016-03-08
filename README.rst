@@ -2,6 +2,8 @@
 
 .. image:: https://api.codacy.com/project/badge/grade/deaefda4e2444bda8fb99bb55e04a101    :target: https://www.codacy.com/app/zarei-bs/adminsPanel
 
+.. image:: https://api.codacy.com/project/badge/coverage/deaefda4e2444bda8fb99bb55e04a101    :target: https://www.codacy.com/app/zarei-bs/adminsPanel
+
 AdminsPanel
 ============
 This panel manage notifications for admins mobile app
