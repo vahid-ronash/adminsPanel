@@ -48,12 +48,12 @@ module.exports = function(config) {
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
       //'app/**/*.js': ['coverage']
-      'app/**/^((?!test).)*.js': ['coverage']//don't use test unit for coverage(test units have "test" in their name)
+      'app/**/*.js': ['coverage']//don't use test unit for coverage(test units have "test" in their name)
     },
 
     // optionally, configure the reporter
     coverageReporter: {
-      type : 'html',
+      type : 'lcov',
       dir : 'coverage/'
     },
 
