@@ -6,7 +6,7 @@
  * Controller of the app
  */
 /*global angular $ palette */
-(function() {
+((function() {
   'use strict';
   angular
       .module("app")
@@ -127,4 +127,4 @@
           };
         }
       ]);
-})();
+})());

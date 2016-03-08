@@ -7,7 +7,7 @@
  * Main module of the application.
  */
 /*global angular*/
-(function() {
+((function() {
     'use strict';
     angular
       .module('app', [
@@ -23,4 +23,4 @@
         //'ui.jp',//call function with options on dom
         'oc.lazyLoad'
       ]);
-})();
+})());

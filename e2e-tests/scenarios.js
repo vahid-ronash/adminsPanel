@@ -2,6 +2,7 @@
  * Created by mojtaba on 3/7/16.
  */
 //todo:it will run by protractor
+/*global describe it expect $ browser element by */
 describe('first Test', function() {
     it('first path should be index.html', function() {
         browser.get('../index.html');
