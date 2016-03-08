@@ -87,15 +87,15 @@
 
           //TODO:will we offer theme choosing for user ? is it necessary? i don't think
           //private color property
+          function getColor(name){
+            return thisScope.app.color[ name ] ? thisScope.app.color[ name ] : palette.find(name);//TODO:pallete is undefined now because we dont import pallete
+          }
           function setColor(){
             thisScope.app.setting.color = {
               primary: getColor(thisScope.app.setting.theme.primary),
               accent: getColor(thisScope.app.setting.theme.accent),
               warn: getColor(thisScope.app.setting.theme.warn)
             };
-          }
-          function getColor(name){
-            return thisScope.app.color[ name ] ? thisScope.app.color[ name ] : palette.find(name);//TODO:pallete is undefined now because we dont import pallete
           }
           //set theme by setting which save in localStorage
           thisScope.setTheme = function(theme){
