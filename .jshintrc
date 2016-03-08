@@ -4,6 +4,7 @@
     "$": false,
     "angular": false,
     "expect": false,
-    "describe": false
+    "describe": false,
+    "browser":false
   }
 }
