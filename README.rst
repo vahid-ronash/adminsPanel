@@ -5,6 +5,8 @@ Admin Panel
   :target: https://www.codacy.com/app/myOrg/adminsPanel
  .. image:: https://travis-ci.org/ourlib/ourlib.svg?branch=devlope
   :target: https://travis-ci.org/ourlib/ourlib
+ .. image:: https://api.codacy.com/project/badge/coverage/0f2c136aa81648eebf1ffe2b95ede816
+  :target: https://www.codacy.com/app/myOrg/adminsPanel
 
 This panel manage notifications for admins mobile app
 

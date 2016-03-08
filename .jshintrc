@@ -1,6 +1,9 @@
-"globals": {
-  "$": false,
-  "angular":false,
-  "expect":false,
-  "describe":false
+{
+  "quotmark":false,
+  "globals": {
+    "$": false,
+    "angular": false,
+    "expect": false,
+    "describe": false
+  }
 }

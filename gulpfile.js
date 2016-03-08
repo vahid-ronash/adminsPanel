@@ -3,14 +3,14 @@
  */
 
 var gulp = require('gulp');
-var karma = require('karma').Server;
+var karma = require('karma');
 var jshint = require('jshint');
 
 /**
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-    new karma({
+    new karma.Server({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
     }, done).start();
