@@ -1,3 +1,8 @@
+.. image:: https://travis-ci.org/fingerpich/adminsPanel.svg?branch=master
+:target: https://travis-ci.org/fingerpich/adminsPanel
+
+.. image:: https://api.codacy.com/project/badge/grade/deaefda4e2444bda8fb99bb55e04a101    :target: https://www.codacy.com/app/zarei-bs/adminsPanel
+
 AdminsPanel
 ============
  this panel manage notifications for admins mobile app
@@ -22,3 +27,10 @@ Setup Testing
   - `karma <https://karma-runner.github.io>`_ : Run **[sudo] npm install -g karma**
   - Run **gulp test** to execute tests
   - Run **gulp autotest** to execute tests in developing
+
+TODO
+----
+ Setup documentation tools (docstring build)
+ Setup translation tool
+ run e2e test by protractor
+ copy and customize template files into it
