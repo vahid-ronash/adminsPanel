@@ -19,3 +19,11 @@ gulp.task('test', function (done) {
 gulp.task('autotest', function() {
     return gulp.watch(['app/**/*test.js'], ['test']);
 });
+
+
+gulp.task('ngdocs', [], function () {
+    var gulpDocs = require('gulp-ngdocs');
+    return gulp.src('app/**/*.js')
+        .pipe(gulpDocs.process())
+        .pipe(gulp.dest('./docs'));
+});
