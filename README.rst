@@ -1,11 +1,11 @@
-.. image:: https://travis-ci.org/fingerpich/adminsPanel.svg?branch=master    :target: https://travis-ci.org/fingerpich/adminsPanel
+###########
+Admin Panel
+###########
+ .. image:: https://api.codacy.com/project/badge/grade/0f2c136aa81648eebf1ffe2b95ede816
+  :target: https://www.codacy.com/app/myOrg/adminsPanel
+ .. image:: https://travis-ci.org/ourlib/ourlib.svg?branch=devlope
+  :target: https://travis-ci.org/ourlib/ourlib
 
-.. image:: https://api.codacy.com/project/badge/grade/deaefda4e2444bda8fb99bb55e04a101    :target: https://www.codacy.com/app/zarei-bs/adminsPanel
-
-.. image:: https://api.codacy.com/project/badge/coverage/deaefda4e2444bda8fb99bb55e04a101    :target: https://www.codacy.com/app/zarei-bs/adminsPanel
-
-AdminsPanel
-============
 This panel manage notifications for admins mobile app
 
 Requirements
