@@ -4,7 +4,6 @@
 
 var gulp = require('gulp');
 var karma = require('karma');
-var jshint = require('jshint');
 
 /**
  * Run test once and exit
