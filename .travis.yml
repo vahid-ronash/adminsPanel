@@ -6,7 +6,7 @@ before_script:
   - 'sh -e /etc/init.d/xvfb start'
   - 'npm install bower karma gulp jshint karma-jasmine jasmine-core karma-chrome-launcher karma-coverage'
   - 'npm install' # install npm packages
-  - 'bower install' # install bower packages
+  - 'bower install --no-interactive' # install bower packages without asking about version conflict
 
 after_script:
   - 'gulp test' # or other command for build, run tests, etc
