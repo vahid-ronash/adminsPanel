@@ -6,6 +6,7 @@
  *
  * Main module of the application.
  */
+/*global angular*/
 (function() {
     'use strict';
     angular
