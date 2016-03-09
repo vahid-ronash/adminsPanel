@@ -11,8 +11,7 @@ describe('test home Controller', function() {
     }));
 
     it('name has to inherit from parent scope', function () {
-        var $scope = {app:{name:"adminsPanel"}};//mock parent scope
-        var controller = $controller('homeController', { $scope: $scope });
+        var controller = $controller('homeController', { "$scope": {app:{name:"adminsPanel"}} });
         expect(controller.app.name.length>0).toEqual(true);
     });
 });

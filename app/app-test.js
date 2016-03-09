@@ -1,13 +1,7 @@
 /**
  * Created by mojtaba on 3/8/16.
  */
-/*global describe it expect $ */
-describe('first Test', function() {
-    it('body has to be one', function () {
-        expect(10).toEqual(10);
-        expect($('body').length).toEqual(1);
-    });
-});
+/*global describe it expect  beforeEach $ */
 describe('test app Controller', function() {
     beforeEach(module('app'));
     var $controller;
