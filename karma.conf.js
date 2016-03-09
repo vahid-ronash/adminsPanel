@@ -25,6 +25,7 @@ module.exports = function(config) {
       "assets/libs/angular-animate/angular-animate.js",
       "assets/libs/angular-resource/angular-resource.js",
       "assets/libs/angular-sanitize/angular-sanitize.js",
+      "assets/libs/angular-mocks/angular-mocks.js",
       "assets/libs/angular-touch/angular-touch.js",
       "assets/libs/angular-ui-router/release/angular-ui-router.js",
       "assets/libs/ngstorage/ngStorage.js",

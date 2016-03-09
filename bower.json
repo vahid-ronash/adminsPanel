@@ -70,7 +70,8 @@
     "underscore": "~1.8.3",
     "venturocket-angular-slider": "~0.3.2",
     "waves": "~0.7.2",
-    "bootstrap-rtl": "^3.3.4"
+    "bootstrap-rtl": "^3.3.4",
+    "angular-mocks": "^1.5.0"
   },
   "description": "this panel manage notifications for admin mobiles apps",
   "main": "index.html"
