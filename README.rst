@@ -3,8 +3,8 @@ Admin Panel
 ###########
  .. image:: https://api.codacy.com/project/badge/grade/0f2c136aa81648eebf1ffe2b95ede816
   :target: https://www.codacy.com/app/myOrg/adminsPanel
- .. image:: https://travis-ci.org/ourlib/ourlib.svg?branch=devlope
-  :target: https://travis-ci.org/ourlib/ourlib
+ .. image:: https://travis-ci.org/fingerpich/adminsPanel.svg?branch=develop
+  :target: https://travis-ci.org/fingerpich/adminsPanel
  .. image:: https://api.codacy.com/project/badge/coverage/0f2c136aa81648eebf1ffe2b95ede816
   :target: https://www.codacy.com/app/myOrg/adminsPanel
 
