@@ -14,11 +14,13 @@
  * @param {object}  field   A field object
  *
  */
-module.directive('applicationTable', function() {
-    return {
-        scope: true,
-        controller: 'applicationTableController',
-        controllerAs: 'appCtrl',
-        templateUrl: 'applicationTable.html'
-    };
-});
+angular
+    .module("app")
+    .directive('applicationTable', function() {
+        return {
+            scope: true,
+            controller: 'applicationTableController',
+            controllerAs: 'appCtrl',
+            templateUrl: 'applicationTable.html'
+        };
+    });

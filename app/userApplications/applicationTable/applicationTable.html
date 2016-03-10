@@ -1,0 +1,47 @@
+<div>
+    <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
+        <i class="glyphicon glyphicon-plus">
+        </i> Add new Application
+    </button>
+
+    <table st-table="displayedCollection" st-safe-src="appCtrl.appCollection" class="table table-striped">
+        <thead>
+        <tr>
+            <th st-sort="name">application Name</th>
+            <th st-sort="packname">package Name</th>
+            <!-- TODO: its hard code naming we change that later -->
+        </tr>
+        <tr>
+            <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in appCtrl.appCollection">
+            <td>
+                <div ng-if="row.isEditing">
+                    <input ng-model="row.name">
+
+                </div>
+                <div ng-if="!row.isEditing">
+                    {{row.name}}
+                </div>
+            </td>
+            <td>{{row.packName}}</td>
+            <td>
+                <div ng-if="row.isEditing">
+                    <button type="button" ng-click="appCtrl.removeApplication(row)" class="btn btn-sm white">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <button type="button" ng-click="appCtrl.startEdit(row)" class="btn btn-sm btn-danger">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                </div>
+                <div ng-if="!row.isEditing">
+                    <button type="button" ng-click="appCtrl.commitEdit(row)" class="btn btn-sm">OK</button>
+                    <button type="button" ng-click="appCtrl.cancelEdit(row)" class="btn btn-sm">cancel</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
