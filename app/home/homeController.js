@@ -1,7 +1,7 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
-/*global angular $ */
+/*global angular */
 ((function() {
     'use strict';
     angular

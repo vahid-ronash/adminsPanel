@@ -7,7 +7,7 @@
  * @description
  * it make connection between this app and server
  */
-/*global angular $ */
+/*global angular */
 angular
     .module("app")
     .factory('userApplicationService', ['$http',function($http){

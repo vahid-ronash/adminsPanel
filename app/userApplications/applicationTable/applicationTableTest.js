@@ -1,7 +1,7 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
-/*global angular describe it expect beforeEach inject $ */
+/*global angular describe it expect beforeEach inject */
 describe('test application table : ', function() {
     beforeEach(module('app'));
     var $controller, rootScope, compile;

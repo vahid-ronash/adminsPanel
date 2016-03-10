@@ -5,7 +5,7 @@
  * # Config
  * Config for the router
  */
-/*global angular $ */
+/*global angular */
 ((function() {
     'use strict';
     angular

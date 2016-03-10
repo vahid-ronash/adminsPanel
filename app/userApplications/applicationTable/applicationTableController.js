@@ -7,7 +7,7 @@
  * @description
  * it can do CRUD on user's applications by using smartTable
  */
-/*global angular $ */
+/*global angular */
 angular
     .module("app")
     .controller('applicationTableController', ['$scope','userApplicationService', function ($scope,$userApplicationService) {

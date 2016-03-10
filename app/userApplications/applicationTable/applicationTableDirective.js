@@ -14,6 +14,7 @@
  * @param {object}  field   A field object
  *
  */
+/*global angular */
 angular
     .module("app")
     .directive('applicationTable', function() {

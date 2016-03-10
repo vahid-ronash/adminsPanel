@@ -1,7 +1,7 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
-/*global describe it expect beforeEach inject $ */
+/*global describe it expect beforeEach inject */
 describe('test home Controller', function() {
     beforeEach(module('app'));
     var $controller;
