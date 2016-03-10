@@ -72,7 +72,7 @@ angular
         thisAppController.commitEdit=function(row){
             row.isEditing=false;
             //send edited data
-            $userApplicationService.update({appId:row.id});
+            $userApplicationService.update({id:row.id});
         };
 
         /**
@@ -99,7 +99,7 @@ angular
          */
         thisAppController.removeApplication=function(row){
             //TODO:get confirm
-            $userApplicationService.delete({appId:row.id}, function() {
+            $userApplicationService.delete({id:row.id}, function() {
                 var index = thisAppController.appCollection.indexOf(row);
                 thisAppController.appCollection.splice(index, 1);
                 //alert('application ' + row.name + ' deleted');

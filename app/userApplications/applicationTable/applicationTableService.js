@@ -8,9 +8,11 @@
  * it make connection between this app and server
  */
 /*global angular */
-angular.service('userApplicationService', function ($resource) {
-    return $resource('application/:appId', {}, {
-        // add update to actions (is not defined by default)
-        update: {method:'PUT'}
+angular
+    .module('app')
+    .service('userApplicationService', function ($resource) {
+        return $resource('application/:id', {}, {
+            // add update to actions (is not defined by default)
+            update: {method:'PUT'}
+        });
     });
-});
