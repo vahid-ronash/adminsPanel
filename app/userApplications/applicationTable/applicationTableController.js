@@ -14,9 +14,13 @@ angular
         var thisAppController=this;
 
         //send a request to get application list
-        $userApplicationService.getApplicationList(function(data){
-            thisAppController.appCollection=data;
+        thisAppController.isLoading = true;
+        thisAppController.appCollection=$userApplicationService.query(function(success){
+            thisAppController.isLoading = false;
+        },function(err){
+            //TODO : request it again
         });
+
 
         /**
          * @ngdoc method
@@ -36,8 +40,11 @@ angular
          * add new application to database
          */
         thisAppController.addNewApplication=function(newApplicationData){
-            thisAppController.appCollection.push(newApplicationData);
-            $userApplicationService.addApplication(newApplicationData);
+            $userApplicationService.save(newApplicationData,function(createdApplication){
+                thisAppController.appCollection.push(createdApplication);
+            },function(err){
+                //TODO : it didn't save, what i can do?
+            });
         };
 
 
@@ -63,11 +70,9 @@ angular
          * @param row (selected application)
          */
         thisAppController.commitEdit=function(row){
-            //remove additional Data
-            delete row.isEditing;
-            delete row.backupName;
+            row.isEditing=false;
             //send edited data
-            $userApplicationService.editApplication(row);
+            $userApplicationService.update({appId:row.id});
         };
 
         /**
@@ -93,9 +98,11 @@ angular
          * @param row (selected application)
          */
         thisAppController.removeApplication=function(row){
-            var index = thisAppController.appCollection.indexOf(row);
-            if (index !== -1) {
+            //TODO:get confirm
+            $userApplicationService.delete({appId:row.id}, function() {
+                var index = thisAppController.appCollection.indexOf(row);
                 thisAppController.appCollection.splice(index, 1);
-            }
+                //alert('application ' + row.name + ' deleted');
+            })
         };
     }]);
