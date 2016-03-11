@@ -13,7 +13,7 @@
     angular
         .module('app')
         .factory('applicationResource', ['$resource', function ($resource) {
-            return $resource('/userApp/:id', {}, {
+            return $resource('/userApp/:id', {id:'@id'}, {
                     // add update to actions (is not defined by default)
                     'update': {method: 'PUT'},
                     'query': {method: 'GET', isArray: true}

@@ -17,7 +17,7 @@
 
             //send a request to get application list
             thisAppController.isLoading = true;
-            thisAppController.appCollection = $applicationResource.query(function (success) {
+            thisAppController.appCollection = $applicationResource.query(function () {
                 thisAppController.isLoading = false;
             }, function (err) {
                 //TODO : request it again
@@ -41,9 +41,10 @@
              * @description
              * add new application to database
              */
-            thisAppController.addNewApplication = function (newApplicationData) {
+            thisAppController.addNewApplication = function (newApplicationData,callback) {
                 $applicationResource.save(newApplicationData, function (createdApplication) {
                     thisAppController.appCollection.push(createdApplication);
+                    callback && callback();
                 }, function (err) {
                     //TODO : it didn't save, what i can do?
                 });
@@ -72,9 +73,11 @@
              * @param row (selected application)
              */
             thisAppController.commitEdit = function (row) {
+                if(row.name!=row.backupName) {
+                    //send edited data
+                    $applicationResource.update({id: row.id});
+                }
                 row.isEditing = false;
-                //send edited data
-                $applicationResource.update({id: row.id});
             };
 
             /**
@@ -99,11 +102,12 @@
              * get confirm and remove selected application
              * @param row (selected application)
              */
-            thisAppController.removeApplication = function (row) {
+            thisAppController.removeApplication = function (row,callback) {
                 //TODO:get confirm
-                $applicationResource.delete({id: row.id}, function () {
+                $applicationResource.delete({id:row.id}, function () {
                     var index = thisAppController.appCollection.indexOf(row);
                     thisAppController.appCollection.splice(index, 1);
+                    callback && callback();
                     //alert('application ' + row.name + ' deleted');
                 })
             };

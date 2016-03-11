@@ -27,5 +27,5 @@
                 controllerAs: 'appsTableCtrl',
                 templateUrl: 'app/userApplications/applicationTable/applicationTable.html'
             };
-        })
+        });
 })());

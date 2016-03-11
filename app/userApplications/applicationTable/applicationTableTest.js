@@ -2,61 +2,71 @@
  * Created by mojtaba on 3/9/16.
  */
 /*global angular describe it expect beforeEach inject */
-describe('test application table : ', function () {
+describe('test application table directive : ', function () {
     beforeEach(module('app'));
-    var controllers, appController, rootScope, compile, httpBackend, appResource;
-    beforeEach(
-        inject(function ($compile, $rootScope, _$controller_, applicationResource, $httpBackend) {
-            rootScope = $rootScope;
-            compile = $compile;
-            appResource = applicationResource;
-            httpBackend = $httpBackend;
-            controllers = _$controller_;
-            appController = controllers('applicationTableController', {
+    it('test directive', inject(function ($compile,$rootScope) {
+        var elm = angular.element('<application-table></application-table>');
+        $compile(elm)($rootScope);
+    }));
+});
+describe('test application table controller and services : ', function () {
+    //module.sharedInjector(); //TODO:we could use it in angular 1.5.1 and use beforeAll instead of all next beforeEach
+    beforeEach(module("app"));//beforeAll(module("app"));
+    var appController,$timeout,deferred ;
+
+    //inject what we need in next specs
+    beforeEach(//beforeAll(
+        inject(function (_$q_, _$timeout_, _$controller_, applicationResource) {
+            deferred = _$q_.defer();
+            $timeout=_$timeout_;
+            appController = _$controller_('applicationTableController', {
                 "$scope": {},
-                "userApplicationService": appResource
+                "userApplicationService": applicationResource
             });
         })
     );
 
-    it('test directive', function () {
-        var elm = angular.element('<applicationTable></applicationTable>');
-        compile(elm)(rootScope);
+    //make promises for each spec
+    beforeEach(function(){
+        var thisSpec=this;
+        thisSpec.valueToVerify=0;
+        deferred.promise.then(function (data) { thisSpec.valueToVerify = data; });
     });
 
-    it('test ng resource', inject(function ($http) {
-        //var result = mockAppResource.query(function (res) {});
-        //$http.get('http://localhost/foo')
-        var result=[];
-        var url='/application';
-        $http.get(url)
-            .success(function(data, status, headers, config) {
-                result= data;
-                console.log(data);
-            })
-            .error(function(data, status, headers, config) {
-                console.log("err app loading");
-                result= false;
-            });
-        expect(result.length > 0).toEqual(true);
+    it("test ng resource", inject(function (applicationResource) {
+        //when it respond to below query it has responded to appCollection query
+        applicationResource.query(function (result) {
+            deferred.resolve(appController.appCollection.length>0);
+        }, function (err) {
+            deferred.reject('There has been an Error!'+err);
+        });
+        $timeout.flush();
+        expect(this.valueToVerify).toEqual(true);
     }));
 
     it('add method', function () {
-        appController.addNewApplication({name: "a", packname: "a"});
-        expect(appController.appCollection.length > 0).toEqual(true);
+        var len=appController.appCollection.length;
+        appController.addNewApplication({name: "a", packname: "b"},function(){
+            deferred.resolve(appController.appCollection.length > len);
+        });
+
+        $timeout.flush();
+        expect(this.valueToVerify).toEqual(true);
     });
 
+    //test remove
     it('remove method', function () {
         //TODO: it must get confirmation
-        //var controller = $controller('applicationTableController', { "$scope": {} });
-        appController.appCollection = [{name: "a", packname: "a"}, {name: "b", packname: "b"}];
-        var firstApp = appController.appCollection[0];
-        appController.removeApplication(firstApp);
-        expect(appController.appCollection.indexOf(firstApp)).toEqual(-1);
+        appController.appCollection=[{id:1,name:"a",packname:"b"}];
+        appController.removeApplication(appController.appCollection[0],function(){
+            deferred.resolve(appController.appCollection.length <1 );
+        });
+        $timeout.flush();
+        expect(this.valueToVerify).toEqual(true);
     });
 
+    //test each step of edit
     it('edit methods', function () {
-        //var controller = $controller('applicationTableController', { "$scope": {} });
         appController.appCollection = [{name: "a", packname: "a"}, {name: "b", packname: "b"}];
         var firstApp = appController.appCollection[0];
         appController.startEdit(firstApp);
@@ -68,6 +78,6 @@ describe('test application table : ', function () {
         appController.startEdit(firstApp);
         //TODO: if app didnt change dont send data to server
         appController.commitEdit(firstApp);
-        expect(typeof firstApp.isEditing).toEqual('undefined');
+        expect(firstApp.isEditing).toEqual(false);
     });
 });

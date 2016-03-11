@@ -20,18 +20,24 @@
             $httpBackend.whenGET('/userApp').respond(function(method, url, data, headers){
                 return [200, appList, {}];
             });
-            $httpBackend.whenPUT('/userApp/:id').respond({success:true});
-            $httpBackend.whenDELETE('/userApp/:id').respond({success:true});
+            $httpBackend.whenPUT('/userApp').respond(function(method, url, data, headers){
+                var dataobj=angular.fromJson(data);
+                appList[data.id-1]=dataobj;
+                return [200, dataobj, {}];
+            });
+            //mock has problem with /userApp/:id expression so we just can delete id=1
+            $httpBackend.whenDELETE('/userApp/1').respond({success:true});
             $httpBackend.whenPOST('/userApp').respond(function(method, url, data, headers){
-                data.id=appList.length+1;
-                appList.push(angular.fromJson(data));
+                var dataobj=angular.fromJson(data);
+                var newData=angular.extend({id:appList.length+1},dataobj);
+                appList.push(newData);
                 return [200, data, {}];
             });
 
-            $httpBackend.whenGET(/.*/).passThrough();
-            $httpBackend.whenPOST(/.*/).passThrough();
-            $httpBackend.whenDELETE(/.*/).passThrough();
-            $httpBackend.whenPUT(/.*/).passThrough();
-            //$httpBackend.whenGET(/\.html/).passThrough();
+            //$httpBackend.whenGET(/.*/).passThrough();
+            //$httpBackend.whenPOST(/.*/).passThrough();
+            //$httpBackend.whenDELETE(/.*/).passThrough();
+            //$httpBackend.whenPUT(/.*/).passThrough();
+            $httpBackend.whenGET(/\.html/).passThrough();
         });
 })());
