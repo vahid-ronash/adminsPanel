@@ -31,7 +31,7 @@
   <!--<link rel="stylesheet" href="assets/libs/styles/app.rtl.css" type="text/css" />-->
 </head>
 <body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
-  <div class="app" ui-view></div>
+  <div class="app" ng-view></div>
 <!-- build:js scripts/app.angular.js -->
 <!-- jQuery -->
   <script src="assets/libs/jquery/dist/jquery.js"></script>
@@ -47,7 +47,9 @@
   <script src="assets/libs/angular-touch/angular-touch.js"></script>
 
   <!-- router -->
-  <script src="assets/libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <!--<script src="assets/libs/angular-ui-router/release/angular-ui-router.js"></script>-->
+  <script src="assets/libs/angular-route/angular-route.js"></script>
+  <script src="assets/libs/angular-mocks/angular-mocks.js"></script>
   <!-- storage -->
   <script src="assets/libs/ngstorage/ngStorage.js"></script>
   <!-- utils -->
@@ -65,6 +67,11 @@
 
 <!-- Controller -->
   <script src="app/home/homeController.js"></script>
+  <script src="app/userApplications/userApplicationController.js"></script>
+  <script src="app/userApplications/applicationTable/applicationTableDirective.js"></script>
+  <script src="app/userApplications/applicationTable/applicationTableController.js"></script>
+  <script src="app/userApplications/applicationTable/applicationTableService.js"></script>
+  <script src="app/userApplications/applicationTable/mockAppData.js"></script>
 <!---->
 
   <!--<script src="app/directives/ui-jp.js"></script>-->

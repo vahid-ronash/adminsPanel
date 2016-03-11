@@ -15,13 +15,17 @@
  *
  */
 /*global angular */
-angular
-    .module("app")
-    .directive('applicationTable', function() {
-        return {
-            scope: true,
-            controller: 'applicationTableController',
-            controllerAs: 'appCtrl',
-            templateUrl: 'applicationTable.html'
-        };
-    });
+((function() {
+    'use strict';
+    angular
+        .module("app")
+        .directive('applicationTable', function () {
+            return {
+                scope: true,
+                restrict: 'E',
+                controller: 'applicationTableController',
+                controllerAs: 'appsTableCtrl',
+                templateUrl: 'app/userApplications/applicationTable/applicationTable.html'
+            };
+        })
+})());

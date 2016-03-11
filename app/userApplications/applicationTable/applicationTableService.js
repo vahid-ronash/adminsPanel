@@ -8,11 +8,16 @@
  * it make connection between this app and server
  */
 /*global angular */
-angular
-    .module('app')
-    .service('userApplicationService', function ($resource) {
-        return $resource('application/:id', {}, {
-            // add update to actions (is not defined by default)
-            update: {method:'PUT'}
-        });
-    });
+((function() {
+    'use strict';
+    angular
+        .module('app')
+        .factory('applicationResource', ['$resource', function ($resource) {
+            return $resource('/userApp/:id', {}, {
+                    // add update to actions (is not defined by default)
+                    'update': {method: 'PUT'},
+                    'query': {method: 'GET', isArray: true}
+                }
+            );
+        }]);
+})());

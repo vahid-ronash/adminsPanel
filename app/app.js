@@ -17,7 +17,8 @@
         'ngTouch',
         'ngStorage',
         //'ngStore',//override some method on ngStorage
-        'ui.router',
+        'ngRoute',
+        //'ui.router',
         'ui.utils',
         //'ui.load',//a service that differ load css and script and lazyload
         //'ui.jp',//call function with options on dom

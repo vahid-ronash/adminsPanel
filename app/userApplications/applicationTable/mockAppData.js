@@ -12,20 +12,26 @@
         {id:5,name: 'دموی پوشه', packname:'co.ronash.pushesample'},
     ];
     angular
-        .module('app')
+        .module('app')//,['ngMockE2E']
         .config(function($provide) {
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
         .run(function($httpBackend) {
-            $httpBackend.whenGET('/application').respond(function(method, url, data, headers){
+            $httpBackend.whenGET('/userApp').respond(function(method, url, data, headers){
                 return [200, appList, {}];
             });
-            $httpBackend.whenPUT('/application/:id').respond({success:true});
-            $httpBackend.whenDELETE('/application/:id').respond({success:true});
-            $httpBackend.whenPOST('/application').respond(function(method, url, data, headers){
+            $httpBackend.whenPUT('/userApp/:id').respond({success:true});
+            $httpBackend.whenDELETE('/userApp/:id').respond({success:true});
+            $httpBackend.whenPOST('/userApp').respond(function(method, url, data, headers){
                 data.id=appList.length+1;
                 appList.push(angular.fromJson(data));
                 return [200, data, {}];
             });
+
+            $httpBackend.whenGET(/.*/).passThrough();
+            $httpBackend.whenPOST(/.*/).passThrough();
+            $httpBackend.whenDELETE(/.*/).passThrough();
+            $httpBackend.whenPUT(/.*/).passThrough();
+            //$httpBackend.whenGET(/\.html/).passThrough();
         });
 })());
