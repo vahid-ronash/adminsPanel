@@ -36,7 +36,7 @@ describe('test application table controller and services : ', function () {
     it("test ng resource", inject(function (applicationResource) {
         //when it respond to below query it has responded to appCollection query
         applicationResource.query(function (result) {
-            deferred.resolve(appController.appCollection.length>0);
+            deferred.resolve(result.length>0 && appController.appCollection.length>0);
         }, function (err) {
             deferred.reject('There has been an Error!'+err);
         });

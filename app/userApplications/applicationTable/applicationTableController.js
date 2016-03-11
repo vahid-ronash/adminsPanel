@@ -19,7 +19,7 @@
             thisAppController.isLoading = true;
             thisAppController.appCollection = $applicationResource.query(function () {
                 thisAppController.isLoading = false;
-            }, function (err) {
+            }, function () {//error
                 //TODO : request it again
             });
 
@@ -73,7 +73,7 @@
              * @param row (selected application)
              */
             thisAppController.commitEdit = function (row) {
-                if(row.name!=row.backupName) {
+                if(row.name!==row.backupName) {
                     //send edited data
                     $applicationResource.update({id: row.id});
                 }
@@ -109,7 +109,7 @@
                     thisAppController.appCollection.splice(index, 1);
                     callback && callback();
                     //alert('application ' + row.name + ' deleted');
-                })
+                });
             };
         }]);
 })());
