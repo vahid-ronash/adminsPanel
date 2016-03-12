@@ -45,6 +45,16 @@
                     return [200, {error:"username or password is wrong"}, {}];
                 }
             });
+            $httpBackend.whenPOST('/forgotPassword').respond(function(method, url, data){
+                var dataobj=angular.fromJson(data);
+                var list=userList.filter(function(user){ return (user.email===dataobj.email); });
+                if(list.length){
+                    return [200, {success:true}, {}];
+                }
+                else {
+                    return [200, {error:"username or password is wrong"}, {}];
+                }
+            });
             $httpBackend.whenPOST('/register').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email); });

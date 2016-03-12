@@ -53,6 +53,22 @@
 
             /**
              * @ngdoc method
+             * @name register
+             * @methodOf module.AuthService
+             * @description
+             * send user data to server to register a user
+             * @param userData
+             */
+            authService.forgotPassword= function (userData) {
+                return $http
+                    .post('/forgotPassword', userData)
+                    .then(function (res) {
+                        return res.data;
+                    });
+            };
+
+            /**
+             * @ngdoc method
              * @name login
              * @methodOf module.AuthService
              * @description

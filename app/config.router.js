@@ -33,6 +33,11 @@
                         controller: 'signUpController as signupCtrl'
                         //resolve: need delay
                     })
+                    .when('/account/forgot-password', {
+                        templateUrl: 'app/accountComponents/forgotPassword/forgotPasswordTemplate.html',
+                        controller: 'forgotPasswordController as forgotCtrl'
+                        //resolve: need delay
+                    })
                     .otherwise({
                         // if the path doesn't match any of the urls you configured
                         redirectTo: '/home'
