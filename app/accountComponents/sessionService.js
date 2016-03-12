@@ -23,5 +23,5 @@
                 this.userId = null;
                 this.userRole = null;
             };
-        })
+        });
 })());

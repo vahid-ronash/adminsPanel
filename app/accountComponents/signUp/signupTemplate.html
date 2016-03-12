@@ -1,0 +1,32 @@
+<div class="center-block w-xxl w-auto-xs p-y-md">
+    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+        <div class="m-b text-sm">
+            Sign up to your {{signupCtrl.app.name}} Account
+        </div>
+        <form name="form" ng-submit="signupCtrl.register()">
+            <div class="md-form-group">
+                <input type="email" class="md-input" ng-model="signupCtrl.user.email" required>
+                <label>Email</label>
+            </div>
+            <div class="md-form-group">
+                <input type="password" class="md-input" ng-model="signupCtrl.user.password" required>
+                <label>Password</label>
+            </div>
+            <div class="md-form-group">
+                <input type="password" class="md-input" ng-model="signupCtrl.repassword" required>
+                <label>re Password</label>
+            </div>
+            <div class="m-b-md">
+                <label class="md-check">
+                    <input type="checkbox" ng-model="signupCtrl.user.agree" required><i class="primary"></i> Agree the <a href>terms and policy</a>
+                </label>
+            </div>
+            <button type="submit" ng-disabled="form.$invalid || signupCtrl.dataLoading" class="btn primary btn-block p-x-md">Sign up</button>
+            <small ng-if="signupCtrl.registerError">{{signupCtrl.registerError}}</small>
+        </form>
+    </div>
+
+    <div class="p-v-lg text-center">
+        <div>Already have an account? <a ui-sref="access.signin" href="#/account/signin" class="text-primary _600">Sign in</a></div>
+    </div>
+</div>

@@ -16,7 +16,7 @@
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
             thisController.credential={
-                username:"",
+                email:"",
                 password:"",
                 rememberMe:true
             };
@@ -36,6 +36,6 @@
                         $location.path('/home');
                     }
                 });
-            }
+            };
         }]);
 })());

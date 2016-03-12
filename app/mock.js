@@ -5,7 +5,7 @@
 ((function() {
     'use strict';
     var userList = [
-        {id:1,name: 'دمو', username:'demo',password:"1234",roles:[]},
+        {id:1,name: 'دمو', email:'demo@pushe.co',password:"1234",roles:[]}
     ];
     var appList = [
         {id:1,name: 'Pushe Sample Eclipse', packname:'co.ronash.pushesampleeclipse'},
@@ -37,11 +37,25 @@
 
             $httpBackend.whenPOST('/login').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
-                var list=userList.filter(function(user){
-                    return (user.username==dataobj.username && user.password==dataobj.password);
-                });
-                if(list.length)return [200, {user:list[0]}, {}];
-                else return [200, {error:"username or password is wrong"}, {}];
+                var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
+                if(list.length){
+                    return [200, {user:list[0]}, {}];
+                }
+                else {
+                    return [200, {error:"username or password is wrong"}, {}];
+                }
+            });
+            $httpBackend.whenPOST('/register').respond(function(method, url, data){
+                var dataobj=angular.fromJson(data);
+                var list=userList.filter(function(user){ return (user.email===dataobj.email); });
+                if(!list.length){
+                    var newData=angular.extend({id:appList.length+1},dataobj);
+                    userList.push(newData);
+                    return [200, {success:true}, {}];
+                }
+                else{
+                    return [200, {error:"username is taken before"}, {}];
+                }
             });
 
             //$httpBackend.whenGET(/.*/).passThrough();

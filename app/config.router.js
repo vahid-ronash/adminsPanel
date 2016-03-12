@@ -28,6 +28,11 @@
                         controller: 'signInController as signinCtrl'
                         //resolve: need delay
                     })
+                    .when('/account/signup', {
+                        templateUrl: 'app/accountComponents/signUp/signupTemplate.html',
+                        controller: 'signUpController as signupCtrl'
+                        //resolve: need delay
+                    })
                     .otherwise({
                         // if the path doesn't match any of the urls you configured
                         redirectTo: '/home'

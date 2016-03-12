@@ -37,6 +37,22 @@
 
             /**
              * @ngdoc method
+             * @name register
+             * @methodOf module.AuthService
+             * @description
+             * send user data to server to register a user
+             * @param userData
+             */
+            authService.register= function (userData) {
+                return $http
+                    .post('/register', userData)
+                    .then(function (res) {
+                        return res.data;
+                    });
+            };
+
+            /**
+             * @ngdoc method
              * @name login
              * @methodOf module.AuthService
              * @description
@@ -77,5 +93,5 @@
             };
 
             return authService;
-        })
+        });
 })());

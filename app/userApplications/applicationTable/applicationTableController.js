@@ -45,7 +45,7 @@
                 $applicationResource.save(newApplicationData, function (createdApplication) {
                     thisAppController.appCollection.push(createdApplication);
                     callback && callback();
-                }, function (err) {
+                }, function () {
                     //TODO : it didn't save, what i can do?
                 });
             };

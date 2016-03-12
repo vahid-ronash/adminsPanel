@@ -44,7 +44,6 @@ For running test in local we have to do these
 
 TODO
 ----
-
-- Setup translation tool
 - run e2e test by protractor
-- copy and customize template files into it
+- build All todo in code
+- use angular-translate

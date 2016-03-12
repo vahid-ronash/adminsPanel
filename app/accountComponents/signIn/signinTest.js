@@ -17,7 +17,7 @@ describe('sign in controller : ', function() {
     it('test submit', inject(function (_$q_,$timeout) {
         var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.credential={
-            username:"demo",
+            email:"demo",
             password:"1235",
             rememberMe:true
         };

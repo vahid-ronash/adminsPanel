@@ -1,17 +1,11 @@
 <div class="center-block w-xxl w-auto-xs p-y-md">
-    <div class="navbar">
-        <div class="pull-center">
-            <div ui-include="'../views/blocks/navbar.brand.html'"></div>
-        </div>
-    </div>
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
         <div class="m-b text-sm">
             Sign in with your {{signinCtrl.app.name}} Account
         </div>
         <form name="form" ng-submit="signinCtrl.login()">
             <div class="md-form-group float-label">
-                <input type="text" class="md-input" ng-model="signinCtrl.credential.username" required>
-                <!-- type="email" -->
+                <input type="email" class="md-input" ng-model="signinCtrl.credential.email" required>
                 <label>Email</label>
             </div>
             <div class="md-form-group float-label">
