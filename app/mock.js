@@ -4,6 +4,9 @@
 /*global angular */
 ((function() {
     'use strict';
+    var userList = [
+        {id:1,name: 'دمو', username:'demo',password:"1234",roles:[]},
+    ];
     var appList = [
         {id:1,name: 'Pushe Sample Eclipse', packname:'co.ronash.pushesampleeclipse'},
         {id:2,name: 'Pushe Sample Android Studio', packname:'co.ronash.pushesampleas'},
@@ -12,7 +15,7 @@
         {id:5,name: 'دموی پوشه', packname:'co.ronash.pushesample'}
     ];
     angular
-        .module('app')//,['ngMockE2E']
+        .module('app')
         .config(function($provide) {
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
@@ -30,6 +33,15 @@
                 var newData=angular.extend({id:appList.length+1},dataobj);
                 appList.push(newData);
                 return [200, data, {}];
+            });
+
+            $httpBackend.whenPOST('/login').respond(function(method, url, data){
+                var dataobj=angular.fromJson(data);
+                var list=userList.filter(function(user){
+                    return (user.username==dataobj.username && user.password==dataobj.password);
+                });
+                if(list.length)return [200, {user:list[0]}, {}];
+                else return [200, {error:"username or password is wrong"}, {}];
             });
 
             //$httpBackend.whenGET(/.*/).passThrough();

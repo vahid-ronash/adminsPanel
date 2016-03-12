@@ -15,12 +15,17 @@
                 $routeProvider
                     .when('/home', {
                         templateUrl: 'app/home/home.html',
-                        controller: 'homeController as home',
+                        controller: 'homeController as home'
                         //resolve: need delay
                     })
                     .when('/apps', {
                         templateUrl: 'app/userApplications/userApplications.html',
                         controller: 'userApplicationController as appCtrl'
+                        //resolve: need delay
+                    })
+                    .when('/account/signin', {
+                        templateUrl: 'app/accountComponents/signIn/signinTemplate.html',
+                        controller: 'signInController as signinCtrl'
                         //resolve: need delay
                     })
                     .otherwise({
