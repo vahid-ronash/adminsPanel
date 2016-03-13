@@ -16,7 +16,7 @@
                 <label class="md-check">
                     <input type="checkbox" ng-model="signinCtrl.credential.rememberMe"><i class="primary"></i> Keep me signed in
                 </label>
-                <a class="pull-right" ng-click="signinCtrl.loginAsDemo()">as demo</a>
+                <a class="btn-link pull-right" ng-click="signinCtrl.loginAsDemo()">as demo</a>
             </div>
             <button type="submit" ng-disabled="form.$invalid || signinCtrl.dataLoading" class="btn primary btn-block p-x-md">sign in</button>
             <small ng-if="signinCtrl.loginError">{{signinCtrl.loginError}}</small>

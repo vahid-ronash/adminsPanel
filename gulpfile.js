@@ -52,3 +52,5 @@ gulp.task('makeCSS', function () {
 gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/*.scss', ['makeCSS']);
 });
+
+gulp.task('build', ['makeCSS']);
