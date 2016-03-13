@@ -24,6 +24,7 @@ module.exports = function(config) {
       "assets/libs/angular/angular.js",
       "assets/libs/angular-animate/angular-animate.js",
       "assets/libs/angular-resource/angular-resource.js",
+      "assets/libs/angular-smart-table/dist/smart-table.js",
       "assets/libs/angular-sanitize/angular-sanitize.js",
 
       "assets/libs/angular-touch/angular-touch.js",

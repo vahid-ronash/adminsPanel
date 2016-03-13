@@ -18,6 +18,7 @@
         'ngStorage',
         //'ngStore',//override some method on ngStorage
         'ngRoute',
+          'smart-table',
         //'ui.router',
         'ui.utils',
         //'ui.load',//a service that differ load css and script and lazyload

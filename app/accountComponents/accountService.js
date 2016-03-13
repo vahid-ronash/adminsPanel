@@ -111,13 +111,13 @@
              * @description
              * set or get user access
              */
-            authService.isAuthorized = function (authorizedRoles) {
-                if (!angular.isArray(authorizedRoles)) {
-                    authorizedRoles = [authorizedRoles];
-                }
-                return (authService.isAuthenticated() &&
-                authorizedRoles.indexOf(Session.userRole) !== -1);
-            };
+            //authService.isAuthorized = function (authorizedRoles) {
+            //    if (!angular.isArray(authorizedRoles)) {
+            //        authorizedRoles = [authorizedRoles];
+            //    }
+            //    return (authService.isAuthenticated() &&
+            //    authorizedRoles.indexOf(Session.userRole) !== -1);
+            //};
 
             return authService;
         });

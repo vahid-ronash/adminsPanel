@@ -37,5 +37,18 @@
                     }
                 });
             };
+
+            /**
+             * @ngdoc method
+             * @name loginAsDemo
+             * @methodOf module.signInController
+             * @description
+             * use demo user and send them to login method
+             */
+            thisController.loginAsDemo=function(){
+                thisController.credential.email="demo@pushe.co";
+                thisController.credential.password="1234";
+                return thisController.login();
+            };
         }]);
 })());

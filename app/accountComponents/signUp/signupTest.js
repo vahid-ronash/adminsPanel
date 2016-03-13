@@ -16,21 +16,28 @@ describe('sign up controller : ', function() {
     });
 
 
-    it('test submit preventers', function () {
-        var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
-        controller.user = {
-            email: "demo@pushe.co",
-            password: "1235",
-            agree: false
-        };
-        controller.repassword = "1233";
-        controller.register();
-        expect(controller.registerError.length > 0).toEqual(true);
+    describe('test submit preventers', function () {
+        var controller;
+        beforeEach(function(){
+            controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
+            controller.user = {
+                email: "demo@pushe.co",
+                password: "1235",
+                agree: false
+            };
+        });
+        it("test repassword preventer",function(){
+            controller.repassword = "1233";
+            controller.register();
+            expect(controller.registerError.length > 0).toEqual(true);
+        });
 
-        controller.registerError="";//reset error reporter
-        controller.repassword = "1235";
-        controller.register();
-        expect(controller.registerError.length > 0).toEqual(true);
+        it("test agree preventer",function(){
+            controller.registerError="";//reset error reporter
+            controller.repassword = "1235";
+            controller.register();
+            expect(controller.registerError.indexOf("agree") > 0).toEqual(true);
+        });
     });
     it('test submit', inject(function (_$q_,$timeout) {
         var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
