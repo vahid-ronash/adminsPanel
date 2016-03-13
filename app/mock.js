@@ -35,11 +35,13 @@
                 return [200, data, {}];
             });
 
+            $httpBackend.whenGET('/logout').respond({success:true});
             $httpBackend.whenPOST('/login').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
-                    return [200, {user:list[0]}, {}];
+                    var user=angular.extend({sessionId:1},list[0]);
+                    return [200, {user:user}, {}];
                 }
                 else {
                     return [200, {error:"username or password is wrong"}, {}];

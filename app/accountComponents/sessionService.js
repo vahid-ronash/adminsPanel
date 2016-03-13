@@ -13,14 +13,16 @@
     angular
         .module('app')
         .service('Session', function () {
-            this.create = function (sessionId, userId, userRole) {
+            this.create = function (sessionId, userId, email, userRole) {
                 this.id = sessionId;
                 this.userId = userId;
+                this.email=email;
                 this.userRole = userRole;
             };
             this.destroy = function () {
                 this.id = null;
                 this.userId = null;
+                this.email=null;
                 this.userRole = null;
             };
         });

@@ -29,7 +29,7 @@
                     .then(function (res) {
                         var result=res.data;
                         if(result.user) {
-                            Session.create(result.user.id, result.user.id, result.user.role);
+                            Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
                         }
                         return result;
                     });
@@ -91,6 +91,17 @@
              */
             authService.isAuthenticated = function () {
                 return !!Session.userId;
+            };
+
+            /**
+             * @ngdoc method
+             * @name getUserEmail
+             * @methodOf module.AuthService
+             * @description
+             * determine user is logged in or not
+             */
+            authService.getUserEmail= function () {
+                return Session.email;
             };
 
             /**

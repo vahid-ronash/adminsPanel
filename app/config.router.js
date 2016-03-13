@@ -25,17 +25,20 @@
                     })
                     .when('/account/signin', {
                         templateUrl: 'app/accountComponents/signIn/signinTemplate.html',
-                        controller: 'signInController as signinCtrl'
+                        controller: 'signInController as signinCtrl',
+                        access: {isFree: true}
                         //resolve: need delay
                     })
                     .when('/account/signup', {
                         templateUrl: 'app/accountComponents/signUp/signupTemplate.html',
-                        controller: 'signUpController as signupCtrl'
+                        controller: 'signUpController as signupCtrl',
+                        access: {isFree: true}
                         //resolve: need delay
                     })
                     .when('/account/forgot-password', {
                         templateUrl: 'app/accountComponents/forgotPassword/forgotPasswordTemplate.html',
-                        controller: 'forgotPasswordController as forgotCtrl'
+                        controller: 'forgotPasswordController as forgotCtrl',
+                        access: {isFree: true}
                         //resolve: need delay
                     })
                     .otherwise({
@@ -46,7 +49,15 @@
                 // configure html5 to get links working on jsfiddle
                 //TODO:$locationProvider.html5Mode(true); server must support
             }]
-    );
+        )
+        .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
+            $rootScope.$on('$routeChangeStart', function (event,cur,prev) {
+                if (!(cur.access && cur.access.isFree) && !Auth.isAuthenticated()) {
+                    event.preventDefault();
+                    $location.path('/account/signin');
+                }
+            });
+        }]);
 })());
 //((function() {
 //    'use strict';
