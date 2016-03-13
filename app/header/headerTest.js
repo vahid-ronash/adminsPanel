@@ -7,5 +7,6 @@ describe('test userMenu directive : ', function () {
     it('test directive', inject(function ($compile, $rootScope) {
         var elm = angular.element('<header></header>');
         $compile(elm)($rootScope);
+        expect(elm).toBeDefined();
     }));
 });

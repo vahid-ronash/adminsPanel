@@ -14,11 +14,11 @@ describe('sign in controller : ', function() {
         var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
         expect(controller.app.name.length>0).toEqual(true);
     });
-    it('test login as demo', inject(function (_$q_,$timeout) {
+    it('test login as demo', function () {
         var controller = $controller('signInController', {"$scope": {app: {name: "adminsPanel"}}});
         controller.loginAsDemo();
         expect(controller.credential.email==="demo@pushe.co").toEqual(true);
-    }));
+    });
     it('wrong login test', inject(function (_$q_,$timeout) {
         var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.credential={

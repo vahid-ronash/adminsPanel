@@ -5,11 +5,11 @@
 var gulp = require('gulp');
 var karma = require('karma');
 
-var concat = require('gulp-concat');
+//var concat = require('gulp-concat');
 var sass = require('gulp-sass');
-var rename = require("gulp-rename");
-var uglify = require('gulp-uglify');
-var replace = require('gulp-replace');
+//var rename = require("gulp-rename");
+//var uglify = require('gulp-uglify');
+//var replace = require('gulp-replace');
 
 /**
  * Run test once and exit

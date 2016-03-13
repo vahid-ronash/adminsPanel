@@ -17,7 +17,7 @@ describe('test userMenu directive : ', function () {
         var deferred = _$q_.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.logout().then(function(){
-            deferred.resolve(AuthService.isAuthenticated()==false);
+            deferred.resolve(!AuthService.isAuthenticated());
         });
         $timeout.flush();
         expect(valueToVerify).toEqual(true);

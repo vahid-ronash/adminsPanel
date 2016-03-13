@@ -1,7 +1,7 @@
 /**
  * Created by mojtaba on 3/8/16.
  */
-/*global beforeEach describe it expect AsyncSpec */
+/*global describe beforeEach inject it expect */
 describe('test app Controller', function() {
     beforeEach(module('app'));
     var $controller,gscope;

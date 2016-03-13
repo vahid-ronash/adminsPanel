@@ -51,7 +51,7 @@
             }]
         )
         .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
-            $rootScope.$on('$routeChangeStart', function (event,cur,prev) {
+            $rootScope.$on('$routeChangeStart', function (event,cur) {//,prev
                 if (!(cur.access && cur.access.isFree) && !Auth.isAuthenticated()) {
                     event.preventDefault();
                     $location.path('/account/signin');
