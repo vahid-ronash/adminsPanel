@@ -58,4 +58,23 @@ describe('sign up controller : ', function() {
         $timeout.flush();
         expect(valueToVerify).toEqual(true);
     }));
+    it('test submit', inject(function (_$q_,$timeout) {
+        var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
+        controller.user = {
+            email: "mojtaba@pushe.co",
+            password: "1235",
+            agree: true
+        };
+        controller.repassword="1235";
+
+        var valueToVerify=0;
+        var deferred = _$q_.defer();
+        deferred.promise.then(function (data) {valueToVerify = data; });
+        controller.register().then(function(){
+            deferred.resolve(!controller.registerError || !controller.registerError.length );
+        });
+        //deferred.reject('There has been an Error!'+err);
+        $timeout.flush();
+        expect(valueToVerify).toEqual(true);
+    }));
 });

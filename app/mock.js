@@ -21,11 +21,7 @@
         })
         .run(function($httpBackend) {
             $httpBackend.whenGET('/userApp').respond(appList);
-            $httpBackend.whenPUT('/userApp').respond(function(method, url, data){
-                var dataobj=angular.fromJson(data);
-                appList[data.id-1]=dataobj;
-                return [200, dataobj, {}];
-            });
+            $httpBackend.whenPUT('/userApp').respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
             $httpBackend.whenDELETE('/userApp/1').respond({success:true});
             $httpBackend.whenPOST('/userApp').respond(function(method, url, data){
@@ -40,23 +36,14 @@
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
-                    var user=angular.extend({sessionId:1},list[0]);
-                    return [200, {user:user}, {}];
+                    var user={user:angular.extend({sessionId:1},list[0])};
+                    return [200, user, {}];
                 }
                 else {
                     return [200, {error:"username or password is wrong"}, {}];
                 }
             });
-            $httpBackend.whenPOST('/forgotPassword').respond(function(method, url, data){
-                var dataobj=angular.fromJson(data);
-                var list=userList.filter(function(user){ return (user.email===dataobj.email); });
-                if(list.length){
-                    return [200, {success:true}, {}];
-                }
-                else {
-                    return [200, {error:"username or password is wrong"}, {}];
-                }
-            });
+            $httpBackend.whenPOST('/forgotPassword').respond({success:true});
             $httpBackend.whenPOST('/register').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email); });

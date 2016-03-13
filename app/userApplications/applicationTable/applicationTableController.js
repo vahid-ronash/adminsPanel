@@ -73,10 +73,8 @@
              * @param row (selected application)
              */
             thisAppController.commitEdit = function (row) {
-                if(row.name!==row.backupName) {
-                    //send edited data
-                    $applicationResource.update({id: row.id});
-                }
+                //send edited data
+                if(row.name!==row.backupName) {$applicationResource.update({id: row.id}); }
                 row.isEditing = false;
             };
 

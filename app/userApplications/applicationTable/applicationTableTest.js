@@ -37,8 +37,6 @@ describe('test application table controller and services : ', function () {
         //when it respond to below query it has responded to appCollection query
         applicationResource.query(function (result) {
             deferred.resolve(result.length>0 && appController.appCollection.length>0);
-        }, function (err) {
-            deferred.reject('There has been an Error!'+err);
         });
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);

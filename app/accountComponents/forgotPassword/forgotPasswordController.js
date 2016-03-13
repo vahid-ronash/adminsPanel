@@ -7,6 +7,7 @@
  * @description
  * control a password recovery page
  */
+/*global angular */
 ((function() {
     'use strict';
     angular
@@ -23,12 +24,10 @@
              */
             thisController.forgotPassword=function(){
                 return $AuthService.forgotPassword(thisController.request).then(function(result){
-                    if(result.error){
-                        thisController.forgetError=result.error;
-                    }
+                    if(result.error){  thisController.forgetError=result.error;  }
                     else{
                         thisController.forgetAlarm="we sent you an email please check it out";
-                        setTimeout(function(){$location.path('/account/signin')},7000);//redirect to signin after 7 second
+                        setTimeout(function(){$location.path('/account/signin');},7000);//redirect to signin after 7 second
                     }
                 });
             };
