@@ -42,7 +42,7 @@
                 var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
                 var number = pagination.number || 10;  // Number of entries showed per page.
                 var filters={start:start,number:number,params:tableState};
-                $installedResource.query(filters).then(function (result) {
+                return $installedResource.query(filters).then(function (result) {
                     thisController.displayed = result.data;
                     tableState.pagination.numberOfPages = result.numberOfPages;//set the number of pages so the pagination can update
                     thisController.isLoading = false;

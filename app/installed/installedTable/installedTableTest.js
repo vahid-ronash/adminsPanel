@@ -9,7 +9,7 @@ describe('test installed table directive : ', function () {
     }));
 });
 
-describe('test application table controller and services : ', function () {
+describe('test installed controller and services : ', function () {
     //module.sharedInjector(); //TODO:we could use it in angular 1.5.1 and use beforeAll instead of all next beforeEach
     beforeEach(module("app"));//beforeAll(module("app"));
     var installedTableController, $timeout, deferred;
@@ -35,20 +35,25 @@ describe('test application table controller and services : ', function () {
         });
     });
 
-    it("test installedResource", inject(function (installedResource) {
-        //when it respond to below query it has responded to appCollection query
-        installedResource.query().then(function (result) {
-            deferred.resolve(result.length > 0 && installedTableController.installedCollection.length > 0);
+    it("test installedResource with page",function () {
+        installedTableController.callServer({
+            pagination:{
+                start:1,number:10
+            },
+            search:{
+                predicateObject:{
+                    device:'1',
+                    application:'b4'
+                }
+            },
+            sort:{
+                predicate:'device',
+                reverse:false
+            }
+        }).then(function(){
+            deferred.resolve(installedTableController.displayed.length>0);
         });
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
-    }));
-    it("test installedResource with page", inject(function (installedResource) {
-        //when it respond to below query it has responded to appCollection query
-        installedResource.query(1).then(function (result) {
-            deferred.resolve(result.length > 0 && installedTableController.installedCollection.length > 0);
-        });
-        $timeout.flush();
-        expect(this.valueToVerify).toEqual(true);
-    }));
+    });
 });

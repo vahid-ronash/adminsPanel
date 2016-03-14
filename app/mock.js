@@ -27,7 +27,7 @@
         .config(function($provide) {
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
-        .run(function($httpBackend) {
+        .run(function($httpBackend,$filter) {
             $httpBackend.whenGET('/userApp').respond(appList);
             $httpBackend.whenPUT('/userApp').respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
@@ -65,18 +65,40 @@
                 }
             });
 
+
+
+            var randomsItems = [];
+            function createRandomItem(id) {
+                var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
+                return {
+                    id: id,
+                    application: apps[Math.floor(Math.random() * apps.length)],
+                    device: Math.floor(Math.random() * 10000000),
+                    installTime: Math.floor(Math.random() * 10000),
+                    lastSeen: Math.floor(Math.random() * 10000),
+                    test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/'
+                };
+            }
+            for (var i = 0; i < 1000; i++) {
+                randomsItems.push(createRandomItem(i));
+            }
             $httpBackend.whenPOST('/installed').respond(function(method, url, data){
                 var filters=angular.fromJson(data);
-                //search name by filters.params.search.predicateObject
-                //var searchFieldsAndData=filters.params.search.predicateObject;
-                //sort them by filters.params.sort.predicate
-                //var sortFieldsAndData=filters.params.sort.predicateObject;
-                //var len=filteredData.length;
-                //start= filters.start   end= start + number);
-                //var data=filteredData.slice(start,end);
+
+                //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
+                //in our case, it actually performs the logic which would happened in the server
+
+                var filtered = filters.params.search.predicateObject ? $filter('filter')(randomsItems, filters.params.search.predicateObject) : randomsItems;
+
+                if (filters.params.sort.predicate) {
+                    filtered = $filter('orderBy')(filtered, filters.params.sort.predicate, filters.params.sort.reverse);
+                }
+
+                var result = filtered.slice(filters.start, filters.start + filters.number);
+
                 var resultobj={
-                    data: installed,
-                    numberOfPages: 5//Math.ceil(filtered.length / number)
+                    data: result,
+                    numberOfPages: Math.ceil(filtered.length / filters.number)
                 };
                 return [200, resultobj, {}];
             });
