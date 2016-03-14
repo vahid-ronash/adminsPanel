@@ -24,9 +24,9 @@ Run Project
 After you install above requirements you have to run below commands.
 
 - Run ``bower install`` to install front-end packages
-- Run ``gulp makeCSS`` to generate css
+- Run ``gulp build`` to generate css
 - open ``index.html`` in a browser
- 
+
 Setup Testing
 -------------
 

@@ -14,6 +14,14 @@
         {id:4,name: 'Pushe Sample B4A', packname:'co.ronash.pushesampleb4a'},
         {id:5,name: 'دموی پوشه', packname:'co.ronash.pushesample'}
     ];
+    var installed=[
+        {id:1,device: '21342342', application:'Pushe Sample B4A',installTime:'2016/03/13',lastSeen:'2016/03/13',test:'/platform/notify/dR5JHTxjKNk/'},
+        {id:2,device: '345352', application:'Pushe Sample Unity',installTime:'2016/03/15',lastSeen:'2016/03/13',test:'/platform/notify/ssdvcsdc/'},
+        {id:3,device: '345352', application:'Pushe Sample Unity',installTime:'2016/03/16',lastSeen:'2016/03/13',test:'/platform/notify/ascawecaec/'},
+        {id:4,device: '21342342', application:'Pushe Sample B4A',installTime:'2016/03/13',lastSeen:'2016/03/13',test:'/platform/notify/dR5JHTxjKNk/'},
+        {id:5,device: '345352', application:'Pushe Sample Unity',installTime:'2016/03/15',lastSeen:'2016/03/13',test:'/platform/notify/ssdvcsdc/'},
+        {id:6,device: '345352', application:'Pushe Sample Unity',installTime:'2016/03/16',lastSeen:'2016/03/13',test:'/platform/notify/ascawecaec/'},
+    ];
     angular
         .module('app')
         .config(function($provide) {
@@ -56,6 +64,9 @@
                     return [200, {error:"username is taken before"}, {}];
                 }
             });
+
+            $httpBackend.whenGET('/installed').respond({list:installed,pageCount:4});
+            $httpBackend.whenGET('/installed/page/1').respond(installed);
 
             //$httpBackend.whenGET(/.*/).passThrough();
             //$httpBackend.whenPOST(/.*/).passThrough();

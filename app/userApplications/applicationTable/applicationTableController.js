@@ -62,6 +62,7 @@
             thisAppController.startEdit = function (row) {
                 row.isEditing = true;
                 row.backupName = row.name;
+
             };
 
             /**

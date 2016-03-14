@@ -23,6 +23,11 @@
                         controller: 'userApplicationController as appCtrl'
                         //resolve: need delay
                     })
+                    .when('/installed', {
+                        templateUrl: 'app/installed/installed.html',
+                        controller: 'installedController as installedCtrl'
+                        //resolve: need delay
+                    })
                     .when('/account/signin', {
                         templateUrl: 'app/accountComponents/signIn/signinTemplate.html',
                         controller: 'signInController as signinCtrl',

@@ -1,0 +1,26 @@
+<div>
+    <table st-table="displayedCollection" st-safe-src="installTableCtrl.installedCollection" class="table table-striped">
+        <thead>
+        <tr>
+            <th st-sort="device">device</th>
+            <th st-sort="application">application</th>
+            <th st-sort="installTime">install time</th>
+            <th st-sort="lastSeen">last seen</th>
+            <th st-sort="test">test</th>
+            <!-- TODO: its hard code naming we change that later -->
+        </tr>
+        <tr>
+            <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayedCollection">
+            <td> {{row.device}} </td>
+            <td>{{row.application}}</td>
+            <td>{{row.installTime}}</td>
+            <td>{{row.lastSeen}}</td>
+            <td><a class="btn" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -15,14 +15,14 @@
             <!-- TODO: its hard code naming we change that later -->
         </tr>
         <tr>
-            <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+            <th colspan="4"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="row in displayedCollection">
             <td>
-                <div ng-if="row.isEditing">
-                    <input ng-model="row.name">
+                <div class="" ng-if="row.isEditing">
+                    <input class="md-input" ng-model="row.name" focus-me="row.isEditing">
                 </div>
                 <div ng-if="!row.isEditing">
                     {{row.name}}
@@ -31,16 +31,16 @@
             <td>{{row.packname}}</td>
             <td>
                 <div ng-if="!row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
-                        <i class="fa fa-times"></i>
-                    </button>
                     <button type="button" ng-click="appsTableCtrl.startEdit(row)" class="btn btn-sm white">
                         <i class="fa fa-edit"></i>
                     </button>
+                    <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
+                        <i class="fa fa-times"></i>
+                    </button>
                 </div>
                 <div ng-if="row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm">OK</button>
                     <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm">cancel</button>
+                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm">OK</button>
                 </div>
             </td>
         </tr>
