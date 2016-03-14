@@ -1,5 +1,5 @@
 <div>
-    <table st-table="displayedCollection" st-safe-src="installTableCtrl.installedCollection" class="table table-striped">
+    <table st-table="installTableCtrl.displayed" st-pipe="installTableCtrl.callServer" class="table table-striped">
         <thead>
         <tr>
             <th st-sort="device">device</th>
@@ -14,13 +14,21 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="row in displayedCollection">
-            <td> {{row.device}} </td>
-            <td>{{row.application}}</td>
-            <td>{{row.installTime}}</td>
-            <td>{{row.lastSeen}}</td>
-            <td><a class="btn" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a></td>
-        </tr>
+            <tr ng-repeat="row in installTableCtrl.displayed">
+                <td> {{row.device}} </td>
+                <td>{{row.application}}</td>
+                <td>{{row.installTime}}</td>
+                <td>{{row.lastSeen}}</td>
+                <td><a class="btn" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a></td>
+            </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

@@ -22,19 +22,13 @@
                  * @methodOf module.installedResource
                  * @description
                  * get installed list for pagination
-                 * @param pageNumber indicate page to load
+                 * @param filters indicate page data to load
                  */
-                thisService.query = function (pageNumber) {
+                thisService.query = function (filters) {
                     var url = "/installed";
-                    if (thisService.pageCount && pageNumber)url += "/page/" + pageNumber;
-                    //so it will send to type of url
-                    //1-/installed              :receive {list:[] , pageCount:12}
-                    //2-/installed/page/index   :receive []
-                    return $http.get(url).then(function (result) {
-                        var resultData=result.data;
-                        if (resultData.list){thisService.pageCount=resultData.pageCount;return resultData.list;}
-                        else return resultData;
-                    })
+                    return $http.post(url,filters).then(function (result) {
+                        return result.data;
+                    });
                 };
             }
 

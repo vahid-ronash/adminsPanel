@@ -65,8 +65,21 @@
                 }
             });
 
-            $httpBackend.whenGET('/installed').respond({list:installed,pageCount:4});
-            $httpBackend.whenGET('/installed/page/1').respond(installed);
+            $httpBackend.whenPOST('/installed').respond(function(method, url, data){
+                var filters=angular.fromJson(data);
+                //search name by filters.params.search.predicateObject
+                //var searchFieldsAndData=filters.params.search.predicateObject;
+                //sort them by filters.params.sort.predicate
+                //var sortFieldsAndData=filters.params.sort.predicateObject;
+                //var len=filteredData.length;
+                //start= filters.start   end= start + number);
+                //var data=filteredData.slice(start,end);
+                var resultobj={
+                    data: installed,
+                    numberOfPages: 5//Math.ceil(filtered.length / number)
+                };
+                return [200, resultobj, {}];
+            });
 
             //$httpBackend.whenGET(/.*/).passThrough();
             //$httpBackend.whenPOST(/.*/).passThrough();
