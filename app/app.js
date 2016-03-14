@@ -8,19 +8,20 @@
  */
 /*global angular*/
 ((function() {
-    'use strict';
-    angular
+  'use strict';
+  angular
       .module('app', [
-        'ngAnimate',
+        //'ngAnimate',
         'ngResource',
-        'ngSanitize',
+        'ngSanitize',//Sanitizes an html string by stripping all potentially dangerous tokens.
         'ngTouch',
-        'ngStorage',
+        //'ngStorage',
         //'ngStore',//override some method on ngStorage
         'ngRoute',
-          'smart-table',
+        'pascalprecht.translate',
+        'smart-table',
         //'ui.router',
-        'ui.utils',
+        //'ui.utils',its depricated for angular ui
         //'ui.load',//a service that differ load css and script and lazyload
         //'ui.jp',//call function with options on dom
         'oc.lazyLoad'

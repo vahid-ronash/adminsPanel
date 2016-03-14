@@ -1,30 +1,30 @@
 <div class="center-block w-xxl w-auto-xs p-y-md">
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
         <div class="m-b text-sm">
-            Sign in with your {{signinCtrl.app.name}} Account
+            {{ 'SIGNIN_MSG' | translate }}
         </div>
         <form name="form" ng-submit="signinCtrl.login()">
             <div class="md-form-group float-label">
                 <input type="email" class="md-input" ng-model="signinCtrl.credential.email" required>
-                <label>Email</label>
+                <label>{{'EMAIL' | translate}}</label>
             </div>
             <div class="md-form-group float-label">
                 <input type="password" class="md-input" ng-model="signinCtrl.credential.password" required>
-                <label>Password</label>
+                <label>{{'PASSWORD' | translate}}</label>
             </div>
             <div class="m-b-md">
                 <label class="md-check">
-                    <input type="checkbox" ng-model="signinCtrl.credential.rememberMe"><i class="primary"></i> Keep me signed in
+                    <input type="checkbox" ng-model="signinCtrl.credential.rememberMe"><i class="primary"></i> {{'REMEMBER_ME' | translate}}
                 </label>
-                <a class="btn-link pull-right" ng-click="signinCtrl.loginAsDemo()">as demo</a>
+                <a class="btn-link pull-right" ng-click="signinCtrl.loginAsDemo()">{{'AS_DEMO' | translate}}</a>
             </div>
-            <button type="submit" ng-disabled="form.$invalid || signinCtrl.dataLoading" class="btn primary btn-block p-x-md">sign in</button>
+            <button type="submit" ng-disabled="form.$invalid || signinCtrl.dataLoading" class="btn primary btn-block p-x-md">{{'SIGNIN' | translate}}</button>
             <small ng-if="signinCtrl.loginError">{{signinCtrl.loginError}}</small>
         </form>
     </div>
 
     <div class="p-v-lg text-center">
-        <div class="m-b"><a ui-sref="access.forgot-password" href="#/account/forgot-password" class="text-primary _600">Forgot password?</a></div>
-        <div>Do not have an account? <a ui-sref="access.signup" href="#/account/signup" class="text-primary _600">Sign up</a></div>
+        <div class="m-b"><a ui-sref="access.forgot-password" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT' | translate}}</a></div>
+        <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="access.signup" href="#/account/signup" class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
     </div>
 </div>

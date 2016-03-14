@@ -47,4 +47,3 @@ TODO
 ----
 - run e2e test by protractor
 - build All todo in code
-- use angular-translate

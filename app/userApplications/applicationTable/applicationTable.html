@@ -2,20 +2,20 @@
     <div class="box-body b-t">
         <button type="button" ng-click="appsTableCtrl.startNewApplication()" class="btn btn-sm btn-info">
             <i class="fa fa-plus">
-            </i> Add new Application
+            </i> {{'ADD_NEW_APP' | translate}}
         </button>
     </div>
 
     <table st-table="displayedCollection" st-safe-src="appsTableCtrl.appCollection" class="table table-striped">
         <thead>
         <tr>
-            <th st-sort="name">application Name</th>
-            <th st-sort="packname">package Name</th>
+            <th st-sort="name">{{'NAME' | translate}}</th>
+            <th st-sort="packname">{{'PACKNAME' | translate}}</th>
             <th width="150"></th>
             <!-- TODO: its hard code naming we change that later -->
         </tr>
         <tr>
-            <th colspan="4"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+            <th colspan="4"><input st-search="" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}global search ..." type="text"/></th>
         </tr>
         </thead>
         <tbody>
@@ -39,8 +39,8 @@
                     </button>
                 </div>
                 <div ng-if="row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm">cancel</button>
-                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm">OK</button>
+                    <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm">{{'CANCEL' | translate}}</button>
+                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm">{{'OK' | translate}}</button>
                 </div>
             </td>
         </tr>
