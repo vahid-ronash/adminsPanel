@@ -53,11 +53,10 @@
 	&:hover{
 		text-decoration: none;
 	}
-	img,
-	svg{
-		max-height: 24px;
-		vertical-align: -4px;
-		display: inline-block;
+	img{
+		//max-height: 24px;
+		//vertical-align: -4px;
+		//display: inline-block;
 	}
 	> span{
 	  display: inline-block;

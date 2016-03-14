@@ -6,7 +6,24 @@
 
 
 // Layout
+@font-face{
+  font-family: "BKoodak";
+  src: url('../fonts/BKoodak.eot?') format('eot'),
+  url('../fonts/BKoodak.woff') format('woff'),
+  url('../fonts/BKoodak.ttf') format('truetype');
+}
+@font-face{
+  font-family: "BYekan";
+  src: url('../fonts/BYekan.eot?') format('eot'),
+  url('../fonts/BYekan.woff') format('woff'),
+  url('../fonts/BYekan.ttf') format('truetype');
+}
 
+$bkoodak:BKoodak, 'BKoodak', tahoma;
+$byekan:BYekan, 'BYekan', tahoma;
+body{
+  font-family: IRANSans,BYekan,Bkoodak,tahoma;
+}
 .app-aside{
 	left: auto !important;
 }
@@ -303,4 +320,16 @@
 		left: -1px;
 		right: auto;
 	}
+}
+th[st-sort]{
+  &:hover{
+	background: #eee;
+	color:#5BC0DE;
+	cursor: pointer;
+  }
+}
+@media (max-width: 47.9em) {
+  .navbar-brand>img{
+	width: 100px;
+  }
 }

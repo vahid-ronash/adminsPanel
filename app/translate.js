@@ -24,7 +24,6 @@ angular
         'TERMS':'terms and policy',
         'PROFILE':'Profile',
         'SIGNOUT':'Sign out',
-        'MANIFEST':'control your application notifications',
         'HOME':'home',
         'APPLICATIONS':'applications',
         'INSTALLED':'installed',
@@ -41,11 +40,49 @@ angular
         'PACKNAME':'package name',
         'GLOBAL_SEARCH_PLACEHOLDER':'asdvdverfvservesrvserv',
         'CANCEL':'cancel',
-        'OK':'OK'
+        'OK':'OK',
+        'HELP':'help',
+        'SUPPORT':'support'
     });
 
     $translateProvider.translations('fa', {
-        'SIGNIN_MSG': 'ورود به بخش مدیریت'
+        'SIGNIN_MSG': 'ورود به بخش مدیریت',
+        'EMAIL': 'ایمیل',
+        'PASSWORD': 'رمز عبور',
+        'REPASSWORD': 'رمز عبور مجدد',
+        'REMEMBER_ME':'مرا بخاطر بسپار؟',
+        'AS_DEMO':'نمایش دمو',
+        'SIGNIN':'ورود',
+        'FORGOT':'رمز عبور را فراموش کرده اید؟?',
+        'SIGNUP':'ثبت نام',
+        'HAVENT_ACCOUNT':'ثبت نام نکرده اید؟ ',
+        'HAVE_ACCOUNT':'قبلا ثبت نام کرده اید؟ ',
+        'FORGOT_PASSWORD':'رمز عبورتان را فراموش کرده اید؟',
+        'FORGOT_MSG':'ایمیل خود را وارد نمایید تا نحوه احیا نمودن رمز عبور را برای شما ارسال کنیم.',
+        'SIGNUP_MSG':'ثبت نام',
+        'AGREE':'Agree the ',
+        'TERMS':'terms and policy',
+        'PROFILE':'پروفایل',
+        'SIGNOUT':'خروج',
+        'HOME':'خانه',
+        'APPLICATIONS':'اپلیکیشن ها',
+        'INSTALLED':'نصب ها',
+        'NOTIFICATIONS':'اعلان ها',
+        'SECTIONNAME':'مدیریت نوتیفیکیشن',
+        'DEVICE':'دستگاه',
+        'APPLICATION':'اپلیکیشن',
+        'INSTALLTIME':'تاریخ نصب',
+        'LASTSEEN':'آخرین بازدید',
+        'INSTALL_TIME_PLACE_HOLDER':'۱۳۹۴.۱۱.۲۳',
+        'LASTSEEN_PLACE_HOLDER':'۱۳۹۴.۱۲.۳',
+        'ADD_NEW_APP':'افزودن اپلیکیشن',
+        'NAME':'نام',
+        'PACKNAME':'نام بسته اپلیکیشن',
+        'GLOBAL_SEARCH_PLACEHOLDER':'جستجو.',
+        'CANCEL':'cancel',
+        'OK':'تایید',
+        'HELP':'کمک',
+        'SUPPORT':'پشتیبانی'
     });
 
     $translateProvider.preferredLanguage('fa');

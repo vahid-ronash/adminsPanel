@@ -50,7 +50,9 @@ gulp.task('makeCSS', function () {
         .pipe(gulp.dest('assets/css'));
 });
 gulp.task('watchSCSS', function () {
-    gulp.watch('assets/scss/*.scss', ['makeCSS']);
+    gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });
 
 gulp.task('build', ['makeCSS']);
+
+gulp.task('default', ['makeCSS','watchSCSS']);
