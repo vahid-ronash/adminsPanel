@@ -46,7 +46,13 @@ angular
         'CHANGE_PASS':'change password',
         'ABOUT':'About',
         'RONASH':'Ronash',
-        'TEST':'test'
+        'TEST':'test',
+        'NOTIF_TITLE':'title',
+        'TEXT':'text',
+        'SENDTIME':'send time',
+        'STATUS':'status',
+        'CONTACT_COUNT':'contact count',
+        'CONTACT_RECEIVE':'contact receive'
     });
 
     $translateProvider.translations('fa', {
@@ -90,7 +96,13 @@ angular
         'CHANGE_PASS':'تغییر رمز عبور',
         'ABOUT':'درباره',
         'RONASH':' روناش ',
-        'TEST':' آزمایش '
+        'TEST':' آزمایش ',
+        'NOTIF_TITLE':'تیتر',
+        'TEXT':'متن',
+        'SENDTIME':'زمان ارسال',
+        'STATUS':'وضعیت',
+        'CONTACT_COUNT':'تعداد نفرات',
+        'CONTACT_RECEIVE':'میزان دریافت',
     });
 
     $translateProvider.preferredLanguage('fa');

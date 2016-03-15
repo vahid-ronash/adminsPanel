@@ -96,6 +96,57 @@
                 return [200, resultobj, {}];
             });
 
+
+
+
+
+            var randomsNotifItems = [];
+            function randomNameBuilder(nameLength){
+                var names=["سلام","و","زمان","نوروز","فروش","به","آرزو","نشاط","ارمغان","ارغوان"];
+                var res="";
+                for(var i =0;i<nameLength;i++){
+                    if(i)res+=" ";
+                    res+=names[Math.floor(Math.random()*names.length)];
+                }
+                return res;
+            }
+            function createRandomNotif() {
+                var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
+                var contactCount=Math.floor(Math.random() * 10)+1;
+                return {
+                    title:randomNameBuilder(4),
+                    text:randomNameBuilder(7),
+                    application:apps[Math.floor(Math.random() * apps.length)],
+                    sendTime:Math.floor(Math.random() * 10000000),
+                    status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
+                    contactCount:contactCount,
+                    contactReceive:Math.floor(Math.random() * contactCount)
+                };
+            }
+            for (var i = 0; i < 1000; i++) {
+                randomsNotifItems.push(createRandomNotif());
+            }
+            $httpBackend.whenPOST('/notification').respond(function(method, url, data){
+                var filters=angular.fromJson(data);
+
+                //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
+                //in our case, it actually performs the logic which would happened in the server
+
+                var filtered = filters.params.search.predicateObject ? $filter('filter')(randomsNotifItems, filters.params.search.predicateObject) : randomsNotifItems;
+
+                if (filters.params.sort.predicate) {
+                    filtered = $filter('orderBy')(filtered, filters.params.sort.predicate, filters.params.sort.reverse);
+                }
+
+                var result = filtered.slice(filters.start, filters.start + filters.number);
+
+                var resultobj={
+                    data: result,
+                    numberOfPages: Math.ceil(filtered.length / filters.number)
+                };
+                return [200, resultobj, {}];
+            });
+
             //$httpBackend.whenGET(/.*/).passThrough();
             //$httpBackend.whenPOST(/.*/).passThrough();
             //$httpBackend.whenDELETE(/.*/).passThrough();

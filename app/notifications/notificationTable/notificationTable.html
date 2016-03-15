@@ -1,0 +1,43 @@
+<div>
+    <table st-table="notifTableCtrl.displayed" st-pipe="notifTableCtrl.callServer" class="table table-striped">
+        <thead>
+        <tr>
+            <th st-sort="title">{{'NOTIF_TITLE' | translate}}</th>
+            <th st-sort="text">{{'TEXT' | translate}}</th>
+            <th st-sort="application">{{'APPLICATION' | translate}}</th>
+            <th st-sort="sendTime">{{'SENDTIME' | translate}}</th>
+            <th st-sort="status">{{'STATUS' | translate}}</th>
+            <th st-sort="contactCount">{{'CONTACT_COUNT' | translate}}</th>
+            <th st-sort="contactReceive">{{'CONTACT_RECEIVE' | translate}}</th>
+        </tr>
+        <tr>
+            <th><input st-search="'title'" class="form-control" placeholder="{{'NOTIF_TITLE' | translate}}.." type="text"/></th>
+            <th><input st-search="'text'" class="form-control" placeholder="{{'TEXT' | translate}}.." type="text"/></th>
+            <th><input st-search="'application'" class="form-control" placeholder="{{'APPLICATION' | translate}}" type="text"/></th>
+            <th><input st-search="'sendTime'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
+            <th><input st-search="'status'" class="form-control" placeholder="{{'STATUS' | translate}}" type="text"/></th>
+            <th><input st-search="'contactCount'" class="form-control" placeholder="{{'CONTACT_COUNT' | translate}}" type="text"/></th>
+            <th><input st-search="'contactReceive'" class="form-control" placeholder="{{'CONTACT_RECEIVE' | translate}}" type="text"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in notifTableCtrl.displayed">
+            <td> {{row.title}} </td>
+            <td> {{row.text}} </td>
+            <td> {{row.application}} </td>
+            <td> {{row.sendTime}} </td>
+            <td> {{row.status}} </td>
+            <td> {{row.contactCount}}</td>
+            <td> {{row.contactReceive}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">
+                <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
+                </div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

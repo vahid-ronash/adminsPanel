@@ -28,6 +28,11 @@
                         controller: 'installedController as installedCtrl'
                         //resolve: need delay
                     })
+                    .when('/notification', {
+                        templateUrl: 'app/notifications/notifications.html',
+                        controller: 'notificationsController as notifsCtrl'
+                        //resolve: need delay
+                    })
                     .when('/account/signin', {
                         templateUrl: 'app/accountComponents/signIn/signinTemplate.html',
                         controller: 'signInController as signinCtrl',
