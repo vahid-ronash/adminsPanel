@@ -42,7 +42,10 @@ angular
         'CANCEL':'cancel',
         'OK':'OK',
         'HELP':'help',
-        'SUPPORT':'support'
+        'SUPPORT':'support',
+        'CHANGE_PASS':'change password',
+        'ABOUT':'About',
+        'RONASH':'Ronash'
     });
 
     $translateProvider.translations('fa', {
@@ -82,7 +85,10 @@ angular
         'CANCEL':'cancel',
         'OK':'تایید',
         'HELP':'کمک',
-        'SUPPORT':'پشتیبانی'
+        'SUPPORT':'پشتیبانی',
+        'CHANGE_PASS':'تغییر رمز عبور',
+        'ABOUT':'درباره',
+        'RONASH':' روناش '
     });
 
     $translateProvider.preferredLanguage('fa');

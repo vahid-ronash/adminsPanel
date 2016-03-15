@@ -75,13 +75,13 @@
     <div class="app-header white box-shadow">
         <div class="navbar ng-scope">
             <!-- Open side - Naviation on mobile -->
-            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
+            <a data-toggle="modal" data-target="#aside" class="navbar-item h5 pull-left hidden-lg-up">
                 <span><i class="fa fa-bars"></i></span>
             </a>
             <!-- / -->
 
             <!-- Page title - Bind to $state's title -->
-            <div class="navbar-item pull-left h5 ng-binding" id="pageTitle">{{ 'SECTIONNAME' | translate }}</div>
+            <div class="navbar-item pull-left h6 ng-binding" id="pageTitle">{{ 'SECTIONNAME' | translate }}</div>
 
             <user-menu class="navbar-item pull-right"></user-menu>
         </div>
@@ -94,9 +94,11 @@
                 <span class="hidden-xs-down ng-binding">- test release</span>
             </div>
             <div class="nav">
-                <a class="nav-link" href="../">About</a>
-                <span class="text-muted">-</span>
-                <a class="nav-link label accent" href="https://www.ronash.co">ronash</a>
+                <a class="clear nav-link" href="https://www.ronash.co">
+                    <span class="">{{ 'ABOUT' | translate }}</span>
+                    <span class="text-muted">-</span>
+                    <span class="label accent">{{ 'RONASH' | translate }}</span>
+                </a>
             </div>
         </div>
     </div>

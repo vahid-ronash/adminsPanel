@@ -1,6 +1,7 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
+/*global angular */
 angular
     .module("app")
     .directive('focusMe', function($timeout, $parse) {
@@ -10,18 +11,11 @@ angular
             var model = $parse(attrs.focusMe);
             scope.$watch(model, function(value) {
                 //console.log('value=',value);
-                if(value === true) {
-                    $timeout(function() {
-                        element[0].focus();
-                    });
-                }
+                if(value === true) {$timeout(function() { element[0].focus(); }); }
             });
             // to address @blesh's comment, set attribute value to 'false'
             // on blur event:
-            element.bind('blur', function() {
-                //console.log('blur');
-                scope.$apply(model.assign(scope, false));
-            });
+            element.bind('blur', function() { scope.$apply(model.assign(scope, false)); });
         }
     };
 });

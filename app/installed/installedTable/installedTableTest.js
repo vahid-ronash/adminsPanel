@@ -1,6 +1,7 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
+/*global describe it expect beforeEach inject angular */
 describe('test installed table directive : ', function () {
     beforeEach(module('app'));
     it('test directive', inject(function ($compile,$rootScope) {

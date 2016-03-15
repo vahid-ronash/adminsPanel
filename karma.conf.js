@@ -22,6 +22,7 @@ module.exports = function(config) {
       "assets/libs/PACE/pace.min.js",
 
       "assets/libs/angular/angular.js",
+      "assets/libs/angular-translate/angular-translate.js",
       "assets/libs/angular-animate/angular-animate.js",
       "assets/libs/angular-resource/angular-resource.js",
       "assets/libs/angular-smart-table/dist/smart-table.js",
