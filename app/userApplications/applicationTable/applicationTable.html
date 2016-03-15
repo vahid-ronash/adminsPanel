@@ -11,7 +11,7 @@
         <tr>
             <th st-sort="name">{{'NAME' | translate}}</th>
             <th st-sort="packname">{{'PACKNAME' | translate}}</th>
-            <th width="150"></th>
+            <th width="160"></th>
             <!-- TODO: its hard code naming we change that later -->
         </tr>
         <tr>
@@ -19,10 +19,28 @@
         </tr>
         </thead>
         <tbody>
+        <tr ng-if="appsTableCtrl.addMode">
+            <td>
+                <div class="md-form-group float-label">
+                    <input class="md-input" ng-model="appsTableCtrl.newApp.name" focus-me="appsTableCtrl.addFocusStart">
+                    <label>{{'NAME' | translate}}</label>
+                </div>
+            </td>
+            <td>
+                <div class="md-form-group float-label">
+                    <input class="md-input" ng-model="appsTableCtrl.newApp.packname">
+                    <label>{{'PACKNAME' | translate}}</label>
+                </div>
+            </td>
+            <td>
+                <button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
+                <button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>
+            </td>
+        </tr>
         <tr ng-repeat="row in displayedCollection">
             <td>
                 <div class="" ng-if="row.isEditing">
-                    <input class="md-input" ng-model="row.name" focus-me="row.isEditing">
+                    <input class="md-input" ng-model="row.name" focus-me="row.isFocused">
                 </div>
                 <div ng-if="!row.isEditing">
                     {{row.name}}
@@ -39,8 +57,8 @@
                     </button>
                 </div>
                 <div ng-if="row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm">{{'CANCEL' | translate}}</button>
-                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm">{{'OK' | translate}}</button>
+                    <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
+                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm btn-secondary">{{'OK' | translate}}</button>
                 </div>
             </td>
         </tr>

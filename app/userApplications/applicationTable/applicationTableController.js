@@ -32,6 +32,9 @@
              * start to make new application
              */
             thisAppController.startNewApplication = function () {
+                thisAppController.addMode=true;
+                thisAppController.addFocusStart=true;
+                thisAppController.newApp={};
                 //TODO: it will start a wizard to add a new application
             };
             /**
@@ -44,6 +47,7 @@
             thisAppController.addNewApplication = function (newApplicationData,callback) {
                 $applicationResource.save(newApplicationData, function (createdApplication) {
                     thisAppController.appCollection.push(createdApplication);
+                    thisAppController.addMode=false;
                     callback && callback();
                 }, function () {
                     //TODO : it didn't save, what i can do?
@@ -61,6 +65,7 @@
              */
             thisAppController.startEdit = function (row) {
                 row.isEditing = true;
+                row.isFocused= true;
                 row.backupName = row.name;
 
             };

@@ -25,7 +25,7 @@
                 var dataobj=angular.fromJson(data);
                 var newData=angular.extend({id:appList.length+1},dataobj);
                 appList.push(newData);
-                return [200, data, {}];
+                return [200, newData, {}];
             });
 
 

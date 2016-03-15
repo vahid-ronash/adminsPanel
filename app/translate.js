@@ -45,7 +45,8 @@ angular
         'SUPPORT':'support',
         'CHANGE_PASS':'change password',
         'ABOUT':'About',
-        'RONASH':'Ronash'
+        'RONASH':'Ronash',
+        'TEST':'test'
     });
 
     $translateProvider.translations('fa', {
@@ -82,13 +83,14 @@ angular
         'NAME':'نام',
         'PACKNAME':'نام بسته اپلیکیشن',
         'GLOBAL_SEARCH_PLACEHOLDER':'جستجو.',
-        'CANCEL':'cancel',
+        'CANCEL':'انصراف',
         'OK':'تایید',
         'HELP':'کمک',
         'SUPPORT':'پشتیبانی',
         'CHANGE_PASS':'تغییر رمز عبور',
         'ABOUT':'درباره',
-        'RONASH':' روناش '
+        'RONASH':' روناش ',
+        'TEST':' آزمایش '
     });
 
     $translateProvider.preferredLanguage('fa');
