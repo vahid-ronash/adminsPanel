@@ -66,12 +66,12 @@
                             var instance = $uibModal.open({
                                 templateUrl: self._options.templateUrl,
                                 controller: ['$scope', '$uibModalInstance', '$data', '$steps', '$stepsOrder',
-                                    function ($scope, $modalInstance, $data, $steps, $stepsOrder) {
+                                    function ($scope, $uibModalInstance, $data, $steps, $stepsOrder) {
                                         $scope.$data = $data;
                                         $scope.$steps = $steps;
                                         $scope.$stepsOrder = $stepsOrder;
                                         $scope.$current = {};
-                                        $scope.$modalInstance = $modalInstance;
+                                        $scope.$modalInstance = $uibModalInstance;
 
                                         $scope._title = self._options.title;
                                         $scope._history = [];
@@ -97,7 +97,7 @@
                                                     self._options.successing($scope.$data, $scope.$current.step, $scope.$current.index >= self._stepsOrder.length - 1, function(valid) {
                                                         $scope._leaving = false;
                                                         if (valid) {
-                                                            $modalInstance.close($scope.$data);
+                                                            $uibModalInstance.close($scope.$data);
                                                         }
                                                     });
                                                 }
@@ -105,7 +105,7 @@
                                         };
 
                                         $scope.cancel = function() {
-                                            $modalInstance.dismiss();
+                                            $uibModalInstance.dismiss();
                                         };
 
                                         $scope._onLeaving = function(toIndex, toStep, callback) {

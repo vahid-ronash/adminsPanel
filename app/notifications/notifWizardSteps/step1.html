@@ -1,15 +1,60 @@
-<p>
-      This is the first step of the wizard.
-    </p>
-    <p>
-      Below is the initial object we will going to fill in the following steps.
-    </p>
+<ui-select ng-model="step1Ctrl.app.value">
+    <ui-select-match>
+        <span ng-bind="$select.selected.name"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="item in (step1Ctrl.app.list | filter: $select.search) track by item.id">
+        <span ng-bind="item.name"></span>
+    </ui-select-choices>
+</ui-select>
 
-    <div class="panel panel-info">
-      <div class="panel-heading">
-         Data
-       </div>
-       <div class="panel-body">
-         <pre>{{$context.data | json}}</pre>
-       </div>
-     </div>
+
+<div class="md-form-group float-label">
+    <input class="md-input" ng-model="step1Ctrl.data.title" focus-me="step1Ctrl.focusStart">
+    <label>{{'NOTIF_TITLE' | translate}}</label>
+</div>
+<div class="md-form-group float-label">
+    <input class="md-input" ng-model="step1Ctrl.data.text">
+    <label>{{'TEXT' | translate}}</label>
+</div>
+
+
+<!--upload -->
+<small class="help-block">در صورتیکه می خواهید آیکون دیگری در اعلان نمایش داده شود، آن را انتخاب کنید.</small>
+<div ngf-drop ngf-select  class="drop-box"
+     ng-model="step1Ctrl.selectedFile"
+     ngf-drag-over-class="'dragover'"
+     ngf-multiple="false"
+     ngf-allow-dir="true"
+     accept="image/*"
+     ngf-pattern="'image/*,application/pdf'">Drop images here or click to upload</div>
+<div ngf-no-file-drop>
+    <!-- File Drag/Drop is not supported for this browser -->
+    <div class="button" ngf-select  ng-model="selectedFile"  ngf-multiple="false">Select File  </div>
+</div>
+<div ng-if="step1Ctrl.selectedFile">
+    <uib-progressbar
+            type="success"
+            class="progress-striped active"
+            max="step1Ctrl.uploadData.total"
+            value="step1Ctrl.uploadData.precent">
+        <i>{{step1Ctrl.uploadData.uploaded}}/{{step1Ctrl.uploadData.total}}</i>
+    </uib-progressbar>
+</div>
+
+<small class="help-block">
+وقتی کاربر بر روی اعلان کلیک کرد چه اتفاقی بیفتد؟
+</small>
+<ui-select ng-model="step1Ctrl.notifClickStatus">
+    <ui-select-match>
+        <span ng-bind="$select.selected.name"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="item in (step1Ctrl.notifClickStatusList | filter: $select.search) track by item.id">
+        <span ng-bind="item.name"></span>
+    </ui-select-choices>
+</ui-select>
+
+
+<div class="md-form-group float-label">
+    <input class="md-input" ng-model="step1Ctrl.data.notifTitleText">
+    <label>{{'TITLE_BAR_TEXT' | translate}}</label>
+</div>

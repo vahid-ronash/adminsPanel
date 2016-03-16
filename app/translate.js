@@ -52,7 +52,11 @@ angular
         'SENDTIME':'send time',
         'STATUS':'status',
         'CONTACT_COUNT':'contact count',
-        'CONTACT_RECEIVE':'contact receive'
+        'CONTACT_RECEIVE':'contact receive',
+        'ADD_NOTIFICATION':' اعلان جدید',
+        'NOTIF_FIRST_STEP':'define small notification',
+        'NEW_NOTIF_TITLE':'make new notification',
+        'TITLE_BAR_TEXT':'notification title bar text'
     });
 
     $translateProvider.translations('fa', {
@@ -103,7 +107,10 @@ angular
         'STATUS':'وضعیت',
         'CONTACT_COUNT':'تعداد نفرات',
         'CONTACT_RECEIVE':'میزان دریافت',
-        'ADD_NOTIFICATION':' اعلان جدید'
+        'ADD_NOTIFICATION':' اعلان جدید',
+        'NOTIF_FIRST_STEP':'اعلان کوچک',
+        'NEW_NOTIF_TITLE':'ایجاد نوتیفیکیشن جدید',
+        'TITLE_BAR_TEXT':'متن نوار اعلان',
     });
 
     $translateProvider.preferredLanguage('fa');

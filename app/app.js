@@ -22,6 +22,8 @@
         'ngRoute',
         'pascalprecht.translate',
         'smart-table',
+        'ui.select',
+        'ngFileUpload',
         //'ui.router',
         //'ui.utils',its depricated for angular ui
         //'ui.load',//a service that differ load css and script and lazyload

@@ -12,13 +12,13 @@
     'use strict';
     angular
         .module('app')
-        .controller('notificationsController', ['$scope','$wizard',function($scope,$wizard){
+        .controller('notificationsController', ['$scope','$wizard','$filter',function($scope,$wizard,$filter){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
 
             var wizardInstance = $wizard.$new({
-                title: 'make new notification',
-                size: 'lg',
+                title: $filter('translate')('NEW_NOTIF_TITLE'),
+                size: 'sm',
                 shadow: true,
                 //templateUrl:'', //wizard template that is used sx-wizard-tpls.js now
 
@@ -34,8 +34,10 @@
             wizardInstance
                 .addStep({
                     id: 'step-1-welcome',
-                    title: 'Welcome',
-                    templateUrl: 'app/notifications/notifWizardSteps/step1.html'
+                    title: $filter('translate')('NOTIF_FIRST_STEP'),
+                    templateUrl: 'app/notifications/notifWizardSteps/step1.html',
+                    controller:'step1Controller',
+                    controllerAs:'step1Ctrl'
                 });
 
 

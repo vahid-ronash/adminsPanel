@@ -28,6 +28,11 @@ module.exports = function(config) {
       "assets/libs/angular-smart-table/dist/smart-table.js",
       "assets/libs/angular-sanitize/angular-sanitize.js",
 
+      "assets/libs/ng-file-upload/ng-file-upload.min.js",
+      "assets/libs/ng-file-upload-shim/ng-file-upload-shim.min.js",
+      "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
+      "assets/libs/angular-ui-select/dist/select.js",
+
       "assets/libs/angular-touch/angular-touch.js",
       "assets/libs/angular-ui-router/release/angular-ui-router.js",
       "assets/libs/angular-route/angular-route.js",
