@@ -23,9 +23,6 @@
             };
 
             asThisController.app={};
-                //list:[{id:1,name:"asc"}],
-                //value:{id:1,name:"asc"}
-            //};
             $http.get('/userApp').then(function (result) {
                 asThisController.app.list=result.data;
                 asThisController.app.value=asThisController.app.list[0];
@@ -33,9 +30,9 @@
 
 
             asThisController.notifClickStatusList=[
-                {id:1,name:"noAction"},
-                {id:2,name:"openApplication"},
-                {id:3,name:"openLink"}
+                {id:1,name:"no action",desc:'با کلیک روی نوتیفیکیشن هیچ اتفاقی نمی افتد.'},
+                {id:2,name:"open Application",desc:'با کلیک روی نوتیفیکیشن اپلیکیشن باز میشود.'},
+                {id:3,name:"open URL",desc:'با کلیک روی نوتیفیکیشن یک لینک در مرورگر او اجرا میشود.'}
             ];
             asThisController.notifClickStatus=asThisController.notifClickStatusList[0];
 

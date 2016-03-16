@@ -56,7 +56,14 @@ angular
         'ADD_NOTIFICATION':' اعلان جدید',
         'NOTIF_FIRST_STEP':'define small notification',
         'NEW_NOTIF_TITLE':'make new notification',
-        'TITLE_BAR_TEXT':'notification title bar text'
+        'TITLE_BAR_TEXT':'notification title bar text',
+        'ICON_DESC':'change notification icon',
+        'SELECT_APP':'select Application',
+        'UPLOAD_IMAGE':'Drop images here or click to upload',
+        'SELECT_IMAGE':'select image',
+        'NO_ACTION':'No Action',
+        'OPEN_APPLICATION':'Open Application',
+        'OPEN_LINK':'Open URL',
     });
 
     $translateProvider.translations('fa', {
@@ -111,6 +118,16 @@ angular
         'NOTIF_FIRST_STEP':'اعلان کوچک',
         'NEW_NOTIF_TITLE':'ایجاد نوتیفیکیشن جدید',
         'TITLE_BAR_TEXT':'متن نوار اعلان',
+        //'ICON_DESC':'در صورتیکه می خواهید آیکون دیگری در اعلان نمایش داده شود، آن را انتخاب کنید.',
+        'ICON_DESC':'برای تغییر آیکون در اعلان میبایست عکس را به اینجا بکشید یا اینجا را کلیک کنید',
+        'SELECT_APP':'انتخاب اپلیکیشن',
+        'UPLOAD_IMAGE':'عکس را به اینجا بکشید یا اینجا را کلیک کنید',
+        'SELECT_IMAGE':'انتخاب عکس',
+        'ACTION_PLACEHOLDER':'عملکرد کلیک',
+        'NO_ACTION':'بدون عملکرد',
+        'OPEN_APPLICATION':'باز کردن اپلیکیشن',
+        'OPEN_LINK':'باز کردن URL',
+
     });
 
     $translateProvider.preferredLanguage('fa');

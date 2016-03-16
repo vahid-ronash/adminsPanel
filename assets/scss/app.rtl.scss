@@ -377,10 +377,10 @@ th[st-sort]{
   border: 3px dashed #DDD;
   color:#555;
   width: 300px;
-  height: 65px;
+  padding: 25px;
   text-align: center;
-  padding-top: 25px;
   margin: 10px;
+  cursor:pointer;
 }
 .dragover {
   border: 5px dashed blue;

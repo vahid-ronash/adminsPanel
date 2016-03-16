@@ -2,7 +2,7 @@
     <button type="button" class="close" ng-click="cancel()">
         <span aria-hidden="true">&times;</span>
     </button>
-    <h3 class="modal-title">{{_title}}</h3>
+    <h5 class="modal-title text-center">{{_title}}</h5>
 </div>
 <div class="modal-body">
     <div ng-show="_shadow && (_entering || _leaving)" class="shadow">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="step-title">{{$current.step.title}}</div>
+
     <div class="step-container"
          sx-wizard="$data"
          sx-wizard-steps="$steps"
@@ -31,6 +31,7 @@
 </div>
 <div class="modal-footer">
     <div class="btn-group pull-left">
+        <div class="step-title">{{$current.step.title}}</div>
         <button class="btn btn-default"
                 ng-repeat="button in $current.step.$context.navigation.buttons"
                 ng-disabled="_entering || _leaving"
@@ -51,48 +52,3 @@
         <button class="btn btn-default" ng-click="cancel()">Cancel</button>
     </div>
 </div>
-<style>
-    .modal-dialog {
-        width: 1000px;
-        top: 25px;
-    }
-    .step-container {
-        margin-top: 20px;
-        min-height: 600px;
-        max-height: 600px;
-        overflow-y: auto;
-    }
-    h1 {
-        text-align: left;
-    }
-    .step-title {
-        font-weight: bold;
-    }
-    .shadow {
-        z-index: 1099;
-        left: 0;
-        top: 0;
-        display: block;
-        overflow: hidden;
-        position: absolute;
-        outline: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, .65);
-    }
-    .outer {
-        display: table;
-        position: absolute;
-        height: 100%;
-        width: 100%;
-    }
-    .middle {
-        display: table-cell;
-        vertical-align: middle;
-    }
-    .inner {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>

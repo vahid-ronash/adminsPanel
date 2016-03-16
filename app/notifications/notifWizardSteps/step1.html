@@ -1,5 +1,5 @@
 <ui-select ng-model="step1Ctrl.app.value">
-    <ui-select-match>
+    <ui-select-match placeholder="{{'SELECT_APP' | translate}}">
         <span ng-bind="$select.selected.name"></span>
     </ui-select-match>
     <ui-select-choices repeat="item in (step1Ctrl.app.list | filter: $select.search) track by item.id">
@@ -19,17 +19,17 @@
 
 
 <!--upload -->
-<small class="help-block">در صورتیکه می خواهید آیکون دیگری در اعلان نمایش داده شود، آن را انتخاب کنید.</small>
+<!--<small class="help-block">{{'ICON_DESC' | translate}}</small>-->
 <div ngf-drop ngf-select  class="drop-box"
      ng-model="step1Ctrl.selectedFile"
      ngf-drag-over-class="'dragover'"
      ngf-multiple="false"
      ngf-allow-dir="true"
      accept="image/*"
-     ngf-pattern="'image/*,application/pdf'">Drop images here or click to upload</div>
+     ngf-pattern="'image/*'">{{'ICON_DESC' | translate}}</div>
 <div ngf-no-file-drop>
     <!-- File Drag/Drop is not supported for this browser -->
-    <div class="button" ngf-select  ng-model="selectedFile"  ngf-multiple="false">Select File  </div>
+    <div class="button" ngf-select  ng-model="selectedFile"  ngf-multiple="false">{{'SELECT_IMAGE'|translate}}</div>
 </div>
 <div ng-if="step1Ctrl.selectedFile">
     <uib-progressbar
@@ -41,15 +41,15 @@
     </uib-progressbar>
 </div>
 
-<small class="help-block">
-وقتی کاربر بر روی اعلان کلیک کرد چه اتفاقی بیفتد؟
-</small>
+<small class="help-block"></small>
 <ui-select ng-model="step1Ctrl.notifClickStatus">
-    <ui-select-match>
-        <span ng-bind="$select.selected.name"></span>
+    <ui-select-match placeholder="{{'ACTION_PLACEHOLDER' | translate}}">
+        <span ng-bind="$select.selected.desc"></span>
     </ui-select-match>
     <ui-select-choices repeat="item in (step1Ctrl.notifClickStatusList | filter: $select.search) track by item.id">
-        <span ng-bind="item.name"></span>
+        <h6 ng-bind="item.name"></h6>
+        <small ng-bind="item.desc"></small>
+
     </ui-select-choices>
 </ui-select>
 

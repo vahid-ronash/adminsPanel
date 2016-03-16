@@ -1,6 +1,9 @@
 @import "assets/libs/bootstrap/scss/_mixins.scss";
 @import "assets/libs/bootstrap/scss/_variables.scss";
 
+@import "assets/libs/select2/src/scss/core.scss";
+
+
 @import "flick-scss-copy/mixins.scss";
 @import "flick-scss-copy/variables.scss";
 @import "flick-scss-copy/variables.md.scss";
@@ -11,5 +14,6 @@
 @import "flick-scss-copy/md.scss";
 @import "flick-scss-copy/ng.scss";
 
+@import "wizard";
 @import "bootstrap-rtl-copy/scss/bootstrap-rtl.scss";
 @import "app.rtl";
