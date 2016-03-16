@@ -8,12 +8,12 @@
  * it make connection between this app and server
  */
 /*global angular */
-(function () {
+((function () {
     'use strict';
     angular
         .module('app')
         .factory('notificationResource', ['$http', function ($http) {
-            function notificationListService() {
+            function NotificationListService() {
                 var thisService = this;
 
                 /**
@@ -31,6 +31,6 @@
                     });
                 };
             }
-            return new notificationListService();
+            return new NotificationListService();
         }]);
-})();
+})());

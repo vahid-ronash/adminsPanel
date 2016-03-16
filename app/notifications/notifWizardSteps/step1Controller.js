@@ -7,6 +7,7 @@
  * @description
  * control notification wizard step 1
  */
+/*global angular */
 ((function() {
     'use strict';
     angular
