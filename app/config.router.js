@@ -66,6 +66,18 @@
                     event.preventDefault();
                     $location.path('/account/signin');
                 }
+                if($(".modal-backdrop").length){
+                    $(".modal-backdrop").remove();
+                    $(document.body)
+                        .removeClass("modal-open");
+                    //if (window.removeEventListener)
+                    //    window.removeEventListener('DOMMouseScroll', preventDefault, false);
+                    //window.onmousewheel = document.onmousewheel = null;
+                    //window.onwheel = null;
+                    //window.ontouchmove = null;
+                    //document.onkeydown = null;
+                }
+
             });
         }]);
 })());

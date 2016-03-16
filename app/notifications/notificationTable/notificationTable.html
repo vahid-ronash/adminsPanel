@@ -28,12 +28,20 @@
             <td> {{row.sendTime}} </td>
             <td> {{row.status}} </td>
             <td> {{row.contactCount}}</td>
-            <td> {{row.contactReceive}}</td>
+            <td>
+                <uib-progressbar
+                        type="success"
+                        class="progress-striped active"
+                        max="row.contactCount"
+                        value="row.contactReceive">
+                        <i>{{row.contactReceive}}/{{row.contactCount}}</i>
+                </uib-progressbar>
+            </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="5" class="text-center">
+            <td colspan="7" class="text-center">
                 <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
                 </div>
             </td>

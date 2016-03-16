@@ -11,10 +11,12 @@
   'use strict';
   angular
       .module('app', [
-        //'ngAnimate',
+        'ngAnimate',
         'ngResource',
         'ngSanitize',//Sanitizes an html string by stripping all potentially dangerous tokens.
         'ngTouch',
+        'ui.bootstrap',
+        //'sx.wizard',
         //'ngStorage',
         //'ngStore',//override some method on ngStorage
         'ngRoute',

@@ -103,6 +103,7 @@ angular
         'STATUS':'وضعیت',
         'CONTACT_COUNT':'تعداد نفرات',
         'CONTACT_RECEIVE':'میزان دریافت',
+        'ADD_NOTIFICATION':' اعلان جدید'
     });
 
     $translateProvider.preferredLanguage('fa');

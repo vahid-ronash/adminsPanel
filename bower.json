@@ -76,6 +76,7 @@
   "description": "this panel manage notifications for admin mobiles apps",
   "main": "index.html",
   "devDependencies": {
-    "angular-translate": "^2.10.0"
+    "angular-translate": "^2.10.0",
+    "angular-bootstrap": "^1.2.4"
   }
 }

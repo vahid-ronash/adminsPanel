@@ -328,9 +328,27 @@ th[st-sort]{
 	cursor: pointer;
   }
 }
+.progress-bar-success{
+  background-color: #0CC2AA;
+  color:#fff;
+}
+@media (min-width: 47.9em) {
+  .app-aside{
+	.navside.right {
+	  position: absolute;
+	  left: 0;
+	  -webkit-transform: translate3d(0, 0, 0);
+	  transform: translate3d(0, 0, 0);
+	}
+  }
+}
 @media (max-width: 47.9em) {
   .navbar-brand>img{
 	width: 100px;
+  }
+  .app-aside .right{
+	position: fixed;
+	width: 304px;
   }
   table[st-table]{
 	>thead>tr>th{

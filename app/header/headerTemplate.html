@@ -1,12 +1,10 @@
 <div id="aside" class="app-aside modal fade sm nav-dropdown ng-scope"
      ng-class="{'folded': app.setting.folded}" style="display: none;">
-    <div class="left navside white dk" layout="column">
+    <div class="right navside white dk" layout="column">
         <div class="navbar no-radius">
-            <!-- brand -->
             <a class="navbar-brand ng-scope">
                 <img src="assets/images/logo.png" class="">
             </a>
-            <!-- / brand -->
         </div>
         <div flex="" class="hide-scroll">
             <nav class="scroll nav-border b-success">
@@ -38,7 +36,6 @@
 
                     <li class="nav-header hidden-folded">
                         <small class="text-muted">help</small>
-                    </li>
                     </li>
                     <li>
                         <a href="#/help">
@@ -75,7 +72,7 @@
     <div class="app-header white box-shadow">
         <div class="navbar ng-scope">
             <!-- Open side - Naviation on mobile -->
-            <a data-toggle="modal" data-target="#aside" class="navbar-item h5 pull-left hidden-lg-up">
+            <a id="btnToggleAside" data-toggle="modal" data-target="#aside" class="navbar-item h5 pull-left hidden-lg-up">
                 <span><i class="fa fa-bars"></i></span>
             </a>
             <!-- / -->

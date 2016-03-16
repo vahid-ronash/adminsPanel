@@ -12,8 +12,53 @@
     'use strict';
     angular
         .module('app')
-        .controller('notificationsController', ['$scope',function($scope){
+        .controller('notificationsController', ['$scope','$wizard',function($scope,$wizard){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
+
+            var wizardInstance = $wizard.$new({
+                title: 'make new notification',
+                size: 'lg',
+                shadow: true,
+                //templateUrl:'', //wizard template that is used sx-wizard-tpls.js now
+
+                //on finish
+                //$data: Object passed into wizard.
+                //$step: The step where user clicked "Finish".
+                //$isLastStep: Indicates whether this is the last step.
+                //callback: Callback function with a boolean parameter, indicates whether wizard can be closed (valid) or not (invalid).
+                successing: function($data, $step, $isLastStep, callback) {
+                    return callback(true);
+                }
+            });
+            wizardInstance
+                .addStep({
+                    id: 'step-1-welcome',
+                    title: 'Welcome',
+                    templateUrl: 'app/notifications/notifWizardSteps/step1.html'
+                });
+
+
+            /**
+             * @ngdoc method
+             * @name showWizard
+             * @methodOf module.notificationWizardController
+             * @description
+             * ignite the wizard
+             */
+            thisController.data={};
+            thisController.showWizard=function(){
+                wizardInstance.open(
+                    thisController.data,
+                    function(result) {//it will call after successing
+                        thisController.result = result;
+                    },
+                    //window.angular.noop
+                    function(){// on user cancel wizard
+
+                    }
+                );
+            }
+
         }]);
 })());
