@@ -131,4 +131,8 @@ angular
     });
 
     $translateProvider.preferredLanguage('fa');
+
+    $translateProvider.useSanitizeValueStrategy(null);//it do nothing with translate
+    //we dont need to sanitize translations also we need to dont sanitize them because we may use below line in translations
+        //e.g: '<strong>click kon</strong>'
 }]);

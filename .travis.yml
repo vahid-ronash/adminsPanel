@@ -16,7 +16,7 @@ before_script:
   - 'npm install -g bower karma gulp jshint'
   - 'npm install karma-jasmine jasmine-core karma-chrome-launcher karma-coverage'
   - 'npm install' # install npm packages
-  - 'bower install --force-latest --no-interactive' # install bower packages without asking about version conflict and install last version
+  - 'bower install --no-interactive' # install bower packages without asking about version conflict and install last version
 after_script:
   - 'gulp test' # run test
   - 'gulp codacy' # send codacy coverage
