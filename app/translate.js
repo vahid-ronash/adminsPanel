@@ -38,7 +38,7 @@ angular
         'ADD_NEW_APP':'Add new Application',
         'NAME':'name',
         'PACKNAME':'package name',
-        'GLOBAL_SEARCH_PLACEHOLDER':'asdvdverfvservesrvserv',
+        'GLOBAL_SEARCH_PLACEHOLDER':'global search',
         'CANCEL':'cancel',
         'OK':'OK',
         'HELP':'help',
@@ -64,13 +64,18 @@ angular
         'NO_ACTION':'No Action',
         'OPEN_APPLICATION':'Open Application',
         'OPEN_LINK':'Open URL',
+        'CURRENT_PASSWORD':'current password',
+        'NEW':'new',
+        'PASS_NOT_MATCH':'your password do not match , try again',
+        'PASS_CHANGED':'your password changed successfully',
+        'CHANGE_PASSWORD_MSG':'change your password'
     });
 
     $translateProvider.translations('fa', {
         'SIGNIN_MSG': 'ورود به بخش مدیریت',
         'EMAIL': 'ایمیل',
         'PASSWORD': 'رمز عبور',
-        'REPASSWORD': 'رمز عبور مجدد',
+        'REPASSWORD': 'تکرار رمز عبور',
         'REMEMBER_ME':'مرا بخاطر بسپار؟',
         'AS_DEMO':'نمایش دمو',
         'SIGNIN':'ورود',
@@ -127,7 +132,11 @@ angular
         'NO_ACTION':'بدون عملکرد',
         'OPEN_APPLICATION':'باز کردن اپلیکیشن',
         'OPEN_LINK':'باز کردن URL',
-
+        'CURRENT_PASSWORD':'رمز عبور فعلی',
+        'NEW':'جدید',
+        'PASS_NOT_MATCH':'رمز عبور با تکرار آن مطابق نیست لطفا دوباره امتحان کنید.',
+        'PASS_CHANGED':'رمز عبور با موفقیت تغییر کرد',
+        'CHANGE_PASSWORD_MSG':'تغییر رمز عبور',
     });
 
     $translateProvider.preferredLanguage('fa');

@@ -34,7 +34,7 @@ module.exports = function(config) {
       "assets/libs/ui-select/dist/select.js",
 
       "assets/libs/angular-touch/angular-touch.js",
-      "assets/libs/angular-ui-router/release/angular-ui-router.js",
+      //"assets/libs/angular-ui-router/release/angular-ui-router.js",
       "assets/libs/angular-route/angular-route.js",
       "assets/libs/angular-mocks/angular-mocks.js",
       "assets/libs/ngstorage/ngStorage.js",

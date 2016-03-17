@@ -51,6 +51,11 @@
                         access: {isFree: true}
                         //resolve: need delay
                     })
+                    .when('/account/change-password', {
+                        templateUrl: 'app/accountComponents/changePassword/changePassword.html',
+                        controller: 'changePasswordController as changePassCtrl',
+                        //resolve: need delay
+                    })
                     .otherwise({
                         // if the path doesn't match any of the urls you configured
                         redirectTo: '/home'
@@ -77,7 +82,6 @@
                     //window.ontouchmove = null;
                     //document.onkeydown = null;
                 }
-
             });
         }]);
 })());

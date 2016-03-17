@@ -45,6 +45,7 @@
                 }
             });
             $httpBackend.whenPOST('/forgotPassword').respond({success:true});
+            $httpBackend.whenPOST('/changePassword').respond({success:true});
             $httpBackend.whenPOST('/register').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email); });
