@@ -26,7 +26,9 @@
                  */
                 thisService.query = function (filters) {
                     var url = "/notification";
-                    return $http.post(url,filters).then(function (result) {
+                    return $http.get(url,{
+                        params:filters
+                    }).then(function (result) {
                         return result.data;
                     });
                 };

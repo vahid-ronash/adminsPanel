@@ -30,10 +30,11 @@
 
 
             var userList = [
-                {id:1,name: 'دمو', email:'demo@pushe.co',password:"1234",roles:[]}
+                {id:1,name: 'دمو', email:'demo@pushe.co',password:"1234",roles:[]},
+                {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]}
             ];
-            $httpBackend.whenGET('/logout').respond({success:true});
-            $httpBackend.whenPOST('/login').respond(function(method, url, data){
+            $httpBackend.whenGET('/accounting/logout').respond({success:true});
+            $httpBackend.whenPOST('/accounting/login').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
@@ -127,27 +128,34 @@
             for (var i = 0; i < 1000; i++) {
                 randomsNotifItems.push(createRandomNotif());
             }
-            $httpBackend.whenPOST('/notification').respond(function(method, url, data){
-                var filters=angular.fromJson(data);
+            $httpBackend.whenGET(/\/notification\?.*/).respond(function(method, url, keys,headers,param){
+                // var filters=angular.fromJson(keys);
 
                 //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
                 //in our case, it actually performs the logic which would happened in the server
+                if(param) {
+                    var searchFilters=JSON.parse(JSON.stringify(param));
+                    searchFilters.ordering && delete searchFilters.ordering;
+                    searchFilters.offset && delete searchFilters.offset;
+                    searchFilters.limit && delete searchFilters.limit;
+                    var filtered = param ? $filter('filter')(randomsNotifItems, searchFilters) : randomsNotifItems;
 
-                var filtered = filters.params.search.predicateObject ? $filter('filter')(randomsNotifItems, filters.params.search.predicateObject) : randomsNotifItems;
+                    if (param.ordering) {
+                        var order = param.ordering;
+                        var isReverse = (order[0] == "-");
+                        if (isReverse) order = order.substr(1);
+                        filtered = $filter('orderBy')(filtered, order, isReverse);
+                    }
+                    var result = filtered.slice(param.offset, param.offset+ param.limit);
 
-                if (filters.params.sort.predicate) {
-                    filtered = $filter('orderBy')(filtered, filters.params.sort.predicate, filters.params.sort.reverse);
+                    var resultobj={
+                        data: result,
+                        numberOfPages: Math.ceil(filtered.length / param.number)
+                    };
+                    return [200, resultobj, {}];
                 }
-
-                var result = filtered.slice(filters.start, filters.start + filters.number);
-
-                var resultobj={
-                    data: result,
-                    numberOfPages: Math.ceil(filtered.length / filters.number)
-                };
-                return [200, resultobj, {}];
             });
-
+            // $httpBackend.expectGET(url);
             //$httpBackend.whenGET(/.*/).passThrough();
             //$httpBackend.whenPOST(/.*/).passThrough();
             //$httpBackend.whenDELETE(/.*/).passThrough();

@@ -46,8 +46,10 @@
              * use demo user and send them to login method
              */
             thisController.loginAsDemo=function(){
-                thisController.credential.email="demo@pushe.co";
-                thisController.credential.password="1234";
+                // thisController.credential.email="demo@pushe.co";
+                thisController.credential.email="a@a.cc";
+                // thisController.credential.password="1234";
+                thisController.credential.password="a";
                 return thisController.login();
             };
         }]);

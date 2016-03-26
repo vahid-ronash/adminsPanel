@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('AuthService', function ($http, Session) {
+        .factory('AuthService', function ($http, Session,$rootScope) {
             var authService = {};
 
             /**
@@ -25,7 +25,7 @@
              */
             authService.login = function (credentials) {
                 return $http
-                    .post('/login', credentials)
+                    .post($rootScope.serverAddress+'/accounting/login', credentials)
                     .then(function (res) {
                         var result=res.data;
                         if(result.user) {
@@ -92,7 +92,7 @@
              */
             authService.logout= function () {
                 return $http
-                    .get('/logout')
+                    .get('/accounting/logout')
                     .then(function () {
                         Session.destroy();
                     });

@@ -11,8 +11,8 @@
   angular
       .module("app")
       .controller("AppCtrl",
-                ["$scope",// "$localStorage", "$location", "$rootScope", "$anchorScroll", "$timeout", "$window",
-        function ($scope) {//, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window
+                ["$scope","$rootScope",// "$localStorage", "$location", "$rootScope", "$anchorScroll", "$timeout", "$window",
+        function ($scope,$rootScope) {//, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window
           var thisScope = $scope;
 
           //TODO:why they dont use modernizer.js?
@@ -27,7 +27,8 @@
           //};
 
 
-
+            // $rootScope.serverAddress="http://192.168.1.183:8080";
+            $rootScope.serverAddress="";
           // TODO : is there any config to save in user browser?
           thisScope.app = {
             name: "adminsPanel",
