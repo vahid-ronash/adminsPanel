@@ -39,7 +39,7 @@ describe('sign up controller : ', function() {
             expect(controller.registerError.indexOf("agree") > 0).toEqual(true);
         });
     });
-    it('test submit', inject(function (_$q_,$timeout) {
+    it('submit respond error when user exist', inject(function (_$q_,$timeout) {
         var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
         controller.user = {
             email: "demo@pushe.co",

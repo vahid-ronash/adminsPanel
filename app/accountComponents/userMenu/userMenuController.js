@@ -26,7 +26,9 @@
              */
             thisController.logout=function(){
                 return $AuthService.logout().then(function(){
-                    $location.path('/account/signin');
+                    setTimeout(function(){
+                        $location.path('/account/signin');
+                    },10);
                 });
             };
         }]);

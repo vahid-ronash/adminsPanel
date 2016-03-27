@@ -42,7 +42,9 @@
                             thisController.registerError = result.error;
                         }
                         else {
-                            $location.path('/account/signin');
+                            setTimeout(function(){
+                                $location.path('/account/signin');
+                            });
                         }
                     });
                 }

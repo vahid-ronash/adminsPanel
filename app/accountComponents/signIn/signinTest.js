@@ -14,12 +14,18 @@ describe('sign in controller : ', function() {
         var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
         expect(controller.app.name.length>0).toEqual(true);
     });
-    it('test login as demo', function () {
+    it('check login as demo button', function () {
         var controller = $controller('signInController', {"$scope": {app: {name: "adminsPanel"}}});
         controller.loginAsDemo();
-        expect(controller.credential.email==="demo@pushe.co").toEqual(true);
+        // expect(controller.credential.email==="demo@pushe.co").toEqual(true);
+        expect(controller.credential.email==="a@a.cc").toEqual(true);
     });
-    it('wrong login test', inject(function (_$q_,$timeout) {
+    var _q,_timeout;
+    beforeEach(inject(function(_$q_,$timeout){
+        _q=_$q_;
+        _timeout=$timeout;
+    }));
+    it('wrong login test', inject(function () {
         var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.credential={
             email:"demo@pushe.co",
@@ -27,25 +33,25 @@ describe('sign in controller : ', function() {
             rememberMe:true
         };
         var valueToVerify=0;
-        var deferred = _$q_.defer();
+        var deferred = _q.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.login().then(function(){
             deferred.resolve(controller.loginError.length>0);
         });
         //deferred.reject('There has been an Error!'+err);
-        $timeout.flush();
+        _timeout.flush();
         expect(valueToVerify).toEqual(true);
     }));
-    it('test login as demo', inject(function (_$q_,$timeout,AuthService) {
+    it('test login as demo', inject(function (AuthService) {
         var controller = $controller('signInController', {"$scope": {app: {name: "adminsPanel"}}});
         var valueToVerify=0;
-        var deferred = _$q_.defer();
+        var deferred = _q.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.loginAsDemo().then(function(){
             deferred.resolve(AuthService.isAuthenticated());
         });
-        expect(controller.credential.email==="demo@pushe.co").toEqual(true);
-        $timeout.flush();
+        expect(controller.credential.email==="a@a.cc").toEqual(true);
+        _timeout.flush();
         expect(valueToVerify).toEqual(true);
     }));
 });

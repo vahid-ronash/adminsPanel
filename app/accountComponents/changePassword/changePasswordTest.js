@@ -39,7 +39,7 @@ describe('change password controller : ', function() {
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.sendChangeRequest().then(function(){
             //deferred.resolve(controller.loginError.length>0);
-            deferred.resolve(controller.alert.length>0);
+            deferred.resolve(controller.alert.length>0 || controller.error.length>0);
         });
         //deferred.reject('There has been an Error!'+err);
         $timeout.flush();

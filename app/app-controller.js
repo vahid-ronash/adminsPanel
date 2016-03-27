@@ -29,6 +29,7 @@
 
             // $rootScope.serverAddress="http://192.168.1.183:8080";
             $rootScope.serverAddress="";
+
           // TODO : is there any config to save in user browser?
           thisScope.app = {
             name: "adminsPanel",

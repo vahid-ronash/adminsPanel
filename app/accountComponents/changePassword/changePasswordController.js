@@ -31,9 +31,9 @@
              * send reset password request data
              */
             thisController.sendChangeRequest=function(){
-                if(thisController.data.password!==thisController.repassword){
+                if(thisController.data.currentPassword!==thisController.repassword){
                     thisController.error=$filter('translate')('PASS_NOT_MATCH');
-                    thisController.data.password="";
+                    thisController.data.currentPassword="";
                     thisController.repassword="";
                 }
                 else {

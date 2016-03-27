@@ -9,7 +9,8 @@
         .config(function($provide) {
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
-        .run(function($httpBackend,$filter) {
+        .run(function($httpBackend,$filter,$rootScope) {
+            $rootScope.serverAddress="";
             var appList = [
                 {id:1,name: 'Pushe Sample Eclipse', packname:'co.ronash.pushesampleeclipse'},
                 {id:2,name: 'Pushe Sample Android Studio', packname:'co.ronash.pushesampleas'},
@@ -34,7 +35,7 @@
                 {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]}
             ];
             $httpBackend.whenGET('/accounting/logout').respond({success:true});
-            $httpBackend.whenPOST('/accounting/login').respond(function(method, url, data){
+            $httpBackend.whenPOST($rootScope.serverAddress+'/accounting/login').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
@@ -160,6 +161,6 @@
             //$httpBackend.whenPOST(/.*/).passThrough();
             //$httpBackend.whenDELETE(/.*/).passThrough();
             //$httpBackend.whenPUT(/.*/).passThrough();
-            $httpBackend.whenGET(/\.html/).passThrough();
+            $httpBackend.whenGET(/app\/.*\.html/).passThrough();
         });
 })());

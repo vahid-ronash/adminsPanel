@@ -33,7 +33,9 @@
                         thisController.loginError=result.error;
                     }
                     else{
-                        $location.path('/home');
+                        setTimeout(function(){
+                            $location.path('/home');
+                        },10);
                     }
                 });
             };

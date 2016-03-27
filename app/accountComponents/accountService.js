@@ -85,7 +85,7 @@
 
             /**
              * @ngdoc method
-             * @name login
+             * @name logout
              * @methodOf module.AuthService
              * @description
              * send logout to server and destroy session

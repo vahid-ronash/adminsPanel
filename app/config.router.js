@@ -56,10 +56,10 @@
                         controller: 'changePasswordController as changePassCtrl',
                         //resolve: need delay
                     })
-                    .otherwise({
+                    // .otherwise({
                         // if the path doesn't match any of the urls you configured
-                        redirectTo: '/home'
-                    });
+                        // redirectTo: '/home'
+                    // });
 
                 // configure html5 to get links working on jsfiddle
                 //TODO:$locationProvider.html5Mode(true); server must support
