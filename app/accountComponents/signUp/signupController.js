@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('signUpController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
+        .controller('signUpController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
             thisController.user={
@@ -42,9 +42,9 @@
                             thisController.registerError = result.error;
                         }
                         else {
-                            setTimeout(function(){
+                            $timeout(function(){
                                 $location.path('/account/signin');
-                            });
+                            },10);
                         }
                     });
                 }

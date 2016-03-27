@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('userMenuController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
+        .controller('userMenuController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
             thisController.userEmail=$AuthService.getUserEmail();
@@ -26,7 +26,7 @@
              */
             thisController.logout=function(){
                 return $AuthService.logout().then(function(){
-                    setTimeout(function(){
+                    $timeout(function(){
                         $location.path('/account/signin');
                     },10);
                 });

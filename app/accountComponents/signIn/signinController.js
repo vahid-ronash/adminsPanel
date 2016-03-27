@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('signInController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
+        .controller('signInController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
             thisController.credential={
@@ -33,7 +33,7 @@
                         thisController.loginError=result.error;
                     }
                     else{
-                        setTimeout(function(){
+                        $timeout(function(){
                             $location.path('/home');
                         },10);
                     }
