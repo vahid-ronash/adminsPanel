@@ -72,7 +72,10 @@ angular
         'NOTIF_EXTITLE':'complete Title',
         'NOTIF_EXTEXT':'complete Text',
         'NOTIF_BRIEF':'notication brief',
-        'NOTIF_IMAGE':'notification image'
+        'NOTIF_IMAGE':'notification image',
+        'ICON':'icon',
+        'NOTIF_SECOND_STEP':'complete notification',
+        'NOTIF_THIRD_STEP':'notification buttons',
     });
 
     $translateProvider.translations('fa', {
@@ -144,7 +147,10 @@ angular
         'NOTIF_EXTITLE':'تیتر کامل',
         'NOTIF_EXTEXT':'متن کامل',
         'NOTIF_BRIEF':'خلاصه',
-        'NOTIF_IMAGE':'تصویر اعلان'
+        'NOTIF_IMAGE':'تصویر اعلان',
+        'ICON':'آیکون',
+        'NOTIF_SECOND_STEP':'اعلان کامل',
+        'NOTIF_THIRD_STEP':'دکمه های اعلان',
     });
 
     $translateProvider.preferredLanguage('fa');

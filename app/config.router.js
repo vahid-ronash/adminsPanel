@@ -55,10 +55,11 @@
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',
                         controller: 'changePasswordController as changePassCtrl',
                         //resolve: need delay
-                    })
-                    .when('/', {
-                        redirectTo: '/home'
                     });
+                //TODO: it has problem with mock we should add below lines after removing mock
+                    // .when('/', {
+                    //     redirectTo: '/home'
+                    // });
                     // .otherwise({
                         // if the path doesn't match any of the urls you configured
                         // redirectTo: '/home'

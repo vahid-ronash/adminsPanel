@@ -1,0 +1,9 @@
+<ui-select ng-model="notifActionCtrl.notifClickAction">
+    <ui-select-match placeholder="{{'ACTION_PLACEHOLDER' | translate}}">
+        <small ng-bind="$select.selected.desc"></small>
+    </ui-select-match>
+    <ui-select-choices repeat="item in (notifActionCtrl.buttonClickActionList | filter: $select.search) track by item.name">
+        <span ng-bind="item.name"></span>
+        <small ng-bind="item.desc"></small>
+    </ui-select-choices>
+</ui-select>

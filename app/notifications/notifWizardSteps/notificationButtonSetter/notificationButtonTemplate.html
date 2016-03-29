@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-3">
+        <div class="md-form-group float-label">
+            <input class="md-input" ng-model="notifButtonCtrl.data.title" focus-me="notifButtonCtrl.focusStart">
+            <label>{{'NOTIF_TITLE' | translate}}</label>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <ui-select ng-model="notifButtonCtrl.data.icon">
+            <ui-select-match placeholder="{{'ICON' | translate}}">
+                <span>{{$select.selected}}</span>
+                <i class="material-icons" ng-bind="$select.selected"></i>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (notifButtonCtrl.icons | filter: $select.search)">
+                <span class="pull-right" ng-bind="item"></span>
+                <i class="material-icons" ng-bind="item"></i>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-xs-5">
+        <notification-action selected="notifButtonCtrl.data.action"></notification-action>
+    </div>
+</div>
+
+<small class="help-block"></small>

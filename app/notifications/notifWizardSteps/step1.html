@@ -1,4 +1,4 @@
-<ui-select ng-model="step1Ctrl.app.value">
+<ui-select multiple ng-model="step1Ctrl.selectedApps">
     <ui-select-match placeholder="{{'SELECT_APP' | translate}}">
         <span ng-bind="$select.selected.name"></span>
     </ui-select-match>
@@ -18,16 +18,7 @@
 </div>
 
 <small class="help-block"></small>
-<ui-select ng-model="step1Ctrl.notifClickStatus">
-    <ui-select-match placeholder="{{'ACTION_PLACEHOLDER' | translate}}">
-        <span ng-bind="$select.selected.desc"></span>
-    </ui-select-match>
-    <ui-select-choices repeat="item in (step1Ctrl.notifClickStatusList | filter: $select.search) track by item.id">
-        <h6 ng-bind="item.name"></h6>
-        <small ng-bind="item.desc"></small>
-
-    </ui-select-choices>
-</ui-select>
+<notification-action ng-model="step1Ctrl.notifClickAction"></notification-action>
 
 <!--upload -->
 <!--<small class="help-block">{{'ICON_DESC' | translate}}</small>-->
@@ -51,8 +42,6 @@
         <i>{{step1Ctrl.uploadData.uploaded}}/{{step1Ctrl.uploadData.total}}</i>
     </uib-progressbar>
 </div>
-
-
 
 
 <div class="md-form-group float-label">
