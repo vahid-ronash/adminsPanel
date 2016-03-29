@@ -53,6 +53,14 @@ gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });
 
+var webpack = require('gulp-webpack');
+gulp.task('webpack', function() {
+    return gulp.src('app/app.js')
+        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulp.dest('build/'));
+});
+
+
 gulp.task('build', ['makeCSS']);
 
 gulp.task('default', ['makeCSS','watchSCSS']);
