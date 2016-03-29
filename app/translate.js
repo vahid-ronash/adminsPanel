@@ -68,7 +68,11 @@ angular
         'NEW':'new',
         'PASS_NOT_MATCH':'your password do not match , try again',
         'PASS_CHANGED':'your password changed successfully',
-        'CHANGE_PASSWORD_MSG':'change your password'
+        'CHANGE_PASSWORD_MSG':'change your password',
+        'NOTIF_EXTITLE':'complete Title',
+        'NOTIF_EXTEXT':'complete Text',
+        'NOTIF_BRIEF':'notication brief',
+        'NOTIF_IMAGE':'notification image'
     });
 
     $translateProvider.translations('fa', {
@@ -137,6 +141,10 @@ angular
         'PASS_NOT_MATCH':'رمز عبور با تکرار آن مطابق نیست لطفا دوباره امتحان کنید.',
         'PASS_CHANGED':'رمز عبور با موفقیت تغییر کرد',
         'CHANGE_PASSWORD_MSG':'تغییر رمز عبور',
+        'NOTIF_EXTITLE':'تیتر کامل',
+        'NOTIF_EXTEXT':'متن کامل',
+        'NOTIF_BRIEF':'خلاصه',
+        'NOTIF_IMAGE':'تصویر اعلان'
     });
 
     $translateProvider.preferredLanguage('fa');
