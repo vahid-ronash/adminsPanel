@@ -76,6 +76,7 @@ angular
         'ICON':'icon',
         'NOTIF_SECOND_STEP':'complete notification',
         'NOTIF_THIRD_STEP':'notification buttons',
+        'NOTIF_FORTH_STEP':'JSON',
     });
 
     $translateProvider.translations('fa', {
@@ -151,6 +152,7 @@ angular
         'ICON':'آیکون',
         'NOTIF_SECOND_STEP':'اعلان کامل',
         'NOTIF_THIRD_STEP':'دکمه های اعلان',
+        'NOTIF_FORTH_STEP':'JSON',
     });
 
     $translateProvider.preferredLanguage('fa');

@@ -42,6 +42,9 @@ module.exports = function(config) {
       "assets/libs/angular-ui-utils/ui-utils.js",
       "assets/libs/oclazyload/dist/ocLazyLoad.js",
 
+        "assets/libs/angular-ui-ace/ui-ace.js",
+        "assets/libs/ace-builds/src-min-noconflict/ace.js",
+
 
         "app/app.js",
         "app/app-controller.js",
