@@ -13,12 +13,15 @@
     angular
         .module('app')
         .controller('step4Controller', ['$scope', function ($scope) {
-            var thisController=this;
+            // var thisController=this;
+            var asThisController=$scope.step4Ctrl={};
 
-            $scope.aceLoaded = function(_editor) {
-                thisController.aceSession = _editor.getSession();
+            asThisController.aceLoaded = function(_editor) {
+                asThisController.aceSession = _editor.getSession();
             };
-            // get the value
+            // get the value and check validation
+            // var annotList=asThisController.aceSession.getAnnotations();
+            // if(annotList.length)asThisController.isvalid=false;
             // var value=aceSession.getDocument().getValue();
         }]);
 })());

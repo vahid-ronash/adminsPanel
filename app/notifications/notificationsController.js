@@ -59,6 +59,13 @@
                     templateUrl: 'app/notifications/notifWizardSteps/step4.html',
                     controller:'step4Controller',
                     controllerAs:'step4Ctrl'
+                })
+                .addStep({
+                    id: 'step-5-welcome',
+                    title: $filter('translate')('NOTIF_FIFTH_STEP'),
+                    templateUrl: 'app/notifications/notifWizardSteps/step5.html',
+                    controller:'step5Controller',
+                    controllerAs:'step5Ctrl'
                 });
 
 

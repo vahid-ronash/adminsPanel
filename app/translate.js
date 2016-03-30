@@ -77,6 +77,7 @@ angular
         'NOTIF_SECOND_STEP':'complete notification',
         'NOTIF_THIRD_STEP':'notification buttons',
         'NOTIF_FORTH_STEP':'JSON',
+        'NOTIF_FIFTH_STEP':'notification setting',
     });
 
     $translateProvider.translations('fa', {
@@ -153,6 +154,14 @@ angular
         'NOTIF_SECOND_STEP':'اعلان کامل',
         'NOTIF_THIRD_STEP':'دکمه های اعلان',
         'NOTIF_FORTH_STEP':'JSON',
+        'NOTIF_FIFTH_STEP':'نحوه نمایش اعلان',
+        'IS_SHOWN':'قابل نمایش',
+        'SCREEN_TURN_ON':'روشن شدن صفحه نمایش',
+        'VIBRATE':'ویبره',
+        'ON_TIME':'زمان روشن',
+        'OFF_TIME':'زمان خاموش',
+        'COLOR':'رنگ',
+        'LED':'LED',
     });
 
     $translateProvider.preferredLanguage('fa');
