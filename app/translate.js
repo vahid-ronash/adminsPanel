@@ -78,6 +78,21 @@ angular
         'NOTIF_THIRD_STEP':'notification buttons',
         'NOTIF_FORTH_STEP':'JSON',
         'NOTIF_FIFTH_STEP':'notification setting',
+
+        'IS_SHOWN':'is shown',
+        'SCREEN_TURN_ON':'screen turn off?',
+        'VIBRATE':'vibrate?',
+        'ON_TIME':'on time',
+        'OFF_TIME':'off time',
+        'COLOR':'color',
+        'LED':'LED',
+        'IMEI':'IMEI',
+        'NOTIF_SIXTH_STEP':'test send',
+        'ADD_NOTIF_BUTTON':'add notification button',
+        'WIZARD_PREV':'previous',
+        'WIZARD_NEXT':'next',
+        'WIZARD_FIN':'finish',
+        'TIME_SECOND':'second',
     });
 
     $translateProvider.translations('fa', {
@@ -162,6 +177,13 @@ angular
         'OFF_TIME':'زمان خاموش',
         'COLOR':'رنگ',
         'LED':'LED',
+        'IMEI':'IMEI',
+        'NOTIF_SIXTH_STEP':'ارسال آزمایشی',
+        'ADD_NOTIF_BUTTON':'افزودن دکمه',
+        'WIZARD_PREV':'قبل',
+        'WIZARD_NEXT':'بعدی',
+        'WIZARD_FIN':'پایان',
+        'TIME_SECOND':'ثانیه',
     });
 
     $translateProvider.preferredLanguage('fa');

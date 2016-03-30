@@ -1,0 +1,8 @@
+<ui-select multiple tagging tagging-label="IMEI : " ng-model="step1Ctrl.selectedApps">
+    <ui-select-match placeholder="{{'IMEI' | translate}}">
+        <span ng-bind="$item"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="item in (step6Ctrl.favoritesList | filter: $select.search)">
+        <span ng-bind="item"></span>
+    </ui-select-choices>
+</ui-select>

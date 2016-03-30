@@ -1,5 +1,5 @@
 <div ng-repeat="action in step3Ctrl.actions">
     <notification-Button-Setter data="action"></notification-Button-Setter>
 </div>
-<button class="btn" ng-if="step3Ctrl.actions.length<3" ng-click="step3Ctrl.addAction()">add Button</button>
+<button class="btn" ng-if="step3Ctrl.actions.length<3" ng-click="step3Ctrl.addAction()">{{'ADD_NOTIF_BUTTON' | translate}}</button>
 <small class="help-block"></small>

@@ -16,17 +16,17 @@
         </label>
     </div>
     <div uib-collapse="!step5Ctrl.vibrate.isOn">
-        <div class="well well-lg row">
+        <div class="conatainer">
             <div class="form-group col-xs-6">
                 <label>{{'ON_TIME' | translate}}</label>
                 <select class="form-control" ng-model="step5Ctrl.vibrate.onTime" >
-                    <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}s</option>
+                    <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
                 </select>
             </div>
             <div class="form-group col-xs-6">
                 <label>{{'OFF_TIME' | translate}}</label>
                 <select class="form-control" ng-model="step5Ctrl.vibrate.offTime">
-                    <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}s</option>
+                    <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
                 </select>
             </div>
         </div>
@@ -36,17 +36,17 @@
 <!--LED-->
 <a type="button" class="btn btn-default" ng-click="step5Ctrl.showLEDController = !step5Ctrl.showLEDController">{{'LED' | translate}}</a>
 <div uib-collapse="!step5Ctrl.showLEDController">
-    <div class="well well-lg row">
+    <div class="container">
         <div class="form-group col-xs-2">
             <label>{{'ON_TIME' | translate}}</label>
             <select class="form-control" ng-model="step5Ctrl.LED.onTime">
-                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}s</option>
+                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
             </select>
         </div>
         <div class="form-group col-xs-2">
             <label>{{'OFF_TIME' | translate}}</label>
             <select class="form-control" ng-model="step5Ctrl.LED.offTime">
-                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}s</option>
+                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
             </select>
         </div>
         <div class="form-group col-xs-3">
