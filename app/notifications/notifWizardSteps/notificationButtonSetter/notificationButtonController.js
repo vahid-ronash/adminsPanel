@@ -15,14 +15,11 @@
         .controller('notificationButtonController', ['$scope', function ($scope) {
             var thisController = this;
 
-            var data=$scope.$data;
-            if(!data.title)
-                data={
-                    title: "",
-                    icon: "",
-                    action: ""
-                };
-            $scope.$data=thisController.data =data;
+            thisController.data=$scope.$data=angular.extend({
+                title: "",
+                icon: "",
+                actionData: ""
+            },$scope.$data);
 
             thisController.icons = [
                 " --- ", "add_box", "airplanemode_active", "alarm", "announcement", "apps",

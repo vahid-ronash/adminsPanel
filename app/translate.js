@@ -79,7 +79,7 @@ angular
         'NOTIF_FORTH_STEP':'JSON',
         'NOTIF_FIFTH_STEP':'notification setting',
 
-        'IS_SHOWN':'is shown',
+        'IS_HIDDEN':'is hidden',
         'SCREEN_TURN_ON':'screen turn off?',
         'VIBRATE':'vibrate?',
         'ON_TIME':'on time',
@@ -91,7 +91,7 @@ angular
         'ADD_NOTIF_BUTTON':'add notification button',
         'WIZARD_PREV':'previous',
         'WIZARD_NEXT':'next',
-        'WIZARD_FIN':'finish',
+        'WIZARD_FIN':'send',
         'TIME_SECOND':'second',
     });
 
@@ -170,7 +170,7 @@ angular
         'NOTIF_THIRD_STEP':'دکمه های اعلان',
         'NOTIF_FORTH_STEP':'JSON',
         'NOTIF_FIFTH_STEP':'نحوه نمایش اعلان',
-        'IS_SHOWN':'قابل نمایش',
+        'IS_HIDDEN':'هدف تنها ارسال اطلاعات به اپلیکیشن است و به کاربر چیزی نمایش داده نشود؟',
         'SCREEN_TURN_ON':'روشن شدن صفحه نمایش',
         'VIBRATE':'ویبره',
         'ON_TIME':'زمان روشن',
@@ -182,8 +182,12 @@ angular
         'ADD_NOTIF_BUTTON':'افزودن دکمه',
         'WIZARD_PREV':'قبل',
         'WIZARD_NEXT':'بعدی',
-        'WIZARD_FIN':'پایان',
+        'WIZARD_FIN':'ارسال',
         'TIME_SECOND':'ثانیه',
+        'URL':'url',
+        'URI':'uri command',
+        'NOTIF_VOICE':'صدای اعلان',
+        'SELECT_VOICE':'انتخاب صدا'
     });
 
     $translateProvider.preferredLanguage('fa');

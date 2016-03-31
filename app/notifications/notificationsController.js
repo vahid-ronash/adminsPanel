@@ -40,6 +40,13 @@
                     controllerAs:'step1Ctrl'
                 })
                 .addStep({
+                    id: 'step-1_5-welcome',
+                    title: $filter('translate')('NOTIF_FIRST_STEP'),
+                    templateUrl: 'app/notifications/notifWizardSteps/step1_5.html',
+                    controller:'step1_5Controller',
+                    controllerAs:'step1_5Ctrl'
+                })
+                .addStep({
                     id: 'step-2-welcome',
                     title: $filter('translate')('NOTIF_SECOND_STEP'),
                     templateUrl: 'app/notifications/notifWizardSteps/step2.html',
@@ -83,7 +90,10 @@
              * @description
              * ignite the wizard
              */
-            thisController.data={};
+            thisController.data={
+                stepData:[
+                ]
+            };
             thisController.showWizard=function(){
                 wizardInstance.open(
                     thisController.data,

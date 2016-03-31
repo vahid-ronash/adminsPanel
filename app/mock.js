@@ -61,7 +61,9 @@
                 }
             });
 
-
+            $httpBackend.whenPOST('/uploadIconImage').respond(function(method, url, data){
+                    return [200, {success:true}, {}];
+            });
 
             var randomsItems = [];
             function createRandomItem(id) {

@@ -1,31 +1,48 @@
+
 <div class="m-b-md">
     <label class="md-check">
-        <input type="checkbox" ng-model="step5Ctrl.isShown"><i class="primary"></i>{{'IS_SHOWN' | translate}}
+        <input type="checkbox" ng-model="step5Ctrl.data.screen.turnON"><i class="primary"></i>{{'SCREEN_TURN_ON' | translate}}
     </label>
 </div>
-<div class="m-b-md">
-    <label class="md-check">
-        <input type="checkbox" ng-model="step5Ctrl.screenTurnON""><i class="primary"></i>{{'SCREEN_TURN_ON' | translate}}
-    </label>
+
+<!--voice-->
+<div>
+    <div class="m-b-md">
+        <label class="md-check">
+            <input type="checkbox" ng-model="step5Ctrl.data.voice.isOn"><i class="primary"></i>{{'NOTIF_VOICE' | translate}}
+        </label>
+    </div>
+    <div uib-collapse="!step5Ctrl.data.voice.isOn">
+        <ui-select ng-model="step5Ctrl.data.voice.selected">
+            <ui-select-match placeholder="{{'SELECT_VOICE' | translate}}">
+                <span ng-bind="$item.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (step5Ctrl.voiceList | filter: $select.search)">
+                <span ng-bind="item.name"></span>
+                <audio src="item.path" type="audio/mpeg"></audio>
+            </ui-select-choices>
+        </ui-select>
+    </div>
 </div>
+
 <!--VIBRATE-->
 <div>
     <div class="m-b-md">
         <label class="md-check">
-            <input type="checkbox" ng-model="step5Ctrl.vibrate.isOn"><i class="primary"></i>{{'VIBRATE' | translate}}
+            <input type="checkbox" ng-model="step5Ctrl.data.vibrate.isOn"><i class="primary"></i>{{'VIBRATE' | translate}}
         </label>
     </div>
-    <div uib-collapse="!step5Ctrl.vibrate.isOn">
+    <div uib-collapse="!step5Ctrl.data.vibrate.isOn">
         <div class="conatainer">
             <div class="form-group col-xs-6">
                 <label>{{'ON_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step5Ctrl.vibrate.onTime" >
+                <select class="form-control" ng-model="step5Ctrl.data.vibrate.onTime" >
                     <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
                 </select>
             </div>
             <div class="form-group col-xs-6">
                 <label>{{'OFF_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step5Ctrl.vibrate.offTime">
+                <select class="form-control" ng-model="step5Ctrl.data.vibrate.offTime">
                     <option ng-repeat="option in step5Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
                 </select>
             </div>
@@ -34,26 +51,32 @@
 </div>
 
 <!--LED-->
-<a type="button" class="btn btn-default" ng-click="step5Ctrl.showLEDController = !step5Ctrl.showLEDController">{{'LED' | translate}}</a>
-<div uib-collapse="!step5Ctrl.showLEDController">
-    <div class="container">
-        <div class="form-group col-xs-2">
-            <label>{{'ON_TIME' | translate}}</label>
-            <select class="form-control" ng-model="step5Ctrl.LED.onTime">
-                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
-            </select>
-        </div>
-        <div class="form-group col-xs-2">
-            <label>{{'OFF_TIME' | translate}}</label>
-            <select class="form-control" ng-model="step5Ctrl.LED.offTime">
-                <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
-            </select>
-        </div>
-        <div class="form-group col-xs-3">
-            <label>{{'COLOR' | translate}}</label>
-            <select class="form-control" ng-model="step5Ctrl.LED.color">
-                <option ng-repeat="option in step5Ctrl.LEDColors" value="{{option}}">{{option}}</option>
-            </select>
+<div>
+    <div class="m-b-md">
+        <label class="md-check">
+            <input type="checkbox" ng-model="step5Ctrl.data.LED.isOn"><i class="primary"></i>{{'LED' | translate}}
+        </label>
+    </div>
+    <div uib-collapse="!step5Ctrl.data.LED.isOn">
+        <div class="container">
+            <div class="form-group col-xs-2">
+                <label>{{'ON_TIME' | translate}}</label>
+                <select class="form-control" ng-model="step5Ctrl.data.LED.onTime">
+                    <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-2">
+                <label>{{'OFF_TIME' | translate}}</label>
+                <select class="form-control" ng-model="step5Ctrl.data.LED.offTime">
+                    <option ng-repeat="option in step5Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}<</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-3">
+                <label>{{'COLOR' | translate}}</label>
+                <select class="form-control" ng-model="step5Ctrl.data.LED.color">
+                    <option ng-repeat="option in step5Ctrl.LEDColors" value="{{option}}">{{option}}</option>
+                </select>
+            </div>
         </div>
     </div>
 </div>

@@ -18,9 +18,14 @@
             thisController.buttonClickActionList = [
                 {id: 1, name: "no action", desc: 'با کلیک روی نوتیفیکیشن هیچ اتفاقی نمی افتد.'},
                 {id: 2, name: "open Application", desc: 'با کلیک روی نوتیفیکیشن اپلیکیشن باز میشود.'},
-                {id: 3, name: "open URL", desc: 'با کلیک روی نوتیفیکیشن یک لینک در مرورگر او اجرا میشود.'},
-                {id: 4, name: "open Dialog", desc: 'با کلیک روی نوتیفیکیشن یک پنجره ای برای او باز میشود.'}
+                {id: 3, name: "open URL", desc: 'با کلیک روی نوتیفیکیشن یک لینک در مرورگر کاربر اجرا میشود.'},
+                {id: 4, name: "open URI", desc: 'با کلیک روی نوتیفیکیشن یک دستور در گوشی کاربر اجرا میشود.'},
+                {id: 5, name: "open Dialog", desc: 'با کلیک روی نوتیفیکیشن یک پنجره ای برای او باز میشود.'}
             ];
-            $scope.$selected=thisController.notifClickAction=$scope.$selected || thisController.buttonClickActionList[0];
+            $scope.actionData=thisController.actionData=angular.extend({
+                action:thisController.buttonClickActionList[0],
+                actionURL:"",
+                actionURI:""
+            },$scope.$actionData);
         }]);
 })());

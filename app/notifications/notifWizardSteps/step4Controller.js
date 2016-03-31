@@ -15,13 +15,20 @@
         .controller('step4Controller', ['$scope', function ($scope) {
             // var thisController=this;
             var asThisController=$scope.step4Ctrl={};
+            var contextData=$scope.$context.data;
+            $scope.$context.behavior.leaving = function(options, callback) {
+                var value=asThisController.aceSession.getDocument().getValue();
+                if(value.length>0 && asThisController.aceSession.getAnnotations().length>0){
+                    callback(false);
+                }
+                else {
+                    contextData.stepData[4] = {json:value};
+                    callback(true);
+                }
+            };
 
             asThisController.aceLoaded = function(_editor) {
                 asThisController.aceSession = _editor.getSession();
             };
-            // get the value and check validation
-            // var annotList=asThisController.aceSession.getAnnotations();
-            // if(annotList.length)asThisController.isvalid=false;
-            // var value=aceSession.getDocument().getValue();
         }]);
 })());

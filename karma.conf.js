@@ -32,6 +32,7 @@ module.exports = function(config) {
       "assets/libs/angular-touch/angular-touch.js",
 
       "assets/libs/ui-select/dist/select.js",
+      "ssets/libs/ng-tags-input/ng-tags-input.js",
       "assets/libs/ng-file-upload-shim/ng-file-upload-shim.min.js",
       "assets/libs/ng-file-upload/ng-file-upload.min.js",
 

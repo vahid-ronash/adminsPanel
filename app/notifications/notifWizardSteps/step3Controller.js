@@ -16,18 +16,24 @@
             //var thisController=this;
 
             var asThisController=$scope.step3Ctrl={};
+            var contextData=$scope.$context.data;
+            $scope.$context.behavior.leaving = function(options, callback) {
+                contextData.stepData[3]=asThisController.data;
+                callback(true);
+            };
+
             asThisController.maxButtonCount=3;
             asThisController.buttonList=[];
 
-            asThisController.actions=[
-
-            ];
+            asThisController.data={
+                actions:[]
+            };
             asThisController.addAction=function(){
-                if(asThisController.actions.length<3)
-                    asThisController.actions.push({});
+                if(asThisController.data.actions.length<3)
+                    asThisController.data.actions.push({});
             };
             asThisController.removeAction=function(index){
-                asThisController.actions.splice(index,1);
+                asThisController.data.actions.splice(index,1);
             };
         }]);
 })());
