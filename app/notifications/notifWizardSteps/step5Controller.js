@@ -28,10 +28,10 @@
             asThisController.LEDColors=['yellow','red','green'];
 
             asThisController.voiceList=[
-                {name:"voice1",path:"voice1.mp3"},
-                {name:"voice2",path:"voice2.mp3"},
-                {name:"voice3",path:"voice3.mp3"},
-                {name:"voice4",path:"voice4.mp3"}
+                {name:"voice1",path:"assets/voices/voice1.mp3"},
+                {name:"voice2",path:"assets/voices/voice2.mp3"},
+                {name:"voice3",path:"assets/voices/voice3.mp3"},
+                {name:"voice4",path:"assets/voices/voice4.mp3"}
             ];
 
             asThisController.data={

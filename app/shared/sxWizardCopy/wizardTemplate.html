@@ -39,6 +39,10 @@
                 ng-click="goById(button.stepFn(), false)">{{button.text}}</button>
     </div>
     <div class="btn-group">
+        <button class="btn btn-success"
+                ng-if="$current.step.$context.data.canSendNotification"
+                ng-disabled="_entering || _leaving"
+                ng-click="success()">{{'WIZARD_FIN' | translate}}</button>
         <button class="btn btn-default" ng-click="cancel()">{{'CANCEL' | translate}}</button>
         <button class="btn btn-default"
                 ng-disabled="_entering || _leaving || _history.length <= 0"
@@ -47,10 +51,5 @@
                 ng-show="$stepsOrder.indexOf($current.step.id) < $stepsOrder.length - 1"
                 ng-disabled="_entering || _leaving"
                 ng-click="next()">{{'WIZARD_NEXT' | translate}}</button>
-        <button class="btn btn-success"
-                ng-if="$current.step.$context.canSendNotification"
-                ng-disabled="_entering || _leaving"
-                ng-click="success()">{{'WIZARD_FIN' | translate}}</button>
-        <!--ng-show="_showFinishButton"-->
     </div>
 </div>

@@ -12,18 +12,22 @@
     'use strict';
     angular
         .module('app')
-        .controller('step1Controller', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
+        .controller('step1Controller', ['$scope', 'Upload', '$timeout','$filter', function ($scope, Upload, $timeout,$filter) {
             //var thisController=this;
             var contextData = $scope.$context.data;
-            $scope.$context.canSendNotification = false;
+            contextData.canSendNotification = false;
             $scope.$context.behavior.leaving = function (options, callback) {
                 contextData.stepData[1] = asThisController.data;
-                $scope.$context.canSendNotification=true;
-                callback(true);
+                if(contextData.canSendNotification)
+                    callback(true);
+                else {
+                    callback(false);
+                    $scope.$context.validationError=$filter('translate')('REQUIRE_TEXT_TITLE');
+                }
             };
             $scope.$context.behavior.entering = function (options, callback) {
                 asThisController.isMessageHidden = contextData.stepData[0].isHidden;
-                if (asThisController.isMessageHidden)$scope.$context.canSendNotification=true;
+                if (asThisController.isMessageHidden)contextData.canSendNotification=true;
                 callback(true);
             };
             var asThisController = $scope.step1Ctrl = {};
@@ -38,9 +42,9 @@
             asThisController.dataChange=function(){
                 var data=asThisController.data;
                 if (asThisController.isMessageHidden || data.title && data.text && data.title.length && data.text.length) {
-                    $scope.$context.canSendNotification = true;
+                    contextData.canSendNotification = true;
                 } else {
-                    $scope.$context.canSendNotification = false;
+                    contextData.canSendNotification = false;
                 }
             };
             asThisController.selectedFile = 0;

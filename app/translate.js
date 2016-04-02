@@ -93,6 +93,12 @@ angular
         'WIZARD_NEXT':'next',
         'WIZARD_FIN':'send',
         'TIME_SECOND':'second',
+        'URL':'url',
+        'URI':'uri command',
+        'NOTIF_VOICE':'notification voice',
+        'SELECT_VOICE':'select voice',
+        'REQUIRE_APP_ERROR':'please choose your app first',
+        'REQUIRE_TEXT_TITLE':'please first fill the text and title'
     });
 
     $translateProvider.translations('fa', {
@@ -188,7 +194,8 @@ angular
         'URI':'uri command',
         'NOTIF_VOICE':'صدای اعلان',
         'SELECT_VOICE':'انتخاب صدا',
-        'REQUIRE_APP_ERROR':'ابتدااپلیکیشن های مورد نظر را انتخاب کنید'
+        'REQUIRE_APP_ERROR':'ابتدااپلیکیشن های مورد نظر را انتخاب کنید',
+        'REQUIRE_TEXT_TITLE':'لطفا فیلد های تیتر و متن را کامل کنید.'
     });
 
     $translateProvider.preferredLanguage('fa');
