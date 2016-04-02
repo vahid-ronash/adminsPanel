@@ -16,4 +16,17 @@ describe('notification steps : ', function() {
         $controller('step1Controller', {$scope:$scope});
         expect($scope.step1Ctrl).toBeDefined(true);
     }));
+
+    it('step 1 test watch', inject(function ($rootScope) {
+        var $scope = $rootScope.$new();
+        $scope.$context={data:1,behavior:{}};
+        $controller('step1Controller', {$scope:$scope});
+        expect($scope.step1Ctrl.data.title.length).toEqual(0);
+        $scope.step1Ctrl.data.text="sdcr";
+        $scope.step1Ctrl.dataChange();
+        expect($scope.$context.canSendNotification).toBe(false);
+        $scope.step1Ctrl.data.title="asdasd";
+        $scope.step1Ctrl.dataChange();
+        expect($scope.$context.canSendNotification).toBe(true);
+    }));
 });

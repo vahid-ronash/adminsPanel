@@ -12,12 +12,13 @@
     'use strict';
     angular
         .module('app')
-        .controller('step0Controller', ['$scope', 'Upload', '$timeout','$http', function ($scope, Upload,$timeout,$http) {
+        .controller('step0Controller', ['$scope', 'Upload', '$timeout','$http','$filter', function ($scope, Upload,$timeout,$http,$filter) {
             //var thisController=this;
             var contextData=$scope.$context.data;
             $scope.$context.behavior.leaving = function(options, callback) {
                 if(!asThisController.data.selectedApps.length){
                     callback(false);
+                    $scope.$context.validationError=$filter('translate')('REQUIRE_APP_ERROR');
                 }
                 else {
                     contextData.stepData[0]=asThisController.data;

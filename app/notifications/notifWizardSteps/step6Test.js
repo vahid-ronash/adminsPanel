@@ -21,8 +21,8 @@ describe('notification steps : ', function() {
         var $scope = $rootScope.$new();
         $scope.$context={data:1,behavior:{leaving:function(){}}};
         $controller('step6Controller', {$scope:$scope});
-        expect($scope.step6Ctrl.isIMEI("3213211")).toBe(false);
-        expect($scope.step6Ctrl.isIMEI("165216516514621")).toBe(false);
-        expect($scope.step6Ctrl.isIMEI("359492064832138")).toBe(true);
+        expect($scope.step6Ctrl.isIMEI({text:"3213211"})).toBe(false);
+        expect($scope.step6Ctrl.isIMEI({text:"165216516514621"})).toBe(false);
+        expect($scope.step6Ctrl.isIMEI({text:"359492064832138"})).toBe(true);
     }));
 });

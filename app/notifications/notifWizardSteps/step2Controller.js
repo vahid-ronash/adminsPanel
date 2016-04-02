@@ -20,6 +20,10 @@
                 contextData.stepData[2]=asThisController.data;
                 callback(true);
             };
+            $scope.$context.behavior.entering = function (options, callback) {
+                $scope.$context.canSendNotification=true;
+                callback(true);
+            };
             asThisController.data={
                 exTitle:"",
                 exText:"",

@@ -93,11 +93,11 @@
                     if (isReverse) order = order.substr(1);
                     filtered = $filter('orderBy')(filtered, order, isReverse);
                 }
-                var result = filtered.slice(param.offset, param.offset+ param.limit);
+                var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
 
                 var resultobj={
                     data: result,
-                    numberOfPages: Math.ceil(filtered.length / param.number)
+                    numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
                 return [200, resultobj, {}];
             });
@@ -149,11 +149,11 @@
                         if (isReverse) order = order.substr(1);
                         filtered = $filter('orderBy')(filtered, order, isReverse);
                     }
-                    var result = filtered.slice(param.offset, param.offset+ param.limit);
+                    var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
 
                     var resultobj={
                         data: result,
-                        numberOfPages: Math.ceil(filtered.length / param.number)
+                        numberOfPages: Math.ceil(filtered.length / param.limit)
                     };
                     return [200, resultobj, {}];
             });

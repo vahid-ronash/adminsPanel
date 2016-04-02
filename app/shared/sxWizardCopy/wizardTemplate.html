@@ -29,6 +29,7 @@
          sx-wizard-init="go(0, false)">
     </div>
 </div>
+<span class="stepValidation error">{{$current.step.$context.validationError}}</span>
 <div class="modal-footer">
     <div class="btn-group pull-left">
         <div class="step-title">{{$current.step.title}}</div>
@@ -47,6 +48,7 @@
                 ng-disabled="_entering || _leaving"
                 ng-click="next()">{{'WIZARD_NEXT' | translate}}</button>
         <button class="btn btn-success"
+                ng-if="$current.step.$context.canSendNotification"
                 ng-disabled="_entering || _leaving"
                 ng-click="success()">{{'WIZARD_FIN' | translate}}</button>
         <!--ng-show="_showFinishButton"-->

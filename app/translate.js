@@ -187,7 +187,8 @@ angular
         'URL':'url',
         'URI':'uri command',
         'NOTIF_VOICE':'صدای اعلان',
-        'SELECT_VOICE':'انتخاب صدا'
+        'SELECT_VOICE':'انتخاب صدا',
+        'REQUIRE_APP_ERROR':'ابتدااپلیکیشن های مورد نظر را انتخاب کنید'
     });
 
     $translateProvider.preferredLanguage('fa');

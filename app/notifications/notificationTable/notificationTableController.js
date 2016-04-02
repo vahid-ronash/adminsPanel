@@ -14,7 +14,6 @@
         .module("app")
         .controller('notificationTableController', ['$scope', 'notificationResource', function ($scope, $notificationResource) {
             var thisController = this;
-
             /**
              * @ngdoc method
              * @name selectPage
@@ -26,8 +25,6 @@
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;
-
-
 
                 var filters={
                     offset:pagination.start || 0,
