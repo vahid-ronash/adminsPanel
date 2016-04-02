@@ -33,18 +33,18 @@
             });
             wizardInstance
                 .addStep({
+                    id: 'step-0-welcome',
+                    title: $filter('translate')('NOTIF_FIRST_STEP'),
+                    templateUrl: 'app/notifications/notifWizardSteps/step0.html',
+                    controller:'step0Controller',
+                    controllerAs:'step0Ctrl'
+                })
+                .addStep({
                     id: 'step-1-welcome',
                     title: $filter('translate')('NOTIF_FIRST_STEP'),
                     templateUrl: 'app/notifications/notifWizardSteps/step1.html',
                     controller:'step1Controller',
                     controllerAs:'step1Ctrl'
-                })
-                .addStep({
-                    id: 'step-1_5-welcome',
-                    title: $filter('translate')('NOTIF_FIRST_STEP'),
-                    templateUrl: 'app/notifications/notifWizardSteps/step1_5.html',
-                    controller:'step1_5Controller',
-                    controllerAs:'step1_5Ctrl'
                 })
                 .addStep({
                     id: 'step-2-welcome',

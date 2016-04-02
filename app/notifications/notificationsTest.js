@@ -12,6 +12,7 @@ describe('notification page', function() {
 
     it('controller is work', function () {
         var controller = $controller('notificationsController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
+        controller.showWizard();
+        expect(controller.showWizard).toBeDefined();
     });
 });

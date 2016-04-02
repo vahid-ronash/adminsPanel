@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="m-b-md">
+        <label class="md-check">
+            <input type="checkbox" ng-model="step0Ctrl.data.isHidden"><i class="primary"></i>{{'IS_HIDDEN' | translate}}
+        </label>
+    </div>
+
+    <ui-select multiple ng-model="step0Ctrl.data.selectedApps">
+        <ui-select-match placeholder="{{'SELECT_APP' | translate}}">
+            <span ng-bind="$item.name"></span>
+        </ui-select-match>
+        <ui-select-choices repeat="item in (step0Ctrl.appList | filter: $select.search)">
+            <span ng-bind="item.name"></span>
+        </ui-select-choices>
+    </ui-select>
+</div>

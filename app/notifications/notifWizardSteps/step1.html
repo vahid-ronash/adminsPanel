@@ -1,16 +1,63 @@
-<div class="container">
-    <div class="m-b-md">
-        <label class="md-check">
-            <input type="checkbox" ng-model="step1Ctrl.data.isHidden"><i class="primary"></i>{{'IS_HIDDEN' | translate}}
-        </label>
-    </div>
+<div class="md-form-group float-label">
+    <input class="md-input" ng-required="!step1Ctrl.data.isHidden" ng-model="step1Ctrl.data.title" focus-me="step1Ctrl.focusStart">
+    <label>{{'NOTIF_TITLE' | translate}}</label>
+</div>
+<div class="md-form-group float-label">
+    <input class="md-input" ng-required="!step1Ctrl.data.isHidden" ng-model="step1Ctrl.data.text">
+    <label>{{'TEXT' | translate}}</label>
+</div>
 
-    <ui-select multiple ng-model="step1Ctrl.data.selectedApps">
-        <ui-select-match placeholder="{{'SELECT_APP' | translate}}">
-            <span ng-bind="$item.name"></span>
-        </ui-select-match>
-        <ui-select-choices repeat="item in (step1Ctrl.appList | filter: $select.search)">
-            <span ng-bind="item.name"></span>
-        </ui-select-choices>
-    </ui-select>
+<small class="help-block"></small>
+<div ng-if="!step1Ctrl.isMessageHidden">
+    <notification-action
+        actionData="step1Ctrl.data.action"
+    </notification-action>
+</div>
+
+
+<!--upload -->
+<!--<small class="help-block">{{'ICON_DESC' | translate}}</small>-->
+<div>
+    <div class="drop-box">
+        <div ngf-drop ngf-select
+             ng-model="step1Ctrl.selectedFile"
+             ngf-drag-over-class="'dragover'"
+             ngf-multiple="false"
+             ngf-allow-dir="true"
+             accept="image/*"
+             ngf-pattern="'image/*'">
+            <div>{{'ICON_DESC' | translate}}</div>
+
+            <!--<div>-->
+            <!--<img ng-src="step1Ctrl.data.croppedDataUrl" />-->
+            <!--</div>-->
+        </div>
+        <div ng-if="step1Ctrl.selectedFile && !step1Ctrl.isUpload" class="cropArea">
+            <img-crop
+                    image="step1Ctrl.selectedFile  | ngfDataUrl"
+                    result-image="step1Ctrl.data.croppedDataUrl"
+                    result-image-size="192"
+                    area-type="square"
+            >
+            </img-crop>
+        </div>
+    </div>
+    <div ngf-no-file-drop>
+        <!-- File Drag/Drop is not supported for this browser -->
+        <div class="button" ngf-select  ng-model="selectedFile"  ngf-multiple="false">{{'SELECT_IMAGE'|translate}}</div>
+    </div>
+    <div ng-if="step1Ctrl.isUpload">
+        <uib-progressbar
+                type="success"
+                class="progress-striped active"
+                max="step1Ctrl.uploadData.total"
+                value="step1Ctrl.uploadData.precent">
+            <i>{{step1Ctrl.uploadData.uploaded}}/{{step1Ctrl.uploadData.total}}</i>
+        </uib-progressbar>
+    </div>
+</div>
+
+<div class="md-form-group float-label">
+    <input class="md-input" ng-model="step1Ctrl.data.notifTitleText">
+    <label>{{'TITLE_BAR_TEXT' | translate}}</label>
 </div>

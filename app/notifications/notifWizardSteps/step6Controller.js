@@ -24,13 +24,14 @@
 
             asThisController.selectedFavorites =["356938035643809","651956116541","3213521651"];
             //TODO: it should add to tagging: but it has bug now and its solved some days ago and we can install latest version
-            asThisController.isIMEI=function(newtag){
+            asThisController.isIMEI=function(newTag){
+                var imeiInput=newTag.text;
                 var etal = /^[0-9]{15}$/;
-                if (!etal.test(newtag))
+                if (!etal.test(imeiInput))
                     return false;
                 var sum = 0, mul = 2, l = 14;
                 for (var i = 0; i < l; i++) {
-                    var digit = newtag.substring(l-i-1,l-i);
+                    var digit = imeiInput.substring(l-i-1,l-i);
                     var tp = parseInt(digit,10)*mul;
                     if (tp >= 10)
                         sum += (tp % 10) +1;
@@ -42,9 +43,8 @@
                         mul--;
                 }
                 var chk = ((10 - (sum % 10)) % 10);
-                return chk == parseInt(newtag.substring(14, 15), 10);
+                return chk == parseInt(imeiInput.substring(14, 15), 10);
             };
-            asThisController.loadTags=function(){
-            };
+            asThisController.loadTags=function(){};
         }]);
 })());
