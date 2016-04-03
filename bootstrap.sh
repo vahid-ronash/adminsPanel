@@ -2,12 +2,17 @@
 
 usage() {
 	echo ""
-	echo "Usage: "`basename $0`" [--proxy-path]" >&2
+	echo "Usage: "`basename $0`" [--proxy-path] [--no-bin-links]" >&2
 	echo "--proxy-path: NGINX api proxy path (i.e. http://127.0.0.1:8080/)"
+	echo "--no-bin-links: Do not use npm symlinks since virtual box on windows does not support it"
 }
 
 while [ $# -gt 0 ]; do
     case $1 in
+        --no-bin-links)
+            disable_symlinks="yes"
+            shift;
+            ;;
         --proxy-path)
             proxy_pass=$2
 			shift;
@@ -70,9 +75,15 @@ sudo apt-get install -y nodejs
 echo "Installing bower & gulp globally..."
 sudo npm install -g bower gulp
 
-#echo "Installing npm packages..."
-#cd /var/www/pushe
-#npm install
+echo "Installing npm packages..."
+cd /var/www/pushe
+
+# FIXME Issue PUSH-396 - Find a suitable workaround that works for windows and makes npm usable
+if [ x${disable_symlinks} = x"yes" ]; then
+    npm install --no-bin-links
+else
+    npm install
+fi
 
 echo "Install bower packages without asking about version conflict and install last version..."
 cd /var/www/pushe
