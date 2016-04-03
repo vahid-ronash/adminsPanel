@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('forgetPasswordController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
+        .controller('forgotPasswordController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
             /**

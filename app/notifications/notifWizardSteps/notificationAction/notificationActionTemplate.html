@@ -1,16 +1,16 @@
-<ui-select ng-model="notifActionCtrl.actionData.action">
+<ui-select ng-model="notifActionCtrl.selectedAction">
     <ui-select-match placeholder="{{'ACTION_PLACEHOLDER' | translate}}">
-        <small ng-bind="$select.selected.desc"></small>
+        <small uib-tooltip="{{$select.selected.desc}}" tooltip-trigger="mouseenter" ng-bind="$select.selected.name"></small>
     </ui-select-match>
     <ui-select-choices repeat="item in (notifActionCtrl.buttonClickActionList | filter: $select.search) track by item.id">
-        <span ng-bind="item.name"></span>
-        <small ng-bind="item.desc"></small>
+        <span uib-tooltip="{{item.desc}}" tooltip-trigger="mouseenter" ng-bind="item.name"></span>
     </ui-select-choices>
 </ui-select>
 
-<div ng-if="notifActionCtrl.actionData.action.id==3" class="md-form-group float-label">
+<div ng-if="notifActionCtrl.selectedAction.id==3" class="md-form-group float-label">
     <form name="urlform">
-        <input placeholder="" name="urlpath" type="text" class="md-input" ng-model="notifActionCtrl.actionData.actionURL" required ng-pattern=/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)$/i>
+        <input placeholder="" name="urlpath" type="text" class="md-input" ng-model="notifActionCtrl.actionData.url" required
+               ng-pattern=/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)$/i>
         <label>{{'URL' | translate}}</label>
         <small ng-if="urlform.urlpath.$error.required" class="error">this field has to fill</small>
         <small ng-if="!urlform.urlpath.$error.required && !urlform.urlpath.$valid" class="error">uri is not correct</small>
@@ -19,7 +19,8 @@
 
 <div ng-if="notifActionCtrl.actionData.action.id==4" class="md-form-group float-label">
     <form name="uriform">
-        <input placeholder="" name="uriCommand" type="text" class="md-input" ng-model="notifActionCtrl.actionData.actionURI" required ng-pattern=/^([a-z0-9+.-]+):(?:\/\/(?:((?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*)@)?((?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*)(?::(\d*))?(\/(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?|(\/?(?:[a-z0-9-._~!$&'()*+,;=:@]|%[0-9A-F]{2})+(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?)(?:\?((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?(?:#((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?$/i>
+        <input placeholder="" name="uriCommand" type="text" class="md-input" ng-model="notifActionCtrl.actionData.url" required
+               ng-pattern=/^([a-z0-9+.-]+):(?:\/\/(?:((?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*)@)?((?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*)(?::(\d*))?(\/(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?|(\/?(?:[a-z0-9-._~!$&'()*+,;=:@]|%[0-9A-F]{2})+(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?)(?:\?((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?(?:#((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?$/i>
         <label>{{'URI' | translate}}</label>
         <small ng-if="uriform.uriCommand.$error.required" class="error">this field has to fill</small>
         <small ng-if="!uriform.uriCommand.$error.required && !uriform.uriCommand.$valid" class="error">uri is not correct</small>

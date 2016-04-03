@@ -10,19 +10,19 @@ describe('notification steps : ', function() {
         $controller = _$controller_;
     }));
 
-    it('step 6 controller test working', inject(function ($rootScope) {
+    it('step 7 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
         $scope.$context={data:1,behavior:{leaving:function(){}}};
-        $controller('step6Controller', {$scope:$scope});
-        expect($scope.step6Ctrl).toBeDefined(true);
+        $controller('step7Controller', {$scope:$scope});
+        expect($scope.step7Ctrl).toBeDefined(true);
     }));
 
     it('is IMEI test', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
         $scope.$context={data:1,behavior:{leaving:function(){}}};
-        $controller('step6Controller', {$scope:$scope});
-        expect($scope.step6Ctrl.isIMEI({text:"3213211"})).toBe(false);
-        expect($scope.step6Ctrl.isIMEI({text:"165216516514621"})).toBe(false);
-        expect($scope.step6Ctrl.isIMEI({text:"359492064832138"})).toBe(true);
+        $controller('step7Controller', {$scope:$scope});
+        expect($scope.step7Ctrl.isIMEI({text:"3213211"})).toBe(false);
+        expect($scope.step7Ctrl.isIMEI({text:"165216516514621"})).toBe(false);
+        expect($scope.step7Ctrl.isIMEI({text:"359492064832138"})).toBe(true);
     }));
 });

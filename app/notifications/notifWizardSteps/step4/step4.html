@@ -1,4 +1,4 @@
-<div ng-repeat="action in step3Ctrl.data.actions">
+<div ng-repeat="action in step4Ctrl.data.buttons">
     <div class="container">
         <div class="col-xs-1 col-sm-2">
             <button class="btn btn-secondary">
@@ -10,5 +10,5 @@
         </div>
     </div>
 </div>
-<button class="btn" ng-if="step3Ctrl.data.actions.length<3" ng-click="step3Ctrl.addAction()">{{'ADD_NOTIF_BUTTON' | translate}}</button>
+<button class="btn" ng-if="step4Ctrl.data.buttons.length<3" ng-click="step4Ctrl.addAction()">{{'ADD_NOTIF_BUTTON' | translate}}</button>
 <small class="help-block"></small>

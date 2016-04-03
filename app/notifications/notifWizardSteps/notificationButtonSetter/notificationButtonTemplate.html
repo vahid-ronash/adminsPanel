@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-xs-3">
         <div class="md-form-group float-label">
-            <input class="md-input" ng-model="notifButtonCtrl.data.title" focus-me="notifButtonCtrl.focusStart">
+            <input class="md-input" ng-model="notifButtonCtrl.data.btn_content" focus-me="notifButtonCtrl.focusStart">
             <label>{{'NOTIF_TITLE' | translate}}</label>
         </div>
     </div>
     <div class="col-xs-4">
-        <ui-select ng-model="notifButtonCtrl.data.icon">
+        <ui-select ng-model="notifButtonCtrl.data.btn_icon">
             <ui-select-match placeholder="{{'ICON' | translate}}">
                 <span>{{$select.selected}}</span>
                 <i class="material-icons" ng-bind="$select.selected"></i>
@@ -18,7 +18,7 @@
         </ui-select>
     </div>
     <div class="col-xs-5">
-        <notification-action actionData="notifButtonCtrl.data.actionData">
+        <notification-action actionData="notifButtonCtrl.data.btn_action">
         </notification-action>
     </div>
 </div>

@@ -3,18 +3,19 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step5Controller
+ * @name adminsPanel.controller:step6Controller
  * @description
- * control notification wizard step 5
+ * control notification wizard step 6
+ * it determine notifications alert things(LED, voice , vibrate , screen)
  */
 /*global angular */
 ((function() {
     'use strict';
     angular
         .module('app')
-        .controller('step5Controller', ['$scope', function ($scope) {
+        .controller('step6Controller', ['$scope', function ($scope) {
             // var thisController=this;
-            var asThisController=$scope.step5Ctrl={};
+            var asThisController=$scope.step6Ctrl={};
 
             var contextData=$scope.$context.data;
             $scope.$context.behavior.leaving = function(options, callback) {
@@ -35,7 +36,7 @@
             ];
 
             asThisController.data={
-                screen:{
+                screen:{//wake_screen
                     turnON:false
                 },
                 voice:{

@@ -11,12 +11,12 @@ describe('forget password controller : ', function() {
     }));
 
     it('controller is defined', function () {
-        var controller = $controller('forgetPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
+        var controller = $controller('forgotPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
         expect(controller.app.name.length>0).toEqual(true);
     });
 
     it('test submit', inject(function (_$q_,$timeout) {
-        var controller = $controller('forgetPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
+        var controller = $controller('forgotPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.request={
             email:"demo@pushe.co"
         };

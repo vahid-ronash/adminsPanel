@@ -3,22 +3,23 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step6Controller
+ * @name adminsPanel.controller:step7Controller
  * @description
- * control notification wizard step 6
+ * control notification wizard step 7
+ * it will filters contacts
  */
 /*global angular */
 ((function() {
     'use strict';
     angular
         .module('app')
-        .controller('step6Controller', ['$scope', function ($scope) {
+        .controller('step7Controller', ['$scope', function ($scope) {
             // var thisController=this;
-            var asThisController=$scope.step6Ctrl={};
+            var asThisController=$scope.step7Ctrl={};
 
             var contextData=$scope.$context.data;
             $scope.$context.behavior.leaving = function(options, callback) {
-                contextData.stepData[6]=asThisController.selectedFavorites;
+                contextData.stepData[6]={contacts:asThisController.selectedFavorites};
                 callback(true);
             };
 

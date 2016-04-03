@@ -10,10 +10,10 @@ describe('notification steps : ', function() {
         $controller = _$controller_;
     }));
 
-    it('step 2 controller test working', inject(function ($rootScope) {
+    it('step 6 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
         $scope.$context={data:1,behavior:{}};
-        $controller('step2Controller', {$scope:$scope});
-        expect($scope.step2Ctrl).toBeDefined(true);
+        $controller('step6Controller', {$scope:$scope});
+        expect($scope.step6Ctrl).toBeDefined(true);
     }));
 });

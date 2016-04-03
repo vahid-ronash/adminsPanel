@@ -12,20 +12,25 @@
     'use strict';
     angular
         .module("app")
-        .controller('notificationActionController', ['$scope', function ($scope) {
+        .controller('notificationActionController', ['$scope','$filter', function ($scope,$filter) {
             var thisController = this;
-            
+
             thisController.buttonClickActionList = [
-                {id: 1, name: "no action", desc: 'با کلیک روی نوتیفیکیشن هیچ اتفاقی نمی افتد.'},
-                {id: 2, name: "open Application", desc: 'با کلیک روی نوتیفیکیشن اپلیکیشن باز میشود.'},
-                {id: 3, name: "open URL", desc: 'با کلیک روی نوتیفیکیشن یک لینک در مرورگر کاربر اجرا میشود.'},
-                {id: 4, name: "open URI", desc: 'با کلیک روی نوتیفیکیشن یک دستور در گوشی کاربر اجرا میشود.'},
-                {id: 5, name: "open Dialog", desc: 'با کلیک روی نوتیفیکیشن یک پنجره ای برای او باز میشود.'}
+                {id: 1, name: $filter('translate')("NOTHING_HAPPEN_NAME"), desc:$filter('translate')('NOTHING_HAPPEN_DESC')},
+                {id: 2, name: $filter('translate')("OPEN_APP_NAME"), desc:$filter('translate')('OPEN_APP_DESC' )},
+                {id: 3, name: $filter('translate')("OPEN_URL_NAME"), desc:$filter('translate')('OPEN_URL_DESC'  )},
+                {id: 4, name: $filter('translate')("OPEN_URI_NAME"), desc:$filter('translate')("OPEN_URI_DESC" )},
+                {id: 5, name: $filter('translate')("OPEN_DIALOG_NAME"), desc:$filter('translate')("OPEN_DIALOG_DESC" )}
             ];
-            $scope.actionData=thisController.actionData=angular.extend({
-                action:thisController.buttonClickActionList[0],
-                actionURL:"",
-                actionURI:""
+            var actionTypeMap={1:'',2:'a',3:'u',4:'u',5:'d'};
+            thisController.selectedAction=thisController.buttonClickActionList[0];
+            thisController.selectAction=function(){
+                thisController.actionData.action_type=actionTypeMap[thisController.selectedAction.id];
+            };
+
+            $scope.$actionData=thisController.actionData=angular.extend({
+                action_type:actionTypeMap[thisController.buttonClickActionList[0].id],
+                url:""
             },$scope.$actionData);
         }]);
 })());

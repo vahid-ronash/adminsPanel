@@ -5,14 +5,15 @@
  * @ngdoc controller
  * @name adminsPanel.controller:step1Controller
  * @description
- * control notification wizard step 1
+ * control notification wizard step 2
+ * it gives title text icon ticker fields
  */
 /*global angular */
 ((function () {
     'use strict';
     angular
         .module('app')
-        .controller('step1Controller', ['$scope', 'Upload', '$timeout','$filter', function ($scope, Upload, $timeout,$filter) {
+        .controller('step2Controller', ['$scope', 'Upload', '$timeout','$filter', function ($scope, Upload, $timeout,$filter) {
             //var thisController=this;
             var contextData = $scope.$context.data;
             contextData.canSendNotification = false;
@@ -26,22 +27,23 @@
                 }
             };
             $scope.$context.behavior.entering = function (options, callback) {
+                asThisController.focusStart=true;
                 asThisController.isMessageHidden = contextData.stepData[0].isHidden;
                 if (asThisController.isMessageHidden)contextData.canSendNotification=true;
                 callback(true);
             };
-            var asThisController = $scope.step1Ctrl = {};
+            var asThisController = $scope.step2Ctrl = {};
             asThisController.data = {
                 title: "",
-                text: "",
-                notifTitleText: "",
-                croppedDataUrl: "",
+                content: "",
+                ticker: "",
+                icon: "",
                 action: {}
             };
             asThisController.focusStart=true;
             asThisController.dataChange=function(){
                 var data=asThisController.data;
-                if (asThisController.isMessageHidden || data.title && data.text && data.title.length && data.text.length) {
+                if (asThisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length) {
                     contextData.canSendNotification = true;
                 } else {
                     contextData.canSendNotification = false;
@@ -56,7 +58,7 @@
                         url: '/uploadIconImage',
                         data: {
                             username: $scope.username,
-                            file: Upload.dataUrltoBlob(asThisController.data.croppedDataUrl, asThisController.selectedFile.name)
+                            file: Upload.dataUrltoBlob(asThisController.data.icon, asThisController.selectedFile.name)
                         }
                     }).then(function (resp) {
                         $timeout(function () {

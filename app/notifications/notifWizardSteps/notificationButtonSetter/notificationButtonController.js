@@ -16,9 +16,9 @@
             var thisController = this;
 
             thisController.data=$scope.$data=angular.extend({
-                title: "",
-                icon: "",
-                actionData: ""
+                btn_content: "",
+                btn_icon: "",
+                btn_action: ""
             },$scope.$data);
 
             thisController.icons = [

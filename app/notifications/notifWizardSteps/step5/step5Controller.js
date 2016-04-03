@@ -3,18 +3,19 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step4Controller
+ * @name adminsPanel.controller:step5Controller
  * @description
- * control notification wizard step 4
+ * control notification wizard step 5
+ * enable user to write his json data
  */
 /*global angular */
 ((function() {
     'use strict';
     angular
         .module('app')
-        .controller('step4Controller', ['$scope', function ($scope) {
+        .controller('step5Controller', ['$scope', function ($scope) {
             // var thisController=this;
-            var asThisController=$scope.step4Ctrl={};
+            var asThisController=$scope.step5Ctrl={};
             var contextData=$scope.$context.data;
             $scope.$context.behavior.leaving = function(options, callback) {
                 var value=asThisController.aceSession.getDocument().getValue();

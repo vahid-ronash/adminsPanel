@@ -157,6 +157,29 @@
                     };
                     return [200, resultobj, {}];
             });
+            $httpBackend.whenPOST('/notification/notifications/').respond(function(method, url, keys,headers,param){
+                if(Math.random()>0.5){
+                    return [200, {"id":1,"filters":[
+                        {"id":1,
+                            "criterias":[
+                                {"id":2,"key":"application_id","value":"1","operator":"="},
+                                {"id":1,"key":"instance_id","value":"foo","operator":"lt"}
+                            ],
+                            "estimation_count":0,
+                            "type":1}],
+                        "notification_data":{"test1":"test1"},
+                        "sent_time":null,
+                        "end_time":null,
+                        "status":"1","sent_count":0,
+                        "delivered_count":0,
+                        "clicked_count":0,
+                        "dismissed_count":0,
+                        "nack_count":0},
+                        {}];
+                }
+                return [200, {"filters":[{"criterias":[{"key":["Intallation filter does not have wrong_key in its keys"]}]}]}, {}];
+            });
+
             // $httpBackend.expectGET(url);
             //$httpBackend.whenGET(/.*/).passThrough();
             //$httpBackend.whenPOST(/.*/).passThrough();

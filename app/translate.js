@@ -184,7 +184,7 @@ angular
         'COLOR':'رنگ',
         'LED':'LED',
         'IMEI':'IMEI',
-        'NOTIF_SIXTH_STEP':'ارسال آزمایشی',
+        'NOTIF_SIXTH_STEP':'فیلتر مخاطبین',
         'ADD_NOTIF_BUTTON':'افزودن دکمه',
         'WIZARD_PREV':'قبل',
         'WIZARD_NEXT':'بعدی',
@@ -195,7 +195,17 @@ angular
         'NOTIF_VOICE':'صدای اعلان',
         'SELECT_VOICE':'انتخاب صدا',
         'REQUIRE_APP_ERROR':'ابتدااپلیکیشن های مورد نظر را انتخاب کنید',
-        'REQUIRE_TEXT_TITLE':'لطفا فیلد های تیتر و متن را کامل کنید.'
+        'REQUIRE_TEXT_TITLE':'لطفا فیلد های تیتر و متن را کامل کنید.',
+        "NOTHING_HAPPEN_NAME":'هیچ',
+        "OPEN_APP_NAME":'باز کردن نرم افزار',
+        "OPEN_URL_NAME":'بازکردن لینک',
+        "OPEN_URI_NAME":'انجام اتفاق',
+        "OPEN_DIALOG_NAME":'بازکردن پنجره',
+        'NOTHING_HAPPEN_DESC':'توضیحات',
+        'OPEN_APP_DESC':'توضیحات',
+        'OPEN_URL_DESC':'توضیحات',
+        'OPEN_URI_DESC':'توضیحات',
+        'OPEN_DIALOG_DESC':'توضیحات'
     });
 
     $translateProvider.preferredLanguage('fa');

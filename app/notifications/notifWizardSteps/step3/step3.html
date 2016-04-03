@@ -1,13 +1,13 @@
 <div class="md-form-group float-label">
-    <input class="md-input" ng-model="step2Ctrl.data.exTitle" focus-me="step2Ctrl.focusStart">
+    <input class="md-input" ng-model="step3Ctrl.data.big_tiltle" focus-me="step3Ctrl.focusStart">
     <label>{{'NOTIF_EXTITLE' | translate}}</label>
 </div>
 <div class="md-form-group float-label">
-    <input class="md-input" ng-model="step2Ctrl.data.exText">
+    <input class="md-input" ng-model="step3Ctrl.data.big_content">
     <label>{{'NOTIF_EXTEXT' | translate}}</label>
 </div>
 <div class="md-form-group float-label">
-    <input class="md-input" ng-model="step2Ctrl.data.exText">
+    <input class="md-input" ng-model="step3Ctrl.data.summary">
     <label>{{'NOTIF_BRIEF' | translate}}</label>
 </div>
 
@@ -18,7 +18,7 @@
 <div>
     <div class="drop-box">
         <div ngf-drop ngf-select
-             ng-model="step2Ctrl.selectedFile"
+             ng-model="step3Ctrl.selectedFile"
              ngf-drag-over-class="'dragover'"
              ngf-multiple="false"
              ngf-allow-dir="true"
@@ -27,13 +27,13 @@
             <div>{{'ICON_DESC' | translate}}</div>
 
             <!--<div>-->
-            <!--<img ng-src="step2Ctrl.data.croppedDataUrl" />-->
+            <!--<img ng-src="step3Ctrl.data.croppedDataUrl" />-->
             <!--</div>-->
         </div>
-        <div ng-if="step2Ctrl.selectedFile" class="cropArea">
+        <div ng-if="step3Ctrl.selectedFile" class="cropArea">
             <img-crop
-                    image="step2Ctrl.selectedFile  | ngfDataUrl"
-                    result-image="step2Ctrl.data.croppedDataUrl"
+                    image="step3Ctrl.selectedFile  | ngfDataUrl"
+                    result-image="step3Ctrl.data.croppedDataUrl"
                     result-image-size="192"
                     area-type="square"
             >
@@ -44,13 +44,13 @@
         <!-- File Drag/Drop is not supported for this browser -->
         <div class="button" ngf-select  ng-model="selectedFile"  ngf-multiple="false">{{'SELECT_IMAGE'|translate}}</div>
     </div>
-    <div ng-if="step2Ctrl.isUpload">
+    <div ng-if="step3Ctrl.isUpload">
         <uib-progressbar
                 type="success"
                 class="progress-striped active"
-                max="step2Ctrl.uploadData.total"
-                value="step2Ctrl.uploadData.precent">
-            <i>{{step2Ctrl.uploadData.uploaded}}/{{step2Ctrl.uploadData.total}}</i>
+                max="step3Ctrl.uploadData.total"
+                value="step3Ctrl.uploadData.precent">
+            <i>{{step3Ctrl.uploadData.uploaded}}/{{step3Ctrl.uploadData.total}}</i>
         </uib-progressbar>
     </div>
 </div>
