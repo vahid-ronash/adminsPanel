@@ -10,8 +10,8 @@
     'use strict';
     angular
         .module('app')
-        .config(['$routeProvider',// '$locationProvider' ,
-            function config( $routeProvider) {//$locationProvider ,  MODULE_CONFIG ) {
+        .config(['$routeProvider','EnvironmentConfig',// '$locationProvider' ,
+            function config($routeProvider,EnvironmentConfig) {//$locationProvider ,  MODULE_CONFIG ) {
                 $routeProvider
                     .when('/home', {
                         templateUrl: 'app/home/home.html',
@@ -56,15 +56,16 @@
                         controller: 'changePasswordController as changePassCtrl',
                         //resolve: need delay
                     });
-                //TODO: it has problem with mock we should add below lines after removing mock
-                    // .when('/', {
-                    //     redirectTo: '/home'
-                    // });
-                    // .otherwise({
+                if (EnvironmentConfig.mode=='production') {
+                    $routeProvider
+                    .when('/', {
+                        redirectTo: '/home'
+                    })
+                    .otherwise({
                         // if the path doesn't match any of the urls you configured
-                        // redirectTo: '/home'
-                    // });
-
+                        redirectTo: '/home'
+                    });
+                }
                 // configure html5 to get links working on jsfiddle
                 //TODO:$locationProvider.html5Mode(true); server must support
             }]

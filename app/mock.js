@@ -6,10 +6,12 @@
     'use strict';
     angular
         .module('app')
-        .config(function($provide) {
+        .config(function($provide,EnvironmentConfig) {
+            if(EnvironmentConfig.mode=="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
-        .run(function($httpBackend,$filter,$rootScope) {
+        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig) {
+            if(EnvironmentConfig.mode=="production")return true;
             $rootScope.serverAddress="";
             var appList = [
                 {id:1,name: 'Pushe Sample Eclipse', packname:'co.ronash.pushesampleeclipse'},
@@ -101,9 +103,6 @@
                 };
                 return [200, resultobj, {}];
             });
-
-
-
 
 
             var randomsNotifItems = [];

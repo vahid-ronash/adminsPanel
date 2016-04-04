@@ -1,0 +1,12 @@
+{
+  "production": {
+    "EnvironmentConfig": {
+      "mode":"production"
+    }
+  },
+  "development": {
+    "EnvironmentConfig": {
+      "mode":"development"
+    }
+  }
+}

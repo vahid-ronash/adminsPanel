@@ -27,10 +27,11 @@ angular
         'ngTagsInput',
         'ngFileUpload',
         'ngImgCrop',
+        'app.config',
         //'ui.router',
         //'ui.utils',its depricated for angular ui
         //'ui.load',//a service that differ load css and script and lazyload
         //'ui.jp',//call function with options on dom
-        'oc.lazyLoad',
+        // 'oc.lazyLoad',
         'ui.ace'
     ]);

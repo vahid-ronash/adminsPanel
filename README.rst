@@ -15,8 +15,38 @@ Requirements
 
 You'll need to have the following items installed before continuing.
 
-- `Node.js <http://nodejs.org>`_: Use the installer provided on the NodeJS website.
+- `Node.js <https://github.com/nodesource/distributions>`_: Use this distribution.
 - `Bower <http://bower.io>`_: Run ``[sudo] npm install -g bower``
+
+Quick Start
+-----------
+- install libvpx1
+- install virtualbox
+- install vagrant>=1.8.1
+
+in Windows
+set environment variables
+setx BOX_URL "file://c:/ubuntu-trusty64.box" or any path to ubuntu-trusty64.box with "file://" prefix
+setx SHELL_PROVISIONING_ARGS="--proxy-path http://192.168.1.23:8080/ --no-bin-links"
+
+in Linux
+export BOX_URL="file:///home/mojtaba/Downloads/softwares/ronash/ubuntu-trusty64.box"
+export SHELL_PROVISIONING_ARGS="--proxy-path http://192.168.1.23:8080/ --no-bin-links"
+
+after change proxy pass address we have to run `vagrant provision`
+
+vagrant up --provider virtualbox
+
+
+Deploy
+------
+
+- `curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -`
+- `sudo apt-get install -y nodejs`
+- `npm install -g bower gulp phantomjs`
+- `npm install`
+- `bower install --no-interactive --production`
+- `gulp buildProduction`
 
 Run Project
 -----------
@@ -37,6 +67,7 @@ For running test in local we have to do these
     npm install                      // to install node modules
     [sudo] npm install -g gulp
     [sudo] npm install -g karma
+    [sudo] npm install -g phantomjs
     gulp test                        // to execute tests
     gulp autotest                    // to execute tests in developing
 

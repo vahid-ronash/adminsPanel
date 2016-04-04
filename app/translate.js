@@ -205,7 +205,8 @@ angular
         'OPEN_APP_DESC':'توضیحات',
         'OPEN_URL_DESC':'توضیحات',
         'OPEN_URI_DESC':'توضیحات',
-        'OPEN_DIALOG_DESC':'توضیحات'
+        'OPEN_DIALOG_DESC':'توضیحات',
+        'JSON_INCORRECT':'فرمت جی سان صحیح نمیباشد.'
     });
 
     $translateProvider.preferredLanguage('fa');

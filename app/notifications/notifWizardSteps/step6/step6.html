@@ -16,11 +16,11 @@
         <ui-select ng-model="step6Ctrl.data.voice.selected">
             <ui-select-match placeholder="{{'SELECT_VOICE' | translate}}">
                 <span>{{$select.selected.name}}</span>
-                <audio controls> <source src="{{$select.selected.path}}" type="audio/ogg"> </audio>
+                <audio ng-if="$select.selected" controls> <source src="{{$select.selected.path}}" type="audio/ogg"> </audio>
             </ui-select-match>
             <ui-select-choices repeat="item in (step6Ctrl.voiceList | filter: $select.search)">
                 <span ng-bind="item.name"></span>
-                <audio controls> <source src="{{item.path}}" type="audio/ogg"> </audio>
+                <audio ng-if="item.path" controls> <source src="{{item.path}}" type="audio/ogg"> </audio>
             </ui-select-choices>
         </ui-select>
     </div>
