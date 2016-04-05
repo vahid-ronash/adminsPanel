@@ -53,6 +53,8 @@ module.exports = function (config) {
 
 
             "app/app.js",
+            "app/environment.js",
+            "app/urls.js",
             "app/app-controller.js",
             "app/mock.js",
             "app/config.router.js",

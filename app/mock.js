@@ -10,7 +10,7 @@
             if(EnvironmentConfig.mode=="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
-        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig) {
+        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
             if(EnvironmentConfig.mode=="production")return true;
             $rootScope.serverAddress="";
             var appList = [
@@ -20,11 +20,14 @@
                 {id:4,name: 'Pushe Sample B4A', packname:'co.ronash.pushesampleb4a'},
                 {id:5,name: 'دموی پوشه', packname:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET('/userApp').respond(appList);
-            $httpBackend.whenPUT('/userApp').respond({success:true});
+            $httpBackend.whenGET(URLS.URL_APP).respond(appList);
+            $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
-            $httpBackend.whenDELETE('/userApp/1').respond({success:true});
-            $httpBackend.whenPOST('/userApp').respond(function(method, url, data){
+            function getRegex(path,append){
+                return new RegExp(path.replace(new RegExp("/","g"),"\\/")+append);
+            }
+            $httpBackend.whenDELETE(getRegex(URLS.URL_APP,"\\d")).respond({success:true});
+            $httpBackend.whenPOST(URLS.URL_APP).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var newData=angular.extend({id:appList.length+1},dataobj);
                 appList.push(newData);
@@ -37,7 +40,7 @@
                 {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]}
             ];
             $httpBackend.whenGET('/accounting/logout').respond({success:true});
-            $httpBackend.whenPOST($rootScope.serverAddress+'/accounting/login').respond(function(method, url, data){
+            $httpBackend.whenPOST('/accounting/login').respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
@@ -82,7 +85,7 @@
             for (var i = 0; i < 1000; i++) {
                 randomsItems.push(createRandomItem(i));
             }
-            $httpBackend.whenGET(/\/installed\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/platform\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
@@ -131,32 +134,33 @@
             for (var i = 0; i < 1000; i++) {
                 randomsNotifItems.push(createRandomNotif());
             }
-            $httpBackend.whenGET(/\/notification\?.*/).respond(function(method, url, keys,headers,param){
+            // $httpBackend.whenGET(getRegex(URLS.URL_NOTIF,"\\?.*")).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/notification\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
                 // var filters=angular.fromJson(keys);
 
                 //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
                 //in our case, it actually performs the logic which would happened in the server
-                    var searchFilters=JSON.parse(JSON.stringify(param));
-                    searchFilters.ordering && delete searchFilters.ordering;
-                    searchFilters.offset && delete searchFilters.offset;
-                    searchFilters.limit && delete searchFilters.limit;
-                    var filtered = param ? $filter('filter')(randomsNotifItems, searchFilters) : randomsNotifItems;
+                var searchFilters=JSON.parse(JSON.stringify(param));
+                searchFilters.ordering && delete searchFilters.ordering;
+                searchFilters.offset && delete searchFilters.offset;
+                searchFilters.limit && delete searchFilters.limit;
+                var filtered = param ? $filter('filter')(randomsNotifItems, searchFilters) : randomsNotifItems;
 
-                    if (param.ordering) {
-                        var order = param.ordering;
-                        var isReverse = (order[0] == "-");
-                        if (isReverse) order = order.substr(1);
-                        filtered = $filter('orderBy')(filtered, order, isReverse);
-                    }
-                    var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
+                if (param.ordering) {
+                    var order = param.ordering;
+                    var isReverse = (order[0] == "-");
+                    if (isReverse) order = order.substr(1);
+                    filtered = $filter('orderBy')(filtered, order, isReverse);
+                }
+                var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
 
-                    var resultobj={
-                        data: result,
-                        numberOfPages: Math.ceil(filtered.length / param.limit)
-                    };
-                    return [200, resultobj, {}];
+                var resultobj={
+                    data: result,
+                    numberOfPages: Math.ceil(filtered.length / param.limit)
+                };
+                return [200, resultobj, {}];
             });
-            $httpBackend.whenPOST('/notification/notifications/').respond(function(method, url, keys,headers,param){
+            $httpBackend.whenPOST(URLS.URL_NOTIF).respond(function(method, url, keys,headers,param){
                 if(Math.random()>0.5){
                     return [200, {"id":1,"filters":[
                         {"id":1,

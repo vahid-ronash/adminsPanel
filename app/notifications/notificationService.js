@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('notificationResource', ['$http', function ($http) {
+        .factory('notificationResource', ['$http','URLS', function ($http,URLS) {
             function NotificationListService() {
                 var thisService = this;
 
@@ -25,7 +25,7 @@
                  * @param filters indicate page data to load
                  */
                 thisService.query = function (filters) {
-                    var url = "/notification";
+                    var url = URLS.URL_NOTIF;
                     return $http.get(url,{
                         params:filters
                     }).then(function (result) {
@@ -42,7 +42,7 @@
                  * @param notificationData indicate notification data
                  */
                 thisService.sendNotification= function (notificationData) {
-                    var url = "/notification/notifications/";
+                    var url = URLS.URL_NOTIF;
                     var output={
                         notification_data:notificationData
                     };

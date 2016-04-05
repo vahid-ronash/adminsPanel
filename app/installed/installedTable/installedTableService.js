@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('installedResource', ['$http', function ($http) {
+        .factory('installedResource', ['$http','URLS', function ($http,URLS) {
             function InstalledService() {
                 var thisService = this;
 
@@ -25,8 +25,7 @@
                  * @param filters indicate page data to load
                  */
                 thisService.query = function (filters) {
-                    var url = "/installed";
-                    return $http.get(url,{params:filters}).then(function (result) {
+                    return $http.get(URLS.URL_INSTALLED,{params:filters}).then(function (result) {
                         return result.data;
                     });
                 };

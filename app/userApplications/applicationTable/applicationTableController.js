@@ -17,7 +17,8 @@
 
             //send a request to get application list
             thisAppController.isLoading = true;
-            thisAppController.appCollection = $applicationResource.query(function () {
+            $applicationResource.query(function (result) {
+                thisAppController.appCollection=result.data;
                 thisAppController.isLoading = false;
             }, function () {//error
                 //TODO : request it again
@@ -105,6 +106,7 @@
              * @description
              * get confirm and remove selected application
              * @param row (selected application)
+             * @param callback
              */
             thisAppController.removeApplication = function (row,callback) {
                 //TODO:get confirm
