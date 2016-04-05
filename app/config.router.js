@@ -10,6 +10,10 @@
     'use strict';
     angular
         .module('app')
+        .config(function($httpProvider){
+            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+        })
         .config(['$routeProvider','EnvironmentConfig',// '$locationProvider' ,
             function config($routeProvider,EnvironmentConfig) {//$locationProvider ,  MODULE_CONFIG ) {
                 $routeProvider
@@ -68,8 +72,7 @@
                 }
                 // configure html5 to get links working on jsfiddle
                 //TODO:$locationProvider.html5Mode(true); server must support
-            }]
-        )
+            }])
         .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
             $rootScope.$on('$routeChangeStart', function (event,cur) {//,prev
                 if (!(cur.access && cur.access.isFree) && !Auth.isAuthenticated()) {

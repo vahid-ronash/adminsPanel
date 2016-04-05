@@ -29,7 +29,7 @@
             $scope.$context.behavior.entering = function (options, callback) {
                 console.log(options);
                 $http.get(URLS.URL_APP).then(function (result) {
-                    asThisController.appList = result.data;
+                    asThisController.appList = result.data.results;
                     callback(true);
                 });
             };

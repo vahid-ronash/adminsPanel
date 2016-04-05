@@ -29,7 +29,7 @@
                     return $http.get(url,{
                         params:filters
                     }).then(function (result) {
-                        return result.data;
+                        return result.data.results;
                     });
                 };
 
@@ -42,19 +42,39 @@
                  * @param notificationData indicate notification data
                  */
                 thisService.sendNotification= function (notificationData) {
-                    var url = URLS.URL_NOTIF;
                     var output={
-                        notification_data:notificationData
+                        notification_data:notificationData,
+                        filters:[]
                     };
-
-                    if(notificationData.selectedApps.length>1){
-                        output.filters=[{'type': 1, 'criterias': [{'key':'application_id', 'operator': '=', 'value': notificationData.selectedApps[0]}]}]
+                    if(notificationData.selectedApps.length<2){
+                        output.filters.push({'type': 1, 'criterias': [{'key':'application_id', 'operator': '=', 'value': notificationData.selectedApps[0].application_id}]});
                     }
                     else{
-                        output.filters=[{'type': 1, 'criterias': [{'key':'application_id', 'operator': 'in', 'value': notificationData.selectedApps.join(",")}]}]
+                        output.filters.push({'type': 1, 'criterias': [{'key':'application_id', 'operator': 'in', 'value': notificationData.selectedApps.map(function(app){return app.application_id}).join(",")}]});
+                    }
+                    delete notificationData.selectedApps;
+
+                    if(notificationData.contacts) {
+                        if (notificationData.contacts.length < 2) {
+                            output.filters.push({
+                                'type': 1,
+                                'criterias': [{'key': 'imei', 'operator': '=', 'value': notificationData.contacts[0]}]
+                            });
+                        }
+                        else {
+                            output.filters.push({
+                                'type': 1,
+                                'criterias': [{
+                                    'key': 'imei',
+                                    'operator': 'in',
+                                    'value': notificationData.contacts.join(",")
+                                }]
+                            });
+                        }
+                        delete notificationData.contacts;
                     }
 
-                    return $http.post(url,output).then(function (result) {
+                    return $http.post(URLS.URL_NOTIF,output).then(function (result) {
                         return result.data;
                     });
                 };

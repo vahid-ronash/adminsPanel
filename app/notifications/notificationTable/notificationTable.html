@@ -7,7 +7,7 @@
             <th st-sort="application">{{'APPLICATION' | translate}}</th>
             <th st-sort="sendTime">{{'SENDTIME' | translate}}</th>
             <th st-sort="status">{{'STATUS' | translate}}</th>
-            <th st-sort="contactCount">{{'CONTACT_COUNT' | translate}}</th>
+            <th st-sort="contactCount">{{'CLICK_DISMISS' | translate}}</th>
             <th st-sort="contactReceive">{{'CONTACT_RECEIVE' | translate}}</th>
         </tr>
         <tr>
@@ -16,25 +16,33 @@
             <th><input st-search="'application'" class="form-control" placeholder="{{'APPLICATION' | translate}}" type="text"/></th>
             <th><input st-search="'sendTime'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
             <th><input st-search="'status'" class="form-control" placeholder="{{'STATUS' | translate}}" type="text"/></th>
-            <th><input st-search="'contactCount'" class="form-control" placeholder="{{'CONTACT_COUNT' | translate}}" type="text"/></th>
+            <th><input st-search="'contactCount'" class="form-control" placeholder="{{'CLICK_DISMISS' | translate}}" type="text"/></th>
             <th><input st-search="'contactReceive'" class="form-control" placeholder="{{'CONTACT_RECEIVE' | translate}}" type="text"/></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="row in notifTableCtrl.displayed">
-            <td> {{row.title}} </td>
-            <td> {{row.text}} </td>
-            <td> {{row.application}} </td>
-            <td> {{row.sendTime}} </td>
+            <td> {{row.notification_data.title}} </td>
+            <td> {{row.notification_data.content}} </td>
+            <td> {{row.filters.caritera.application}} </td>
+            <td> {{row.send_time}} </td>
             <td> {{row.status}} </td>
-            <td> {{row.contactCount}}</td>
             <td>
                 <uib-progressbar
                         type="success"
                         class="progress-striped active"
-                        max="row.contactCount"
-                        value="row.contactReceive">
-                        <i>{{row.contactReceive}}/{{row.contactCount}}</i>
+                        max="row.clicked_count+row.dismissed_count"
+                        value="row.clicked_count">
+                        <i ng-bind="row.clicked_count/(row.clicked_count+row.dismissed_count)*100"></i>
+                </uib-progressbar>
+            </td>
+            <td>
+                <uib-progressbar
+                        type="success"
+                        class="progress-striped active"
+                        max="row.sent_count"
+                        value="row.delivered_count">
+                        <i>{{row.delivered_count}}/{{row.sent_count}}</i>
                 </uib-progressbar>
             </td>
         </tr>

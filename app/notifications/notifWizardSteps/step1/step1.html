@@ -7,10 +7,10 @@
 
     <ui-select multiple ng-model="step1Ctrl.data.selectedApps">
         <ui-select-match placeholder="{{'SELECT_APP' | translate}}">
-            <span ng-bind="$item.name"></span>
+            <span ng-bind="$item.application_id"></span>
         </ui-select-match>
         <ui-select-choices repeat="item in (step1Ctrl.appList | filter: $select.search)">
-            <span ng-bind="item.name"></span>
+            <span ng-bind="item.application_id"></span>
         </ui-select-choices>
     </ui-select>
 </div>

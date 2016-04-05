@@ -37,8 +37,8 @@
                 filters=angular.extend(filters,tableState.search.predicateObject);
 
                 return $notificationResource.query(filters).then(function (result) {
-                    thisController.displayed = result.data;
-                    tableState.pagination.numberOfPages = result.numberOfPages;//set the number of pages so the pagination can update
+                    thisController.displayed = result;
+                    tableState.pagination.numberOfPages = 5;//TODO:result.numberOfPages;//set the number of pages so the pagination can update
                     thisController.isLoading = false;
                 });
             };

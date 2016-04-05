@@ -2,27 +2,27 @@
     <table st-table="installTableCtrl.displayed" st-pipe="installTableCtrl.callServer" class="table table-striped">
         <thead>
         <tr>
-            <th st-sort="device">{{'DEVICE' | translate}}</th>
-            <th st-sort="application">{{'APPLICATION' | translate}}</th>
-            <th st-sort="installTime">{{'INSTALLTIME' | translate}}</th>
-            <th st-sort="lastSeen">{{'LASTSEEN' | translate}}</th>
+            <th st-sort="instance_id">{{'DEVICE' | translate}}</th>
+            <th st-sort="application_id">{{'APPLICATION' | translate}}</th>
+            <th st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
+            <th st-sort="last_visit">{{'LASTSEEN' | translate}}</th>
             <th>{{'TEST' | translate}}</th>
             <!-- TODO: its hard code naming we change that later -->
         </tr>
         <tr>
-            <th><input st-search="'device'" class="form-control" placeholder="{{'DEVICE' | translate}}.." type="text"/></th>
-            <th><input st-search="'application'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
-            <th><input st-search="'installTime'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
-            <th><input st-search="'lastSeen'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
+            <th><input st-search="'instance_id'" class="form-control" placeholder="{{'DEVICE' | translate}}.." type="text"/></th>
+            <th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
+            <th><input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
+            <th><input st-search="'last_visit'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
             <th><a class="btn primary"><i class="fa fa-send"></i></a></th>
         </tr>
         </thead>
         <tbody>
             <tr ng-repeat="row in installTableCtrl.displayed">
-                <td> {{row.device}} </td>
-                <td>{{row.application}}</td>
-                <td>{{row.installTime}}</td>
-                <td>{{row.lastSeen}}</td>
+                <td> {{row.instance_id}} </td>
+                <td>{{row.application_id}}</td>
+                <td>{{row.creation_time}}</td>
+                <td>{{row.last_visit}}</td>
                 <td><a class="btn" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a></td>
             </tr>
         </tbody>

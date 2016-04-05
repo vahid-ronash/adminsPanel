@@ -49,7 +49,7 @@
              */
             thisController.loginAsDemo=function(){
                 // thisController.credential.email="demo@pushe.co";
-                thisController.credential.email="a@a.cc";
+                thisController.credential.email="q@q.cc";
                 // thisController.credential.password="1234";
                 thisController.credential.password="a";
                 return thisController.login();

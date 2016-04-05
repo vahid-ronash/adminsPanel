@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('AuthService', function ($http, Session,$rootScope) {
+        .factory('AuthService', function ($http, Session,$rootScope,URLS) {
             var authService = {};
 
             /**
@@ -25,12 +25,13 @@
              */
             authService.login = function (credentials) {
                 return $http
-                    .post($rootScope.serverAddress+'/accounting/login', credentials)
+                    .post(URLS.URL_LOGIN, credentials)
                     .then(function (res) {
                         var result=res.data;
-                        if(result.user) {
-                            Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
-                        }
+                        if(result.logged_in)Session.create("asca","dsrfver", "edvedrfv","asdfvsdfv");
+                        // if(result.user) {
+                        //     Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
+                        // }
                         return result;
                     });
             };
@@ -45,7 +46,7 @@
              */
             authService.register= function (userData) {
                 return $http
-                    .post('/register', userData)
+                    .post(URLS.URL_REGISTER, userData)
                     .then(function (res) {
                         return res.data;
                     });
@@ -61,7 +62,7 @@
              */
             authService.forgotPassword= function (userData) {
                 return $http
-                    .post('/forgotPassword', userData)
+                    .post(URLS.URL_FORGOTPASS, userData)
                     .then(function (res) {
                         return res.data;
                     });
@@ -77,7 +78,7 @@
              */
             authService.changePassword= function (userData) {
                 return $http
-                    .post('/changePassword', userData)
+                    .post(URLS.URL_CHANGE_PASS, userData)
                     .then(function (res) {
                         return res.data;
                     });
@@ -92,7 +93,7 @@
              */
             authService.logout= function () {
                 return $http
-                    .get('/accounting/logout')
+                    .get(URLS.URL_LOGOUT)
                     .then(function () {
                         Session.destroy();
                     });

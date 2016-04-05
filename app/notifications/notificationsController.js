@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('notificationsController', ['$scope','$wizard','$filter',function($scope,$wizard,$filter){
+        .controller('notificationsController', ['$scope','$wizard','$filter','notificationResource',function($scope,$wizard,$filter,notificationResource){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
 
@@ -34,10 +34,11 @@
                     }
                     res.visibility=!res.isHidden;
                     delete res.isHidden;
+                    
                     console.log(res);
 
-
-
+                    // var output={notification}
+                    notificationResource.sendNotification(res);
                     return callback(true);
                 }
             });

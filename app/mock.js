@@ -14,13 +14,14 @@
             if(EnvironmentConfig.mode=="production")return true;
             $rootScope.serverAddress="";
             var appList = [
-                {id:1,name: 'Pushe Sample Eclipse', packname:'co.ronash.pushesampleeclipse'},
-                {id:2,name: 'Pushe Sample Android Studio', packname:'co.ronash.pushesampleas'},
-                {id:3,name: 'Pushe Sample Unity', packname:'co.ronash.pushesampleunity'},
-                {id:4,name: 'Pushe Sample B4A', packname:'co.ronash.pushesampleb4a'},
-                {id:5,name: 'دموی پوشه', packname:'co.ronash.pushesample'}
+                {id:1,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:1,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:2,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
+                {id:3,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
+                {id:4,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
+                {id:5,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(URLS.URL_APP).respond(appList);
+            $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
             function getRegex(path,append){
@@ -37,23 +38,23 @@
 
             var userList = [
                 {id:1,name: 'دمو', email:'demo@pushe.co',password:"1234",roles:[]},
-                {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]}
+                {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]},
+                {id:2,name: 'دمو', email:'q@q.cc',password:"a",roles:[]}
             ];
-            $httpBackend.whenGET('/accounting/logout').respond({success:true});
-            $httpBackend.whenPOST('/accounting/login').respond(function(method, url, data){
+            $httpBackend.whenGET(URLS.URL_LOGOUT).respond({success:true});
+            $httpBackend.whenPOST(URLS.URL_LOGIN).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
-                    var user={user:angular.extend({sessionId:1},list[0])};
-                    return [200, user, {}];
+                    return [200, {logged_in:true}, {}];
                 }
                 else {
                     return [200, {error:"username or password is wrong"}, {}];
                 }
             });
-            $httpBackend.whenPOST('/forgotPassword').respond({success:true});
-            $httpBackend.whenPOST('/changePassword').respond({success:true});
-            $httpBackend.whenPOST('/register').respond(function(method, url, data){
+            $httpBackend.whenPOST(URLS.URL_FORGOTPASS).respond({success:true});
+            $httpBackend.whenPOST(URLS.URL_CHANGE_PASS).respond({success:true});
+            $httpBackend.whenPOST(URLS.URL_REGISTER).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email); });
                 if(!list.length){
@@ -120,15 +121,22 @@
             }
             function createRandomNotif() {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
-                var contactCount=Math.floor(Math.random() * 10)+1;
+                var sent_count=Math.floor(Math.random() * 10)+1;
+                var clickdismissCount=Math.floor(Math.random() * sent_count);
+                var clickedCount=Math.floor(Math.random() *clickdismissCount);
                 return {
-                    title:randomNameBuilder(4),
-                    text:randomNameBuilder(7),
+                    notification_data:{
+                        title:randomNameBuilder(4),
+                        content:randomNameBuilder(7),
+                    },
                     application:apps[Math.floor(Math.random() * apps.length)],
-                    sendTime:Math.floor(Math.random() * 10000000),
+                    send_time:Math.floor(Math.random() * 10000000),
                     status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
-                    contactCount:contactCount,
-                    contactReceive:Math.floor(Math.random() * contactCount)
+                    sent_count:sent_count,
+                    delivered_count:Math.floor(Math.random() * sent_count),
+
+                    clicked_count:clickedCount,
+                    dismissed_count:clickdismissCount- clickedCount
                 };
             }
             for (var i = 0; i < 1000; i++) {
@@ -155,7 +163,7 @@
                 var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
 
                 var resultobj={
-                    data: result,
+                    results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
                 return [200, resultobj, {}];

@@ -51,7 +51,7 @@ angular
         'TEXT':'text',
         'SENDTIME':'send time',
         'STATUS':'status',
-        'CONTACT_COUNT':'contact count',
+        'CLICK_DISMISS':'click dismiss',
         'CONTACT_RECEIVE':'contact receive',
         'ADD_NOTIFICATION':' اعلان جدید',
         'NOTIF_FIRST_STEP':'define small notification',
@@ -147,7 +147,7 @@ angular
         'TEXT':'متن',
         'SENDTIME':'زمان ارسال',
         'STATUS':'وضعیت',
-        'CONTACT_COUNT':'تعداد نفرات',
+        'CLICK_DISMISS':'نسبت کلیک',
         'CONTACT_RECEIVE':'میزان دریافت',
         'ADD_NOTIFICATION':' اعلان جدید',
         'NOTIF_FIRST_STEP':'اعلان کوچک',
@@ -206,7 +206,8 @@ angular
         'OPEN_URL_DESC':'توضیحات',
         'OPEN_URI_DESC':'توضیحات',
         'OPEN_DIALOG_DESC':'توضیحات',
-        'JSON_INCORRECT':'فرمت جی سان صحیح نمیباشد.'
+        'JSON_INCORRECT':'فرمت جی سان صحیح نمیباشد.',
+        'PROVIDER':'پرووایدر',
     });
 
     $translateProvider.preferredLanguage('fa');
