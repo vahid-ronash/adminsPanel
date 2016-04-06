@@ -21,7 +21,8 @@
                 {id:4,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
                 {id:5,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
+            $httpBackend.whenGET(/api\/platform\/applications\/\d\//).respond({credentials:'{"gcm":"asdvsadfv"}',results:appList});
+            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
             function getRegex(path,append){
@@ -41,7 +42,7 @@
                 {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]},
                 {id:2,name: 'دمو', email:'q@q.cc',password:"a",roles:[]}
             ];
-            $httpBackend.whenGET(URLS.URL_LOGOUT).respond({success:true});
+            $httpBackend.whenGET(URLS.URL_LOGOUT).respond({logged_out:true});
             $httpBackend.whenPOST(URLS.URL_LOGIN).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
@@ -76,10 +77,10 @@
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
                 return {
                     id: id,
-                    application: apps[Math.floor(Math.random() * apps.length)],
-                    device: Math.floor(Math.random() * 10000000),
-                    installTime: Math.floor(Math.random() * 10000),
-                    lastSeen: Math.floor(Math.random() * 10000),
+                    application_id: apps[Math.floor(Math.random() * apps.length)],
+                    instance_id: Math.floor(Math.random() * 10000000),
+                    creation_time: Math.floor(Math.random() * 10000),
+                    last_visit: Math.floor(Math.random() * 10000),
                     test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/'
                 };
             }
@@ -102,7 +103,7 @@
                 var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
 
                 var resultobj={
-                    data: result,
+                    results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
                 return [200, resultobj, {}];
@@ -197,5 +198,7 @@
             //$httpBackend.whenDELETE(/.*/).passThrough();
             //$httpBackend.whenPUT(/.*/).passThrough();
             $httpBackend.whenGET(/app\/.*\.html/).passThrough();
+            $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html").passThrough();
+            $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationAction/notificationActionTemplate.html").passThrough();
         });
 })());

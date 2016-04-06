@@ -5,7 +5,9 @@
 describe('test notification-action directive : ', function () {
     beforeEach(module('app'));
     it('test directive', inject(function ($compile,$rootScope) {
+        var $scope=$rootScope.$new();
         var elm = angular.element('<notification-action></notification-action>');
-        $compile(elm)($rootScope);
+        $compile(elm)($scope);
+        // $scope.$digest();
     }));
 });

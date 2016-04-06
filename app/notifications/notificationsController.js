@@ -21,27 +21,28 @@
                 size: 'sm',
                 shadow: true,
                 //templateUrl:'', //wizard template that is used sx-wizard-tpls.js now
-
+                successing:thisController.successing
                 //on finish
                 //$data: Object passed into wizard.
                 //$step: The step where user clicked "Finish".
                 //$isLastStep: Indicates whether this is the last step.
                 //callback: Callback function with a boolean parameter, indicates whether wizard can be closed (valid) or not (invalid).
-                successing: function($data, $step, $isLastStep, callback) {
-                    var res={};
-                    for(var i in $data.stepData){
-                        res=angular.extend(res,$data.stepData[i]);
-                    }
-                    res.visibility=!res.isHidden;
-                    delete res.isHidden;
-                    
-                    console.log(res);
 
-                    // var output={notification}
-                    notificationResource.sendNotification(res);
-                    return callback(true);
-                }
             });
+            thisController.successing= function($data, $step, $isLastStep, callback) {
+                var res={};
+                for(var i in $data.stepData){
+                    res=angular.extend(res,$data.stepData[i]);
+                }
+                res.visibility=!res.isHidden;
+                delete res.isHidden;
+
+                console.log(res);
+
+                // var output={notification}
+                notificationResource.sendNotification(res);
+                return callback(true);
+            };
             wizardInstance
                 .addStep({
                     id: 'step-0-welcome',

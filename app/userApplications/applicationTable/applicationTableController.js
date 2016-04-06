@@ -142,8 +142,8 @@
             thisController.removeApplication = function (row,callback) {
                 //TODO:get confirm
                 $applicationResource.delete({id:row.id}, function () {
-                    var index = thisController.appCollection.indexOf(row);
-                    thisController.appCollection.splice(index, 1);
+                    var index = thisController.displayed.indexOf(row);
+                    thisController.displayed.splice(index, 1);
                     callback && callback();
                     //alert('application ' + row.name + ' deleted');
                 });

@@ -10,7 +10,7 @@ describe('test installed table directive : ', function () {
     }));
 });
 
-describe('test installed controller and services : ', function () {
+describe('test installed table controller and services : ', function () {
     //module.sharedInjector(); //TODO:we could use it in angular 1.5.1 and use beforeAll instead of all next beforeEach
     beforeEach(module("app"));//beforeAll(module("app"));
     var installedTableController, $timeout, deferred;
@@ -43,12 +43,11 @@ describe('test installed controller and services : ', function () {
             },
             search:{
                 predicateObject:{
-                    device:'1',
-                    application:'b4'
+                    instance_id:'1',
                 }
             },
             sort:{
-                predicate:'device',
+                predicate:'instance_id',
                 reverse:false
             }
         }).then(function(){

@@ -33,7 +33,7 @@
                         class="progress-striped active"
                         max="row.clicked_count+row.dismissed_count"
                         value="row.clicked_count">
-                        <i ng-bind="row.clicked_count/(row.clicked_count+row.dismissed_count)*100"></i>
+                        <i>{{row.clickedPrecent}}%</i>
                 </uib-progressbar>
             </td>
             <td>

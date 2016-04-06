@@ -4,21 +4,21 @@
             {{'SIGNUP_MSG' | translate}}
         </div>
         <form name="form" ng-submit="signupCtrl.register()">
-            <div class="md-form-group">
+            <div class="md-form-group float-label">
                 <input type="email" class="md-input" ng-model="signupCtrl.user.email" required>
                 <label>{{'EMAIL' | translate}}</label>
             </div>
-            <div class="md-form-group">
+            <div class="md-form-group float-label">
                 <input type="password" class="md-input" ng-model="signupCtrl.user.password" required>
                 <label>{{'PASSWORD' | translate}}</label>
             </div>
-            <div class="md-form-group">
+            <div class="md-form-group float-label">
                 <input type="password" class="md-input" ng-model="signupCtrl.repassword" required>
                 <label>{{'REPASSWORD' | translate}}</label>
             </div>
             <div class="m-b-md">
                 <label class="md-check">
-                    <input type="checkbox" ng-model="signupCtrl.user.agree" required><i class="primary"></i> {{'AGREE' | translate}}<a href>{{'TERMS' | translate}}</a>
+                    <input type="checkbox" ng-model="signupCtrl.agreement" required><i class="primary"></i> {{'AGREE' | translate}}<a href>{{'TERMS' | translate}}</a>
                 </label>
             </div>
             <button type="submit" ng-disabled="form.$invalid || signupCtrl.dataLoading" class="btn primary btn-block p-x-md">{{'SIGNUP' | translate}}</button>

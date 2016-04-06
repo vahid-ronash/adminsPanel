@@ -35,6 +35,7 @@
                         return result;
                     });
             };
+            //TODO  pushe.co/accounting/{TOKEN}/activate_account | POST | {"activated": True}
 
             /**
              * @ngdoc method
@@ -59,6 +60,7 @@
              * @description
              * send forgot password request
              * @param userData
+             * pushe.co/accounting/reset_password | POST | {"mail_sent": True}
              */
             authService.forgotPassword= function (userData) {
                 return $http
@@ -68,19 +70,22 @@
                     });
             };
 
+            // pushe.co/accounting/{TOKEN}/reset_password_done | POST | {"reset_completed": True}
+
             /**
              * @ngdoc method
              * @name changePassword
              * @methodOf module.AuthService
              * @description
              * reset users password
+             * pushe.co/accounting/change_password | POST | {"changed": True}
              * @param userData
              */
             authService.changePassword= function (userData) {
                 return $http
                     .post(URLS.URL_CHANGE_PASS, userData)
                     .then(function (res) {
-                        return res.data;
+                        return res.data.changed;
                     });
             };
 
@@ -90,12 +95,14 @@
              * @methodOf module.AuthService
              * @description
              * send logout to server and destroy session
+             * pushe.co/accounting/logout | GET | {"logged_out": True}
              */
             authService.logout= function () {
                 return $http
                     .get(URLS.URL_LOGOUT)
-                    .then(function () {
-                        Session.destroy();
+                    .then(function (result) {
+                        if(result.logged_out)
+                            Session.destroy();
                     });
             };
 

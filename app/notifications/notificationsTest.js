@@ -15,4 +15,18 @@ describe('notification page', function() {
         controller.showWizard();
         expect(controller.showWizard).toBeDefined();
     });
+    it('send notification',function(){
+        var controller = $controller('notificationsController', { "$scope": {app:{name:"adminsPanel"}} });
+        controller.successing(
+            {stepData:[{isHidden:true,selectedApps:[{application_id:"1231"},{application_id:"1231"}]}]}
+            ,0,0,function(isDone){}
+        );
+        expect(1).toEqual(1);//TODO: make a real check
+        controller.successing(
+            {stepData:[{isHidden:true,selectedApps:[{application_id:"1231"}]}]}
+            ,0,0,function(isDone){}
+        );
+        expect(1).toEqual(1);
+
+    });
 });

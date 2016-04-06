@@ -203,11 +203,7 @@ angular
         "OPEN_DIALOG_NAME":'بازکردن پنجره',
         'NOTHING_HAPPEN_DESC':'توضیحات',
         'OPEN_APP_DESC':'توضیحات',
-        'OPEN_URL_DESC':'توضیحات',
-        'OPEN_URI_DESC':'توضیحات',
-        'OPEN_DIALOG_DESC':'توضیحات',
-        'JSON_INCORRECT':'فرمت جی سان صحیح نمیباشد.',
-        'PROVIDER':'پرووایدر',
+        'FORGOT_ALARM':'we sent you an email please check it out',
     });
 
     $translateProvider.preferredLanguage('fa');

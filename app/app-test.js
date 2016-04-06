@@ -15,21 +15,15 @@ describe('test app Controller', function() {
     it('methods are defined well', function () {
         expect(typeof gscope.isIE()).toEqual('boolean');
     });
-    //TODO: it will work in a real respond not with mock
-    //it('prevent by sign in', inject(function ($route,$rootScope,Session,$location,$timeout) {
+    // //TODO: it will work in a real respond not with mock
+    // it('prevent by sign in', inject(function ($route,$rootScope,Session,$location,$timeout) {
     //    Session.destroy();
     //    $location.path("/apps");
     //    var path=$location.path();
     //    expect(path).toEqual('/apps');
-    //    try {
-    //        gscope.$apply();
-    //    }
-    //    catch(e){
-    //
-    //    }
     //    // Flush the timeout service
     //    $timeout.flush(2000);
     //    // the actions within the $timeout are executed
     //    expect($location.path()).toEqual('/account/signin');
-    //}));
+    // }));
 });

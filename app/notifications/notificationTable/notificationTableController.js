@@ -38,6 +38,12 @@
 
                 return $notificationResource.query(filters).then(function (result) {
                     thisController.displayed = result;
+                    for(var i in thisController.displayed){
+                        var di=thisController.displayed[i];
+                        var sum=di.clicked_count+di.dismissed_count;
+                        if(!sum){di.clicked_count=di.dismissed_count=1;sum=2}
+                        di.clickedPrecent=Math.floor(100*di.clicked_count/sum);
+                    }
                     tableState.pagination.numberOfPages = 5;//TODO:result.numberOfPages;//set the number of pages so the pagination can update
                     thisController.isLoading = false;
                 });

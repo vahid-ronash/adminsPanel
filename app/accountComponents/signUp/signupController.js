@@ -15,10 +15,10 @@
         .controller('signUpController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
+            thisController.agreement=false;
             thisController.user={
                 email:"",
-                password:"",
-                agree:false
+                password:""
             };
             /**
              * @ngdoc method
@@ -33,7 +33,7 @@
                     thisController.user.password="";
                     thisController.repassword="";
                 }
-                else if(!thisController.user.agree){
+                else if(!thisController.agreement){
                     thisController.registerError="please check you agree the terms";
                 }
                 else {
@@ -42,9 +42,7 @@
                             thisController.registerError = result.error;
                         }
                         else {
-                            $timeout(function(){
-                                $location.path('/account/signin');
-                            },10);
+                            thisController.registerError = "we sent you a email,please confirm";
                         }
                     });
                 }

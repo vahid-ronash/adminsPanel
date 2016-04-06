@@ -33,22 +33,33 @@ describe('test application table controller and services : ', function () {
         deferred.promise.then(function (data) { thisSpec.valueToVerify = data; });
     });
 
-    it("test ng resource", inject(function (applicationResource) {
-        //when it respond to below query it has responded to appCollection query
-        applicationResource.query(function (result) {
-            deferred.resolve(result.data.length>0);
+    it("test ng resource", function () {
+        appController.callServer({
+            pagination:{
+                start:1,number:10
+            },
+            search:{
+                predicateObject:{
+                    instance_id:'1'
+                }
+            },
+            sort:{
+                predicate:'instance_id',
+                reverse:false
+            }
+        }).then(function(){
+            deferred.resolve(appController.displayed.length>0);
         });
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
-    }));
+    });
 
     it('add method', function () {
-        if(!appController.appCollection)appController.appCollection=[];
-        var len=appController.appCollection.length;
-        appController.addNewApplication({name: "a", packname: "b"},function(){
-            deferred.resolve(appController.appCollection.length > len);
+        if(!appController.displayed)appController.displayed=[];
+        var len=appController.displayed.length;
+        appController.addNewApplication({provider: {name:"a"},application_id:"testAddApplication"+Math.floor(Math.random()*1000)},function(){
+            deferred.resolve(appController.displayed.length > len);
         });
-
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
     });
@@ -56,10 +67,10 @@ describe('test application table controller and services : ', function () {
     //test remove
     it('remove method', function () {
         //TODO: it must get confirmation
-        appController.appCollection=[{id:1,name:"a",packname:"b"}];
-        var len=appController.appCollection.length;
-        appController.removeApplication(appController.appCollection[0],function(){
-            deferred.resolve(appController.appCollection.length <len+10000);//TODO:app collection loaded before remove 
+        appController.displayed=[{id:1,provider:"a",application_id:"b"}];
+        var len=appController.displayed.length;
+        appController.removeApplication(appController.displayed[0],function(){
+            deferred.resolve(appController.displayed.length <len+10000);//TODO:app collection loaded before remove
         });
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
@@ -67,8 +78,8 @@ describe('test application table controller and services : ', function () {
 
     //test each step of edit
     it('edit methods', function () {
-        appController.appCollection = [{name: "a", packname: "a"}, {name: "b", packname: "b"}];
-        var firstApp = appController.appCollection[0];
+        appController.displayed = [{provider: "a", application_id: "a"}, {provider: "b", application_id: "b"}];
+        var firstApp = {provider: {name:"a"}, application_id: "a"};
         appController.startEdit(firstApp);
         expect(firstApp.isEditing).toEqual(true);
 
@@ -79,5 +90,15 @@ describe('test application table controller and services : ', function () {
         //TODO: if app didnt change dont send data to server
         appController.commitEdit(firstApp);
         expect(firstApp.isEditing).toEqual(false);
+    });
+    it("show sender ID",function(){
+        var row={showDetail:true,application_id:1};
+        appController.showDetail(row);
+        expect(row.showDetail).toEqual(false);
+        appController.showDetail(row,function(){
+            deferred.resolve(row.senderID.length>0);
+        });
+        $timeout.flush();
+        expect(this.valueToVerify).toEqual(true);
     });
 });
