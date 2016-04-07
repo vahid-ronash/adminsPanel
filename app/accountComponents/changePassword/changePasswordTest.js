@@ -4,23 +4,22 @@
 /*global describe it expect beforeEach inject */
 describe('change password controller : ', function() {
     beforeEach(module('app'));
-    var $controller;
-    beforeEach(inject(function(_$controller_){
+    var controller;
+    beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        $controller = _$controller_;
+        var scope=$rootScope.$new();
+        controller = _$controller_('changePasswordController', {'$scope':scope});
     }));
 
     it('controller is defined', function () {
-        var controller = $controller('changePasswordController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
+        expect(controller.data.old_password).toBeDefined();
     });
 
     describe('test submit preventers', function () {
         it("test repassword preventer",function(){
-            var controller = $controller('changePasswordController', { "$scope": {app:{name:"adminsPanel"}} });
             controller.data={
-                currentPassword:"123",
-                newPassword:"123"
+                old_password:"123",
+                password:"123"
             };
             controller.repassword = "1233";
             controller.sendChangeRequest();
@@ -28,12 +27,11 @@ describe('change password controller : ', function() {
         });
     });
     it('test submit', inject(function (_$q_,$timeout) {
-        var controller = $controller('changePasswordController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.data={
-            currentPassword:"124",
-            newPassword:"123"
+            old_password:"124",
+            password:"123"
         };
-        controller.repassword="124";
+        controller.repassword="123";
         var valueToVerify=0;
         var deferred = _$q_.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });

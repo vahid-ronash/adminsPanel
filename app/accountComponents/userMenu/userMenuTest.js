@@ -9,7 +9,8 @@ describe('test userMenu directive : ', function () {
         $compile(elm)($rootScope);
     }));
     it('login and logout test', inject(function ($compile,$rootScope,AuthService,Session,$controller, _$q_ ,$timeout) {
-        var controller = $controller('userMenuController', {"$scope": {app: {name: "adminsPanel"}}});
+        var scope=$rootScope.$new();
+        var controller = $controller('userMenuController', {"$scope": scope});
         Session.create(1,1, "", []);
         expect(AuthService.isAuthenticated()).toEqual(true);
 

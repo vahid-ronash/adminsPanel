@@ -43,7 +43,7 @@ describe('test installed table controller and services : ', function () {
             },
             search:{
                 predicateObject:{
-                    instance_id:'1',
+                    instance_id:'1'
                 }
             },
             sort:{

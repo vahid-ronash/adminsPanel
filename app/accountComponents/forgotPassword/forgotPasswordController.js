@@ -14,7 +14,7 @@
         .module('app')
         .controller('forgotPasswordController', ['$scope','AuthService','$location','$filter',function($scope,$AuthService,$location,$filter){
             var thisController=this;
-            thisController.app=$scope.app;//point to parent scope.app
+            // thisController.app=$scope.app;//point to parent scope.app
             /**
              * @ngdoc method
              * @name forgotPassword
@@ -22,12 +22,12 @@
              * @description
              * it pass credential(username,password,rememberMe) data to authService
              */
-            thisController.request.email="";
+            thisController.data={email:""};
             thisController.forgotPassword=function(){
-                return $AuthService.forgotPassword(thisController.request).then(function(result){
+                return $AuthService.forgotPassword(thisController.data).then(function(result){
                     if(result.error){  thisController.forgetError=result.error;  }
                     else{
-                        thisController.forgetAlarm=$filter('FORGOT_ALARM'|translate);
+                        thisController.forgetAlarm=$filter('translate')('FORGOT_ALARM');
                         setTimeout(function(){$location.path('/account/signin');},7000);//redirect to signin after 7 second
                     }
                 });

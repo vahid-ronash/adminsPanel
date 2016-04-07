@@ -13,24 +13,28 @@
     angular
         .module('app')
         .factory('applicationResource', ['$http','URLS', function ($http,URLS) {
+            function applicationFailedCallback(data){
+                alert(JSON.stringify(data));
+            }
             return {
+
                 save:function(data,successCallback,failedCallback){
-                    return $http.post(URLS.URL_APP,data).then(successCallback,failedCallback);
+                    return $http.post(URLS.URL_APP,data).then(successCallback,applicationFailedCallback);
                 },
                 update:function(data,successCallback,failedCallback){
-                    return $http.post(URLS.URL_APP,data).then(successCallback,failedCallback);
+                    return $http.post(URLS.URL_APP,data).then(successCallback,applicationFailedCallback);
                 },
                 query:function(filters,successCallback,failedCallback){
                     var url = URLS.URL_APP;
                     return $http.get(url,{
                         params:filters
-                    }).then(successCallback,failedCallback);
+                    }).then(successCallback,applicationFailedCallback);
                 },
                 delete:function(data,successCallback,failedCallback){
-                    return $http.delete(URLS.URL_APP+data.id).then(successCallback,failedCallback);
+                    return $http.delete(URLS.URL_APP+data.id).then(successCallback,applicationFailedCallback);
                 },
                 getSenderID:function(applicationID,successCallback,failedCallback){
-                    return $http.get(URLS.URL_APP+applicationID+"/").then(successCallback,failedCallback);
+                    return $http.get(URLS.URL_APP+applicationID+"/").then(successCallback,applicationFailedCallback);
                 }
             };
             //replace http on ngResource because i cant set it with last slash for requests(ngResource removes last slash in url)

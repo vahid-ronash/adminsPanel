@@ -10,12 +10,11 @@
     'use strict';
     angular
         .module('app')
-        .config(function($httpProvider){
-            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-        })
-        .config(['$routeProvider','EnvironmentConfig',// '$locationProvider' ,
-            function config($routeProvider,EnvironmentConfig) {//$locationProvider  ) {
+        .config(['$httpProvider','$routeProvider','EnvironmentConfig',
+            function config($httpProvider,$routeProvider,EnvironmentConfig) {
+                $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+                $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
                 $routeProvider
                     .when('/home', {
                         templateUrl: 'app/home/home.html',
@@ -74,6 +73,14 @@
                 //TODO:$locationProvider.html5Mode(true); server must support
             }])
         .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
+            $rootScope.errorAlert=function(e){
+                $rootScope.alertMSG={
+                    text:e.error.message,
+                    // title:title,
+                    className:'alert'
+                };
+            };
+
             $rootScope.$on('$routeChangeStart', function (event,cur) {//,prev
                 if (!(cur.access && cur.access.isFree) && !Auth.isAuthenticated()) {
                     event.preventDefault();

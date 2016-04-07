@@ -64,7 +64,6 @@
                 thisController.addMode=true;
                 thisController.addFocusStart=true;
                 thisController.newApp={provider:thisController.providerList[0]};
-                //TODO: it will start a wizard to add a new application
             };
             /**
              * @ngdoc method

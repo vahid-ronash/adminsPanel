@@ -14,13 +14,13 @@
         .module('app')
         .controller('changePasswordController', ['$scope','AuthService','$location','$filter',function($scope,$AuthService,$location,$filter){
             var thisController=this;
-            thisController.app=$scope.app;//point to parent scope.app
+            // thisController.app=$scope.app;//point to parent scope.app
 
 
             thisController.repassword="";
             thisController.data={
-                currentPassword:"",
-                newPassword:""
+                old_password:"",
+                password:""
             };
 
             /**
@@ -31,9 +31,9 @@
              * send reset password request data
              */
             thisController.sendChangeRequest=function(){
-                if(thisController.data.currentPassword!==thisController.repassword){
+                if(thisController.data.password!==thisController.repassword){
                     thisController.error=$filter('translate')('PASS_NOT_MATCH');
-                    thisController.data.currentPassword="";
+                    thisController.data.password="";
                     thisController.repassword="";
                 }
                 else {
@@ -41,7 +41,7 @@
                         if (result.error) {
                             thisController.error = result.error;
                         }
-                        else {
+                        else  if(result.changed) {
                             var alertText=thisController.alert  = $filter('translate')('PASS_CHANGED');
                             var sec=7;
                             setInterval(function(){
@@ -49,7 +49,7 @@
                                 if(sec<1)$location.path('/account/home');//redirect to home after 7 second
                             },1000);
                         }
-                    });
+                    },$scope.errorAlert);
                 }
             }
         }]);

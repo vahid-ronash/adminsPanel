@@ -12,11 +12,10 @@
     'use strict';
     angular
         .module('app')
-        .controller('signUpController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
+        .controller('signUpController', ['$scope','AuthService','$location','$timeout','$filter',function($scope,$AuthService,$location,$timeout,$filter){
             var thisController=this;
-            thisController.app=$scope.app;//point to parent scope.app
             thisController.agreement=false;
-            thisController.user={
+            thisController.data={
                 email:"",
                 password:""
             };
@@ -28,21 +27,21 @@
              * it pass credential(username,password,rememberMe) data to authService
              */
             thisController.register=function(){
-                if(thisController.user.password!==thisController.repassword){
-                    thisController.registerError="your password do not match , try again";
-                    thisController.user.password="";
+                if(thisController.data.password!==thisController.repassword){
+                    thisController.registerError=$filter('translate')('PASS_NOT_MATCH');
+                    thisController.data.password="";
                     thisController.repassword="";
                 }
                 else if(!thisController.agreement){
-                    thisController.registerError="please check you agree the terms";
+                    thisController.registerError=$filter('translate')('CHECK_AGREEMENT');
                 }
                 else {
-                    return $AuthService.register(thisController.user).then(function (result) {
+                    return $AuthService.register(thisController.data).then(function (result) {
                         if (result.error) {
                             thisController.registerError = result.error;
                         }
                         else {
-                            thisController.registerError = "we sent you a email,please confirm";
+                            thisController.registerAlert = $filter('translate')('REGISTER_RESPONSE_MSG');;
                         }
                     });
                 }

@@ -14,7 +14,7 @@
         .module('app')
         .controller('userMenuController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
             var thisController=this;
-            thisController.app=$scope.app;//point to parent scope.app
+            // thisController.app=$scope.app;//point to parent scope.app
             thisController.userEmail=$AuthService.getUserEmail();
 
             /**

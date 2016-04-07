@@ -4,19 +4,18 @@
 /*global describe it expect beforeEach inject */
 describe('forget password controller : ', function() {
     beforeEach(module('app'));
-    var $controller;
-    beforeEach(inject(function(_$controller_){
+    var controller;
+    beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        $controller = _$controller_;
+        var scope=$rootScope.change;
+        controller = _$controller_('forgotPasswordController', { "$scope": scope});
     }));
 
     it('controller is defined', function () {
-        var controller = $controller('forgotPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
+        expect(controller.data.email).toBeDefined(true);
     });
 
     it('test submit', inject(function (_$q_,$timeout) {
-        var controller = $controller('forgotPasswordController', { "$scope": {app:{name:"adminsPanel"}} });
         controller.request={
             email:"demo@pushe.co"
         };

@@ -4,20 +4,20 @@
 /*global describe it expect beforeEach inject */
 describe('sign in controller : ', function() {
     beforeEach(module('app'));
-    var $controller;
-    beforeEach(inject(function(_$controller_){
+    var controller;
+    beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        $controller = _$controller_;
+        var scope=$rootScope.change;
+        controller = _$controller_('signInController', { "$scope": scope});
     }));
 
     it('controller is defined', function () {
-        var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
+        expect(controller.data.email).toBeDefined(true);
     });
+
     it('check login as demo button', function () {
-        var controller = $controller('signInController', {"$scope": {app: {name: "adminsPanel"}}});
         controller.loginAsDemo();
-        expect(controller.credential.email.length>0).toEqual(true);
+        expect(controller.data.email.length>0).toEqual(true);
     });
     var _q,_timeout;
     beforeEach(inject(function(_$q_,$timeout){
@@ -25,10 +25,9 @@ describe('sign in controller : ', function() {
         _timeout=$timeout;
     }));
     it('wrong login test', inject(function () {
-        var controller = $controller('signInController', { "$scope": {app:{name:"adminsPanel"}} });
-        controller.credential={
-            email:"demo@pushe.co",
-            password:"1235",
+        controller.data={
+            email:"not_existed_user_email",
+            password:"a wrong password",
             rememberMe:true
         };
         var valueToVerify=0;
@@ -42,7 +41,6 @@ describe('sign in controller : ', function() {
         expect(valueToVerify).toEqual(true);
     }));
     it('test login as demo', inject(function (AuthService) {
-        var controller = $controller('signInController', {"$scope": {app: {name: "adminsPanel"}}});
         var valueToVerify=0;
         var deferred = _q.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });

@@ -204,6 +204,13 @@ angular
         'NOTHING_HAPPEN_DESC':'توضیحات',
         'OPEN_APP_DESC':'توضیحات',
         'FORGOT_ALARM':'we sent you an email please check it out',
+        'SEND':'ارسال',
+        'RETURN_TO':'بازگشت به',
+        'CHECK_AGREEMENT':'please check you agree the terms',
+        'REGISTER_RESPONSE_MSG':'we sent you a email , please confirm',
+        'LOGO_PATH':'assets/images/logo.png',
+        'URI_INCORRECT':'uri is not correct',
+        'REQUIRED':'this field has to fill',
     });
 
     $translateProvider.preferredLanguage('fa');

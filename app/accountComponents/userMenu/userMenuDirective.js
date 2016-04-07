@@ -8,7 +8,7 @@
  * @scope
  * @restrict E
  * @description
- * it is a component to manage applications
+ * it hold headers and body
  */
 /*global angular */
 ((function() {

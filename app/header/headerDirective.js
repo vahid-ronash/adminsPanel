@@ -20,7 +20,9 @@
                 scope: true,
                 restrict: 'E',
                 transclude: true,
-                controller:function($scope,$element,$attrs){$scope.page=$attrs.page;},
+                controller:function($scope,$element,$attrs){
+                    $scope.page=$attrs.page;
+                },
                 //controller: 'headerController',
                 //controllerAs: 'headerCtrl',
                 templateUrl: 'app/header/headerTemplate.html'

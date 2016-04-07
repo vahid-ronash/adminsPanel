@@ -85,7 +85,7 @@
                 return $http
                     .post(URLS.URL_CHANGE_PASS, userData)
                     .then(function (res) {
-                        return res.data.changed;
+                        return res.data;
                     });
             };
 
@@ -101,7 +101,7 @@
                 return $http
                     .get(URLS.URL_LOGOUT)
                     .then(function (result) {
-                        if(result.logged_out)
+                        if(result.data.logged_out)
                             Session.destroy();
                     });
             };

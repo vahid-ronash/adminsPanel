@@ -151,6 +151,9 @@ gulp.task('codacy', function codacyTask() {
 
 
 
+gulp.task('changeServerPath', function(){
+    
+});
 gulp.task('build', ['copyFontAwsome','makeCSS','compressJsFiles']);
 gulp.task('production', ['makeProductionEnvironment','build']);
 gulp.task('development', ['makeDevelopmentEnvironment','build']);

@@ -4,26 +4,23 @@
 /*global describe it expect beforeEach inject */
 describe('sign up controller : ', function() {
     beforeEach(module('app'));
-    var $controller;
-    beforeEach(inject(function(_$controller_){
+    var controller;
+    beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        $controller = _$controller_;
+        var scope=$rootScope.$new();
+        controller = _$controller_('signUpController', { "$scope": scope});
     }));
 
     it('controller is defined', function () {
-        var controller = $controller('signUpController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
+        expect(controller.data.email).toBeDefined(true);
     });
 
 
     describe('test submit preventers', function () {
-        var controller;
         beforeEach(function(){
-            controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
-            controller.user = {
+            controller.data = {
                 email: "demo@pushe.co",
-                password: "1235",
-                agree: false
+                password: "1235"
             };
         });
         it("test repassword preventer",function(){
@@ -38,43 +35,40 @@ describe('sign up controller : ', function() {
             controller.register();
             expect(controller.registerError.indexOf("agree") > 0).toEqual(true);
         });
+        
+        it('submit respond error when user exist', inject(function (_$q_,$timeout) {
+            controller.repassword="1235";
+            controller.agreement=true;
+            var valueToVerify=0;
+            var deferred = _$q_.defer();
+            deferred.promise.then(function (data) {valueToVerify = data; });
+            var registerPromise=controller.register();
+            if(registerPromise)
+                registerPromise.then(function(){
+                    deferred.resolve(controller.registerError.length>0);
+                });
+            else{
+                console.log("register is not a promise")
+            }
+            //deferred.reject('There has been an Error!'+err);
+            $timeout.flush();
+            expect(valueToVerify).toEqual(true);
+        }));
+        
+        it('test submit', inject(function (_$q_,$timeout) {
+            controller.data.email="successTest"+Math.floor(Math.random()*1000)+"@ui.co";
+            controller.repassword="1235";
+            controller.agreement=true;
+            controller.registerError=0;
+            var valueToVerify=0;
+            var deferred = _$q_.defer();
+            deferred.promise.then(function (data) {valueToVerify = data; });
+            controller.register().then(function(){
+                deferred.resolve(!controller.registerError || !controller.registerError.length );
+            });
+            //deferred.reject('There has been an Error!'+err);
+            $timeout.flush();
+            expect(valueToVerify).toEqual(true);
+        }));
     });
-    it('submit respond error when user exist', inject(function (_$q_,$timeout) {
-        var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
-        controller.user = {
-            email: "demo@pushe.co",
-            password: "1235",
-            agree: true
-        };
-        controller.repassword="1235";
-
-        var valueToVerify=0;
-        var deferred = _$q_.defer();
-        deferred.promise.then(function (data) {valueToVerify = data; });
-        controller.register().then(function(){
-            deferred.resolve(controller.registerError.length>0);
-        });
-        //deferred.reject('There has been an Error!'+err);
-        $timeout.flush();
-        expect(valueToVerify).toEqual(true);
-    }));
-    it('test submit', inject(function (_$q_,$timeout) {
-        var controller = $controller('signUpController', {"$scope": {app: {name: "adminsPanel"}}});
-        controller.user = {
-            email: "mojtaba@pushe.co",
-            password: "1235",
-            agree: true
-        };
-        controller.repassword="1235";
-
-        var valueToVerify=0;
-        var deferred = _$q_.defer();
-        deferred.promise.then(function (data) {valueToVerify = data; });
-        controller.register().then(function(){
-            deferred.resolve(!controller.registerError || !controller.registerError.length );
-        });
-        //deferred.reject('There has been an Error!'+err);
-        $timeout.flush();
-        expect(valueToVerify).toEqual(true);
-    }));
 });
