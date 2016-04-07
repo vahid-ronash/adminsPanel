@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:notificationTableController
+ * @name app.controllers.notificationTableController
  * @description
  * it shows all notification
  */
@@ -17,10 +17,10 @@
             /**
              * @ngdoc method
              * @name selectPage
-             * @methodOf module.notificationTableController
+             * @methodOf app.controllers.notificationTableController
              * @description
              * request to load page it will called by smart table
-             * @param tableState
+             * @param {object} tableState   served by smart table
              */
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;

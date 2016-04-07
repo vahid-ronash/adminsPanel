@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc service
- * @name adminsPanel.service:applicationTableService
+ * @name app.services.applicationResource
  * @description
  * it make connection between this app and server
  */

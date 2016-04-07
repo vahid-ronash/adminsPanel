@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step6Controller
+ * @name app.controllers.step6Controller
  * @description
  * control notification wizard step 6
  * it determine notifications alert things(LED, voice , vibrate , screen)

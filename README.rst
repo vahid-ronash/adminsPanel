@@ -57,6 +57,13 @@ After you install above requirements you have to run below commands.
 - Run ``gulp build`` to generate css
 - open ``index.html`` in a browser
 
+Generate Document
+-----------------
+
+run `gulp ngdocs` then open docs/index.html in your browser
+
+For running test in local we have to do these
+
 Setup Testing
 -------------
 

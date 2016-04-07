@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc service
- * @name adminsPanel.service:installedResource
+ * @name app.services.installedResource
  * @description
  * it make connection between this app and server
  */
@@ -19,10 +19,10 @@
                 /**
                  * @ngdoc method
                  * @name query
-                 * @methodOf module.installedResource
+                 * @methodOf app.services.installedResource
                  * @description
                  * get installed list for pagination
-                 * @param filters indicate page data to load
+                 * @param {object}  filters     indicate page data to load
                  */
                 thisService.query = function (filters) {
                     return $http.get(URLS.URL_INSTALLED,{params:filters}).then(function (result) {

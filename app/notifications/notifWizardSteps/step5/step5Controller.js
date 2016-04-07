@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step5Controller
+ * @name app.controllers.step5Controller
  * @description
  * control notification wizard step 5
  * enable user to write his json data

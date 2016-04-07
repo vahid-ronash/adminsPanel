@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:signUpController
+ * @name app.controllers.signUpController
  * @description
  * control signUp page and make user able to register in pushe.co
  */
@@ -22,7 +22,7 @@
             /**
              * @ngdoc method
              * @name login
-             * @methodOf module.signUpController
+             * @methodOf app.controllers.signUpController
              * @description
              * it pass credential(username,password,rememberMe) data to authService
              */

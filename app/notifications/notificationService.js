@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc service
- * @name adminsPanel.service:notificationResource
+ * @name app.services.notificationResource
  * @description
  * it make connection between this app and server
  */
@@ -19,10 +19,10 @@
                 /**
                  * @ngdoc method
                  * @name query
-                 * @methodOf module.notificationResource
+                 * @methodOf app.services.notificationResource
                  * @description
                  * get notification list for pagination
-                 * @param filters indicate page data to load
+                 * @param {object}  filters  indicate page data to load
                  */
                 thisService.query = function (filters) {
                     var url = URLS.URL_NOTIF;
@@ -36,10 +36,10 @@
                 /**
                  * @ngdoc method
                  * @name sendNotification
-                 * @methodOf module.notificationResource
+                 * @methodOf app.services.notificationResource
                  * @description
                  * send notification data
-                 * @param notificationData indicate notification data
+                 * @param {object}  notificationData     indicate notification data
                  */
                 thisService.sendNotification= function (notificationData) {
                     var output={

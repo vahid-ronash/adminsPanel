@@ -1,15 +1,15 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
-/**
- * @ngdoc controller
- * @name adminsPanel.controller:installedTableController
- * @description
- * it shows all installed devices
- */
 /*global angular */
 ((function() {
     'use strict';
+    /**
+     * @ngdoc controller
+     * @name app.controllers.installedTableController
+     * @description
+     * it shows all installed devices
+     */
     angular
         .module("app")
         .controller('installedTableController', ['$scope', 'installedResource', function ($scope, $installedResource,$http) {
@@ -17,10 +17,10 @@
             /**
              * @ngdoc method
              * @name sendTest
-             * @methodOf module.installedTableController
+             * @methodOf app.controllers.installedTableController
              * @description
              * send test notification by a link that server provided
-             * @param row (selected install)
+             * @param {object}  row     (selected install)
              */
             thisController.sendTest=function(row){
                 //$http.get(row.test).then(function(){
@@ -31,10 +31,10 @@
             /**
              * @ngdoc method
              * @name selectPage
-             * @methodOf module.installedTableController
+             * @methodOf app.controllers.installedTableController
              * @description
              * request to load page it will called by smart table
-             * @param tableState
+             * @param {object}  tableState     (it served by smart table and contain navigation data)
              */
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;

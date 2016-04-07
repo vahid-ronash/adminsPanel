@@ -1,15 +1,15 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
-/**
- * @ngdoc service
- * @name adminsPanel.service:AuthService
- * @description
- * it make connection between this app and server
- */
 /*global angular */
 ((function() {
     'use strict';
+    /**
+     * @ngdoc service
+     * @name app.services.AuthService
+     * @description
+     * it make connection between this app and server
+     */
     angular
         .module('app')
         .factory('AuthService', function ($http, Session,$rootScope,URLS) {
@@ -18,10 +18,10 @@
             /**
              * @ngdoc method
              * @name login
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * send credential data to server and get response to detect user and save session
-             * @param credentials
+             * @param {object}  credentials     contain login data
              */
             authService.login = function (credentials) {
                 return $http
@@ -40,10 +40,10 @@
             /**
              * @ngdoc method
              * @name register
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * send user data to server to register a user
-             * @param userData
+             * @param {object}  userData     contain register data
              */
             authService.register= function (userData) {
                 return $http
@@ -56,10 +56,10 @@
             /**
              * @ngdoc method
              * @name forgotPassword
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * send forgot password request
-             * @param userData
+             * @param {object}  userData     contain forgot data
              * pushe.co/accounting/reset_password | POST | {"mail_sent": True}
              */
             authService.forgotPassword= function (userData) {
@@ -75,11 +75,12 @@
             /**
              * @ngdoc method
              * @name changePassword
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * reset users password
              * pushe.co/accounting/change_password | POST | {"changed": True}
-             * @param userData
+             * @param {object}  userData     contain change Password data
+             *
              */
             authService.changePassword= function (userData) {
                 return $http
@@ -92,7 +93,7 @@
             /**
              * @ngdoc method
              * @name logout
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * send logout to server and destroy session
              * pushe.co/accounting/logout | GET | {"logged_out": True}
@@ -109,7 +110,7 @@
             /**
              * @ngdoc method
              * @name isAuthenticated
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * determine user is logged in or not
              */
@@ -120,7 +121,7 @@
             /**
              * @ngdoc method
              * @name getUserEmail
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * determine user is logged in or not
              */
@@ -131,7 +132,7 @@
             /**
              * @ngdoc method
              * @name isAuthorized
-             * @methodOf module.AuthService
+             * @methodOf app.services.AuthService
              * @description
              * set or get user access
              */

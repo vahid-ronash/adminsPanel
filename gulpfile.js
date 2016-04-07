@@ -130,8 +130,20 @@ gulp.task('autotest', function() {
 
 gulp.task('ngdocs', [], function () {
     var gulpDocs = require('gulp-ngdocs');
+    var options = {
+        /* pass both .min.js and .min.js.map files for angular and angular-animate */
+        scripts: [
+            'assets/libs/angular/angular.min.js',
+            'assets/libs/angular/angular.min.js.map',
+            'assets/libs/angular-animate/angular-animate.min.js',
+            'assets/libs/angular-animate/angular-animate.min.js.map',
+            'assets/libs/marked/marked.min.js',
+        ],
+        title: "pushe ui documentation",
+        image: "assets/images/logo.png"
+    };
     return gulp.src('app/**/*.js')
-        .pipe(gulpDocs.process())
+        .pipe(gulpDocs.process(options))
         .pipe(gulp.dest('./docs'));
 });
 
@@ -151,9 +163,6 @@ gulp.task('codacy', function codacyTask() {
 
 
 
-gulp.task('changeServerPath', function(){
-    
-});
 gulp.task('build', ['copyFontAwsome','makeCSS','compressJsFiles']);
 gulp.task('production', ['makeProductionEnvironment','build']);
 gulp.task('development', ['makeDevelopmentEnvironment','build']);

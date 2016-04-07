@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step7Controller
+ * @name app.controllers.step7Controller
  * @description
  * control notification wizard step 7
  * it will filters contacts

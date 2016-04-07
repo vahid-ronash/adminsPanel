@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:changePasswordController
+ * @name app.controllers.changePasswordController
  * @description
  * control change password page
  */
@@ -26,7 +26,7 @@
             /**
              * @ngdoc method
              * @name sendChangeRequest
-             * @methodOf module.changePasswordController
+             * @methodOf app.controllers.changePasswordController
              * @description
              * send reset password request data
              */

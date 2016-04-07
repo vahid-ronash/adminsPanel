@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:step1Controller
+ * @name app.controllers.step1Controller
  * @description
  * control notification wizard step 1
  * it determine notification visibility and app

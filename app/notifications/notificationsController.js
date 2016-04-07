@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:notificationsController
+ * @name app.controllers.notificationsController
  * @description
  * control notification page
  */
@@ -98,7 +98,7 @@
             /**
              * @ngdoc method
              * @name showWizard
-             * @methodOf module.notificationWizardController
+             * @methodOf app.controllers.notificationsController
              * @description
              * ignite the wizard
              */

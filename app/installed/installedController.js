@@ -4,6 +4,12 @@
 /*global angular */
 ((function() {
     'use strict';
+    /**
+     * @ngdoc controller
+     * @name app.controllers.installedController
+     * @description
+     * control whole installed
+     */
     angular
         .module('app')
         .controller('installedController', ['$scope',function($scope){

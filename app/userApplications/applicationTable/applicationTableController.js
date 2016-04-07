@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:applicationTableController
+ * @name app.controllers.applicationTableController
  * @description
  * it can do CRUD on user's applications by using smartTable
  */
@@ -21,10 +21,10 @@
             /**
              * @ngdoc method
              * @name callServer
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * request to load page it will called by smart table
-             * @param tableState
+             * @param {object}      tableState      it served by smart table
              */
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
@@ -56,7 +56,7 @@
             /**
              * @ngdoc method
              * @name startNewApplication
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * start to make new application
              */
@@ -68,7 +68,7 @@
             /**
              * @ngdoc method
              * @name startEdit
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * add new application to database
              */
@@ -88,10 +88,10 @@
             /**
              * @ngdoc method
              * @name startEdit
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * cause to show edit panel
-             * @param row (selected application)
+             * @param {object}      row     selected application
              */
             thisController.startEdit = function (row) {
                 row.isEditing = true;
@@ -103,10 +103,10 @@
             /**
              * @ngdoc method
              * @name commitEdit
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * apply edit and save result on server
-             * @param row (selected application)
+             * @param {object} row selected application
              */
             thisController.commitEdit = function (row) {
                 //send edited data
@@ -118,10 +118,10 @@
             /**
              * @ngdoc method
              * @name cancelEdit
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * rollback to origin data
-             * @param row (selected application)
+             * @param {object}  row      selected application
              */
             thisController.cancelEdit = function (row) {
                 row.name = row.backupName;
@@ -132,11 +132,11 @@
             /**
              * @ngdoc method
              * @name removeApplication
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * get confirm and remove selected application
-             * @param row (selected application)
-             * @param callback
+             * @param {object}  row     selected application
+             * @param {function} callback   callback when remove done
              */
             thisController.removeApplication = function (row,callback) {
                 //TODO:get confirm
@@ -152,11 +152,11 @@
             /**
              * @ngdoc method
              * @name showDetail
-             * @methodOf module.applicationTableController
+             * @methodOf app.controllers.applicationTableController
              * @description
              * show application sender ID
-             * @param row (selected application)
-             * @param callback
+             * @param {object}  row     selected application
+             * @param {function} callback   callback when its done
              */
             thisController.showDetail = function (row,callback) {
                 if(row.showDetail)row.showDetail=false;

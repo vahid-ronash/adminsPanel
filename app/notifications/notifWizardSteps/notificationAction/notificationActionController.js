@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:notificationActionController
+ * @name app.controllers.notificationActionController
  * @description
  * it select a action for notification click
  */

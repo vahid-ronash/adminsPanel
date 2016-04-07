@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name adminsPanel.controller:notificationButtonController
+ * @name app.controllers.notificationButtonController
  * @description
  * it shows all notification
  */

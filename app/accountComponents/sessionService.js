@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc service
- * @name adminsPanel.service:Session
+ * @name app.services.Session
  * @description
  * hold logged in user data
  */
