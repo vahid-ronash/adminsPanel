@@ -62,7 +62,6 @@ Generate Document
 
 run `gulp ngdocs` then open docs/index.html in your browser
 
-For running test in local we have to do these
 
 Setup Testing
 -------------
@@ -75,7 +74,8 @@ For running test in local we have to do these
     [sudo] npm install -g gulp
     [sudo] npm install -g karma
     [sudo] npm install -g phantomjs
-    gulp test                        // to execute tests
+    gulp development                 // to make requirement files
+    gulp karmaTest                   // to execute tests
     gulp autotest                    // to execute tests in developing
 
 * `Gulp <http://gulpjs.com>`_

@@ -17,4 +17,6 @@ before_script:
   - 'npm install' # install npm packages
   - 'bower install --no-interactive' # install bower packages without asking about version conflict and install last version
 after_script:
-  - 'gulp test' # run test and send codacy coverage
+  - 'gulp development' # build requirements
+  - 'gulp karmaTest' # run test
+  - 'gulp codacy' # send codacy coverage

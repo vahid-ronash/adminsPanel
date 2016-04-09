@@ -37,8 +37,6 @@
                 res.visibility=!res.isHidden;
                 delete res.isHidden;
 
-                console.log(res);
-
                 // var output={notification}
                 notificationResource.sendNotification(res);
                 return callback(true);

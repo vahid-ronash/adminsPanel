@@ -140,7 +140,7 @@
                     dismissed_count:clickdismissCount- clickedCount
                 };
             }
-            for (var i = 0; i < 1000; i++) {
+            for (var ni = 0; ni < 1000; ni++) {
                 randomsNotifItems.push(createRandomNotif());
             }
             // $httpBackend.whenGET(getRegex(URLS.URL_NOTIF,"\\?.*")).respond(function(method, url, keys,headers,param){

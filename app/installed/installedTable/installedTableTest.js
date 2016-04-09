@@ -17,11 +17,11 @@ describe('test installed table controller and services : ', function () {
 
     //inject what we need in next specs
     beforeEach(//beforeAll(
-        inject(function (_$q_, _$timeout_, _$controller_, installedResource) {
+        inject(function (_$q_, _$timeout_, _$controller_, installedResource,$rootScope) {
             deferred = _$q_.defer();
             $timeout = _$timeout_;
             installedTableController = _$controller_('installedTableController', {
-                "$scope": {},
+                "$scope": $rootScope.$new(),
                 "installedResource": installedResource
             });
         })

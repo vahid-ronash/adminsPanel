@@ -123,7 +123,7 @@ gulp.task('karmaTest', function (done) {
 
 
 gulp.task('autotest', function() {
-    return gulp.watch(["app/**/*test.js"], ['test']);
+    return gulp.watch(["app/**/*test.js"], ['karmaTest']);
 });
 
 
@@ -167,4 +167,4 @@ gulp.task('build', ['copyFontAwsome','makeCSS','compressJsFiles']);
 gulp.task('production', ['makeProductionEnvironment','build']);
 gulp.task('development', ['makeDevelopmentEnvironment','build']);
 gulp.task('default', ['makeCSS','watchSCSS']);
-gulp.task('test',['development','karmaTest','codacy']);
+gulp.task('test',['development','karmaTest','codacy']);//dont use it because it do them together but we need to do that after each other

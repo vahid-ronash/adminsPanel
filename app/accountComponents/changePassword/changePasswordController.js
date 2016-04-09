@@ -50,7 +50,7 @@
                             var sec=7;
                             setInterval(function(){
                                 thisController.alert=alertText+(sec--);
-                                if(sec<1)$location.path('/account/home');//redirect to home after 7 second
+                                if(sec<1){$location.path('/account/home');}//redirect to home after 7 second
                             },1000);
                         }
                     },$scope.errorAlert);

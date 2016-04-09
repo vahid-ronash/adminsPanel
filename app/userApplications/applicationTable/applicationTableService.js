@@ -17,24 +17,23 @@
                 alert(JSON.stringify(data));
             }
             return {
-
                 save:function(data,successCallback,failedCallback){
-                    return $http.post(URLS.URL_APP,data).then(successCallback,applicationFailedCallback);
+                    return $http.post(URLS.URL_APP,data).then(successCallback,failedCallback||applicationFailedCallback);
                 },
                 update:function(data,successCallback,failedCallback){
-                    return $http.post(URLS.URL_APP,data).then(successCallback,applicationFailedCallback);
+                    return $http.post(URLS.URL_APP,data).then(successCallback,failedCallback||applicationFailedCallback);
                 },
                 query:function(filters,successCallback,failedCallback){
                     var url = URLS.URL_APP;
                     return $http.get(url,{
                         params:filters
-                    }).then(successCallback,applicationFailedCallback);
+                    }).then(successCallback,failedCallback||applicationFailedCallback);
                 },
                 delete:function(data,successCallback,failedCallback){
-                    return $http.delete(URLS.URL_APP+data.id).then(successCallback,applicationFailedCallback);
+                    return $http.delete(URLS.URL_APP+data.id).then(successCallback,failedCallback||applicationFailedCallback);
                 },
                 getSenderID:function(applicationID,successCallback,failedCallback){
-                    return $http.get(URLS.URL_APP+applicationID+"/").then(successCallback,applicationFailedCallback);
+                    return $http.get(URLS.URL_APP+applicationID+"/").then(successCallback,failedCallback||applicationFailedCallback);
                 }
             };
             //replace http on ngResource because i cant set it with last slash for requests(ngResource removes last slash in url)

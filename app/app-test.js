@@ -2,14 +2,14 @@
  * Created by mojtaba on 3/8/16.
  */
 /*global describe beforeEach inject it expect */
-describe('test app.controller., function() {
+describe('test app controller', function() {
     beforeEach(module('app'));
     var $controller,gscope;
-    beforeEach(inject(function(_$controller_){
+    beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
         $controller = _$controller_;
-        gscope ={$watch:{}};
-        $controller('AppCtrl', { $scope: gscope });
+        gscope=$rootScope.$new();
+        $controller('AppCtrl', { $scope: gscope});
     }));
 
     it('methods are defined well', function () {

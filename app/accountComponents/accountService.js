@@ -28,7 +28,7 @@
                     .post(URLS.URL_LOGIN, credentials)
                     .then(function (res) {
                         var result=res.data;
-                        if(result.logged_in)Session.create("asca","dsrfver", "edvedrfv","asdfvsdfv");
+                        if(result.logged_in){Session.create("asca","dsrfver", "edvedrfv","asdfvsdfv");}
                         // if(result.user) {
                         //     Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
                         // }
