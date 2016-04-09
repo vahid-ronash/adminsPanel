@@ -16,6 +16,11 @@
         .controller('step1Controller', ['$scope', 'Upload', '$timeout', '$http', '$filter', 'URLS', function ($scope, Upload, $timeout, $http, $filter, URLS) {
             //var thisController=this;
             var contextData = $scope.$context.data;
+            var asThisController = $scope.step1Ctrl = {};
+            asThisController.data = {
+                isHidden: false,
+                selectedApps: []
+            };
             $scope.$context.behavior.leaving = function (options, callback) {
                 if (!asThisController.data.selectedApps.length) {
                     callback(false);
@@ -31,11 +36,6 @@
                     asThisController.appList = result.data.results;
                     callback(true);
                 });
-            };
-            var asThisController = $scope.step1Ctrl = {};
-            asThisController.data = {
-                isHidden: false,
-                selectedApps: []
             };
         }]);
 })());

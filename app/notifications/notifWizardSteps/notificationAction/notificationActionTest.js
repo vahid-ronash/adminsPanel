@@ -8,6 +8,7 @@ describe('test notification-action directive : ', function () {
         var $scope=$rootScope.$new();
         var elm = angular.element('<notification-action></notification-action>');
         $compile(elm)($scope);
+        expect(1).toBe(1);
         // $scope.$digest();
     }));
 });

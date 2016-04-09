@@ -12,18 +12,45 @@
     'use strict';
     angular
         .module('app')
-        .service('Session', function () {
-            this.create = function (sessionId, userId, email, userRole) {
-                this.id = sessionId;
-                this.userId = userId;
-                this.email=email;
-                this.userRole = userRole;
+        .service('Session',function(){//,['$cookies', function ($cookies) {
+            var $cookies={get:function(){}};//TODO remove me
+            this.isAuth=function(){
+                if(!this.user){
+                    var sessionID=$cookies.get("session_id");
+                    var emailAddress=$cookies.get("emailAddress")||"";
+                    if(sessionID) {
+                        this.user = {
+                            email:emailAddress,
+                            sessionId: sessionID
+                        };
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                return true;
+            };
+            this.create = function () {
+                var sessionID=$cookies.get("session_id");
+                var emailAddress=$cookies.get("emailAddress")||"";
+                var userRole=$cookies.get("userRoles")||"";
+                if(sessionID) {
+                    this.user = {
+                        email:emailAddress,
+                        sessionId: sessionID,
+                        roles:userRole
+                    };
+                }
+                else{
+                    return false;
+                }
             };
             this.destroy = function () {
-                this.id = null;
-                this.userId = null;
-                this.email=null;
-                this.userRole = null;
+                $sessionStorage.user=this.user =null;
+            };
+
+            this.load=function(){
+                this.user=$sessionStorage.user;
             };
         });
 })());

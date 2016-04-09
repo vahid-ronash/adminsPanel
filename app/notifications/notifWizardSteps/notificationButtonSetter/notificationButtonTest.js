@@ -9,5 +9,6 @@ describe('test notification-button-setter directive : ', function () {
         var elm = angular.element('<notification-button-setter></notification-button-setter>');
         $compile(elm)($scope);
         // $scope.$digest();
+        expect(1).toBe(1);
     }));
 });

@@ -48,9 +48,9 @@ describe('sign up controller : ', function() {
                     deferred.resolve(controller.registerError.length>0);
                 });
             else{
-                console.log("register is not a promise")
+                deferred.reject('register is not a promise!'+err);
             }
-            //deferred.reject('There has been an Error!'+err);
+
             $timeout.flush();
             expect(valueToVerify).toEqual(true);
         }));

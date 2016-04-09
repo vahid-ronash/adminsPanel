@@ -154,6 +154,7 @@
                                             ]);
                                         };
 
+
                                         $scope.goById = function(stepOrId, isPrevious) {
                                             var id = window.angular.isString(stepOrId) ? stepOrId : (stepOrId && stepOrId.id);
                                             if (id === $wizard.$constants.finishStepId) {

@@ -17,6 +17,16 @@
             //var thisController=this;
             var contextData = $scope.$context.data;
             contextData.canSendNotification = false;
+
+            var asThisController = $scope.step2Ctrl = {};
+            asThisController.data = {
+                title: "",
+                content: "",
+                ticker: "",
+                icon: "",
+                action: {}
+            };
+            
             $scope.$context.behavior.leaving = function (options, callback) {
                 contextData.stepData[1] = asThisController.data;
                 if(contextData.canSendNotification)
@@ -32,14 +42,7 @@
                 if (asThisController.isMessageHidden)contextData.canSendNotification=true;
                 callback(true);
             };
-            var asThisController = $scope.step2Ctrl = {};
-            asThisController.data = {
-                title: "",
-                content: "",
-                ticker: "",
-                icon: "",
-                action: {}
-            };
+
             asThisController.focusStart=true;
             asThisController.dataChange=function(){
                 var data=asThisController.data;

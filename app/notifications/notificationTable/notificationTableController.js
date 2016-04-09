@@ -38,7 +38,7 @@
 
                 return $notificationResource.query(filters).then(function (result) {
                     thisController.displayed = result;
-                    for(var i in thisController.displayed){
+                    for(var i=0;i<thisController.displayed.length;i++){
                         var di=thisController.displayed[i];
                         var sum=di.clicked_count+di.dismissed_count;
                         if(!sum){di.clicked_count=di.dismissed_count=1;sum=2}

@@ -9,11 +9,11 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
-var replace = require('gulp-replace');
+// var replace = require('gulp-replace');
 
 
 
-var gzip = require('gulp-gzip');
+// var gzip = require('gulp-gzip');
 gulp.task('compressJsFiles',function(){
     gulp.src([
             "app/**/*.js"
@@ -30,6 +30,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/bootstrap/dist/js/bootstrap.js",
 
             "assets/libs/angular/angular.js",
+            // "assets/libs/angular-cookies/angular-cookies.js",
             "assets/libs/angular-translate/angular-translate.js",
             "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
             "assets/libs/angular-animate/angular-animate.js",
@@ -107,6 +108,11 @@ gulp.task('makeDevelopmentEnvironment', function () {
         })).pipe(gulp.dest('app/'));
 });
 
+gulp.task('makePublic', function () {
+    gulp.src('index.html').pipe(gulp.dest('public/'));
+    gulp.src('app/**/*.*').pipe(gulp.dest('public/app'));
+    gulp.src('assets/**/*.*').pipe(gulp.dest('public/assets'));
+});
 
 
 

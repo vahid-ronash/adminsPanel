@@ -7,7 +7,7 @@
     angular
         .module('app')
         .config(function($provide,EnvironmentConfig) {
-            if(EnvironmentConfig.mode=="production")return true;
+            if(EnvironmentConfig.mode==="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
         .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
@@ -96,7 +96,7 @@
 
                 if (param.ordering) {
                     var order = param.ordering;
-                    var isReverse = (order[0] == "-");
+                    var isReverse = (order[0] === "-");
                     if (isReverse) order = order.substr(1);
                     filtered = $filter('orderBy')(filtered, order, isReverse);
                 }

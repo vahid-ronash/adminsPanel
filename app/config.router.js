@@ -16,9 +16,9 @@
                 $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
                 $routeProvider
-                    .when('/home', {
-                        templateUrl: 'app/home/home.html',
-                        controller: 'homeController as home'
+                    .when('/dashboard', {
+                        templateUrl: 'app/dashboard/dashboard.html',
+                        controller: 'dashboardController as dashboard'
                         //resolve: need delay
                     })
                     .when('/apps', {

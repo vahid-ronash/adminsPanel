@@ -5,7 +5,7 @@
  * # MainCtrl
  * Controller of the app
  */
-/*global angular palette */
+/*global angular */
 ((function() {
   'use strict';
   angular

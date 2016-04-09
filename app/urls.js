@@ -9,7 +9,7 @@
  * # Config
  * Config for the router
  */
-/*global angular $ */
+/*global angular */
 ((function() {
     'use strict';
     angular.module('app')
@@ -21,6 +21,6 @@
             "URL_REGISTER":"api/accounting/",
             "URL_FORGOTPASS":"api/accounting/reset_password/",
             "URL_CHANGE_PASS":"api/accounting/changePassword/",
-            "URL_LOGOUT":"api/accounting/logout/",
+            "URL_LOGOUT":"api/accounting/logout/"
         });
 })());

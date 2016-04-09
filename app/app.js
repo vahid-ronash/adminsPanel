@@ -13,7 +13,7 @@
 angular
     .module('app', [
         'ngAnimate',
-        'ngResource',
+        // 'ngCookie',
         'ngSanitize',//Sanitizes an html string by stripping all potentially dangerous tokens.
         'ngTouch',
         'ui.bootstrap',

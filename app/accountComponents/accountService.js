@@ -28,6 +28,7 @@
                     .post(URLS.URL_LOGIN, credentials)
                     .then(function (res) {
                         var result=res.data;
+                        
                         if(result.logged_in){Session.create("asca","dsrfver", "edvedrfv","asdfvsdfv");}
                         // if(result.user) {
                         //     Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
@@ -115,7 +116,7 @@
              * determine user is logged in or not
              */
             authService.isAuthenticated = function () {
-                return !!Session.userId;
+                return Session.isAuth();
             };
 
             /**

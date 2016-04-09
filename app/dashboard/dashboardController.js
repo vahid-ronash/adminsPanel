@@ -6,13 +6,13 @@
     'use strict';
     /**
      * @ngdoc controller
-     * @name app.controller.homeController
+     * @name app.controller.dashboardController
      * @description
-     * control home
+     * control dashboard page
      */
     angular
         .module('app')
-        .controller('homeController', ['$scope',function($scope){
+        .controller('dashboardController', ['$scope',function($scope){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
         }]);

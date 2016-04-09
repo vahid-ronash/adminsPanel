@@ -30,21 +30,23 @@
                 var etal = /^[0-9]{15}$/;
                 if (!etal.test(imeiInput))
                     return false;
-                var sum = 0, mul = 2, l = 14;
-                for (var i = 0; i < l; i++) {
-                    var digit = imeiInput.substring(l-i-1,l-i);
-                    var tp = parseInt(digit,10)*mul;
-                    if (tp >= 10)
-                        sum += (tp % 10) +1;
-                    else
-                        sum += tp;
-                    if (mul == 1)
-                        mul++;
-                    else
-                        mul--;
+                else {
+                    var sum = 0, mul = 2, l = 14;
+                    for (var i = 0; i < l; i++) {
+                        var digit = imeiInput.substring(l - i - 1, l - i);
+                        var tp = parseInt(digit, 10) * mul;
+                        if (tp >= 10)
+                            sum += (tp % 10) + 1;
+                        else
+                            sum += tp;
+                        if (mul == 1)
+                            mul++;
+                        else
+                            mul--;
+                    }
+                    var chk = ((10 - (sum % 10)) % 10);
+                    return chk == parseInt(imeiInput.substring(14, 15), 10);
                 }
-                var chk = ((10 - (sum % 10)) % 10);
-                return chk == parseInt(imeiInput.substring(14, 15), 10);
             };
             asThisController.loadTags=function(){};
         }]);

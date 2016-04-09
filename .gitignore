@@ -8,3 +8,7 @@
 /assets/js
 /docs
 .vagrant
+/assets/fonts/fontawesome*
+/assets/fonts/FontAwesome*
+/app/environment.js
+/public
