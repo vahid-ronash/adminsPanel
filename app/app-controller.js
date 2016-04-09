@@ -1,6 +1,6 @@
 /**
  * @ngdoc function
- * @name app.AppCtrl
+ * @name app.controller.AppCtrl
  * @description
  * # MainCtrl
  * Controller of the app

@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.notificationActionController
+ * @name app.controller.notificationActionController
  * @description
  * it select a action for notification click
  */

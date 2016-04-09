@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.step3Controller
+ * @name app.controller.step3Controller
  * @description
  * control notification wizard step 3
  * it gives big notification informations big

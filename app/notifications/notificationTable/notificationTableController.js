@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.notificationTableController
+ * @name app.controller.notificationTableController
  * @description
  * it shows all notification
  */
@@ -17,7 +17,7 @@
             /**
              * @ngdoc method
              * @name selectPage
-             * @methodOf app.controllers.notificationTableController
+             * @methodOf app.controller.notificationTableController
              * @description
              * request to load page it will called by smart table
              * @param {object} tableState   served by smart table

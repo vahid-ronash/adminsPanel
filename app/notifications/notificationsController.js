@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name app.controllers.notificationsController
+ * @name app.controller.notificationsController
  * @description
  * control notification page
  */
@@ -98,7 +98,7 @@
             /**
              * @ngdoc method
              * @name showWizard
-             * @methodOf app.controllers.notificationsController
+             * @methodOf app.controller.notificationsController
              * @description
              * ignite the wizard
              */

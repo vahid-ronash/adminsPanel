@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name global.directive:notificationAction
+ * @name app.directive.notificationAction
  * @scope
  * @restrict E
  * @description

@@ -1,6 +1,16 @@
 /**
  * Created by mojtaba on 3/16/16.
  */
+
+/**
+ * @ngdoc directive
+ * @name app.directive.sxWizard
+ * @scope
+ * @restrict E
+ * @description
+ * its a component that manage some pages and make suitable data
+ */
+
 /*global angular */
 ((function() {
     'use strict';

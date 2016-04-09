@@ -1,6 +1,15 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
+
+/**
+ * @ngdoc directive
+ * @name app.directive.focusMe
+ * @scope
+ * @restrict E
+ * @description
+ * used to focus on input element automatically
+ */
 /*global angular */
 ((function () {
     'use strict';

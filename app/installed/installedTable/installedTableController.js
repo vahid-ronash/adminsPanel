@@ -6,7 +6,7 @@
     'use strict';
     /**
      * @ngdoc controller
-     * @name app.controllers.installedTableController
+     * @name app.controller.installedTableController
      * @description
      * it shows all installed devices
      */
@@ -17,7 +17,7 @@
             /**
              * @ngdoc method
              * @name sendTest
-             * @methodOf app.controllers.installedTableController
+             * @methodOf app.controller.installedTableController
              * @description
              * send test notification by a link that server provided
              * @param {object}  row     (selected install)
@@ -31,7 +31,7 @@
             /**
              * @ngdoc method
              * @name selectPage
-             * @methodOf app.controllers.installedTableController
+             * @methodOf app.controller.installedTableController
              * @description
              * request to load page it will called by smart table
              * @param {object}  tableState     (it served by smart table and contain navigation data)

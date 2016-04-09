@@ -1,6 +1,14 @@
 /**
  * Created by mojtaba on 3/16/16.
  */
+
+/**
+ * @ngdoc service
+ * @name app.services.$wizard
+ * @description
+ * manage wizard data
+ */
+
 /*global angular */
 ((function() {
     'use strict';

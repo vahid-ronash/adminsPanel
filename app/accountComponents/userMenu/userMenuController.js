@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name app.controllers.userMenuController
+ * @name app.controller.userMenuController
  * @description
  * control user menu
  */
@@ -20,7 +20,7 @@
             /**
              * @ngdoc method
              * @name logout
-             * @methodOf app.controllers.userMenuController
+             * @methodOf app.controller.userMenuController
              * @description
              * send logout request to server
              */

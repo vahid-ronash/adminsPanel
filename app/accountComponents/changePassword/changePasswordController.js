@@ -4,7 +4,11 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name app.controllers.changePasswordController
+ * @name app.controller.changePasswordController
+ * @requires $scope
+ * @requires AuthService
+ * @requires $location
+ * @requires $filter
  * @description
  * control change password page
  */
@@ -25,8 +29,8 @@
 
             /**
              * @ngdoc method
-             * @name sendChangeRequest
-             * @methodOf app.controllers.changePasswordController
+             * @name app.controller.changePasswordController#sendChangeRequest
+             * @methodOf app.controller.changePasswordController
              * @description
              * send reset password request data
              */

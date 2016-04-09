@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.notificationButtonController
+ * @name app.controller.notificationButtonController
  * @description
  * it shows all notification
  */

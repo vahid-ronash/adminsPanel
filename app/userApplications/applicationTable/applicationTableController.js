@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.applicationTableController
+ * @name app.controller.applicationTableController
  * @description
  * it can do CRUD on user's applications by using smartTable
  */
@@ -21,7 +21,7 @@
             /**
              * @ngdoc method
              * @name callServer
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * request to load page it will called by smart table
              * @param {object}      tableState      it served by smart table
@@ -56,7 +56,7 @@
             /**
              * @ngdoc method
              * @name startNewApplication
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * start to make new application
              */
@@ -68,7 +68,7 @@
             /**
              * @ngdoc method
              * @name startEdit
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * add new application to database
              */
@@ -88,7 +88,7 @@
             /**
              * @ngdoc method
              * @name startEdit
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * cause to show edit panel
              * @param {object}      row     selected application
@@ -103,7 +103,7 @@
             /**
              * @ngdoc method
              * @name commitEdit
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * apply edit and save result on server
              * @param {object} row selected application
@@ -118,7 +118,7 @@
             /**
              * @ngdoc method
              * @name cancelEdit
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * rollback to origin data
              * @param {object}  row      selected application
@@ -132,7 +132,7 @@
             /**
              * @ngdoc method
              * @name removeApplication
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * get confirm and remove selected application
              * @param {object}  row     selected application
@@ -152,7 +152,7 @@
             /**
              * @ngdoc method
              * @name showDetail
-             * @methodOf app.controllers.applicationTableController
+             * @methodOf app.controller.applicationTableController
              * @description
              * show application sender ID
              * @param {object}  row     selected application

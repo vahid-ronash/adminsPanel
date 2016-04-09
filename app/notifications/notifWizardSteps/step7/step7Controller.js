@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.step7Controller
+ * @name app.controller.step7Controller
  * @description
  * control notification wizard step 7
  * it will filters contacts

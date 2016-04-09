@@ -7,7 +7,7 @@
 
     /**
      * @ngdoc directive
-     * @name global.directive:applicationTable
+     * @name app.directive.applicationTable
      * @scope
      * @restrict E
      * @description

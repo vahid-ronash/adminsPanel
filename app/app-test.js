@@ -2,7 +2,7 @@
  * Created by mojtaba on 3/8/16.
  */
 /*global describe beforeEach inject it expect */
-describe('test app Controller', function() {
+describe('test app.controller., function() {
     beforeEach(module('app'));
     var $controller,gscope;
     beforeEach(inject(function(_$controller_){

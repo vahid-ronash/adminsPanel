@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name global.directive:installTable
+ * @name app.directive.installTable
  * @scope
  * @restrict E
  * @description

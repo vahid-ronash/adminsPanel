@@ -4,7 +4,7 @@
 /*global angular */
 /**
  * @ngdoc controller
- * @name app.controllers.signInController
+ * @name app.controller.signInController
  * @description
  * control sign in page and make user able to login
  */
@@ -22,7 +22,7 @@
             /**
              * @ngdoc method
              * @name login
-             * @methodOf app.controllers.signInController
+             * @methodOf app.controller.signInController
              * @description
              * it pass credential(username,password,rememberMe) data to authService
              */
@@ -42,7 +42,7 @@
             /**
              * @ngdoc method
              * @name loginAsDemo
-             * @methodOf app.controllers.signInController
+             * @methodOf app.controller.signInController
              * @description
              * use demo user and send them to login method
              */

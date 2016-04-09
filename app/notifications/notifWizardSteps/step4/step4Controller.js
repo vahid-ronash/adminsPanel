@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.step4Controller
+ * @name app.controller.step4Controller
  * @description
  * control notification wizard step 4
  * it show a ui to give 3 action button details

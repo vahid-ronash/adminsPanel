@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name global.directive:userMenu
+ * @name app.directive.userMenu
  * @scope
  * @restrict E
  * @description

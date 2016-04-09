@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name global.directive:notificationButtonSetter
+ * @name app.directive.notificationButtonSetter
  * @scope
  * @restrict E
  * @description

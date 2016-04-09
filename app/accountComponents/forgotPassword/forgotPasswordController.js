@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controllers.forgetPasswordController
+ * @name app.controller.forgetPasswordController
  * @description
  * control a password recovery page
  */
@@ -18,7 +18,7 @@
             /**
              * @ngdoc method
              * @name forgotPassword
-             * @methodOf app.controllers.forgetPasswordController
+             * @methodOf app.controller.forgetPasswordController
              * @description
              * it pass credential(username,password,rememberMe) data to authService
              */

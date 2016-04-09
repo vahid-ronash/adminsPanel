@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name global.directive:header
+ * @name app.directive.header
  * @scope
  * @restrict E
  * @description

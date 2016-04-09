@@ -6,7 +6,7 @@
     'use strict';
     /**
      * @ngdoc controller
-     * @name app.controllers.installedController
+     * @name app.controller.installedController
      * @description
      * control whole installed
      */
