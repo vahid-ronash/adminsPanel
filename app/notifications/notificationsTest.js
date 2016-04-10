@@ -5,9 +5,11 @@
 describe('notification page', function() {
     beforeEach(module('app'));
     var $controller;
-    beforeEach(inject(function(_$controller_){
+    beforeEach(inject(function(_$controller_,_$q_,$timeout){
         // The injector unwraps the underscores (_) from around the parameter names when matching
         $controller = _$controller_;
+        this.deferred=_$q_.defer();
+        this.timeout=$timeout;
     }));
 
     it('controller is work', function () {
@@ -25,14 +27,20 @@ describe('notification page', function() {
             ,0,0,function(isDone){}
         );
         expect(1).toEqual(1);//TODO: make a real check
+        var deferred=this.deferred;
+        controller.valueToVerify=true;
         controller.successing(
             {stepData:[{
                 isHidden:true,
                 selectedApps:[{application_id:"1231"}],
                 contacts:["12","321"]
             }]}
-            ,0,0,function(isDone){}
+            ,0,0,function(){
+                controller.valueToVerify=true;
+                deferred.resolve();
+            }
         );
-        expect(1).toEqual(1);
+        // this.timeout.flush();
+        expect(controller.valueToVerify).toEqual(true);
     });
 });

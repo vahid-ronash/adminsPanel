@@ -29,6 +29,20 @@
                         return result.data.results;
                     });
                 };
+
+                /**
+                 * @ngdoc method
+                 * @name sendTest
+                 * @methodOf app.services.installedResource
+                 * @description
+                 * send test notification
+                 * @param {object}  installationID    its installation id
+                 */
+                thisService.sendTest = function (installationID) {
+                    return $http.post(URLS.URL_INSTALLED+"/"+installationID+"/send_test_notification/",{}).then(function (result) {
+                        alert("we will send the notification");
+                    });
+                };
             }
 
             return new InstalledService();

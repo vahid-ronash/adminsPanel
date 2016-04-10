@@ -23,9 +23,7 @@
              * @param {object}  row     (selected install)
              */
             thisController.sendTest=function(row){
-                //$http.get(row.test).then(function(){
-                //    TODO:alert your notification has sent to this device successfully
-                //},function(){});//TODO:alert your notif couldn't send because of err
+                $installedResource.sendTest(row.id);
             };
 
             /**

@@ -38,8 +38,7 @@
                 delete res.isHidden;
 
                 // var output={notification}
-                notificationResource.sendNotification(res);
-                return callback(true);
+                notificationResource.sendNotification(res).then(callback);
             };
             wizardInstance
                 .addStep({
