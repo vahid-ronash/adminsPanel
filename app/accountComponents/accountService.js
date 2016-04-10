@@ -125,7 +125,8 @@
              * determine user is logged in or not
              */
             authService.getUserEmail= function () {
-                return Session.email;
+                if(Session.user)
+                    return Session.user.email;
             };
 
             /**

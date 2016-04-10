@@ -11,7 +11,8 @@
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         })
         .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
-            if(EnvironmentConfig.mode=="production")return true;
+            if(EnvironmentConfig.mode==="production")return true;
+            
             $rootScope.serverAddress="";
             var appList = [
                 {id:1,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
@@ -200,5 +201,6 @@
             $httpBackend.whenGET(/app\/.*\.html/).passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html").passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationAction/notificationActionTemplate.html").passThrough();
+            $httpBackend.whenGET("app/shared/sxWizardCopy/wizardTemplate.html").respond("<div></div>");
         });
 })());

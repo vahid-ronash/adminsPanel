@@ -18,14 +18,16 @@
             var asThisController=$scope.step5Ctrl={};
             var contextData=$scope.$context.data;
             $scope.$context.behavior.leaving = function(options, callback) {
-                var value=asThisController.aceSession.getDocument().getValue();
-                if(value.length>0 && asThisController.aceSession.getAnnotations().length>0){
-                    callback(false);
-                    $scope.$context.validationError=$filter('translate')('JSON_INCORRECT');
-                }
-                else {
-                    contextData.stepData[4] = {json:value};
-                    callback(true);
+                if(asThisController.aceSession) {
+                    var value = asThisController.aceSession.getDocument().getValue();
+                    if (value.length > 0 && asThisController.aceSession.getAnnotations().length > 0) {
+                        callback(false);
+                        $scope.$context.validationError = $filter('translate')('JSON_INCORRECT');
+                    }
+                    else {
+                        contextData.stepData[4] = {json: value};
+                        callback(true);
+                    }
                 }
             };
 

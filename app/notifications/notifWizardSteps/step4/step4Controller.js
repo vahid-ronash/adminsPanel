@@ -22,6 +22,9 @@
                 contextData.stepData[3]=asThisController.data;
                 callback(true);
             };
+            $scope.$context.behavior.entering = function(options, callback) {
+                callback(true);
+            };
 
             asThisController.maxButtonCount=3;
             asThisController.buttonList=[];

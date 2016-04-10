@@ -62,7 +62,7 @@ gulp.task('compressJsFiles',function(){
 
 var cleanCSS = require('gulp-clean-css');
 var addsrc = require('gulp-add-src');
-gulp.task('makeCSS', function() {
+gulp.task('minifyCSS', function() {
     gulp.src('assets/scss/app.scss')
         .pipe(sass({
             outputStyle: 'compressed',
@@ -77,6 +77,7 @@ gulp.task('makeCSS', function() {
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('assets/css'));
 });
+gulp.task('makeCSS', ['convertSCSS','minifyCSS']);
 gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });

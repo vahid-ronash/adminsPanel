@@ -14,6 +14,10 @@ describe('notification steps : ', function() {
         var $scope = $rootScope.$new();
         $scope.$context={data:1,behavior:{}};
         $controller('step1Controller', {$scope:$scope});
+
+        $scope.$context.behavior.leaving({},function(){});
+        $scope.$context.behavior.entering({},function(){});
+
         expect($scope.step1Ctrl).toBeDefined(true);
     }));
 });

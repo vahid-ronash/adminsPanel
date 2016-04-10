@@ -12,14 +12,15 @@ describe('notification steps : ', function() {
 
     it('step 7 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:1,behavior:{leaving:function(){}}};
+        $scope.$context={data:{stepData:[{}]},behavior:{}};
         $controller('step7Controller', {$scope:$scope});
         expect($scope.step7Ctrl).toBeDefined(true);
+        $scope.$context.behavior.leaving({},function(){});
     }));
 
     it('is IMEI test', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:1,behavior:{leaving:function(){}}};
+        $scope.$context={data:{stepData:[{},{},{},{},{},{},{},{}]},behavior:{}};
         $controller('step7Controller', {$scope:$scope});
         expect($scope.step7Ctrl.isIMEI({text:"3213211"})).toBe(false);
         expect($scope.step7Ctrl.isIMEI({text:"165216516514621"})).toBe(false);

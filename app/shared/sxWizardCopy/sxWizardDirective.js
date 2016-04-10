@@ -19,6 +19,7 @@ angular
     .directive('sxWizard', ['$compile', '$controller',
     function($compile, $controller) {
         return {
+            restrict:'A',
             scope: {
                 $data: '=sxWizard',
                 $steps: '=sxWizardSteps',

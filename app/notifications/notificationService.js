@@ -1,12 +1,14 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
+
 /**
  * @ngdoc service
  * @name app.services.notificationResource
  * @description
  * it make connection between this app and server
  */
+
 /*global angular */
 ((function () {
     'use strict';

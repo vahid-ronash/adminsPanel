@@ -19,8 +19,12 @@ describe('notification steps : ', function() {
 
     it('step 2 test watch', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{},behavior:{}};
+        $scope.$context={data:{stepData:[{}]},behavior:{}};
         $controller('step2Controller', {$scope:$scope});
+
+        $scope.$context.behavior.leaving({},function(){});
+        $scope.$context.behavior.entering({},function(){});
+        
         expect($scope.step2Ctrl.data.title.length).toEqual(0);
         $scope.step2Ctrl.data.content="sdcr";
         $scope.step2Ctrl.dataChange();

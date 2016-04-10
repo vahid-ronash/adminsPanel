@@ -2,7 +2,7 @@
  * Created by mojtaba on 3/9/16.
  */
 /*global describe it expect beforeEach inject */
-describe('test home Controller', function() {
+describe('test dashboard Controller', function() {
     beforeEach(module('app'));
     var $controller;
     beforeEach(inject(function(_$controller_){
