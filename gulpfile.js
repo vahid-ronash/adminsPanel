@@ -30,7 +30,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/bootstrap/dist/js/bootstrap.js",
 
             "assets/libs/angular/angular.js",
-            // "assets/libs/angular-cookies/angular-cookies.js",
+            "assets/libs/ngstorage/ngStorage.js",
             "assets/libs/angular-translate/angular-translate.js",
             "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
             "assets/libs/angular-animate/angular-animate.js",

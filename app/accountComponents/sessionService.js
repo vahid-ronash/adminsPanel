@@ -12,45 +12,28 @@
     'use strict';
     angular
         .module('app')
-        .service('Session',function(){//,['$cookies', function ($cookies) {
-            var $cookies={get:function(){}};//TODO remove me
+        .service('Session',['$sessionStorage', function ($sessionStorage) {
             this.isAuth=function(){
-                if(!this.user){
-                    var sessionID=$cookies.get("session_id");
-                    var emailAddress=$cookies.get("emailAddress")||"";
-                    if(sessionID) {
-                        this.user = {
-                            email:emailAddress,
-                            sessionId: sessionID
-                        };
-                    }
-                    else{
-                        return false;
-                    }
-                }
-                return true;
-            };
-            this.create = function () {
-                var sessionID=$cookies.get("session_id");
-                var emailAddress=$cookies.get("emailAddress")||"";
-                var userRole=$cookies.get("userRoles")||"";
-                if(sessionID) {
-                    this.user = {
-                        email:emailAddress,
-                        sessionId: sessionID,
-                        roles:userRole
-                    };
-                }
-                else{
+                if(!this.user) this.create(); //try to recover user from cookie
+                if(this.user)
+                    return !!this.user.email;
+                else
                     return false;
+            };
+            this.create = function (emailAddress) {
+                var email=emailAddress||($sessionStorage.user && $sessionStorage.user.email)
+                if(email) {
+                    $sessionStorage.user = this.user = {
+                        email: email
+                    }
                 }
             };
             this.destroy = function () {
-                $sessionStorage.user=this.user =null;
+                $sessionStorage.user= this.user =null;
             };
 
             this.load=function(){
-                this.user=$sessionStorage.user;
+                this.create();
             };
-        });
+        }]);
 })());

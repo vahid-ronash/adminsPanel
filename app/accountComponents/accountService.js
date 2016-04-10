@@ -21,18 +21,16 @@
              * @methodOf app.services.AuthService
              * @description
              * send credential data to server and get response to detect user and save session
-             * @param {object}  credentials     contain login data
+             * @param {object}  userData     contain login data
              */
-            authService.login = function (credentials) {
+            authService.login = function (userData) {
                 return $http
-                    .post(URLS.URL_LOGIN, credentials)
+                    .post(URLS.URL_LOGIN,userData,{
+                        // transformRequest: add_auth_header,
+                    })
                     .then(function (res) {
                         var result=res.data;
-                        
-                        if(result.logged_in){Session.create("asca","dsrfver", "edvedrfv","asdfvsdfv");}
-                        // if(result.user) {
-                        //     Session.create(result.sessionId,result.user.id, result.user.email, result.user.role);
-                        // }
+                        if(result.logged_in){Session.create(result.email);}
                         return result;
                     });
             };

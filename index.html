@@ -23,10 +23,6 @@
 <body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}"
       ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
 <div ></div>
-<div ng-if="alertMSG" class="alert alert-success"
-     ng-class="{true:'alert-'+alertMSG.className}[true]" role="alert">
-    <strong>alertMSG.title</strong>alertMSG.text
-</div>
 <div class="app" ng-view></div>
 
 

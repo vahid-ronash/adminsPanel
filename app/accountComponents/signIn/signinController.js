@@ -33,7 +33,7 @@
                     }
                     else{
                         $timeout(function(){
-                            $location.path('/home');
+                            $location.path('/dashboard');
                         },10);
                     }
                 });

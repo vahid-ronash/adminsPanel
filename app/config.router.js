@@ -62,11 +62,11 @@
                 if (EnvironmentConfig.mode=='production') {
                     $routeProvider
                         .when('/', {
-                            redirectTo: '/home'
+                            redirectTo: '/dashboard'
                         })
                         .otherwise({
                             // if the path doesn't match any of the urls you configured
-                            redirectTo: '/home'
+                            redirectTo: '/dashboard'
                         });
                 }
                 // configure html5 to get links working on jsfiddle
