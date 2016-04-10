@@ -46,8 +46,7 @@ Deploy
 - `npm install -g bower gulp phantomjs`
 - `npm install`
 - `bower install --no-interactive --production`
-- `gulp makeProductionEnvironment`
-- `gulp build`
+- `gulp production`
 - `gulp makePublic`
 
 Run Project

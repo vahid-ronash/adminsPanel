@@ -60,29 +60,23 @@ gulp.task('compressJsFiles',function(){
 
 
 
-gulp.task('convertSCSS', function () {
+var cleanCSS = require('gulp-clean-css');
+var addsrc = require('gulp-add-src');
+gulp.task('makeCSS', function() {
     gulp.src('assets/scss/app.scss')
         .pipe(sass({
             outputStyle: 'compressed',
             includePaths:['assets/libs/foundation/scss','bower_components']
-        }).on('error', sass.logError))
-        .pipe(gulp.dest('assets/css'));
-});
-var cleanCSS = require('gulp-clean-css');
-gulp.task('minifyCSS', function() {
-    return gulp.src([
-            "assets/css/app.css",
+        })).pipe(addsrc([
+            "assets/libs/ui-select/dist/select.css",
+            "assets/libs/ng-tags-input/ng-tags-input.css"
             // "assets/libs/animate.css/animate.min.css",
             // "assets/libs/font-awesome/css/font-awesome.min.css",
             // "assets/libs/bootstrap/dist/css/bootstrap.min.css",
-            "assets/libs/ui-select/dist/select.css",
-            "assets/libs/ng-tags-input/ng-tags-input.css"
-        ])
-        .pipe(concat('app.css'))
+        ]))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('assets/css'));
 });
-gulp.task('makeCSS', ['convertSCSS','minifyCSS']);
 gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });
