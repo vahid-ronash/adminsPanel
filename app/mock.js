@@ -47,7 +47,7 @@
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });
                 if(list.length){
-                    return [200, {logged_in:true}, {}];
+                    return [200, {logged_in:true,email:"asghar@gmail.com"}, {}];
                 }
                 else {
                     return [200, {error:"username or password is wrong"}, {}];

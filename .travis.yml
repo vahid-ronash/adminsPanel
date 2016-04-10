@@ -16,8 +16,7 @@ before_script:
   - 'npm install -g bower gulp phantomjs'
   - 'npm install' # install npm packages
   - 'bower install --no-interactive' # install bower packages without asking about version conflict and install last version
+  - 'gulp development' # build requirements , make development mode
 after_script:
-
-  - 'gulp development' # build requirements,make development mode
   - 'gulp karmaTest' # run test
   - 'gulp codacy' # send codacy coverage
