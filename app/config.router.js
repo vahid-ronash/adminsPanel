@@ -58,6 +58,11 @@
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',
                         controller: 'changePasswordController as changePassCtrl',
                         //resolve: need delay
+                    })
+                    .when('/account/reset-password/:token/', {
+                        templateUrl: 'app/accountComponents/forgotPasswordDone/forgotPasswordDone.html',
+                        controller: 'forgotPasswordDoneController as resetPassCtrl',
+                        //resolve: need delay
                     });
                 if (EnvironmentConfig.mode=='production') {
                     $routeProvider

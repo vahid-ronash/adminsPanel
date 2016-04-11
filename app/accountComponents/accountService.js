@@ -69,7 +69,24 @@
                     });
             };
 
-            // pushe.co/accounting/{TOKEN}/reset_password_done | POST | {"reset_completed": True}
+
+            /**
+             * @ngdoc method
+             * @name resetPassword
+             * @methodOf app.services.AuthService
+             * @description
+             * user forgot the password use this option to reset password
+             * pushe.co/accounting/{TOKEN}/reset_password_done | POST | {"reset_completed": True}
+             * @param {object}  userData     contain change Password data
+             *
+             */
+            authService.resetPassword= function (userData) {
+                return $http
+                    .post(URLS.URL_RESET_PASS_DONE, userData)
+                    .then(function (res) {
+                        return res.data;
+                    });
+            };
 
             /**
              * @ngdoc method
