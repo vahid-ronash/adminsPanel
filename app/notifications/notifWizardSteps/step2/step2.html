@@ -22,7 +22,7 @@
     <!--<small class="help-block">{{'ICON_DESC' | translate}}</small>-->
     <div>
         <div class="drop-box">
-            <div ngf-drop ngf-select
+            <div ng-if="!step2Ctrl.isUploaded" ngf-drop ngf-select
                  ng-model="step2Ctrl.selectedFile"
                  ngf-drag-over-class="'dragover'"
                  ngf-multiple="false"
@@ -30,19 +30,33 @@
                  accept="image/*"
                  ngf-pattern="'image/*'">
                 <div>{{'ICON_DESC' | translate}}</div>
-
-                <!--<div>-->
-                <!--<img ng-src="step2Ctrl.data.icon" />-->
-                <!--</div>-->
             </div>
-            <div ng-if="step2Ctrl.selectedFile && !step2Ctrl.isUpload" class="cropArea">
+            <div class="" ng-if="step2Ctrl.isUploaded">
+
+
+                <div class="list-left"><img class="w-40 r-2x" ng-src="{{step2Ctrl.resultIcon}}"/></div>
+                <div class="pull-right"><button ng-click="step2Ctrl.changeImage()" class="btn btn-warning"><i class="fa fa-times"></i></button></div>
+                <div><a>{{'IMAGE_IS_UPLOADED' | translate}}</a></div>
+                <div><span>{{step2Ctrl.selectedFile.name}}</span></div>
+            </div>
+            <div ng-if="step2Ctrl.selectedFile && !step2Ctrl.isUploading && !step2Ctrl.isUploaded" class="cropArea">
                 <img-crop
                         image="step2Ctrl.selectedFile  | ngfDataUrl"
-                        result-image="step2Ctrl.data.icon"
+                        result-image="step2Ctrl.resultIcon"
                         result-image-size="192"
                         area-type="square"
                 >
                 </img-crop>
+                <button ng-click="step2Ctrl.upload()">upload</button>
+                <div ng-if="step2Ctrl.isUploading">
+                    <uib-progressbar
+                            type="success"
+                            class="progress-striped active"
+                            max="step2Ctrl.uploadData.total"
+                            value="step2Ctrl.uploadData.uploaded">
+                        <i>{{step2Ctrl.uploadData.uploaded}}/{{step2Ctrl.uploadData.total}}</i>
+                    </uib-progressbar>
+                </div>
             </div>
         </div>
         <div ngf-no-file-drop>
@@ -50,17 +64,7 @@
             <div class="button" ngf-select ng-model="selectedFile" ngf-multiple="false">{{'SELECT_IMAGE'|translate}}
             </div>
         </div>
-        <div ng-if="step2Ctrl.isUpload">
-            <uib-progressbar
-                    type="success"
-                    class="progress-striped active"
-                    max="step2Ctrl.uploadData.total"
-                    value="step2Ctrl.uploadData.precent">
-                <i>{{step2Ctrl.uploadData.uploaded}}/{{step2Ctrl.uploadData.total}}</i>
-            </uib-progressbar>
-        </div>
     </div>
-
     <div class="md-form-group float-label">
         <input class="md-input" ng-model="step2Ctrl.data.ticker">
         <label>{{'TITLE_BAR_TEXT' | translate}}</label>

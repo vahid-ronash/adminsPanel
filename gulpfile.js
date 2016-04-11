@@ -29,6 +29,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/tether/dist/js/tether.js",
             "assets/libs/bootstrap/dist/js/bootstrap.js",
 
+            "assets/libs/ng-file-upload-shim/ng-file-upload-shim.js",//it comes here because of conflict between upload and pace
             "assets/libs/angular/angular.js",
             "assets/libs/ngstorage/ngStorage.js",
             "assets/libs/angular-translate/angular-translate.js",
@@ -40,7 +41,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-touch/angular-touch.js",
             "assets/libs/ui-select/dist/select.js",
             "assets/libs/ng-tags-input/ng-tags-input.js",
-            "assets/libs/ng-file-upload-shim/ng-file-upload-shim.js",
+
             "assets/libs/ng-file-upload/ng-file-upload.js",
             "assets/libs/ngImgCrop/compile/unminified/ng-img-crop.js",
             "assets/libs/angular-route/angular-route.js",
@@ -51,7 +52,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-ui-ace/ui-ace.js"
         ])
         .pipe(concat("req.js"))
-        .pipe(uglify())
+        // .pipe(uglify())
         // .pipe(rename("public/myfiles.js"))
         // .pipe(gzip())
         .pipe(gulp.dest('assets/js'));
@@ -62,7 +63,7 @@ gulp.task('compressJsFiles',function(){
 
 var cleanCSS = require('gulp-clean-css');
 var addsrc = require('gulp-add-src');
-gulp.task('minifyCSS', function() {
+gulp.task('makeCSS', function() {
     gulp.src('assets/scss/app.scss')
         .pipe(sass({
             outputStyle: 'compressed',
@@ -74,10 +75,10 @@ gulp.task('minifyCSS', function() {
             // "assets/libs/font-awesome/css/font-awesome.min.css",
             // "assets/libs/bootstrap/dist/css/bootstrap.min.css",
         ]))
+        .pipe(concat('app.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('assets/css'));
 });
-gulp.task('makeCSS', ['convertSCSS','minifyCSS']);
 gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });

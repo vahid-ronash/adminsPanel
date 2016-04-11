@@ -14,7 +14,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('notificationResource', ['$http','URLS', function ($http,URLS) {
+        .factory('notificationResource', ['$http','URLS','Upload', function ($http,URLS,Upload) {
             function NotificationListService() {
                 var thisService = this;
 
@@ -79,6 +79,36 @@
                     return $http.post(URLS.URL_NOTIF,output).then(function (result) {
                         return result.data;
                     });
+                };
+
+                /**
+                 * @ngdoc method
+                 * @name uploadImage
+                 * @methodOf app.services.notificationResource
+                 * @description
+                 * upload selected image
+                 * @param {object}      cropFile            image crop result
+                 * @param {object}      selectedFile        file that is selected
+                 * @param {function}    successCallback     success callback
+                 * @param {function}    failCallback        fail callback
+                 * @param {function}    uploadProgress      callback on progress
+                 */
+                thisService.uploadImage = function (cropFile,selectedFile,successCallback,failCallback,uploadProgress) {
+                    if (selectedFile && !selectedFile.$error) {
+                        Upload.upload({
+                            url: URLS.URL_UPLOAD_ICON,
+                            data: {
+                                // username: "mojtaba",
+                                image: Upload.dataUrltoBlob(cropFile, selectedFile.name)
+                            }
+                        }).then(successCallback,failCallback, function (evt) {
+                            var res={
+                                uploaded:evt.loaded,
+                                total:evt.total,
+                            };
+                            uploadProgress(res);
+                        });
+                    }
                 };
             }
             return new NotificationListService();

@@ -24,6 +24,7 @@
             ];
             $httpBackend.whenGET(/api\/platform\/applications\/\d\//).respond({credentials:'{"gcm":"asdvsadfv"}',results:appList});
             $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
+            $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
             function getRegex(path,append){
@@ -69,10 +70,12 @@
                 }
             });
 
-            $httpBackend.whenPOST('/uploadIconImage').respond(function(method, url, data){
+            $httpBackend.whenPOST(URLS.URL_UPLOAD_ICON).respond(function(method, url, data){
                     return [200, {success:true}, {}];
             });
-
+            $httpBackend.whenPOST(URLS.URL_UPLOAD_IMAGE).respond(function(method, url, data){
+                return [200, {success:true}, {}];
+            });
             var randomsItems = [];
             function createRandomItem(id) {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];

@@ -13,7 +13,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('step2Controller', ['$scope', 'Upload', '$timeout','$filter', function ($scope, Upload, $timeout,$filter) {
+        .controller('step2Controller', ['$scope','$filter','notificationResource', function ($scope,$filter,notificationResource) {
             //var thisController=this;
             var contextData = $scope.$context.data;
             contextData.canSendNotification = false;
@@ -23,9 +23,10 @@
                 title: "",
                 content: "",
                 ticker: "",
-                icon: "",
+                icon:"",
                 action: {}
             };
+            asThisController.resultIcon="";
             
             $scope.$context.behavior.leaving = function (options, callback) {
                 contextData.stepData[1] = asThisController.data;
@@ -46,43 +47,24 @@
             asThisController.focusStart=true;
             asThisController.dataChange=function(){
                 var data=asThisController.data;
-                if (asThisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length) {
-                    contextData.canSendNotification = true;
-                } else {
-                    contextData.canSendNotification = false;
-                }
+                contextData.canSendNotification = !!(asThisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length);
             };
             asThisController.selectedFile = 0;
+            asThisController.changeImage=function(){
+                asThisController.selectedFile = 0;
+                asThisController.isUploaded=false;
+            };
+            asThisController.isUploaded=false;
             asThisController.upload = function () {
-                asThisController.isUpload = true;
-                if (asThisController.selectedFile && !asThisController.selectedFile.$error) {
-                    asThisController.uploadData = {};
-                    Upload.upload({
-                        url: '/uploadIconImage',
-                        data: {
-                            username: $scope.username,
-                            file: Upload.dataUrltoBlob(asThisController.data.icon, asThisController.selectedFile.name)
-                        }
-                    }).then(function (resp) {
-                        $timeout(function () {
-                            $scope.log = 'file: ' +
-                                resp.config.data.file.name +
-                                ', Response: ' + JSON.stringify(resp.data) +
-                                '\n' + $scope.log;
-                        });
-                    }, function (response) {
-                        if (response.status > 0) asThisController.errorMsg = response.status
-                            + ': ' + response.data;
-                    }, function (evt) {
-                        asThisController.uploadData.uploaded = evt.loaded;
-                        asThisController.uploadData.total = evt.total;
-                        asThisController.uploadData.precent = parseInt(100.0 * evt.loaded / evt.total);
-
-                        //$scope.log = 'progress: ' + progressPercentage +
-                        //    '% ' + evt.config.data.file.name + '\n' +
-                        //    $scope.log;
-                    });
-                }
+                asThisController.isUploading = true;
+                notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(){
+                    asThisController.isUploading=false;
+                    asThisController.isUploaded=true;
+                },function failed(){
+                    asThisController.isUploaded=true;
+                },function uploadProgress(progressData){
+                    asThisController.uploadData = progressData;
+                });
             };
         }]);
 })());

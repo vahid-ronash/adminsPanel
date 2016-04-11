@@ -211,7 +211,8 @@ angular
         'LOGO_PATH':'assets/images/logo.png',
         'URI_INCORRECT':'uri is not correct',
         'REQUIRED':'this field has to fill',
-        'PROVIDER':'provider'
+        'PROVIDER':'provider',
+        'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
     });
 
     $translateProvider.preferredLanguage('fa');
