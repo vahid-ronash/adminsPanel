@@ -57,6 +57,7 @@
             });
             $httpBackend.whenPOST(URLS.URL_FORGOTPASS).respond({success:true});
             $httpBackend.whenPOST(URLS.URL_CHANGE_PASS).respond({changed:true});
+            $httpBackend.whenPOST(URLS.URL_RESET_PASS_DONE).respond({reset_completed:true});
             $httpBackend.whenPOST(URLS.URL_REGISTER).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email); });

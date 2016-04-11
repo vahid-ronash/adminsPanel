@@ -45,7 +45,7 @@
                             thisController.error = result.error;
                         }
                         else  if(result.reset_completed) {
-
+                            thisController.alert = "asdcsdc";
                         }
                     });
                 }
