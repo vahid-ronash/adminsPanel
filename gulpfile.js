@@ -29,6 +29,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/tether/dist/js/tether.js",
             "assets/libs/bootstrap/dist/js/bootstrap.js",
 
+
             "assets/libs/ng-file-upload-shim/ng-file-upload-shim.js",//it comes here because of conflict between upload and pace
             "assets/libs/angular/angular.js",
             "assets/libs/ngstorage/ngStorage.js",
@@ -44,7 +45,7 @@ gulp.task('compressJsFiles',function(){
 
             "assets/libs/ng-file-upload/ng-file-upload.js",
             "assets/libs/ngImgCrop/compile/unminified/ng-img-crop.js",
-            "assets/libs/angular-route/angular-route.js",
+            "assets/libs/angular-ui-router/release/angular-ui-router.js",
             "assets/libs/angular-mocks/angular-mocks.js",
             "assets/libs/angular-ui-utils/ui-utils.js",
 

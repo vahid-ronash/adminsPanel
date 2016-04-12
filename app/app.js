@@ -20,7 +20,7 @@ angular
         //'sx.wizard',
         //'ngStorage',
         //'ngStore',//override some method on ngStorage
-        'ngRoute',
+        'ui.router',
         'pascalprecht.translate',
         'smart-table',
         'ui.select',

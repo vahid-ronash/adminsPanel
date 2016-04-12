@@ -16,7 +16,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('forgotPasswordDoneController', ['$scope','AuthService','$location','$filter','$routeParams',function($scope,$AuthService,$location,$filter,$routeParams){
+        .controller('forgotPasswordDoneController', ['$scope','AuthService','$location','$filter','$stateParams',function($scope,$AuthService,$location,$filter,$stateParams){
             var thisController=this;
             // thisController.app=$scope.app;//point to parent scope.app
 
@@ -40,7 +40,7 @@
                     thisController.repassword="";
                 }
                 else {
-                    if($routeParams.token)thisController.data.token=$routeParams.token;
+                    if($stateParams.token)thisController.data.token=$stateParams.token;
                     return $AuthService.resetPassword(thisController.data).then(function (result) {
                         if (result.error) {
                             thisController.error = result.error;

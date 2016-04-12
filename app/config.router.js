@@ -10,74 +10,88 @@
     'use strict';
     angular
         .module('app')
-        .config(['$httpProvider','$routeProvider','EnvironmentConfig',
-            function config($httpProvider,$routeProvider,EnvironmentConfig) {
+        .config(['$httpProvider','$stateProvider','EnvironmentConfig','$urlRouterProvider','$locationProvider',
+            function config($httpProvider,$stateProvider,EnvironmentConfig,$urlRouterProvider,$locationProvider) {
                 $httpProvider.defaults.xsrfCookieName = 'csrftoken';
                 $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-                $routeProvider
-                    .when('/dashboard', {
+                $stateProvider
+                    .state('dashboard',{
+                        url:'/dashboard',
                         templateUrl: 'app/dashboard/dashboard.html',
-                        controller: 'dashboardController as dashboard'
-                        //resolve: need delay
+                        controller: 'dashboardController',
+                        controllerAs: 'dashboard'
                     })
-                    .when('/apps', {
+                    .state('apps',{
+                        url:'/apps',
                         templateUrl: 'app/userApplications/userApplications.html',
-                        controller: 'userApplicationController as appCtrl'
-                        //resolve: need delay
+                        controller: 'userApplicationController',
+                        controllerAs: 'appCtrl'
                     })
-                    .when('/installed', {
+                    .state('installed', {
+                        url:'/installed',
                         templateUrl: 'app/installed/installed.html',
-                        controller: 'installedController as installedCtrl'
+                        controller: 'installedController',
+                        controllerAs:'installedCtrl'
                         //resolve: need delay
                     })
-                    .when('/notification', {
+                    .state('notification', {
+                        url:'/notification',
                         templateUrl: 'app/notifications/notifications.html',
-                        controller: 'notificationsController as notifsCtrl'
+                        controller: 'notificationsController',
+                        controllerAs:'notifsCtrl'
                         //resolve: need delay
                     })
-                    .when('/account/signin', {
+                    .state('signin', {
+                        url:'/account/signin',
                         templateUrl: 'app/accountComponents/signIn/signinTemplate.html',
-                        controller: 'signInController as signinCtrl',
+                        controller: 'signInController',
+                        controllerAs:'signinCtrl',
                         access: {isFree: true}
                         //resolve: need delay
                     })
-                    .when('/account/signup', {
+                    .state('signup', {
+                        url:'/account/signup',
                         templateUrl: 'app/accountComponents/signUp/signupTemplate.html',
-                        controller: 'signUpController as signupCtrl',
+                        controller: 'signUpController',
+                        controllerAs:'signupCtrl',
                         access: {isFree: true}
                         //resolve: need delay
                     })
-                    .when('/account/forgot-password', {
+                    .state('forgotPassword', {
+                        url:'/account/forgot-password',
                         templateUrl: 'app/accountComponents/forgotPassword/forgotPasswordTemplate.html',
-                        controller: 'forgotPasswordController as forgotCtrl',
+                        controller: 'forgotPasswordController',
+                        controllerAs:'forgotCtrl',
                         access: {isFree: true}
                         //resolve: need delay
                     })
-                    .when('/account/change-password', {
+                    .state('changePassword', {
+                        url:'/account/change-password',
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',
-                        controller: 'changePasswordController as changePassCtrl',
+                        controller: 'changePasswordController',
+                        controllerAs:'changePassCtrl',
                         access: {isFree: false}
                         //resolve: need delay
                     })
-                    .when('/reset-password/:token/', {
+                    .state('resetPassword', {
+                        url:'/reset-password/:token/',
                         templateUrl: 'app/accountComponents/forgotPasswordDone/forgotPasswordDone.html',
-                        controller: 'forgotPasswordDoneController as resetPassCtrl',
+                        controller: 'forgotPasswordDoneController',
+                        controllerAs:'resetPassCtrl',
                         access: {isFree: true}
                         //resolve: need delay
                     });
                 if (EnvironmentConfig.mode=='production') {
-                    $routeProvider
-                        .when('/', {
-                            redirectTo: '/dashboard'
-                        })
-                        .otherwise({
-                            // if the path doesn't match any of the urls you configured
-                            redirectTo: '/dashboard'
-                        });
+                    $urlRouterProvider.when('', '/dashboard');
+                    $urlRouterProvider.otherwise('/dashboard');
                 }
-                // configure html5 to get links working on jsfiddle
-                //TODO:$locationProvider.html5Mode(true); server must support
+                // Hashbang in HTML5 Mode
+                // $locationProvider.html5Mode({//server must support (ali vakilzade promised that is support)
+                //     enabled: true,
+                //     requireBase: false
+                // });
+
             }])
         .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
             $rootScope.errorAlert=function(e){
@@ -88,8 +102,13 @@
                 };
             };
 
-            $rootScope.$on('$routeChangeStart', function (event,cur) {//,prev
-                if (!(cur.access && cur.access.isFree) && !Auth.isAuthenticated()) {
+            $rootScope.$on('$routeChangeStart', function (event,locationTO,params) {//,prev
+                if (locationTO.redirectTo) {
+                    evt.preventDefault();
+                    $state.go(locationTO.redirectTo, params);
+                    return ;
+                }
+                if (!(locationTO.access && locationTO.access.isFree) && !Auth.isAuthenticated()) {
                     event.preventDefault();
                     $location.path('/account/signin');
                 }
