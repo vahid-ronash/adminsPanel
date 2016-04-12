@@ -214,6 +214,7 @@ angular
         'PROVIDER':'provider',
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
         'UPLOAD':'آپلود',
+        'FORGOT_DONE':'رمز عبور با موفقیت تغییر یافت.',
     });
 
     $translateProvider.preferredLanguage('fa');

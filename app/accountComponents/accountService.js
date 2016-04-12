@@ -77,12 +77,12 @@
              * @description
              * user forgot the password use this option to reset password
              * pushe.co/accounting/{TOKEN}/reset_password_done | POST | {"reset_completed": True}
-             * @param {object}  userData     contain change Password data
-             *
+             * @param {object}  tokenPass     contain change Password data( token , new password)
              */
-            authService.resetPassword= function (userData) {
+            authService.resetPassword= function (tokenPass) {
+                var passdata={password:tokenPass.password};
                 return $http
-                    .post(URLS.URL_RESET_PASS_DONE, userData)
+                    .post("api/accounting/"+tokenPass.token+"/reset_password_done/", passdata)
                     .then(function (res) {
                         return res.data;
                     });

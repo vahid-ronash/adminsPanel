@@ -57,11 +57,13 @@
                     .when('/account/change-password', {
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',
                         controller: 'changePasswordController as changePassCtrl',
+                        access: {isFree: false}
                         //resolve: need delay
                     })
-                    .when('/account/reset-password/:token/', {
+                    .when('/reset-password/:token/', {
                         templateUrl: 'app/accountComponents/forgotPasswordDone/forgotPasswordDone.html',
                         controller: 'forgotPasswordDoneController as resetPassCtrl',
+                        access: {isFree: true}
                         //resolve: need delay
                     });
                 if (EnvironmentConfig.mode=='production') {

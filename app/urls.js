@@ -23,7 +23,7 @@
             "URL_REGISTER":"api/accounting/",
             "URL_FORGOTPASS":"api/accounting/reset_password/",
             "URL_CHANGE_PASS":"api/accounting/changePassword/",
-            "URL_RESET_PASS_DONE":"api/accounting/reset-password-done/",
+            "URL_RESET_PASS_DONE":"api/accounting/reset_password_done/",
             "URL_LOGOUT":"api/accounting/logout/"
         });
 })());

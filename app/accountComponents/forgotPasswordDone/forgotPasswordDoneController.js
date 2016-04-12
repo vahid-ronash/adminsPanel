@@ -40,12 +40,13 @@
                     thisController.repassword="";
                 }
                 else {
+                    if($routeParams.token)thisController.data.token=$routeParams.token;
                     return $AuthService.resetPassword(thisController.data).then(function (result) {
                         if (result.error) {
                             thisController.error = result.error;
                         }
                         else  if(result.reset_completed) {
-                            thisController.alert = "asdcsdc";
+                            thisController.alert = $filter('translate')('FORGOT_DONE');
                         }
                     });
                 }

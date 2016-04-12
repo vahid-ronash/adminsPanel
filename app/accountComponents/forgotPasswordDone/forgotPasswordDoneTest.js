@@ -18,7 +18,8 @@ describe('reset password done controller : ', function() {
     describe('test submit preventers', function () {
         it("test repassword preventer",function(){
             controller.data={
-                password:"123"
+                password:"123",
+                token:"UUzhmUfU4o_k"
             };
             controller.repassword = "1233";
             controller.sendResetPasswordRequest();
@@ -27,7 +28,8 @@ describe('reset password done controller : ', function() {
     });
     it('test submit', inject(function (_$q_,$timeout) {
         controller.data={
-            password:"123"
+            password:"123",
+            token:"UUzhmUfU4o_k"
         };
         controller.repassword="123";
         var valueToVerify=0;
