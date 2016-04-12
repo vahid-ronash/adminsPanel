@@ -22,7 +22,7 @@
                 {id:4,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
                 {id:5,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(/api\/platform\/applications\/\d\//).respond({credentials:'{"gcm":"asdvsadfv"}',results:appList});
+            $httpBackend.whenGET(/api\/platform\/applications\/\d\//).respond({credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',results:appList});
             $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
             $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});

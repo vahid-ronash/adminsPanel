@@ -14,7 +14,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('notificationResource', ['$http','URLS','Upload', function ($http,URLS,Upload) {
+        .factory('notificationResource', ['$http','URLS','Upload','$rootScope', function ($http,URLS,Upload,$rootScope) {
             function NotificationListService() {
                 var thisService = this;
 
@@ -32,7 +32,7 @@
                         params:filters
                     }).then(function (result) {
                         return result.data.results;
-                    });
+                    },$rootScope.handleError);
                 };
 
                 /**
@@ -78,7 +78,7 @@
 
                     return $http.post(URLS.URL_NOTIF,output).then(function (result) {
                         return result.data;
-                    });
+                    },$rootScope.handleError);
                 };
 
                 /**
@@ -101,10 +101,10 @@
                                 // username: "mojtaba",
                                 image: Upload.dataUrltoBlob(cropFile, selectedFile.name)
                             }
-                        }).then(successCallback,failCallback, function (evt) {
+                        }).then(successCallback,failCallback||$rootScope.handleError, function (evt) {
                             var res={
                                 uploaded:evt.loaded,
-                                total:evt.total,
+                                total:evt.total
                             };
                             uploadProgress(res);
                         });

@@ -29,7 +29,32 @@
 
             // $rootScope.serverAddress="http://192.168.1.183:8080";
             $rootScope.serverAddress="";
+            $rootScope.alertMSGS=[];
+            $scope.closeAlert = function(index) {
+                $scope.alertMSGS.splice(index, 1);
+            };
+            $rootScope.handleError=function(data){
+                if(typeof data.data==="object") {
+                    for (var title in data.data) {
+                        var text = data.data[title];
+                        if (typeof text !== "string")text = text.join("\n");
+                        if (data.data.hasOwnProperty(title)) {
+                            var newAlert = {
+                                title: title,
+                                text: text,
+                                verbose: JSON.stringify(data)
+                            };
+                            $scope.alertMSGS.push(newAlert);
+                        }
+                    }
+                }
+                else {
+                    $scope.alertMSGS.push({title:"error",text:data.data});
+                    if(data.data.indexOf("Time-out")){
 
+                    }
+                }
+            };
           // TODO : is there any config to save in user browser?
           thisScope.app = {
             name: "adminsPanel",

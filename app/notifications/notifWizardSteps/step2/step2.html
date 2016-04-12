@@ -46,15 +46,15 @@
                 >
                 </img-crop>
                 <button class="btn btn-primary" ng-click="step2Ctrl.upload()">{{'UPLOAD' | translate}}</button>
-                <div ng-if="step2Ctrl.isUploading">
-                    <uib-progressbar
-                            type="success"
-                            class="progress-striped active"
-                            max="step2Ctrl.uploadData.total"
-                            value="step2Ctrl.uploadData.uploaded">
-                        <i>{{step2Ctrl.uploadData.uploaded}}/{{step2Ctrl.uploadData.total}}</i>
-                    </uib-progressbar>
-                </div>
+            </div>
+            <div ng-if="step2Ctrl.isUploading  && !step2Ctrl.isUploaded">
+                <uib-progressbar
+                        type="success"
+                        class="progress-striped active"
+                        max="step2Ctrl.uploadData.total"
+                        value="step2Ctrl.uploadData.uploaded">
+                    <i>{{step2Ctrl.uploadData.uploaded}}/{{step2Ctrl.uploadData.total}}</i>
+                </uib-progressbar>
             </div>
         </div>
         <div ngf-no-file-drop>

@@ -32,7 +32,7 @@
                         var result=res.data;
                         if(result.logged_in){Session.create(result.email);}
                         return result;
-                    });
+                    },$rootScope.handleError);
             };
             //TODO  pushe.co/accounting/{TOKEN}/activate_account | POST | {"activated": True}
 
@@ -49,7 +49,7 @@
                     .post(URLS.URL_REGISTER, userData)
                     .then(function (res) {
                         return res.data;
-                    });
+                    },$rootScope.handleError);
             };
 
             /**
@@ -66,7 +66,7 @@
                     .post(URLS.URL_FORGOTPASS, userData)
                     .then(function (res) {
                         return res.data;
-                    });
+                    },$rootScope.handleError);
             };
 
 
@@ -85,7 +85,7 @@
                     .post("api/accounting/"+tokenPass.token+"/reset_password_done/", passdata)
                     .then(function (res) {
                         return res.data;
-                    });
+                    },$rootScope.handleError);
             };
 
             /**
@@ -103,7 +103,7 @@
                     .post(URLS.URL_CHANGE_PASS, userData)
                     .then(function (res) {
                         return res.data;
-                    });
+                    },$rootScope.handleError);
             };
 
             /**
@@ -120,7 +120,7 @@
                     .then(function (result) {
                         if(result.data.logged_out)
                             Session.destroy();
-                    });
+                    },$rootScope.handleError);
             };
 
             /**

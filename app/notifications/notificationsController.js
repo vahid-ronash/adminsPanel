@@ -39,6 +39,7 @@
 
                 // var output={notification}
                 notificationResource.sendNotification(res).then(callback);
+                return true;
             };
             wizardInstance
                 .addStep({
@@ -108,6 +109,7 @@
                     thisController.data,
                     function(result) {//it will call after successing
                         thisController.result = result;
+                        return true;
                     },
                     //window.angular.noop
                     function(){// on user cancel wizard

@@ -78,8 +78,8 @@ describe('test application table controller and services : ', function () {
 
     //test each step of edit
     it('edit methods', function () {
-        appController.displayed = [{provider: "a", application_id: "a"}, {provider: "b", application_id: "b"}];
-        var firstApp = {provider: {name:"a"}, application_id: "a"};
+        appController.displayed = [{provider: "none", application_id: "a"}, {provider: "none", application_id: "b"}];
+        var firstApp = {provider:"none", application_id: "a"};
         appController.startEdit(firstApp);
         expect(firstApp.isEditing).toEqual(true);
 

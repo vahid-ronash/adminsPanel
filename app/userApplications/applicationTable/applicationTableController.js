@@ -41,17 +41,21 @@
                 filters=angular.extend(filters,tableState.search.predicateObject);
 
                 return $applicationResource.query(filters).then(function (result) {
-                    thisController.displayed = result.data.results;
-                    tableState.pagination.numberOfPages = 5;//TODO: set page number
-                    thisController.isLoading = false;
+                    if(result) {
+                        thisController.displayed = result.data.results;
+                        tableState.pagination.numberOfPages = 5;//TODO: set page number
+                        thisController.isLoading = false;
+                    }
                 });
             };
 
             thisController.providerList=[
-                {name:"none",value:""},
+                {name:"none",value:"none"},
                 {name:"JOAPP",value:"JOAPP"},
-                {name:"puzzely",value:"puzzely"},
+                {name:"puzzely",value:"puzzely"}
             ];
+            var providerHash={};
+            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value]=thisController.providerList[i];}
 
             /**
              * @ngdoc method
@@ -73,14 +77,12 @@
              * add new application to database
              */
             thisController.addNewApplication = function (newApplicationData,callback) {
-                if(newApplicationData.provider.value)
+                if(newApplicationData.provider.name)
                     newApplicationData.provider=newApplicationData.provider.value;
                 $applicationResource.save(newApplicationData, function (createdApplication) {
                     thisController.displayed.push(createdApplication.data);
                     thisController.addMode=false;
                     callback && callback();
-                }, function () {
-                    //TODO : it didn't save, what i can do?
                 });
             };
 
@@ -97,7 +99,7 @@
                 row.isEditing = true;
                 row.isFocused= true;
                 row.backupName = row.name;
-
+                row.provider=providerHash[row.provider];
             };
 
             /**
@@ -126,6 +128,7 @@
             thisController.cancelEdit = function (row) {
                 row.name = row.backupName;
                 row.isEditing = false;
+                row.provider=row.provider.value;
             };
 
 
@@ -164,7 +167,7 @@
                     row.showDetail=true;
                     if(!row.senderID){
                        return $applicationResource.getSenderID(row.application_id,function(newrow){
-                           row.senderID=JSON.parse(newrow.data.credentials).gcm;
+                           row.senderID=JSON.parse(newrow.data.credentials).node;
                            callback && callback();
                        });
                    }

@@ -58,11 +58,14 @@
             asThisController.upload = function () {
                 asThisController.isUploading = true;
                 notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(res){
-                    if(res.data)
-                        asThisController.data.icon=res.data.url;
+                    if(res.data) {
+                        asThisController.data.icon = res.data.url;
+                        asThisController.iconURL = res.data.url;
+                    }
                     asThisController.isUploading=false;
                     asThisController.isUploaded=true;
                 },function failed(err){
+                    $scope.$root.handleError(err);
                     asThisController.isUploaded=true;
                 },function uploadProgress(progressData){
                     asThisController.uploadData = progressData;
