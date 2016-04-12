@@ -32,8 +32,6 @@
                 <div>{{'ICON_DESC' | translate}}</div>
             </div>
             <div class="" ng-if="step2Ctrl.isUploaded">
-
-
                 <div class="list-left"><img class="w-40 r-2x" ng-src="{{step2Ctrl.resultIcon}}"/></div>
                 <div class="pull-right"><button ng-click="step2Ctrl.changeImage()" class="btn btn-warning"><i class="fa fa-times"></i></button></div>
                 <div><a>{{'IMAGE_IS_UPLOADED' | translate}}</a></div>
@@ -47,7 +45,7 @@
                         area-type="square"
                 >
                 </img-crop>
-                <button ng-click="step2Ctrl.upload()">upload</button>
+                <button class="btn btn-primary" ng-click="step2Ctrl.upload()">{{'UPLOAD' | translate}}</button>
                 <div ng-if="step2Ctrl.isUploading">
                     <uib-progressbar
                             type="success"

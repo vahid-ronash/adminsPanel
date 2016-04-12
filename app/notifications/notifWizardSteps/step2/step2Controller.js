@@ -57,10 +57,12 @@
             asThisController.isUploaded=false;
             asThisController.upload = function () {
                 asThisController.isUploading = true;
-                notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(){
+                notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(res){
+                    if(res.data)
+                        asThisController.data.icon=res.data.url;
                     asThisController.isUploading=false;
                     asThisController.isUploaded=true;
-                },function failed(){
+                },function failed(err){
                     asThisController.isUploaded=true;
                 },function uploadProgress(progressData){
                     asThisController.uploadData = progressData;

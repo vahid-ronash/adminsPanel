@@ -213,6 +213,7 @@ angular
         'REQUIRED':'this field has to fill',
         'PROVIDER':'provider',
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
+        'UPLOAD':'آپلود',
     });
 
     $translateProvider.preferredLanguage('fa');
