@@ -329,8 +329,11 @@ th[st-sort]{
   .app-aside{
 	.navside.right {
 	  position: absolute;
-	  left: 0;
-	  -webkit-transform: translate3d(0, 0, 0);
+		left: 0;
+		right:0;
+		top:0;
+		bottom:0;
+		-webkit-transform: translate3d(0, 0, 0);
 	  transform: translate3d(0, 0, 0);
 	}
   }
@@ -389,4 +392,17 @@ th[st-sort]{
 	z-index: 10000;
 	position: absolute;
 	min-width: 50%;
+}
+.app-footer{
+	margin:0;
+	position:static;
+}
+.footer{
+	.navbar-brand img{
+		width:50px;
+	}
+}
+.app-body{
+	min-height: 400px;
+	padding-top:4.5rem;
 }

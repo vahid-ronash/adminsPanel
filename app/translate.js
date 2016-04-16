@@ -215,6 +215,13 @@ angular
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
         'UPLOAD':'آپلود',
         'FORGOT_DONE':'رمز عبور با موفقیت تغییر یافت.',
+        'APP_NAME':'pushe.co',
+        'RELEASE_NAME':'- test release',
+        'DASHBOARD':'داشبورد',
+        'APPLICATIONS_LIST':'لیست اپلیکیشن',
+        'CREATE_APPLICATION':'ایجاد اپلیکیشن',
+        'NOTIF_SENT':'ارسال شده',
+        'NOTIF_ALL':'همه',
     });
 
     $translateProvider.preferredLanguage('fa');

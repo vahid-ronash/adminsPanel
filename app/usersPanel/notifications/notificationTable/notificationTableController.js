@@ -37,6 +37,7 @@
                 filters=angular.extend(filters,tableState.search.predicateObject);
 
                 return $notificationResource.query(filters).then(function (result) {
+                    if(!result)return;
                     thisController.displayed = result;
                     for(var i=0;i<thisController.displayed.length;i++){
                         var di=thisController.displayed[i];

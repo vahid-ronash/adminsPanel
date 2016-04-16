@@ -21,7 +21,7 @@
                 restrict: 'E',
                 controller: 'installedTableController',
                 controllerAs: 'installTableCtrl',
-                templateUrl: 'app/installed/installedTable/installedTable.html'
+                templateUrl: 'app/usersPanel/installed/installedTable/installedTable.html'
             };
         });
 })());

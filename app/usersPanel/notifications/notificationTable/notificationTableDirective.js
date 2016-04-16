@@ -21,7 +21,7 @@
                 restrict: 'E',
                 controller: 'notificationTableController',
                 controllerAs: 'notifTableCtrl',
-                templateUrl: 'app/notifications/notificationTable/notificationTable.html'
+                templateUrl: 'app/usersPanel/notifications/notificationTable/notificationTable.html'
             };
         });
 })());

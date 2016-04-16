@@ -4,6 +4,12 @@
 /*global angular */
 ((function() {
     'use strict';
+    /**
+     * @ngdoc controller
+     * @name app.controller.userApplicationController
+     * @description
+     * control whole applications
+     */
     angular
         .module('app')
         .controller('userApplicationController', ['$scope',function($scope){

@@ -1,0 +1,95 @@
+<!--ie9 (if you want support the vertical scroll in ie9, use the below code.)
+   <div class="left navside dark dk">
+     <div class="row-col">
+       <div class="navbar no-radius">
+         <div ui-include="'../views/blocks/navbar.brand.html'"></div>
+       </div>
+       <div class="row-row">
+         <div class="row-body scrollable hover">
+           <div class="row-inner">
+             <nav class="nav-light">
+               <div ui-include="'../views/blocks/nav.html'"></div>
+             </nav>
+           </div>
+         </div>
+       </div>
+       <div class="b-t">
+         <div ui-include="'../views/blocks/aside.top.0.html'"></div>
+       </div>
+     </div>
+   </div>
+ -->
+<div class="right navside dark dk" layout="column">
+    <div class="navbar no-radius">
+        <!-- brand -->
+        <a class="navbar-brand">
+            <img src="assets/images/logo.png" alt="." >
+            <!--class="hide"-->
+            <!--<span class="hidden-folded inline">{{app.name}}</span>-->
+        </a>
+        <!-- / brand -->
+    </div>
+    <div flex class="hide-scroll">
+        <nav class="scroll nav-light">
+            <ul class="nav ng-scope" ui-nav="">
+                <li ui-sref-active="active">
+                    <a href="#/dashboard" ui-sref="users.dashboard"><span class="nav-text">{{'DASHBOARD' | translate}}</span></a>
+                </li>
+                <li class="nav-header hidden-folded">
+                    <small class="text-muted">Main</small>
+                </li>
+                <li>
+                    <a><span class="nav-text">{{'APPLICATIONS' | translate}}</span></a>
+                    <ul class="nav-sub">
+                        <li ui-sref-active="active">
+                            <a href="#/apps" ui-sref="users.apps">
+                                <span class="nav-text">{{'APPLICATIONS_LIST' | translate}}</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/apps/create" ui-sref="users.createApp">
+                                <span class="nav-text">{{'CREATE_APPLICATION' | translate}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ui-sref-active="active">
+                    <a href="#/installed" ui-sref="users.installed"><span class="nav-text">{{'INSTALLED' | translate}}</span></a>
+                </li>
+                <li>
+                    <a><span class="nav-text">{{'NOTIFICATIONS' | translate}}</span></a>
+                    <ul class="nav-sub">
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'ADD_NOTIFICATION' | translate}}</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_SENT' | translate}}</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div flex-no-shrink class="b-t">
+        <div class="row">
+            <div class="col-xs-7 text-center">
+                <a href="#/help" ui-sref="help"><span class="nav-text">{{'HELP' | translate}}</span></a>
+            </div>
+            <div class="col-xs-5">
+                <a><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
+            </div>
+        </div>
+    </div>
+</div>

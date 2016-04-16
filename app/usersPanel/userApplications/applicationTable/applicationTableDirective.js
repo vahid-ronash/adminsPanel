@@ -21,7 +21,7 @@
                 restrict: 'E',
                 controller: 'applicationTableController',
                 controllerAs: 'appsTableCtrl',
-                templateUrl: 'app/userApplications/applicationTable/applicationTable.html'
+                templateUrl: 'app/usersPanel/userApplications/applicationTable/applicationTable.html'
             };
         });
 })());

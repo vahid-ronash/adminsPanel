@@ -16,31 +16,42 @@
                 $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
                 $stateProvider
-                    .state('dashboard',{
+                    .state('users',{
+                        templateUrl: 'app/usersPanel/panelTemplate.html',
+                        controller: 'usersPanelController',
+                        controllerAs: 'panelCtrl'
+                    })
+                    .state('users.dashboard',{
                         url:'/dashboard',
-                        templateUrl: 'app/dashboard/dashboard.html',
+                        templateUrl: 'app/usersPanel/dashboard/dashboard.html',
                         controller: 'dashboardController',
-                        controllerAs: 'dashboard'
+                        controllerAs: 'dashboard',
+                        pageName:'DASHBOARD'
                     })
-                    .state('apps',{
+                    .state('users.apps',{
                         url:'/apps',
-                        templateUrl: 'app/userApplications/userApplications.html',
+                        templateUrl: 'app/usersPanel/userApplications/userApplications.html',
                         controller: 'userApplicationController',
-                        controllerAs: 'appCtrl'
+                        controllerAs: 'appCtrl',
+                        pageName:'APPLICATIONS_LIST'
                     })
-                    .state('installed', {
+                    .state('users.installed', {
                         url:'/installed',
-                        templateUrl: 'app/installed/installed.html',
+                        templateUrl: 'app/usersPanel/installed/installed.html',
                         controller: 'installedController',
-                        controllerAs:'installedCtrl'
+                        controllerAs:'installedCtrl',
                         //resolve: need delay
+                        pageName:'INSTALLED'
+
                     })
-                    .state('notification', {
+                    .state('users.notification', {
                         url:'/notification',
-                        templateUrl: 'app/notifications/notifications.html',
+                        templateUrl: 'app/usersPanel/notifications/notifications.html',
                         controller: 'notificationsController',
-                        controllerAs:'notifsCtrl'
+                        controllerAs:'notifsCtrl',
                         //resolve: need delay
+                        pageName:'NOTIFICATIONS'
+
                     })
                     .state('signin', {
                         url:'/account/signin',
@@ -66,7 +77,7 @@
                         access: {isFree: true}
                         //resolve: need delay
                     })
-                    .state('changePassword', {
+                    .state('users.changePassword', {
                         url:'/account/change-password',
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',
                         controller: 'changePasswordController',
@@ -93,7 +104,7 @@
                 // });
 
             }])
-        .run(['$rootScope', '$location', 'AuthService', function ($rootScope, $location, Auth) {
+        .run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Auth) {
             $rootScope.errorAlert=function(e){
                 $rootScope.alertMSG={
                     text:e.error.message,
@@ -102,16 +113,25 @@
                 };
             };
 
-            $rootScope.$on('$routeChangeStart', function (event,locationTO,params) {//,prev
-                if (locationTO.redirectTo) {
+            $rootScope.$on('$stateChangeStart', function (event,toState,toParams) {//,prev
+                if (toState.redirectTo) {
                     evt.preventDefault();
-                    $state.go(locationTO.redirectTo, params);
+                    $state.go(toState.redirectTo, toParams);
                     return ;
                 }
-                if (!(locationTO.access && locationTO.access.isFree) && !Auth.isAuthenticated()) {
-                    event.preventDefault();
-                    $location.path('/account/signin');
+                if(Auth.isAuthenticated()){
+                    if (toState.access && toState.access.isFree){
+                        if(toState.name=="signin" || toState.name=="signup"){
+                            // event.preventDefault();
+                            $state.go('dashboard');
+                        }
+                    }
                 }
+                else if (!(toState.access && toState.access.isFree)) {
+                    event.preventDefault();
+                    $state.go('signin');
+                }
+                if(toState.pageName)$rootScope.currentPageName=toState.pageName;
                 if($(".modal-backdrop").length){
                     $(".modal-backdrop").remove();
                     $(document.body).removeClass("modal-open");

@@ -1,0 +1,110 @@
+<div id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}">
+<!--<div id="aside" class="app-aside modal fade sm nav-dropdown" ng-class="{'folded': app.setting.folded}" style="display: none;">-->
+    <nav-side>
+
+    </nav-side>
+</div>
+<div id="content" class="app-content box-shadow-z2 box-radius-1x" role="main">
+    <div class="app-header dark box-shadow">
+        <header-side></header-side>
+        <!--<div class="navbar ng-scope">-->
+            <!-- Open side - Naviation on mobile -->
+            <!--<a id="btnToggleAside" data-toggle="modal" data-target="#aside" class="navbar-item h5 pull-left hidden-lg-up">-->
+                <!--<span><i class="fa fa-bars"></i></span>-->
+            <!--</a>-->
+            <!-- / -->
+
+            <!-- Page title - Bind to $state's title -->
+            <!--<div class="navbar-item pull-left h6 ng-binding" id="pageTitle">{{panelCtrl.state}}</div>-->
+<!---->
+            <!--<user-menu class="navbar-item pull-right"></user-menu>-->
+        <!--</div>-->
+    </div>
+
+    <div class="app-body" ui-view></div>
+
+    <div class="app-footer dark" ng-class="{'hide': $state.current.data.hideFooter}">
+        <div class="footer p-a-md">
+            <div class="row">
+                <div class="col-sm-2 clearfix">
+                    <!-- brand -->
+                    <a class="navbar-brand">
+                        <img src="assets/images/logo.png" alt="." >
+                        <!--class="hide"-->
+                    </a>
+                    <!-- / brand -->
+                </div>
+                <div class="col-sm-8">
+                    <div class="text-sm-center text-xs-left m-y">
+                        <div class="nav text-sm">
+                            <a class="nav-link m-r" href>
+                                <span>Home</span>
+                            </a>
+                            <a class="nav-link m-r" href>
+                                <span>Shop</span>
+                            </a>
+                            <a class="nav-link m-r" href>
+                                <span>Blog</span>
+                            </a>
+                            <a class="nav-link m-r" href>
+                                <span>Service</span>
+                            </a>
+                            <a class="nav-link m-r" href>
+                                <span>About us</span>
+                            </a>
+                            <a class="nav-link m-r" href>
+                                <span>Contact</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="pull-right pull-none-xs inline m-y">
+                        <a href class="btn btn-icon btn-social rounded btn-sm white">
+                            <i class="fa fa-facebook"></i>
+                            <i class="fa fa-facebook indigo"></i>
+                        </a>
+                        <a href class="btn btn-icon btn-social rounded btn-sm white">
+                            <i class="fa fa-twitter"></i>
+                            <i class="fa fa-twitter light-blue"></i>
+                        </a>
+                        <a href class="btn btn-icon btn-social rounded btn-sm white">
+                            <i class="fa fa-google-plus"></i>
+                            <i class="fa fa-google-plus red"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="b b-b m-y"></div>
+            <div class="text-center">
+                <small class="text-muted">&copy; Copyright 2015. All rights reserved.</small>
+            </div>
+        </div>
+
+        <!--<div class="p-a text-xs ng-scope">-->
+            <!--<div class="pull-right text-muted">-->
+                <!--<div class="pull-right text-muted">-->
+                    <!--&copy; Copyright <strong>{{'APP_NAME'|translate}}</strong> <span class="hidden-xs-down">{{'RELEASE_NAME'|translate}}</span>-->
+                    <!--<a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="nav">-->
+                <!--<a class="clear nav-link" href="https://www.ronash.co">-->
+                    <!--<span class="">{{ 'ABOUT' | translate }}</span>-->
+                    <!--<span class="text-muted">-</span>-->
+                    <!--<span class="label accent">{{ 'RONASH' | translate }}</span>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+
+
+</div>
+
+
+<!-- theme switcher -->
+<!--<div id="switcher">-->
+    <!--<div ui-include="'../views/blocks/switcher.html'"></div>-->
+<!--</div>-->
+<!-- / -->
