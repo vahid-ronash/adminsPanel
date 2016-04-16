@@ -19,6 +19,10 @@
                 password:"",
                 rememberMe:true
             };
+            
+            
+            
+            
             /**
              * @ngdoc method
              * @name login

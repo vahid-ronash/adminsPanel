@@ -21,6 +21,8 @@ angular
         //'ngStorage',
         //'ngStore',//override some method on ngStorage
         'ui.router',
+        'mdl',
+        // 'ngMessages',
         'pascalprecht.translate',
         'smart-table',
         'ui.select',

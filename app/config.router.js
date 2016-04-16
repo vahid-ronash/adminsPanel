@@ -122,8 +122,8 @@
                 if(Auth.isAuthenticated()){
                     if (toState.access && toState.access.isFree){
                         if(toState.name=="signin" || toState.name=="signup"){
-                            // event.preventDefault();
-                            $state.go('dashboard');
+                            event.preventDefault();
+                            $state.go('users.dashboard');
                         }
                     }
                 }

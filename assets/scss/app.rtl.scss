@@ -406,3 +406,23 @@ th[st-sort]{
 	min-height: 400px;
 	padding-top:4.5rem;
 }
+.mdl-textfield__label{
+	text-align: right;
+}
+.mdl-textfield__input.text-left{
+	text-align: left;
+}
+.mdl-textfield__label:after{
+	bottom:12px;
+}
+
+.mdl-checkbox__box-outline, .mdl-checkbox__focus-helper {
+	right:0;
+}
+.mdl-checkbox__ripple-container{
+	right:-10px;
+}
+.mdl-checkbox.is-upgraded{
+	padding-right: 24px;
+	padding-left:0;
+}

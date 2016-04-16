@@ -109,7 +109,7 @@ angular
         'REMEMBER_ME':'مرا بخاطر بسپار؟',
         'AS_DEMO':'نمایش دمو',
         'SIGNIN':'ورود',
-        'FORGOT':'رمز عبور را فراموش کرده اید؟?',
+        'FORGOT':'رمز عبور را فراموش کرده اید؟',
         'SIGNUP':'ثبت نام',
         'HAVENT_ACCOUNT':'ثبت نام نکرده اید؟ ',
         'HAVE_ACCOUNT':'قبلا ثبت نام کرده اید؟ ',
@@ -222,6 +222,8 @@ angular
         'CREATE_APPLICATION':'ایجاد اپلیکیشن',
         'NOTIF_SENT':'ارسال شده',
         'NOTIF_ALL':'همه',
+        'NOT_VALID_EMAIL':'It is not a valid Email!',
+        'MINIMUM_PASS_LEN':'طول رمز عبور باید حداقل سه کاراکتر باشد.',
     });
 
     $translateProvider.preferredLanguage('fa');

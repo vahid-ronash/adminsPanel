@@ -50,7 +50,10 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-ui-utils/ui-utils.js",
 
             "assets/libs/ace-builds/src-min-noconflict/ace.js",
-            "assets/libs/angular-ui-ace/ui-ace.js"
+            "assets/libs/angular-ui-ace/ui-ace.js",
+
+            "assets/libs/material-design-lite/material.js",
+            "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())
@@ -69,7 +72,7 @@ gulp.task('makeCSS', function() {
         .pipe(sass({
             outputStyle: 'compressed',
             includePaths:['assets/libs/foundation/scss','bower_components']
-        })).pipe(addsrc([
+        }).on('error', sass.logError)).pipe(addsrc([
             "assets/libs/ui-select/dist/select.css",
             "assets/libs/ng-tags-input/ng-tags-input.css"
             // "assets/libs/animate.css/animate.min.css",
