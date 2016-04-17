@@ -32,12 +32,22 @@
 <div class="app" ui-view></div>
 
 
+<!--PACE-->
 <script type="text/javascript" src="assets/js/pace.js"></script>
-<script type="text/javascript">
-    XMLHttpRequest.prototype = Object.getPrototypeOf(new XMLHttpRequest);
-</script>
+<script type="text/javascript">XMLHttpRequest.prototype = Object.getPrototypeOf(new XMLHttpRequest);</script>
+
+<!--REQUREMENT JS (angular,...)-->
 <script type="text/javascript" src="assets/js/req.js"></script>
 <script type="text/javascript" src="assets/libs/ace-builds/src-min-noconflict/ace.js"></script>
+
+<!--SENTRY-->
+<script>
+    Raven //it added to req.js in gulp file
+            .config('http://ae2173905d1c482cbe2a7368e0af7e10@logs.ronash.co/12')
+            .addPlugin(Raven.Plugins.Angular)
+            .install();
+</script>
+<!--SENTRY-->
 
 <!-- App -->
 <script src="app/environment.js"></script>

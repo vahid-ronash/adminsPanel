@@ -54,7 +54,10 @@ gulp.task('compressJsFiles',function(){
 
             "assets/libs/ng-password-strength/dist/scripts/ng-password-strength.js",
             "assets/libs/material-design-lite/material.js",
-            "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js"
+            "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
+
+            "/bower_components/raven-js/dist/raven.js",
+            "/bower_components/raven-js/dist/plugins/angular"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())
