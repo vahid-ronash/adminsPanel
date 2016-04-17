@@ -30,7 +30,9 @@
              * @description
              * it pass credential(username,password,rememberMe) data to authService
              */
+            thisController.isSigningIn=false;
             thisController.login=function(){
+                thisController.isSigningIn=true;
                 return $AuthService.login(thisController.data).then(function(result){
                     if(result.error){
                         thisController.loginError=result.error;
@@ -40,6 +42,7 @@
                             $location.path('/dashboard');
                         },10);
                     }
+                    thisController.isSigningIn=false;
                 });
             };
 

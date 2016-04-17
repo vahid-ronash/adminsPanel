@@ -4,9 +4,10 @@
             {{ 'SIGNIN_MSG' | translate }}
         </div>
         <form name="signinForm" ng-submit="signinCtrl.login()">
+
             <!--EMAIL-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input text-left" type="email" id="signEmail">
+                <input class="mdl-textfield__input text-left" ng-model="signinCtrl.data.email" type="email" id="signEmail">
                 <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
                 <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
             </div>
@@ -15,7 +16,7 @@
 
             <!--PASSWORD-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input" type="password" id="signPass" pattern=".{3,}">
+                <input name="password" class="mdl-textfield__input" ng-model="signinCtrl.data.password" type="password" id="signPass">
                 <label class="mdl-textfield__label" for="signPass">{{'PASSWORD' | translate}}</label>
             </div>
             <!--PASSWORD END-->
@@ -23,7 +24,7 @@
 
             <div class="m-b-md">
                 <!--REMEMBER ME-->
-                <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect pull-left" for="checkbox-1">
+                <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                     <input type="checkbox" ng-model="signinCtrl.data.rememberMe" id="checkbox-1" class="mdl-checkbox__input" checked>
                     <span class="mdl-checkbox__label">{{'REMEMBER_ME' | translate}}</span>
                 </label>
@@ -36,13 +37,17 @@
                 <!--LOGIN AS DEMO END-->
             </div>
 
-            <button type="submit" ng-disabled="form.$invalid || signinCtrl.dataLoading" class="btn primary btn-block p-x-md">{{'SIGNIN' | translate}}</button>
+            <button type="submit"
+                    ng-disabled="!signinCtrl.data.email || !signinCtrl.data.password || form.$invalid || signinCtrl.isSigningIn"
+                    class="btn primary btn-block p-x-md">
+                {{'SIGNIN' | translate}}
+            </button>
             <small ng-if="signinCtrl.loginError">{{signinCtrl.loginError}}</small>
         </form>
     </div>
 
     <div class="p-v-lg text-center">
-        <div class="m-b"><a ui-sref="access.forgot-password" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT' | translate}}</a></div>
-        <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="access.signup" href="#/account/signup" class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
+        <div class="m-b"><a ui-sref="forgotPassword" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT' | translate}}</a></div>
+        <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="signup" href="#/account/signup" class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
     </div>
 </div>

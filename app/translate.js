@@ -116,8 +116,8 @@ angular
         'FORGOT_PASSWORD':'رمز عبورتان را فراموش کرده اید؟',
         'FORGOT_MSG':'ایمیل خود را وارد نمایید تا نحوه احیا نمودن رمز عبور را برای شما ارسال کنیم.',
         'SIGNUP_MSG':'ثبت نام',
-        'AGREE':'Agree the ',
-        'TERMS':'terms and policy',
+        'AGREE':' را قبول دارم',
+        'TERMS':'شرایط استفاده',
         'PROFILE':'پروفایل',
         'SIGNOUT':'خروج',
         'HOME':'خانه',
@@ -164,7 +164,7 @@ angular
         'OPEN_LINK':'باز کردن URL',
         'CURRENT_PASSWORD':'رمز عبور فعلی',
         'NEW':'جدید',
-        'PASS_NOT_MATCH':'رمز عبور با تکرار آن مطابق نیست لطفا دوباره امتحان کنید.',
+        'PASS_NOT_MATCH':'رمز عبور با تکرار آن مطابق نیست.',
         'PASS_CHANGED':'رمز عبور با موفقیت تغییر کرد',
         'CHANGE_PASSWORD_MSG':'تغییر رمز عبور',
         'NOTIF_EXTITLE':'تیتر کامل',
@@ -224,6 +224,9 @@ angular
         'NOTIF_ALL':'همه',
         'NOT_VALID_EMAIL':'It is not a valid Email!',
         'MINIMUM_PASS_LEN':'طول رمز عبور باید حداقل سه کاراکتر باشد.',
+        'WEAK_STRENGTH':'امنیت رمز ضعیف است.',
+        'MEDIUM_STRENGTH':'امنیت رمز متوسط میباشد.',
+        'STRONG_STRENGTH':'رمز امنیت خوبی دارد.',
     });
 
     $translateProvider.preferredLanguage('fa');
