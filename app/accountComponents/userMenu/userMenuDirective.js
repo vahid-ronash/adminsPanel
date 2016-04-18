@@ -18,7 +18,7 @@
         .directive('userMenu', function () {
             return {
                 scope: true,
-                restrict: 'E',
+                restrict: 'EA',
                 controller: 'userMenuController',
                 controllerAs: 'userMenuCtrl',
                 templateUrl: 'app/accountComponents/userMenu/userMenu.html'

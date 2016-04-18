@@ -107,7 +107,7 @@ angular
         'PASSWORD': 'رمز عبور',
         'REPASSWORD': 'تکرار رمز عبور',
         'REMEMBER_ME':'مرا بخاطر بسپار؟',
-        'AS_DEMO':'نمایش دمو',
+        'AS_DEMO':'دمو',
         'SIGNIN':'ورود',
         'FORGOT':'رمز عبور را فراموش کرده اید؟',
         'SIGNUP':'ثبت نام',
@@ -205,7 +205,7 @@ angular
         'OPEN_APP_DESC':'توضیحات',
         'FORGOT_ALARM':'we sent you an email please check it out',
         'SEND':'ارسال',
-        'RETURN_TO':'بازگشت به',
+        'RETURN_TO':'بازگشت به ',
         'CHECK_AGREEMENT':'please check you agree the terms',
         'REGISTER_RESPONSE_MSG':'we sent you a email , please confirm',
         'LOGO_PATH':'assets/images/logo.png',
@@ -227,6 +227,8 @@ angular
         'WEAK_STRENGTH':'امنیت رمز ضعیف است.',
         'MEDIUM_STRENGTH':'امنیت رمز متوسط میباشد.',
         'STRONG_STRENGTH':'رمز امنیت خوبی دارد.',
+        'BLOG_PAGE':'بلاگ',
+        'STATUS_PAGE':'وضعیت',
     });
 
     $translateProvider.preferredLanguage('fa');

@@ -18,7 +18,9 @@
 @import "flick-scss-copy/md.scss";
 @import "flick-scss-copy/ng.scss";
 
-@import "wizard";
-@import "pace";
 @import "bootstrap-rtl-copy/scss/bootstrap-rtl.scss";
-@import "app.rtl";
+@import "flick-scss-copy/app.rtl";
+
+@import "myScss/fonts";
+@import "myScss/myRTL";
+@import "myScss/someElement";

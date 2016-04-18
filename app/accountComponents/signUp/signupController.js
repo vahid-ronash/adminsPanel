@@ -34,14 +34,14 @@
                 }
                 else if(!thisController.agreement){
                     thisController.registerError=$filter('translate')('CHECK_AGREEMENT');
-                }
+                }   
                 else {
                     return $AuthService.register(thisController.data).then(function (result) {
                         if (result.error) {
                             thisController.registerError = result.error;
                         }
                         else {
-                            thisController.registerAlert = $filter('translate')('REGISTER_RESPONSE_MSG');;
+                            thisController.registerAlert = $filter('translate')('REGISTER_RESPONSE_MSG');
                         }
                     });
                 }

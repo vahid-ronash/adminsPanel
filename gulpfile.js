@@ -56,8 +56,8 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/material-design-lite/material.js",
             "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
 
-            "/bower_components/raven-js/dist/raven.js",
-            "/bower_components/raven-js/dist/plugins/angular"
+            "assets/libs/raven-js/dist/raven.js",
+            "assets/libs/raven-js/dist/plugins/angular.js"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())

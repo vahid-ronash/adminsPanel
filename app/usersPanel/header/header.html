@@ -15,7 +15,8 @@
                 <!--<span><i class="fa fa-fw fa-arrows-v"></i></span>-->
             <!--</a>-->
         <!--</li>-->
-        <!--other links-->
+
+        <!--ANOTHER LINKS-->
         <li class="nav-item dropdown">
             <a href class="nav-link" data-toggle="dropdown">
                 <i class="material-icons">&#xe5c3;</i>
@@ -24,21 +25,23 @@
             <div class="dropdown-menu w-xl text-color pull-right p-a-0 animated flipInX">
                 <div class="row no-gutter text-{{app.setting.theme.primary}}-hover">
                     <div class="col-xs-4 b-r b-b">
-                        <a class="p-a block text-center">
+                        <a href="/blog" class="p-a block text-center">
                             <i class="material-icons md-24 text-muted m-v-sm">&#xe190;</i>
-                            <span class="block">weblog</span>
+                            <span class="block">{{'BLOG_PAGE' | translate}}</span>
                         </a>
                     </div>
                     <div class="col-xs-4 b-r b-b">
-                        <a class="p-a block text-center">
+                        <a href="/status" class="p-a block text-center">
                             <i class="material-icons md-24 text-muted m-v-sm">&#xe87d;</i>
-                            <span class="block">status</span>
+                            <span class="block">{{'STATUS_PAGE'|translate}}</span>
                         </a>
                     </div>
                 </div>
             </div>
         </li>
-        <!--notifications-->
+        <!--ANOTHER LINKS END-->
+
+        <!--NOTIFICATION-->
         <li class="nav-item dropdown">
             <a href class="nav-link" data-toggle="dropdown">
                 <i class="material-icons">&#xe7f5;</i>
@@ -78,10 +81,14 @@
                 </div>
             </div>
         </li>
-        <!--account-->
-        <li class="nav-item dropdown">
-            <user-menu class="navbar-item pull-right"></user-menu>
+        <!--NOTIFICATION END-->
+
+        <!--ACCOUNT-->
+        <li user-menu class="nav-item dropdown navbar-item pull-right">
+            <!--<user-menu class="navbar-item pull-right"></user-menu>-->
         </li>
+        <!--ACCOUNT END-->
+
     </ul>
     <!-- / navbar right -->
 

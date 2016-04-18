@@ -6,7 +6,6 @@
 
 
         <form name="form" ng-submit="signupCtrl.register()">
-
             <!--EMAIL-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input text-left" ng-model="signupCtrl.data.email" type="email" id="registerEmail" >
@@ -43,11 +42,13 @@
             </div>
 
             <!--SUBMIT-->
-            <button
+            <button type="submit"
                     ng-disabled="form.$invalid || signupCtrl.dataLoading"
                     class="btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                 {{'SIGNUP' | translate}}
             </button>
+            <!--SUBMIT END-->
+
             <br>
             <small ng-if="signupCtrl.registerError">{{signupCtrl.registerError}}</small>
         </form>

@@ -1,0 +1,30 @@
+th[st-sort]{
+  &:hover{
+    background: #eee;
+    color:#5BC0DE;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 47.9em) {
+  table[st-table]{
+    >thead>tr>th{
+      padding-right: 2px;
+      padding-left: 2px;
+      text-align: center;
+    }
+    >tbody>tr>td, >tbody>tr>th, >tfoot>tr>td, >tfoot>tr>th{
+      text-align: center;
+      padding-left: 2px;
+      padding-right: 2px;
+
+      white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+      white-space: -pre-wrap;      /* Opera 4-6 */
+      white-space: -o-pre-wrap;    /* Opera 7 */
+      white-space: pre-wrap;       /* css-3 */
+      word-wrap: break-word;       /* Internet Explorer 5.5+ */
+      word-break: break-all;
+      white-space: normal;
+    }
+  }
+}

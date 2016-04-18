@@ -54,8 +54,8 @@
              * use demo user and send them to login method
              */
             thisController.loginAsDemo=function(){
-                thisController.data.email="q@q.cc";
-                thisController.data.password="a";
+                thisController.data.email="demo@pushe.co";
+                thisController.data.password="demo";
                 return thisController.login();
             };
         }]);

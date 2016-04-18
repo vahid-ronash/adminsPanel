@@ -40,7 +40,7 @@
 
 
             var userList = [
-                {id:1,name: 'دمو', email:'demo@pushe.co',password:"1234",roles:[]},
+                {id:1,name: 'دمو', email:'demo@pushe.co',password:"demo",roles:[]},
                 {id:2,name: 'دمو', email:'a@a.cc',password:"a",roles:[]},
                 {id:2,name: 'دمو', email:'q@q.cc',password:"a",roles:[]}
             ];

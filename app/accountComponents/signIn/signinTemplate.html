@@ -7,7 +7,12 @@
 
             <!--EMAIL-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input text-left" ng-model="signinCtrl.data.email" type="email" id="signEmail">
+                <div ng-class="{'input-group':!signinForm.email.$viewValue}">
+                    <input name="email" class="mdl-textfield__input text-left" ng-model="signinCtrl.data.email" type="email" id="signEmail">
+                    <a ng-if="!signinForm.email.$viewValue" class="input-group-addon btn" ng-click="signinCtrl.loginAsDemo()">
+                        {{'AS_DEMO' | translate}}
+                    </a>
+                </div>
                 <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
                 <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
             </div>
@@ -16,7 +21,7 @@
 
             <!--PASSWORD-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input" ng-model="signinCtrl.data.password" type="password" id="signPass">
+                <input name="password" class="mdl-textfield__input text-left" ng-model="signinCtrl.data.password" type="password" id="signPass">
                 <label class="mdl-textfield__label" for="signPass">{{'PASSWORD' | translate}}</label>
             </div>
             <!--PASSWORD END-->
@@ -29,19 +34,17 @@
                     <span class="mdl-checkbox__label">{{'REMEMBER_ME' | translate}}</span>
                 </label>
                 <!--REMEMBER ME END-->
-
-                <!--LOGIN AS DEMO-->
-                <button ng-click="signinCtrl.loginAsDemo()" class="mdl-button mdl-js-button mdl-js-ripple-effect pull-right">
-                    {{'AS_DEMO' | translate}}
-                </button>
-                <!--LOGIN AS DEMO END-->
             </div>
 
+            <!--SUBMIT-->
             <button type="submit"
                     ng-disabled="!signinCtrl.data.email || !signinCtrl.data.password || form.$invalid || signinCtrl.isSigningIn"
                     class="btn primary btn-block p-x-md">
+                <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
                 {{'SIGNIN' | translate}}
             </button>
+            <!--SUBMIT END-->
+
             <small ng-if="signinCtrl.loginError">{{signinCtrl.loginError}}</small>
         </form>
     </div>
