@@ -44,7 +44,10 @@
                                 text: text,
                                 verbose: JSON.stringify(data)
                             };
-                            $scope.alertMSGS.push(newAlert);
+                            if($rootScope.ErrorContent.hasOwnProperty("err"))
+                                return {error:newAlert};
+                            else
+                                $scope.alertMSGS.push(newAlert);
                         }
                     }
                 }

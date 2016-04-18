@@ -5,93 +5,94 @@
             </i> {{'ADD_NEW_APP' | translate}}
         </button>
     </div>
-
-    <table st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped">
-        <thead>
-        <tr>
-            <th st-sort="application_id">{{'PACKNAME' | translate}}</th>
-            <th st-sort="provider">{{'PROVIDER' | translate}}</th>
-            <th width="160"></th>
-        </tr>
-        <tr>
-            <th colspan="4"><input st-search="''" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-if="appsTableCtrl.addMode">
-            <td>
-                <div class="md-form-group float-label">
-                    <input class="md-input" ng-model="appsTableCtrl.newApp.application_id" focus-me="appsTableCtrl.addFocusStart">
-                    <label>{{'PACKNAME' | translate}}</label>
-                </div>
-            </td>
-            <td>
-                <div class="md-form-group float-label">
-                    <ui-select ng-model="appsTableCtrl.newApp.provider">
-                        <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                            <span ng-bind="appsTableCtrl.newApp.provider.name"></span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
-                            <span ng-bind="item.name"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </td>
-            <td>
-                <button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
-                <button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>
-            </td>
-        </tr>
-        <tr ng-repeat="row in appsTableCtrl.displayed">
-            <td>
-                <div>
-                    {{row.application_id}}
-                </div>
-                <div uib-collapse="!row.showDetail">
-                    <label>sender ID: </label>{{row.senderID}}
-                </div>
-            </td>
-            <td>
-                <div class="" ng-if="row.isEditing">
-                    <ui-select ng-model="row.provider">
-                        <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                            <span ng-bind="row.provider.name"></span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
-                            <span ng-bind="item.name"></span>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div class="" ng-if="!row.isEditing">
-                    {{row.provider}}
-                </div>
-            </td>
-            <td>
-                <div ng-if="!row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.showDetail(row)" class="btn btn-sm white">
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <button type="button" ng-click="appsTableCtrl.startEdit(row)" class="btn btn-sm white">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                    <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-                <div ng-if="row.isEditing">
-                    <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
-                    <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm btn-secondary">{{'OK' | translate}}</button>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="7" class="text-center">
-                <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
-                </div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+    <div class="box">
+        <table st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="application_id">{{'PACKNAME' | translate}}</th>
+                <th st-sort="provider">{{'PROVIDER' | translate}}</th>
+                <th width="160"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input st-search="''" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="appsTableCtrl.addMode">
+                <td>
+                    <div class="md-form-group float-label">
+                        <input class="md-input" ng-model="appsTableCtrl.newApp.application_id" focus-me="appsTableCtrl.addFocusStart">
+                        <label>{{'PACKNAME' | translate}}</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="md-form-group float-label">
+                        <ui-select ng-model="appsTableCtrl.newApp.provider">
+                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
+                                <span ng-bind="appsTableCtrl.newApp.provider.name"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
+                                <span ng-bind="item.name"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
+                    <button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>
+                </td>
+            </tr>
+            <tr ng-repeat="row in appsTableCtrl.displayed">
+                <td>
+                    <div>
+                        {{row.application_id}}
+                    </div>
+                    <div uib-collapse="!row.showDetail">
+                        <label>sender ID: </label>{{row.senderID}}
+                    </div>
+                </td>
+                <td>
+                    <div class="" ng-if="row.isEditing">
+                        <ui-select ng-model="row.provider">
+                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
+                                <span ng-bind="row.provider.name"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
+                                <span ng-bind="item.name"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="" ng-if="!row.isEditing">
+                        {{row.provider}}
+                    </div>
+                </td>
+                <td>
+                    <div ng-if="!row.isEditing">
+                        <button type="button" ng-click="appsTableCtrl.showDetail(row)" class="btn btn-sm white">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                        <button type="button" ng-click="appsTableCtrl.startEdit(row)" class="btn btn-sm white">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <div ng-if="row.isEditing">
+                        <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
+                        <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm btn-secondary">{{'OK' | translate}}</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="7" class="text-center">
+                    <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>

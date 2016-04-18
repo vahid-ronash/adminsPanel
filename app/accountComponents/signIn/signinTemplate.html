@@ -45,7 +45,7 @@
             </button>
             <!--SUBMIT END-->
 
-            <small ng-if="signinCtrl.loginError">{{signinCtrl.loginError}}</small>
+            <small class="mdl-textfield__error errorShow" ng-bind="signinCtrl.loginError.err"></small>
         </form>
     </div>
 

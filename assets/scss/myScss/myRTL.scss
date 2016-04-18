@@ -8,28 +8,31 @@ body{
   background-color: #0CC2AA;
   color:#fff;
 }
-
-@media (min-width: 47.9em) {
-  .app-aside{
-	.navside.right {
-	  position: absolute;
-		left: 0;
-		right:0;
-		top:0;
-		bottom:0;
-		-webkit-transform: translate3d(0, 0, 0);
-	  transform: translate3d(0, 0, 0);
-	}
-  }
+.modal>.left {
+	left: auto;
+	right: 0;
 }
+.modal .left{
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+}
+@media (min-width: 992px) {
+	.app-aside .left {
+		position: absolute;
+		left: 0;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
 @media (max-width: 47.9em) {
   .navbar-brand>img{
 	width: 100px;
   }
-  .app-aside .right{
-	position: fixed;
-	width: 304px;
-  }
+  //.app-aside .right{
+	//position: fixed;
+	//width: 304px;
+  //}
 }
 .nav-link {
 	.material-icons {
@@ -41,25 +44,29 @@ body{
 
 
 
-.app-footer{
-	margin:0;
-	position:static;
-}
+//.app-footer{
+//	margin:0;
+//	position:static;
+//}
 .footer{
 	.navbar-brand img{
 		width:50px;
 	}
 }
-
-
-
-body,#content, .app.ng-scope, div#content{
-	height:100%;
+.app-footer:not(.hide)~.app-body {
+	padding-bottom: 10.125rem;
 }
-.app-body{
-	min-height: 80%;
-	padding-top:4.5rem;
+.app-header~.app-body {
+	padding-top: 4.5rem;
 }
+
+//body, .app.ng-scope, div#content{
+//	height:100%;
+//}
+//.app-body{
+//	min-height: 80%;
+//	padding-top:4.5rem;
+//}
 
 
 

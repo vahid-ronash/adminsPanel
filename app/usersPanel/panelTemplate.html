@@ -1,29 +1,8 @@
-<div id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}">
-<!--<div id="aside" class="app-aside modal fade sm nav-dropdown" ng-class="{'folded': app.setting.folded}" style="display: none;">-->
-    <nav-side>
-
-    </nav-side>
-</div>
+<div nav-side id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}" style="display: none;"></div>
 <div id="content" class="app-content box-shadow-z2 box-radius-1x" role="main">
-    <div class="app-header dark box-shadow">
-        <header-side></header-side>
-        <!--<div class="navbar ng-scope">-->
-            <!-- Open side - Naviation on mobile -->
-            <!--<a id="btnToggleAside" data-toggle="modal" data-target="#aside" class="navbar-item h5 pull-left hidden-lg-up">-->
-                <!--<span><i class="fa fa-bars"></i></span>-->
-            <!--</a>-->
-            <!-- / -->
+    <div header-side class="app-header white box-shadow"></div>
 
-            <!-- Page title - Bind to $state's title -->
-            <!--<div class="navbar-item pull-left h6 ng-binding" id="pageTitle">{{panelCtrl.state}}</div>-->
-<!---->
-            <!--<user-menu class="navbar-item pull-right"></user-menu>-->
-        <!--</div>-->
-    </div>
-
-    <div class="app-body" ui-view></div>
-
-    <div class="app-footer dark" ng-class="{'hide': $state.current.data.hideFooter}">
+    <div class="app-footer white" ng-class="{'hide': $state.current.data.hideFooter}">
         <div class="footer p-a-md">
             <div class="row">
                 <div class="col-sm-2 clearfix">
@@ -98,10 +77,8 @@
         <!--</div>-->
     </div>
 
-
-
+    <div class="app-body" ui-view></div>
 </div>
-
 
 <!-- theme switcher -->
 <!--<div id="switcher">-->

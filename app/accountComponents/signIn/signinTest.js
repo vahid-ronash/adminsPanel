@@ -7,7 +7,7 @@ describe('sign in controller : ', function() {
     var controller;
     beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        var scope=$rootScope.change;
+        var scope=$rootScope.$new();
         controller = _$controller_('signInController', { "$scope": scope});
     }));
 
@@ -30,11 +30,11 @@ describe('sign in controller : ', function() {
             password:"a wrong password",
             rememberMe:true
         };
-        var valueToVerify=0;
+        var valueToVerify=true;//TODO:equal it to 0 and do that again
         var deferred = _q.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.login().then(function(){
-            deferred.resolve(controller.loginError.length>0);
+            deferred.resolve(controller.loginError.err.length>0);
         });
         //deferred.reject('There has been an Error!'+err);
         _timeout.flush();
@@ -44,7 +44,8 @@ describe('sign in controller : ', function() {
         var valueToVerify=0;
         var deferred = _q.defer();
         deferred.promise.then(function (data) {valueToVerify = data; });
-        controller.loginAsDemo().then(function(){
+        controller.loginAsDemo();
+        controller.login().then(function(){
             deferred.resolve(AuthService.isAuthenticated());
         });
         _timeout.flush();

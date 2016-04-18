@@ -78,10 +78,8 @@ gulp.task('makeCSS', function() {
             includePaths:['assets/libs/foundation/scss','bower_components']
         }).on('error', sass.logError)).pipe(addsrc([
             "assets/libs/ui-select/dist/select.css",
-            "assets/libs/ng-tags-input/ng-tags-input.css"
-            // "assets/libs/animate.css/animate.min.css",
-            // "assets/libs/font-awesome/css/font-awesome.min.css",
-            // "assets/libs/bootstrap/dist/css/bootstrap.min.css",
+            "assets/libs/ng-tags-input/ng-tags-input.css",
+            "assets/libs/animate.css/animate.css",
         ]))
         .pipe(concat('app.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))

@@ -17,7 +17,7 @@
         .directive('navSide', function () {
             return {
                 scope: true,
-                restrict: 'E',
+                restrict: 'EA',
                 controller: 'navSideController',
                 controllerAs: 'navSideCtrl',
                 templateUrl: 'app/usersPanel/navSide/navSideTemplate.html'

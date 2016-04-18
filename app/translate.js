@@ -222,7 +222,7 @@ angular
         'CREATE_APPLICATION':'ایجاد اپلیکیشن',
         'NOTIF_SENT':'ارسال شده',
         'NOTIF_ALL':'همه',
-        'NOT_VALID_EMAIL':'It is not a valid Email!',
+        'NOT_VALID_EMAIL':'فرمت ایمیل صحیح نیست.',
         'MINIMUM_PASS_LEN':'طول رمز عبور باید حداقل سه کاراکتر باشد.',
         'WEAK_STRENGTH':'امنیت رمز ضعیف است.',
         'MEDIUM_STRENGTH':'امنیت رمز متوسط میباشد.',

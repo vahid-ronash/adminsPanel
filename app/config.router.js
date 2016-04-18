@@ -132,10 +132,10 @@
                     $state.go('signin');
                 }
                 if(toState.pageName)$rootScope.currentPageName=toState.pageName;
-                if($(".modal-backdrop").length){
-                    $(".modal-backdrop").remove();
-                    $(document.body).removeClass("modal-open");
-                }
+                // if($(".modal-backdrop").length){
+                //     $(".modal-backdrop").remove();
+                //     $(document.body).removeClass("modal-open");
+                // }
             });
         }]);
 })());

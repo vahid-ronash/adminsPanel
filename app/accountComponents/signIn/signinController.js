@@ -19,8 +19,10 @@
                 password:"",
                 rememberMe:true
             };
-            
-            
+            $scope.$root.ErrorContent=thisController.loginError={err:""};
+            $timeout(function(){
+                if(!$scope.$$phase)$scope.$apply();
+            },100);
             
             
             /**
@@ -35,7 +37,7 @@
                 thisController.isSigningIn=true;
                 return $AuthService.login(thisController.data).then(function(result){
                     if(result.error){
-                        thisController.loginError=result.error;
+                        thisController.loginError.err=result.error.text;
                     }
                     else{
                         $timeout(function(){
@@ -56,7 +58,7 @@
             thisController.loginAsDemo=function(){
                 thisController.data.email="demo@pushe.co";
                 thisController.data.password="demo";
-                return thisController.login();
+                // return thisController.login();
             };
         }]);
 })());

@@ -17,7 +17,7 @@
         .directive('headerSide', function () {
             return {
                 scope: true,
-                restrict: 'E',
+                restrict: 'EA',
                 controller: 'headerSideController',
                 controllerAs: 'headerSideCtrl',
                 templateUrl: 'app/usersPanel/header/header.html'

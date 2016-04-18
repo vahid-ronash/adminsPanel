@@ -52,7 +52,7 @@
                     return [200, {logged_in:true,email:"asghar@gmail.com"}, {}];
                 }
                 else {
-                    return [200, {error:"username or password is wrong"}, {}];
+                    return [400, {detail:"username or password is wrong"}, {}];
                 }
             });
             $httpBackend.whenPOST(URLS.URL_FORGOTPASS).respond({mail_sent:true});
