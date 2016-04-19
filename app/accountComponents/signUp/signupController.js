@@ -19,6 +19,7 @@
                 email:"",
                 password:""
             };
+            thisController.isSigningUp=false;
             /**
              * @ngdoc method
              * @name login
@@ -36,6 +37,7 @@
                     thisController.registerError=$filter('translate')('CHECK_AGREEMENT');
                 }   
                 else {
+                    thisController.isSigningUp=true;
                     return $AuthService.register(thisController.data).then(function (result) {
                         if (result.error) {
                             thisController.registerError = result.error;
@@ -43,6 +45,7 @@
                         else {
                             thisController.registerAlert = $filter('translate')('REGISTER_RESPONSE_MSG');
                         }
+                        thisController.isSigningUp=false;
                     });
                 }
             };

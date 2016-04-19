@@ -4,7 +4,7 @@
 
 /**
  * @ngdoc directive
- * @name app.directive.focusMe
+ * @name app.directive.uiNav
  * @scope
  * @restrict E
  * @description

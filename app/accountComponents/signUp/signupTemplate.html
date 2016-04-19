@@ -7,8 +7,12 @@
 
         <form name="form" ng-submit="signupCtrl.register()">
             <!--EMAIL-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input ng-model-options="{ updateOn:'default blur' }"  class="mdl-textfield__input text-left" ng-model="signupCtrl.data.email" type="email" id="registerEmail" >
+            <!--mdl-textfield mdl-js-textfield mdl-textfield--floating-label-->
+            <div mdl-upgrade class="">
+                <input ng-model-options="{ updateOn:'default blur' }"  class="mdl-textfield__input text-left" ng-model="signupCtrl.data.email"
+                       type="text" id="registerEmail"
+                       pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                >
                 <label class="mdl-textfield__label" for="registerEmail">{{'EMAIL' | translate}}</label>
                 <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
             </div>
@@ -41,9 +45,19 @@
                 </label>
             </div>
 
+            <!--RE CAPTCHA-->
+            <div class="" style="margin:18px -33px">
+                <no-captcha
+                        g-recaptcha-response="gRecaptchaResponse"
+                        control="noCaptchaControl"
+                >
+                </no-captcha>
+            </div>
+            <!--RE CAPTCHA END-->
+
             <!--SUBMIT-->
             <button type="submit"
-                    ng-disabled="!signinCtrl.data.email || !signinCtrl.data.password || form.$invalid || signupCtrl.dataLoading"
+                    ng-disabled="form.$invalid || signupCtrl.isSigningUp"
                     class="btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                 {{'SIGNUP' | translate}}
             </button>

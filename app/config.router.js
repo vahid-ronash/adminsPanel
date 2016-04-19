@@ -10,10 +10,14 @@
     'use strict';
     angular
         .module('app')
-        .config(['$httpProvider','$stateProvider','EnvironmentConfig','$urlRouterProvider','$locationProvider',
-            function config($httpProvider,$stateProvider,EnvironmentConfig,$urlRouterProvider,$locationProvider) {
+        .config(['$httpProvider','$stateProvider','EnvironmentConfig','$urlRouterProvider','$locationProvider','noCAPTCHAProvider',
+            function config($httpProvider,$stateProvider,EnvironmentConfig,$urlRouterProvider,$locationProvider,noCaptchaProvider) {
                 $httpProvider.defaults.xsrfCookieName = 'csrftoken';
                 $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+                noCaptchaProvider.setSiteKey('6Ldqxx0TAAAAAO4PTRCSND6hhvomAvnX5EG3Lb6I');
+                noCaptchaProvider.setTheme('light');
+                noCaptchaProvider.setLanguage('fa');
 
                 $stateProvider
                     .state('users',{

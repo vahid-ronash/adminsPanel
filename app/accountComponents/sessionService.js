@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .service('Session',['$sessionStorage', function ($sessionStorage) {
+        .service('Session',['$localStorage', function ($localStorage) {
             this.isAuth=function(){
                 if(!this.user) this.create(); //try to recover user from cookie
                 if(this.user)
@@ -21,15 +21,15 @@
                     return false;
             };
             this.create = function (emailAddress) {
-                var email=emailAddress||($sessionStorage.user && $sessionStorage.user.email)
+                var email=emailAddress||($localStorage.user && $localStorage.user.email);
                 if(email) {
-                    $sessionStorage.user = this.user = {
+                    $localStorage.user = this.user = {
                         email: email
                     }
                 }
             };
             this.destroy = function () {
-                $sessionStorage.user= this.user =null;
+                $localStorage.user= this.user =null;
             };
 
             this.load=function(){

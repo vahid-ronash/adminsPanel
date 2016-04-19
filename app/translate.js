@@ -227,8 +227,10 @@ angular
         'WEAK_STRENGTH':'امنیت رمز ضعیف است.',
         'MEDIUM_STRENGTH':'امنیت رمز متوسط میباشد.',
         'STRONG_STRENGTH':'رمز امنیت خوبی دارد.',
+        'SEND_FORGOT_LINK':'ارسال لینک',
         'BLOG_PAGE':'بلاگ',
         'STATUS_PAGE':'وضعیت',
+        'ITS_REQUIRED':'این فیلد نیاز است که حتما پر شود.',
     });
 
     $translateProvider.preferredLanguage('fa');

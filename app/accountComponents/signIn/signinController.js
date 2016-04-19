@@ -21,10 +21,11 @@
             };
             $scope.$root.ErrorContent=thisController.loginError={err:""};
             $timeout(function(){
-                if(!$scope.$$phase)$scope.$apply();
-            },100);
-            
-            
+                if(thisController.data.email.length>3)
+                    $("#signPass").focus();
+            },1000);
+
+
             /**
              * @ngdoc method
              * @name login
