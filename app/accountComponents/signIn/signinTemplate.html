@@ -9,10 +9,11 @@
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <div ng-class="{'input-group':!signinForm.email.$viewValue}">
                     <input name="email"
+                           ng-model-options="{ updateOn:'default blur' }"
                            type="text"
                            class="mdl-textfield__input text-left"
                            ng-model="signinCtrl.data.email"
-                           focus-me="signinCtrl.data.email"
+                           focus-me="focusEmail" ng-init="focusEmail=true"
                            pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="signEmail">
                     <a ng-if="!signinForm.email.$viewValue" class="input-group-addon btn" ng-click="signinCtrl.loginAsDemo()">
                         {{'AS_DEMO' | translate}}
@@ -58,11 +59,18 @@
             <!--RE CAPTCHA END-->
 
             <!--SUBMIT-->
-            <button type="submit"
-                    ng-disabled="form.$invalid || signinCtrl.isSigningIn"
-                    class="btn primary btn-block p-x-md">
-                <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
-                {{'SIGNIN' | translate}}
+            <div ng-if="!signinCtrl.isSigningIn">
+                <button type="submit"
+                        ng-disabled="form.$invalid || signinCtrl.isSigningIn"
+                        class="btn primary btn-block p-x-md">
+                    <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
+                    {{'SIGNIN' | translate}}
+                </button>
+            </div>
+            <button class="btn disabled btn-block p-x-md" ng-if="signinCtrl.isSigningIn">
+                <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}" style="color:green;margin:0 1px 0 0;"></div>
+                </div>
             </button>
             <!--SUBMIT END-->
 

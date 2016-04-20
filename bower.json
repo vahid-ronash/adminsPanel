@@ -44,6 +44,7 @@
     "ng-password-strength": "^0.2.1",
     "raven-js": "^2.3.0",
     "angular-no-captcha": "^0.6.0",
+    "SpinKit": "spinkit#^1.2.5"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.3",
