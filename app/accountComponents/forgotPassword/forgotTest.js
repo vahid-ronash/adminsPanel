@@ -7,7 +7,7 @@ describe('forget password controller : ', function() {
     var controller;
     beforeEach(inject(function(_$controller_,$rootScope){
         // The injector unwraps the underscores (_) from around the parameter names when matching
-        var scope=$rootScope.change;
+        var scope=$rootScope.$new();
         controller = _$controller_('forgotPasswordController', { "$scope": scope});
     }));
 

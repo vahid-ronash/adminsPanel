@@ -15,6 +15,9 @@
         .controller('forgotPasswordController', ['$scope','AuthService','$location','$filter',function($scope,$AuthService,$location,$filter){
             var thisController=this;
             // thisController.app=$scope.app;//point to parent scope.app
+
+            $scope.$root.ErrorContent=thisController.forgetError={err:""};
+
             /**
              * @ngdoc method
              * @name forgotPassword
