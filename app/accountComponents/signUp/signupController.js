@@ -30,9 +30,9 @@
              * @name measureStrength
              * @methodOf app.controller.signUpController
              * @description
-             * it pass credential(username,password,rememberMe) data to authService
+             * it get strength of password
              */
-            thisController.measureStrength = function (p) {
+            thisController.measureStrength = function (password) {
                 var stringReverse = function (str) {
                         for (var i = str.length - 1, out = ''; i >= 0; out += str[i--]) {
                         }
@@ -59,14 +59,14 @@
                     forth,
                     i;
 
-                if (p) {
+                if (password) {
                     // Benefits
-                    matches.pos.lower = p.match(/[a-z]/g);
-                    matches.pos.upper = p.match(/[A-Z]/g);
-                    matches.pos.numbers = p.match(/\d/g);
-                    matches.pos.symbols = p.match(/[$-/:-?{-~!^_`\[\]]/g);
-                    matches.pos.middleNumber = p.slice(1, -1).match(/\d/g);
-                    matches.pos.middleSymbol = p.slice(1, -1).match(/[$-/:-?{-~!^_`\[\]]/g);
+                    matches.pos.lower = password.match(/[a-z]/g);
+                    matches.pos.upper = password.match(/[A-Z]/g);
+                    matches.pos.numbers = password.match(/\d/g);
+                    matches.pos.symbols = password.match(/[$-/:-?{-~!^_`\[\]]/g);
+                    matches.pos.middleNumber = password.slice(1, -1).match(/\d/g);
+                    matches.pos.middleSymbol = password.slice(1, -1).match(/[$-/:-?{-~!^_`\[\]]/g);
 
                     counts.pos.lower = matches.pos.lower ? matches.pos.lower.length : 0;
                     counts.pos.upper = matches.pos.upper ? matches.pos.upper.length : 0;
@@ -80,7 +80,7 @@
                     // return memo + Math.min(1, val);
                     // }, 0);
 
-                    counts.pos.numChars = p.length;
+                    counts.pos.numChars = password.length;
                     tmp += (counts.pos.numChars >= 8) ? 1 : 0;
 
                     counts.pos.requirements = (tmp >= 3) ? tmp : 0;
@@ -88,11 +88,11 @@
                     counts.pos.middleSymbol = matches.pos.middleSymbol ? matches.pos.middleSymbol.length : 0;
 
                     // Deductions
-                    matches.neg.consecLower = p.match(/(?=([a-z]{2}))/g);
-                    matches.neg.consecUpper = p.match(/(?=([A-Z]{2}))/g);
-                    matches.neg.consecNumbers = p.match(/(?=(\d{2}))/g);
-                    matches.neg.onlyNumbers = p.match(/^[0-9]*$/g);
-                    matches.neg.onlyLetters = p.match(/^([a-z]|[A-Z])*$/g);
+                    matches.neg.consecLower = password.match(/(?=([a-z]{2}))/g);
+                    matches.neg.consecUpper = password.match(/(?=([A-Z]{2}))/g);
+                    matches.neg.consecNumbers = password.match(/(?=(\d{2}))/g);
+                    matches.neg.onlyNumbers = password.match(/^[0-9]*$/g);
+                    matches.neg.onlyLetters = password.match(/^([a-z]|[A-Z])*$/g);
 
                     counts.neg.consecLower = matches.neg.consecLower ? matches.neg.consecLower.length : 0;
                     counts.neg.consecUpper = matches.neg.consecUpper ? matches.neg.consecUpper.length : 0;
@@ -101,7 +101,7 @@
 
                     // sequential letters (back and forth)
                     for (i = 0; i < letters.length - 2; i++) {
-                        var p2 = p.toLowerCase();
+                        var p2 = password.toLowerCase();
                         forth = letters.substring(i, parseInt(i + 3));
                         back = stringReverse(forth);
                         if (p2.indexOf(forth) !== -1 || p2.indexOf(back) !== -1) {
@@ -113,7 +113,7 @@
                     for (i = 0; i < numbers.length - 2; i++) {
                         forth = numbers.substring(i, parseInt(i + 3));
                         back = stringReverse(forth);
-                        if (p.indexOf(forth) !== -1 || p.toLowerCase().indexOf(back) !== -1) {
+                        if (password.indexOf(forth) !== -1 || password.toLowerCase().indexOf(back) !== -1) {
                             counts.neg.seqNumber++;
                         }
                     }
@@ -122,14 +122,14 @@
                     for (i = 0; i < symbols.length - 2; i++) {
                         forth = symbols.substring(i, parseInt(i + 3));
                         back = stringReverse(forth);
-                        if (p.indexOf(forth) !== -1 || p.toLowerCase().indexOf(back) !== -1) {
+                        if (password.indexOf(forth) !== -1 || password.toLowerCase().indexOf(back) !== -1) {
                             counts.neg.seqSymbol++;
                         }
                     }
 
 
                     // repeated chars
-                    var chs=p.toLowerCase().split('');
+                    var chs=password.toLowerCase().split('');
                     var seenChars={};
                     var repeated=0;
                     for(var i in chs){
@@ -193,7 +193,7 @@
              * @name passChange
              * @methodOf app.controller.signUpController
              * @description
-             * it pass credential(username,password,rememberMe) data to authService
+             * it make errors on password change
              */
             thisController.passwordChange=function(){
                 var pass=thisController.data.password;

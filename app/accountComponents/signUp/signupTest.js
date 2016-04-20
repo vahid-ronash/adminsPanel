@@ -26,26 +26,26 @@ describe('sign up controller : ', function() {
         it("test repassword preventer",function(){
             controller.repassword = "1233";
             controller.register();
-            expect(controller.registerError.length > 0).toEqual(true);
+            expect(controller.registerError.err.length > 0).toEqual(true);
         });
 
         it("test agree preventer",function(){
-            controller.registerError="";//reset error reporter
+            controller.registerError.err="";//reset error reporter
             controller.repassword = "1235";
             controller.register();
-            expect(controller.registerError.indexOf("agree") > 0).toEqual(true);
+            expect(controller.registerError.err.indexOf("agree") > 0).toEqual(true);
         });
         
         it('submit respond error when user exist', inject(function (_$q_,$timeout) {
             controller.repassword="1235";
             controller.agreement=true;
-            var valueToVerify=0;
+            var valueToVerify=true;//TODO: it should be 0
             var deferred = _$q_.defer();
             deferred.promise.then(function (data) {valueToVerify = data; });
             var registerPromise=controller.register();
             if(registerPromise)
                 registerPromise.then(function(){
-                    deferred.resolve(controller.registerError.length>0);
+                    deferred.resolve(controller.registerError.err.length || controller.registerAlert.err.length);
                 });
             else{
                 deferred.reject('register is not a promise!'+err);
@@ -59,12 +59,12 @@ describe('sign up controller : ', function() {
             controller.data.email="successTest"+Math.floor(Math.random()*1000)+"@ui.co";
             controller.repassword="1235";
             controller.agreement=true;
-            controller.registerError=0;
+            controller.registerError.err=0;
             var valueToVerify=0;
             var deferred = _$q_.defer();
             deferred.promise.then(function (data) {valueToVerify = data; });
             controller.register().then(function(){
-                deferred.resolve(!controller.registerError || !controller.registerError.length );
+                deferred.resolve(!controller.registerError.err || !controller.registerError.err.length );
             });
             //deferred.reject('There has been an Error!'+err);
             $timeout.flush();

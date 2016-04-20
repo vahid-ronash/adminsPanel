@@ -16,7 +16,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('changePasswordController', ['$scope','AuthService','$location','$filter',function($scope,$AuthService,$location,$filter){
+        .controller('changePasswordController', ['$scope','AuthService','$location','$filter','$state',function($scope,$AuthService,$location,$filter,$state){
             var thisController=this;
             // thisController.app=$scope.app;//point to parent scope.app
 
@@ -47,11 +47,15 @@
                         }
                         else  if(result.changed) {
                             var alertText=thisController.alert  = $filter('translate')('PASS_CHANGED');
-                            var sec=7;
-                            setInterval(function(){
-                                thisController.alert=alertText+(sec--);
-                                if(sec<1){$location.path('/account/home');}//redirect to home after 7 second
-                            },1000);
+                            // evt.preventDefault();
+                            setTimeout(function(){
+                                $state.go("signin");
+                            },100);
+                            // var sec=7;
+                            // setInterval(function(){
+                            //     thisController.alert=alertText+(sec--);
+                            //     if(sec<1){$location.path('/account/home');}//redirect to home after 7 second
+                            // },1000);
                         }
                     },$scope.errorAlert);
                 }
