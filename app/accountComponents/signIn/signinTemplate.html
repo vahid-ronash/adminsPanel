@@ -51,7 +51,7 @@
             <!--RE CAPTCHA-->
             <div ng-if="signinCtrl.data.email=='demo@pushe.co'" class="" style="margin:18px -33px">
                 <no-captcha
-                        g-recaptcha-response="gRecaptchaResponse"
+                        g-recaptcha-response="signupCtrl.data.gRecaptchaResponse"
                         control="noCaptchaControl"
                 >
                 </no-captcha>
@@ -61,7 +61,7 @@
             <!--SUBMIT-->
             <div ng-if="!signinCtrl.isSigningIn">
                 <button type="submit"
-                        ng-disabled="form.$invalid || signinCtrl.isSigningIn"
+                        ng-disabled="form.$invalid || signinCtrl.isSigningIn || (signinCtrl.data.email=='demo@pushe.co' && signupCtrl.data.gRecaptchaResponse)"
                         class="btn primary btn-block p-x-md">
                     <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
                     {{'SIGNIN' | translate}}

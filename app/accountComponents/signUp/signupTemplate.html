@@ -7,9 +7,9 @@
 
         <form name="form" ng-submit="signupCtrl.register()">
             <!--EMAIL-->
-            <!--mdl-textfield mdl-js-textfield mdl-textfield--floating-label-->
-            <div mdl-upgrade class="">
-                <input   class="mdl-textfield__input text-left" ng-model="signupCtrl.data.email"
+            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input text-left"
+                       ng-model="signupCtrl.data.email"
                        type="text" id="registerEmail"
                        pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
                 >
@@ -20,7 +20,14 @@
 
 
             <!--PASSWORD-->
-            <password-strength password="signupCtrl.data.password"></password-strength>
+            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input name="password" class="mdl-textfield__input text-left"
+                       ng-change="signupCtrl.passwordChange()" ng-model="signupCtrl.data.password" type="password" id="registerPass">
+                <label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>
+                <span ng-show="signupCtrl.data.password && form.password.$error.strength" class="mdl-textfield__error errorShow" ng-class="form.password.strengthType">{{form.password.$error.strength}}</span>
+                <span ng-show="caps_state && is-focused" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
+            </div>
+            <!--<password-strength min="signupCtrl.minStrength" strength="signupCtrl.strength" password="signupCtrl.data.password"></password-strength>-->
             <!--<div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
                 <!--<input name="password" class="mdl-textfield__input" ng-model="signupCtrl.data.password" type="password" id="registerPass" pattern=".{3,}">-->
                 <!--<label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>-->
@@ -31,7 +38,7 @@
 
             <!--RE PASSWORD-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input" ng-model="signupCtrl.repassword" type="password" id="registerRePass">
+                <input name="password" class="mdl-textfield__input text-left" ng-model="signupCtrl.repassword" type="password" id="registerRePass">
                 <label class="mdl-textfield__label" for="registerRePass">{{'REPASSWORD' | translate}}</label>
                 <span ng-if="signupCtrl.data.password && signupCtrl.repassword && signupCtrl.data.password!==signupCtrl.repassword" class="mdl-textfield__error errorShow">{{'PASS_NOT_MATCH'|translate}}</span>
             </div>
@@ -48,7 +55,7 @@
             <!--RE CAPTCHA-->
             <div class="" style="margin:18px -33px">
                 <no-captcha
-                        g-recaptcha-response="gRecaptchaResponse"
+                        g-recaptcha-response="signupCtrl.data.gRecaptchaResponse"
                         control="noCaptchaControl"
                 >
                 </no-captcha>
@@ -57,14 +64,15 @@
 
             <!--SUBMIT-->
             <button type="submit"
-                    ng-disabled="form.$invalid || signupCtrl.isSigningUp"
+                    ng-disabled="!signupCtrl.data.gRecaptchaResponse || !signupCtrl.data.email || !signupCtrl.data.password || form.$invalid || signupCtrl.isSigningUp"
                     class="btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                 {{'SIGNUP' | translate}}
             </button>
             <!--SUBMIT END-->
 
             <br>
-            <small ng-if="signupCtrl.registerError">{{signupCtrl.registerError}}</small>
+            <small ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
+            <h6 ng-bind="signupCtrl.registerAlert"></h6>
         </form>
     </div>
 

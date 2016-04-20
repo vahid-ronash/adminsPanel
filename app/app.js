@@ -26,6 +26,7 @@ angular
         // 'ngMessages',
         'pascalprecht.translate',
         'smart-table',
+        'chiefy.detect-caps-lock',
         'ui.select',
         'ngTagsInput',
         'ngFileUpload',

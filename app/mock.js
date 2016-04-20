@@ -67,7 +67,7 @@
                     return [200, {success:true}, {}];
                 }
                 else{
-                    return [200, {error:"username is taken before"}, {}];
+                    return [400, {email:"username is taken before"}, {}];
                 }
             });
 

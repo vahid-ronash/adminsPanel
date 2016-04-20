@@ -55,7 +55,7 @@
                 {name:"puzzely",value:"puzzely"}
             ];
             var providerHash={};
-            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value]=thisController.providerList[i];}
+            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
 
             /**
              * @ngdoc method
@@ -99,7 +99,7 @@
                 row.isEditing = true;
                 row.isFocused= true;
                 row.backupName = row.name;
-                row.provider=providerHash[row.provider];
+                row.provider=providerHash[row.provider.toLowerCase()];
             };
 
             /**

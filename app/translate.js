@@ -207,7 +207,7 @@ angular
         'SEND':'ارسال',
         'RETURN_TO':'بازگشت به ',
         'CHECK_AGREEMENT':'please check you agree the terms',
-        'REGISTER_RESPONSE_MSG':'we sent you a email , please confirm',
+        'REGISTER_RESPONSE_MSG':'برای شما یک ایمیل حاوی لینک فعال سازی ارسال شده است.',
         'LOGO_PATH':'assets/images/logo.png',
         'URI_INCORRECT':'uri is not correct',
         'REQUIRED':'this field has to fill',
@@ -231,6 +231,8 @@ angular
         'BLOG_PAGE':'بلاگ',
         'STATUS_PAGE':'وضعیت',
         'ITS_REQUIRED':'این فیلد نیاز است که حتما پر شود.',
+        'PASS_IS_WEAK':'امنیت رمز عبور ضعیف است با استفاده از عدد و حروف بزرگ و کوچک و کاراکتر ها همراه باهم امنیت اکانت خود را تقویت نمایید.',
+        'CAPS_LOCK_ON':'کپس لاک روشن میباشد.'
     });
 
     $translateProvider.preferredLanguage('fa');

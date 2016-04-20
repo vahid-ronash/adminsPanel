@@ -17,7 +17,8 @@
             thisController.data={
                 email:"",
                 password:"",
-                rememberMe:true
+                rememberMe:true,
+                gRecaptchaResponse:""
             };
             $scope.$root.ErrorContent=thisController.loginError={err:""};
             $timeout(function(){
