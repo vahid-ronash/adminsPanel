@@ -146,6 +146,20 @@
                     return Session.user.email;
             };
 
+
+            /**
+             * @ngdoc method
+             * @name getProfileInfo
+             * @methodOf app.services.AuthService
+             * @description
+             * load user's profile informations
+             */
+            authService.getProfileInfo= function (callback) {
+                $http.get(URLS.URL_GET_PROFILE).then(function (result) {
+                    callback(result.data);
+                },$rootScope.handleError);
+            };
+
             /**
              * @ngdoc method
              * @name isAuthorized

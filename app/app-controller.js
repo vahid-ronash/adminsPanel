@@ -52,10 +52,14 @@
                     }
                 }
                 else {
-                    $scope.alertMSGS.push({title:"error",text:data.data});
-                    if(data.data.indexOf("Time-out")){
+                    if(data.data) {
+                        $scope.alertMSGS.push({title: "Error", text: data.data});
+                        if (data.data.indexOf("Time-out")) {
 
+                        }
                     }
+                    else
+                        $scope.alertMSGS.push({title: "wrong Error", text: JSON.stringify(data)});
                 }
             };
           // TODO : is there any config to save in user browser?

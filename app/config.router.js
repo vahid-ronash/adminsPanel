@@ -81,6 +81,14 @@
                         access: {isFree: true}
                         //resolve: need delay
                     })
+                    .state('users.profile', {
+                        url:'/account/profile',
+                        templateUrl: 'app/accountComponents/profile/profile.html',
+                        controller: 'profileController',
+                        controllerAs:'profileCtrl',
+                        access: {isFree: false}
+                        //resolve: need delay
+                    })
                     .state('users.changePassword', {
                         url:'/account/change-password',
                         templateUrl: 'app/accountComponents/changePassword/changePassword.html',

@@ -45,6 +45,21 @@
                 {id:2,name: 'دمو', email:'q@q.cc',password:"a",roles:[]}
             ];
             $httpBackend.whenGET(URLS.URL_LOGOUT).respond({logged_out:true});
+            $httpBackend.whenGET(URLS.URL_GET_PROFILE).respond(
+                {
+                    email:"demo@pushe.co",
+                    personalInfo:{
+                        name:"فیلانی",
+                        family:"بهمانی",
+                        sex:"men",
+                        nationalCode:"32165146514",
+                        homePhone:"021-32165165",
+                        phone:"0912156122",
+                        address:"تهران - سمت راست - به طرف جلو",
+                        type:"personal"
+                    }
+                }
+            );
             $httpBackend.whenPOST(URLS.URL_LOGIN).respond(function(method, url, data){
                 var dataobj=angular.fromJson(data);
                 var list=userList.filter(function(user){ return (user.email===dataobj.email && user.password===dataobj.password); });

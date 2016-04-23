@@ -21,7 +21,7 @@
                 restrict: 'E',
                 controller: 'notificationButtonController',
                 controllerAs: 'notifButtonCtrl',
-                templateUrl: 'app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html'
+                templateUrl: 'app/usersPanel/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html'
             };
         });
 })());

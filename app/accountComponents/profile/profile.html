@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sx-12 col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h2>{{'USER_INFO'|translate}}</h2>
+                    <button mdl-upgrade ng-click="isEditingUserInfo"
+                            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right">
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-3"><h5>{{'EMAIL'|translate}}</h5></div>
+                        <div class="col-xs-8"><h5>{{profileCtrl.email}}</h5></div>
+                    </div>
+                    <div ng-if="isEditingUser">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sx-12 col-md-6">
+            <div class="box">
+                <div class="box-header">
+                    <h2>{{'PERSONAL_INFO'|translate}}</h2>
+                    <button mdl-upgrade ng-click="profileCtrl.isEditingPersonalInfo=!profileCtrl.isEditingPersonalInfo"
+                            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right">
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
+                <div class="box-body">
+                    <h6 ng-if="!profileCtrl.personalInfo">{{'NO_PERSONAL_DATA'|translate}}</h6>
+                    <div ng-if="profileCtrl.personalInfo">
+                        <form>
+                            <div ng-if="!profileCtrl.isEditingPersonalInfo" ng-init="profileCtrl.isEditingPersonalInfo=false">
+                                <div ng-repeat="(key,value) in profileCtrl.personalInfo" class="m-b">
+                                    {{key.toUpperCase()|translate}}:{{value}}
+                                </div>
+                            </div>
+                            <div mdl-upgrade ng-if="profileCtrl.isEditingPersonalInfo">
+
+                                <!--User Type-->
+                                <div>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="personalOptionDom">
+                                        <input type="radio" id="personalOptionDom" class="mdl-radio__button"
+                                               ng-model="profileCtrl.personalInfo.type" name="options" value="personal" checked>
+                                        <span class="mdl-radio__label">{{'PERSONAL'|translate}}</span>
+                                    </label>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="businessOptionDom">
+                                        <input type="radio" id="businessOptionDom" class="mdl-radio__button"
+                                               ng-model="profileCtrl.personalInfo.type" name="options" value="business">
+                                        <span class="mdl-radio__label">{{'BUSINESS'|translate}}</span>
+                                    </label>
+                                </div>
+                                <!--user Type-->
+
+                                <!--User name-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-right"
+                                           ng-model="profileCtrl.personalInfo.name"
+                                           type="text" id="userNameInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="userNameInput">{{'NAME' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user name-->
+
+                                <!--User family-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-right"
+                                           ng-model="profileCtrl.personalInfo.family"
+                                           type="text" id="userFamilyInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="userFamilyInput">{{'FAMILY' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user family-->
+
+                                <!--User national code-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-left"
+                                           ng-model="profileCtrl.personalInfo.nationalCode"
+                                           type="text" id="nationalCodeInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="nationalCodeInput">{{'NATIONALCODE' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user national code-->
+
+                                <!--User home phone-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-left"
+                                           ng-model="profileCtrl.personalInfo.homePhone"
+                                           type="text" id="homephoneInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="homephoneInput">{{'HOMEPHONE' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user home phone-->
+
+                                <!--User phone-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-left"
+                                           ng-model="profileCtrl.personalInfo.phone"
+                                           type="text" id="phoneInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="phoneInput">{{'PERSONALPHONE' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user phone-->
+
+                                <!--User address-->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input text-right"
+                                           ng-model="profileCtrl.personalInfo.address"
+                                           type="text" id="addressInput"
+                                    >
+                                    <label class="mdl-textfield__label" for="addressInput">{{'ADDRESS' | translate}}</label>
+                                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                                </div>
+                                <!--user address-->
+
+                                <!--<div ng-repeat="(key,value) in profileCtrl.personalInfo"-->
+                                     <!--mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
+                                    <!--<input class="mdl-textfield__input" ng-class="{'text-left':(key==email)}" type="text" id="person_{{key}}" value="{{value}}">-->
+                                    <!--<label class="mdl-textfield__label" for="person_{{key}}">{{key.toUpperCase()| translate}}</label>-->
+                                <!--</div>-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

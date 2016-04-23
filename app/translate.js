@@ -236,7 +236,18 @@ angular
         'STATUS_PAGE':'وضعیت',
         'ITS_REQUIRED':'این فیلد نیاز است که حتما پر شود.',
         'PASS_IS_WEAK':'امنیت رمز عبور ضعیف است با استفاده از عدد و حروف بزرگ و کوچک و کاراکتر ها همراه باهم امنیت اکانت خود را تقویت نمایید.',
-        'CAPS_LOCK_ON':'کپس لاک روشن میباشد.'
+        'CAPS_LOCK_ON':'کپس لاک روشن میباشد.',
+        'USER_INFO':'اطلاعات کاربری',
+        'PERSONAL_INFO':'اطلاعات شخصی',
+        'NO_PERSONAL_DATA':'هنوز اطلاعاتی ثبت نکرده اید.',
+
+        'FAMILY':'نام خانوادگی',
+        'NATIONALCODE':'کد ملی',
+        'PERSONALPHONE':'تلفن همراه',
+        'HOMEPHONE':'تلفن به همراه کد شهر',
+        'PERSONAL':'حقیقی',
+        'BUSINESS':'حقوقی',
+        'ADDRESS':'آدرس',
     });
 
     $translateProvider.preferredLanguage('fa');

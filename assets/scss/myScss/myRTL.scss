@@ -84,6 +84,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	text-align: left;
 	direction:ltr;
 }
+.mdl-textfield__input.text-right{
+	text-align: right;
+	direction:rtl;
+}
 .mdl-textfield__label:after{
 	bottom:12px;
 }
