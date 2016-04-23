@@ -25,7 +25,7 @@
                        ng-change="signupCtrl.passwordChange()" ng-model="signupCtrl.data.password" type="password" id="registerPass">
                 <label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>
                 <span ng-show="signupCtrl.data.password && form.password.$error.strength" class="mdl-textfield__error errorShow" ng-class="form.password.strengthType">{{form.password.$error.strength}}</span>
-                <span ng-show="caps_state && is-focused" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
+                <span ng-show="caps_state" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
             </div>
             <!--<password-strength min="signupCtrl.minStrength" strength="signupCtrl.strength" password="signupCtrl.data.password"></password-strength>-->
             <!--<div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
