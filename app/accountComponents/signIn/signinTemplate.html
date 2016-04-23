@@ -33,8 +33,10 @@
 
             <!--PASSWORD-->
             <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input text-left" ng-model="signinCtrl.data.password" type="password" id="signPass">
+                <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true" ng-blur="passFocus=false"
+                       ng-model="signinCtrl.data.password" type="password" id="signPass">
                 <label class="mdl-textfield__label" for="signPass">{{'PASSWORD' | translate}}</label>
+                <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
             </div>
             <!--PASSWORD END-->
 
