@@ -11,8 +11,8 @@
   angular
       .module("app")
       .controller("AppCtrl",
-                ["$scope","$rootScope",// "$localStorage", "$location", "$rootScope", "$anchorScroll", "$timeout", "$window",
-        function ($scope,$rootScope) {//, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window
+                ["$scope","$rootScope","AuthService",// "$localStorage", "$location", "$rootScope", "$anchorScroll", "$timeout", "$window",
+        function ($scope,$rootScope,$AuthService) {//, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window
           var thisScope = $scope;
 
           //TODO:why they dont use modernizer.js?
@@ -34,6 +34,10 @@
                 $scope.alertMSGS.splice(index, 1);
             };
             $rootScope.handleError=function(data){
+                //TODO:if user was exited from server and we save it on localstorage
+                // if(data.status == 403 && data.data && data.data.detail){//&& data.data.detail===""
+                //     $AuthService.logout();
+                // }
                 if(typeof data.data==="object") {
                     for (var title in data.data) {
                         var text = data.data[title];
@@ -44,8 +48,9 @@
                                 text: text,
                                 verbose: JSON.stringify(data)
                             };
-                            if($rootScope.ErrorContent.hasOwnProperty("err"))
-                                return {error:newAlert};
+
+                            if ($rootScope.ErrorContent && $rootScope.ErrorContent.hasOwnProperty("err"))
+                                return {error: newAlert};
                             else
                                 $scope.alertMSGS.push(newAlert);
                         }

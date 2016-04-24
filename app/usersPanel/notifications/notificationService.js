@@ -65,9 +65,9 @@
                                 'criterias': [{
                                     'key': 'application_id',
                                     'operator': 'in',
-                                    'value': notificationData.selectedApps.map(function (app) {
+                                    'value': "["+notificationData.selectedApps.map(function (app) {
                                         return app.id
-                                    }).join(",")
+                                    }).join(",")+"]"
                                 }]
                             });
                         }

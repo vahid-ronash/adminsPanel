@@ -21,6 +21,9 @@
             $AuthService.getProfileInfo(function(profile){
                 thisController.email=profile.email;
                 thisController.personalInfo=profile.personalInfo;
+                thisController.changeEmailRequestData={
+                    email:profile.email
+                }
             });
         }]);
 })());

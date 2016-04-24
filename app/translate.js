@@ -251,6 +251,14 @@ angular
         'ADD_JSON_NOTIFICATION':'اعلان جدید جیسون',
         'NOTIF_IMG_DESC':'برای ایجاد عکس در اعلان میبایست عکس را به اینجا بکشید یا اینجا را کلیک کنید',
         'NOTIF_JSON_FIRST_STEP':'جیسان گیری',
+        'CHANGE_EMAIL_ADDRESS':'تغییر آدرس ایمیل',
+        'CHANGE_PASSWORD':'تغییر رمز عبور',
+        'PHONE':'تلفن همراه',
+        'TYPE':'نوع',
+        'WOMEN':'زن',
+        'MEN':'مرد',
+        'SEX':'جنسیت',
+        'CHANGE_EMAIL_BUTTON':'درخواست تغییر ایمیل'
     });
 
     $translateProvider.preferredLanguage('fa');

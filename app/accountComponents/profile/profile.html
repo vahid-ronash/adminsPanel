@@ -4,18 +4,55 @@
             <div class="box">
                 <div class="box-header">
                     <h2>{{'USER_INFO'|translate}}</h2>
-                    <button mdl-upgrade ng-click="isEditingUserInfo"
-                            class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right">
-                        <i class="material-icons">edit</i>
-                    </button>
+                    <div class="pull-right" ng-if="!profileCtrl.isEmailEditing && !profileCtrl.isPasswordEditing">
+                        <button mdl-upgrade  id="demo-menu-lower-left"
+                                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect pull-right">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <ul mdl-upgrade class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                            for="demo-menu-lower-left">
+                            <li ng-click="profileCtrl.isEmailEditing=true;" class="mdl-menu__item  mdl-menu__item--full-bleed-divider">{{'CHANGE_EMAIL_ADDRESS'|translate}}</li>
+                            <li ng-click="profileCtrl.isPasswordEditing=true;" class="mdl-menu__item">{{'CHANGE_PASSWORD'|translate}}</li>
+                            <!--<li disabled class="mdl-menu__item">Disabled Action</li>-->
+                        </ul>
+                    </div>
                 </div>
                 <div class="box-body">
-                    <div class="row">
+                    <div ng-if="!profileCtrl.isEmailEditing && !profileCtrl.isPasswordEditing" class="row">
                         <div class="col-xs-3"><h5>{{'EMAIL'|translate}}</h5></div>
                         <div class="col-xs-8"><h5>{{profileCtrl.email}}</h5></div>
                     </div>
-                    <div ng-if="isEditingUser">
-
+                    <div ng-if="profileCtrl.isEmailEditing">
+                        <h6>{{'CHANGE_EMAIL_ADDRESS'|translate}}</h6>
+                        <form name="changeEmailForm" ng-submit="profileCtrl.changeEmail()">
+                            <!--EMAIL-->
+                            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input name="email"
+                                           ng-model-options="{ updateOn:'default blur' }"
+                                           type="text"
+                                           class="mdl-textfield__input text-left"
+                                           ng-model="profileCtrl.changeEmailRequestData.email"
+                                           focus-me="focusEmail" ng-init="focusEmail=true"
+                                           pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="signEmail">
+                                <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
+                                <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
+                            </div>
+                            <button
+                                    ng-desabled="!profileCtrl.changeEmail.email || profileCtrl.changeEmail.email===profileCtrl.email"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                {{'CHANGE_EMAIL_BUTTON'|translate}}
+                            </button>
+                            <button ng-click="profileCtrl.isEmailEditing=false" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                {{'CANCEL'|translate}}
+                            </button>
+                        </form>
+                    </div>
+                    <div ng-if="profileCtrl.isPasswordEditing" class="row">
+                        <!--<h6>{{'CHANGE_PASSWORD'|translate}}</h6>-->
+                        <change-password></change-password>
+                        <button ng-click="profileCtrl.isPasswordEditing=false" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            {{'CANCEL'|translate}}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -54,6 +91,21 @@
                                     </label>
                                 </div>
                                 <!--user Type-->
+
+                                <!--User sex-->
+                                <div>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="menOptionDom">
+                                        <input type="radio" id="menOptionDom" class="mdl-radio__button"
+                                               ng-model="profileCtrl.personalInfo.sex" name="options" value="men" checked>
+                                        <span class="mdl-radio__label">{{'MEN'|translate}}</span>
+                                    </label>
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="womenOptionDom">
+                                        <input type="radio" id="womenOptionDom" class="mdl-radio__button"
+                                               ng-model="profileCtrl.personalInfo.sex" name="options" value="women">
+                                        <span class="mdl-radio__label">{{'WOMEN'|translate}}</span>
+                                    </label>
+                                </div>
+                                <!--user sex-->
 
                                 <!--User name-->
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -121,11 +173,7 @@
                                 </div>
                                 <!--user address-->
 
-                                <!--<div ng-repeat="(key,value) in profileCtrl.personalInfo"-->
-                                     <!--mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
-                                    <!--<input class="mdl-textfield__input" ng-class="{'text-left':(key==email)}" type="text" id="person_{{key}}" value="{{value}}">-->
-                                    <!--<label class="mdl-textfield__label" for="person_{{key}}">{{key.toUpperCase()| translate}}</label>-->
-                                <!--</div>-->
+                                <button></button>
                             </div>
                         </form>
                     </div>
