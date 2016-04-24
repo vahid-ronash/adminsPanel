@@ -17,7 +17,9 @@
         .module("app")
         .directive('notificationAction', function () {
             return {
-                scope: true,
+                scope: {
+                    actionData:"="
+                },
                 restrict: 'E',
                 controller: 'notificationActionController',
                 controllerAs: 'notifActionCtrl',
