@@ -13,7 +13,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('step3Controller', ['$scope', 'Upload', '$timeout','$http', function ($scope, Upload,$timeout,$http) {
+        .controller('step3Controller', ['$scope','$filter','notificationResource', function ($scope,$filter,notificationResource) {
             //var thisController=this;
             var asThisController=$scope.step3Ctrl={};
             var contextData=$scope.$context.data;
@@ -25,13 +25,33 @@
                 asThisController.focusStart=true;
                 callback(true);
             };
+            asThisController.changeImage=function(){
+                asThisController.selectedFile = 0;
+                asThisController.isUploaded=false;
+            };
             asThisController.data={
                 big_tiltle:"",
                 big_content:"",
                 summary:"",
-                croppedDataUrl:""
+                image:""
             };
-
+            asThisController.resultImg="";
+            asThisController.upload = function () {
+                asThisController.isUploading = true;
+                notificationResource.uploadImage(asThisController.resultImg,asThisController.selectedFile,function success(res){
+                    if(res.data) {
+                        asThisController.data.image = res.data.url;
+                        asThisController.iconURL = res.data.url;
+                    }
+                    asThisController.isUploading=false;
+                    asThisController.isUploaded=true;
+                },function failed(err){
+                    $scope.$root.handleError(err);
+                    asThisController.isUploaded=true;
+                },function uploadProgress(progressData){
+                    asThisController.uploadData = progressData;
+                });
+            };
             asThisController.selectedFile=0;
         }]);
 })());

@@ -55,6 +55,7 @@
                 asThisController.isUploaded=false;
             };
             asThisController.isUploaded=false;
+            //TODO:image should have origin image
             asThisController.upload = function () {
                 asThisController.isUploading = true;
                 notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(res){

@@ -17,27 +17,39 @@
 <!--<small class="help-block">{{'ICON_DESC' | translate}}</small>-->
 <div>
     <div class="drop-box">
-        <div ngf-drop ngf-select
+        <div ng-if="!step3Ctrl.isUploaded" ngf-drop ngf-select
              ng-model="step3Ctrl.selectedFile"
              ngf-drag-over-class="'dragover'"
              ngf-multiple="false"
              ngf-allow-dir="true"
              accept="image/*"
              ngf-pattern="'image/*'">
-            <div>{{'ICON_DESC' | translate}}</div>
-
-            <!--<div>-->
-            <!--<img ng-src="step3Ctrl.data.croppedDataUrl" />-->
-            <!--</div>-->
+            <div>{{'NOTIF_IMG_DESC' | translate}}</div>
         </div>
-        <div ng-if="step3Ctrl.selectedFile" class="cropArea">
+        <div class="" ng-if="step3Ctrl.isUploaded">
+            <div class="list-left"><img class="w-40 r-2x" ng-src="{{step3Ctrl.data.image}}"/></div>
+            <div class="pull-right"><button ng-click="step3Ctrl.changeImage()" class="btn btn-warning"><i class="fa fa-times"></i></button></div>
+            <div><a>{{'IMAGE_IS_UPLOADED' | translate}}</a></div>
+            <div><span>{{step3Ctrl.selectedFile.name}}</span></div>
+        </div>
+        <div ng-if="step3Ctrl.selectedFile && !step3Ctrl.isUploading && !step3Ctrl.isUploaded" class="cropArea">
             <img-crop
                     image="step3Ctrl.selectedFile  | ngfDataUrl"
-                    result-image="step3Ctrl.data.croppedDataUrl"
+                    result-image="step3Ctrl.resultImg"
                     result-image-size="192"
                     area-type="square"
             >
             </img-crop>
+            <button class="btn btn-primary" ng-click="step3Ctrl.upload()">{{'UPLOAD' | translate}}</button>
+        </div>
+        <div ng-if="step3Ctrl.isUploading  && !step3Ctrl.isUploaded">
+            <uib-progressbar
+                    type="success"
+                    class="progress-striped active"
+                    max="step3Ctrl.uploadData.total"
+                    value="step3Ctrl.uploadData.uploaded">
+                <i>{{step3Ctrl.uploadData.uploaded}}/{{step3Ctrl.uploadData.total}}</i>
+            </uib-progressbar>
         </div>
     </div>
     <div ngf-no-file-drop>

@@ -248,6 +248,9 @@ angular
         'PERSONAL':'حقیقی',
         'BUSINESS':'حقوقی',
         'ADDRESS':'آدرس',
+        'ADD_JSON_NOTIFICATION':'اعلان جدید جیسون',
+        'NOTIF_IMG_DESC':'برای ایجاد عکس در اعلان میبایست عکس را به اینجا بکشید یا اینجا را کلیک کنید',
+        'NOTIF_JSON_FIRST_STEP':'جیسان گیری',
     });
 
     $translateProvider.preferredLanguage('fa');

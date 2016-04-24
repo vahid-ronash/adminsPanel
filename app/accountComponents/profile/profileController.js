@@ -22,16 +22,5 @@
                 thisController.email=profile.email;
                 thisController.personalInfo=profile.personalInfo;
             });
-            // thisController.email="";
-            // thisController.personalInfo={
-            //     name:"filan",
-            //     family:"bahmani",
-            //     sex:"men",
-            //     nationalCode:"32165146514",
-            //     homePhone:"021-32165165",
-            //     phone:"0912156122",
-            //     address:"tehran-invar-invartar",
-            //     type:"haghighi"
-            // }
         }]);
 })());
