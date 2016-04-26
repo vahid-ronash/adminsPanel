@@ -29,10 +29,6 @@ body{
   .navbar-brand>img{
 	width: 100px;
   }
-  //.app-aside .right{
-	//position: fixed;
-	//width: 304px;
-  //}
 }
 .nav-link {
 	.material-icons {
@@ -43,11 +39,6 @@ body{
 
 
 
-
-//.app-footer{
-//	margin:0;
-//	position:static;
-//}
 .footer{
 	.navbar-brand img{
 		width:50px;
@@ -59,15 +50,6 @@ body{
 .app-header~.app-body {
 	padding-top: 4.5rem;
 }
-
-//body, .app.ng-scope, div#content{
-//	height:100%;
-//}
-//.app-body{
-//	min-height: 80%;
-//	padding-top:4.5rem;
-//}
-
 
 
 
@@ -102,3 +84,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	padding-right: 24px;
 	padding-left:0;
 }
+
+
+
+

@@ -1,4 +1,4 @@
-<div class="center-block w-xxl w-auto-xs p-y-md">
+<div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
         <div class="m-b text-sm">
             {{'SIGNUP_MSG' | translate}}
@@ -63,10 +63,15 @@
             <!--RE CAPTCHA END-->
 
             <!--SUBMIT-->
-            <button type="submit"
+            <button ng-if="!signupCtrl.isSigningUp" type="submit"
                     ng-disabled="!signupCtrl.data.gRecaptchaResponse || !signupCtrl.data.email || !signupCtrl.data.password || form.$invalid || signupCtrl.isSigningUp"
-                    class="btn-block mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                    class="btn primary btn-block p-x-md">
                 {{'SIGNUP' | translate}}
+            </button>
+            <button class="btn disabled btn-block p-x-md" ng-if="signupCtrl.isSigningUp">
+                <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}" style="color:green;margin:0 1px 0 0;"></div>
+                </div>
             </button>
             <!--SUBMIT END-->
 

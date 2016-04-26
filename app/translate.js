@@ -107,7 +107,7 @@ angular
         'PASSWORD': 'رمز عبور',
         'REPASSWORD': 'تکرار رمز عبور',
         'REMEMBER_ME':'مرا بخاطر بسپار؟',
-        'AS_DEMO':'دمو',
+        'AS_DEMO':'ورود به دمو',
         'SIGNIN':'ورود',
         'FORGOT':'رمز عبور را فراموش کرده اید؟',
         'SIGNUP':'ثبت نام',
