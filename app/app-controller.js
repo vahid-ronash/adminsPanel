@@ -35,9 +35,9 @@
             };
             $rootScope.handleError=function(data){
                 //TODO:if user was exited from server and we save it on localstorage
-                // if(data.status == 403 && data.data && data.data.detail){//&& data.data.detail===""
-                //     $AuthService.logout();
-                // }
+                if(data.status == 403 && data.data && data.data.detail==="Authentication credentials were not provided"){//&& data.data.detail===""
+                    $AuthService.logout();
+                }
                 if(typeof data.data==="object") {
                     for (var title in data.data) {
                         var text = data.data[title];

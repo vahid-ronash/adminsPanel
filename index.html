@@ -41,20 +41,8 @@
 <script type="text/javascript" src="assets/libs/ace-builds/src-min-noconflict/ace.js"></script>
 
 <!--SENTRY-->
-<script>
-    Raven //it added to req.js in gulp file
-            .config('http://ae2173905d1c482cbe2a7368e0af7e10@logs.ronash.co/12')
-            .addPlugin(Raven.Plugins.Angular)
-            .install();
-</script>
+<script type="text/javascript" src="app/raven.js"></script>
 <!--SENTRY-->
-
-<!--RECAPTCHA-->
-<!--<script-->
-        <!--src="https://www.google.com/recaptcha/api.js?hl=fa"-->
-<!--&gt;</script>-->
-<!--<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>-->
-<!--RECAPTCHA-->
 
 <!-- App -->
 <script src="app/environment.js"></script>
