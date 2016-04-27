@@ -48,8 +48,24 @@
             <div class="m-b-md">
                 <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                     <input required type="checkbox" ng-model="signupCtrl.agreement" id="checkbox-1" class="mdl-checkbox__input" checked>
-                    <span class="mdl-checkbox__label"><span>{{'TERMS' | translate}}</span>{{'AGREE' | translate}}</span>
+                    <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">{{'TERMS' | translate}}</a><span class="mdl-checkbox__label">{{'AGREE' | translate}}</span>
                 </label>
+            </div>
+
+            <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">{{'TERMS' | translate}}</h4>
+                        </div>
+                        <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                            <terms-content></terms-content>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!--RE CAPTCHA-->
