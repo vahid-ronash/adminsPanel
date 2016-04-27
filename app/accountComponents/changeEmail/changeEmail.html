@@ -1,0 +1,25 @@
+<h6>{{'CHANGE_EMAIL_ADDRESS'|translate}}</h6>
+<form name="changeEmailForm" ng-submit="changeEmailCtrl.submitChangeEmail()">
+    <!--EMAIL-->
+    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input name="email"
+               ng-model-options="{ updateOn:'default blur' }"
+               type="text"
+               class="mdl-textfield__input text-left"
+               ng-model="changeEmailCtrl.data.email"
+               focus-me="focusEmail" ng-init="focusEmail=true"
+               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="signEmail">
+        <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
+        <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
+    </div>
+    <div>
+        <button
+                ng-disabled="!changeEmailCtrl.data.email || changeEmailCtrl.data.email===originEmail"
+                class="btn primary p-x-md">
+            {{'CHANGE_EMAIL_BUTTON'|translate}}
+        </button>
+        <button ng-click="changeEmailCtrl.cancelCallback()" class="btn white">
+            {{'CANCEL'|translate}}
+        </button>
+    </div>
+</form>

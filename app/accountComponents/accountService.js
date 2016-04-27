@@ -108,6 +108,21 @@
 
             /**
              * @ngdoc method
+             * @name changeEmail
+             * @methodOf app.services.AuthService
+             * @description
+             * reset users email
+             */
+            authService.changeEmail= function (userData) {
+                return $http 
+                    .post(URLS.URL_CHANGE_PASS, userData)//FIXME:url must change
+                    .then(function (res) {
+                        return res.data;
+                    },$rootScope.handleError);
+            };
+            
+            /**
+             * @ngdoc method
              * @name logout
              * @methodOf app.services.AuthService
              * @description

@@ -23,7 +23,11 @@
                 thisController.personalInfo=profile.personalInfo;
                 thisController.changeEmailRequestData={
                     email:profile.email
-                }
+                };
+                thisController.cancelEditing=function(){
+                    thisController.isPasswordEditing=false;
+                    thisController.isEmailEditing=false;
+                };
             });
         }]);
 })());

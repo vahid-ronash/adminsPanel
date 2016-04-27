@@ -46,27 +46,25 @@
                 thisService.sendNotification= function (notificationData) {
                     var output={
                         notification_data:notificationData,
-                        filters:[]
+                        filters:[{
+                            'type': 1,
+                            'criterias':[]
+                        }]
                     };
                     if(notificationData.selectedApps) {
                         if (notificationData.selectedApps.length < 2) {
-                            output.filters.push({
-                                'type': 1,
-                                'criterias': [{
+                            output.filters[0].criterias.push(
+                                {
                                     'key': 'application_id',
                                     'operator': '=',
                                     'value': notificationData.selectedApps[0].id
-                                }]
-                            });
+                                });
                         }
                         else {
-                            output.filters.push({
-                                'type': 1,
-                                'criterias': [{
-                                    'key': 'application_id',
-                                    'operator': 'in',
-                                    'value': notificationData.selectedApps.map(function (app) {return app.id})
-                                }]
+                            output.filters[0].criterias.push({
+                                'key': 'application_id',
+                                'operator': 'in',
+                                'value': notificationData.selectedApps.map(function (app) {return app.id})
                             });
                         }
                         delete notificationData.selectedApps;
@@ -74,19 +72,13 @@
 
                     if(notificationData.contacts) {
                         if (notificationData.contacts.length < 2) {
-                            output.filters.push({
-                                'type': 1,
-                                'criterias': [{'key': 'imei', 'operator': '=', 'value': notificationData.contacts[0]}]
-                            });
+                            output.filters[0].criterias.push({'key': 'imei', 'operator': '=', 'value': notificationData.contacts[0].text});
                         }
                         else {
-                            output.filters.push({
-                                'type': 1,
-                                'criterias': [{
-                                    'key': 'imei',
-                                    'operator': 'in',
-                                    'value': notificationData.contacts.map(function(c){return c.text;})
-                                }]
+                            output.filters[0].criterias.push({
+                                'key': 'imei',
+                                'operator': 'in',
+                                'value': notificationData.contacts.map(function(c){return c.text;})
                             });
                         }
                         delete notificationData.contacts;

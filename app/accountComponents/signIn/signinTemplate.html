@@ -1,87 +1,100 @@
-<div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
-    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-        <div class="m-b text-sm">
-            {{ 'SIGNIN_MSG' | translate }}
-        </div>
-        <form name="signinForm" ng-submit="signinCtrl.login()">
+<div class="dark bg-auto w-full">
+    <div class="fade-in-right-big smooth pos-rlt">
 
-            <!--EMAIL-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="email"
-                           ng-model-options="{ updateOn:'default blur' }"
-                           type="text"
-                           class="mdl-textfield__input text-left"
-                           ng-model="signinCtrl.data.email"
-                           focus-me="focusEmail" ng-init="focusEmail=true"
-                           pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' id="signEmail">
-
-                <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
-                <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
-                <!--<div ng-show="!signinCtrl.data.email.length && signinForm.$submitted">-->
-                    <!--<span class="mdl-textfield__error">{{'ITS_REQUIRED'|translate}}</span>-->
-                <!--</div>-->
-                <!--<div ng-show="signinCtrl.data.email.length && signinForm.email.$touched">-->
-                    <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
-                <!--</div>-->
-            </div>
-            <!--EMAIL END-->
-
-
-            <!--PASSWORD-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true" ng-blur="passFocus=false"
-                       ng-model="signinCtrl.data.password" type="password" id="signPass">
-                <label class="mdl-textfield__label" for="signPass">{{'PASSWORD' | translate}}</label>
-                <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
-            </div>
-            <!--PASSWORD END-->
-
-
-            <div class="m-b-md">
-                <!--REMEMBER ME-->
-                <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                    <input type="checkbox" ng-model="signinCtrl.data.rememberMe" id="checkbox-1" class="mdl-checkbox__input" checked>
-                    <span class="mdl-checkbox__label">{{'REMEMBER_ME' | translate}}</span>
-                </label>
-                <!--REMEMBER ME END-->
-            </div>
-
-            <!--RE CAPTCHA-->
-            <div ng-if="signinCtrl.data.email==='demo@pushe.co'" class="" style="margin:18px -33px">
-                <no-captcha
-                        g-recaptcha-response="signinCtrl.data.gRecaptchaResponse"
-                        control="noCaptchaControl"
-                >
-                </no-captcha>
-            </div>
-            <!--RE CAPTCHA END-->
-
-            <!--SUBMIT-->
-            <div ng-if="!signinCtrl.isSigningIn">
-                <button type="submit"
-                        ng-disabled="form.$invalid || signinCtrl.isSigningIn || (signinCtrl.data.email==='demo@pushe.co' && !signinCtrl.data.gRecaptchaResponse)"
-                        class="btn primary btn-block p-x-md">
-                    <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
-                    {{'SIGNIN' | translate}}
-                </button>
-            </div>
-            <button class="btn disabled btn-block p-x-md" ng-if="signinCtrl.isSigningIn">
-                <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
-                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}" style="color:green;margin:0 1px 0 0;"></div>
+        <div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
+            <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+                <div class="m-b text-sm">
+                    {{ 'SIGNIN_MSG' | translate }}
                 </div>
-            </button>
-            <!--SUBMIT END-->
+                <form name="signinForm" ng-submit="signinCtrl.login()">
 
-            <small class="mdl-textfield__error errorShow" ng-bind="signinCtrl.loginError.err"></small>
-        </form>
-    </div>
-    <div class="p-v-lg text-center">
-        <div class="m-b">
-            <a ng-if="!signinForm.email.$viewValue" class="text-primary _600" ng-click="signinCtrl.loginAsDemo()">
-                {{'AS_DEMO' | translate}}
-            </a>
+                    <!--EMAIL-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input name="email"
+                               ng-model-options="{ updateOn:'default blur' }"
+                               type="text"
+                               class="mdl-textfield__input text-left"
+                               ng-model="signinCtrl.data.email"
+                               focus-me="focusEmail" ng-init="focusEmail=true"
+                               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                               id="signEmail">
+
+                        <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
+                        <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
+                        <!--<div ng-show="!signinCtrl.data.email.length && signinForm.$submitted">-->
+                        <!--<span class="mdl-textfield__error">{{'ITS_REQUIRED'|translate}}</span>-->
+                        <!--</div>-->
+                        <!--<div ng-show="signinCtrl.data.email.length && signinForm.email.$touched">-->
+                        <!--<span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>-->
+                        <!--</div>-->
+                    </div>
+                    <!--EMAIL END-->
+
+
+                    <!--PASSWORD-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true"
+                               ng-blur="passFocus=false"
+                               ng-model="signinCtrl.data.password" type="password" id="signPass">
+                        <label class="mdl-textfield__label" for="signPass">{{'PASSWORD' | translate}}</label>
+                        <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
+                    </div>
+                    <!--PASSWORD END-->
+
+
+                    <div class="m-b-md">
+                        <!--REMEMBER ME-->
+                        <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                            <input type="checkbox" ng-model="signinCtrl.data.rememberMe" id="checkbox-1"
+                                   class="mdl-checkbox__input" checked>
+                            <span class="mdl-checkbox__label">{{'REMEMBER_ME' | translate}}</span>
+                        </label>
+                        <!--REMEMBER ME END-->
+                    </div>
+
+                    <!--RE CAPTCHA-->
+                    <div ng-if="signinCtrl.data.email==='demo@pushe.co'" class="" style="margin:18px -33px">
+                        <no-captcha
+                                g-recaptcha-response="signinCtrl.data.gRecaptchaResponse"
+                                control="noCaptchaControl"
+                        >
+                        </no-captcha>
+                    </div>
+                    <!--RE CAPTCHA END-->
+
+                    <!--SUBMIT-->
+                    <div ng-if="!signinCtrl.isSigningIn">
+                        <button type="submit"
+                                ng-disabled="form.$invalid || signinCtrl.isSigningIn || (signinCtrl.data.email==='demo@pushe.co' && !signinCtrl.data.gRecaptchaResponse)"
+                                class="btn primary btn-block p-x-md">
+                            <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
+                            {{'SIGNIN' | translate}}
+                        </button>
+                    </div>
+                    <button class="btn disabled btn-block p-x-md" ng-if="signinCtrl.isSigningIn">
+                        <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                            <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                                 style="color:green;margin:0 1px 0 0;"></div>
+                        </div>
+                    </button>
+                    <!--SUBMIT END-->
+
+                    <small class="mdl-textfield__error errorShow" ng-bind="signinCtrl.loginError.err"></small>
+                </form>
+            </div>
+            <div class="p-v-lg text-center">
+                <div class="m-b">
+                    <a ng-if="!signinForm.email.$viewValue" class="text-primary _600"
+                       ng-click="signinCtrl.loginAsDemo()">
+                        {{'AS_DEMO' | translate}}
+                    </a>
+                </div>
+                <div class="m-b"><a ui-sref="forgotPassword" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT'
+                    | translate}}</a></div>
+                <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="signup" href="#/account/signup"
+                                                        class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
+            </div>
         </div>
-        <div class="m-b"><a ui-sref="forgotPassword" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT' | translate}}</a></div>
-        <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="signup" href="#/account/signup" class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
+
     </div>
 </div>

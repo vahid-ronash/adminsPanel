@@ -1,103 +1,122 @@
-<div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
-    <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
-        <div class="m-b text-sm">
-            {{'SIGNUP_MSG' | translate}}
-        </div>
+<div class="dark bg-auto w-full">
+    <!--class="fade-in-right-big smooth pos-rlt" has problem with modal-->
+    <div class="fade-in-right-big smooth pos-rlt">
+
+        <div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
+            <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+                <div class="m-b text-sm">
+                    {{'SIGNUP_MSG' | translate}}
+                </div>
 
 
-        <form name="form" ng-submit="signupCtrl.register()">
-            <!--EMAIL-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input text-left"
-                       ng-model="signupCtrl.data.email"
-                       type="text" id="registerEmail"
-                       pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
-                >
-                <label class="mdl-textfield__label" for="registerEmail">{{'EMAIL' | translate}}</label>
-                <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
-            </div>
-            <!--EMAIL END-->
+                <form name="form" ng-submit="signupCtrl.register()">
+                    <!--EMAIL-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input text-left"
+                               ng-model="signupCtrl.data.email"
+                               type="text" id="registerEmail"
+                               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                        >
+                        <label class="mdl-textfield__label" for="registerEmail">{{'EMAIL' | translate}}</label>
+                        <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
+                    </div>
+                    <!--EMAIL END-->
 
 
-            <!--PASSWORD-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true" ng-blur="passFocus=false"
-                       ng-change="signupCtrl.passwordChange()" ng-model="signupCtrl.data.password" type="password" id="registerPass">
-                <label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>
-                <span ng-show="signupCtrl.data.password && form.password.$error.strength" class="mdl-textfield__error errorShow" ng-class="form.password.strengthType">{{form.password.$error.strength}}</span>
-                <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
-            </div>
-            <!--<password-strength min="signupCtrl.minStrength" strength="signupCtrl.strength" password="signupCtrl.data.password"></password-strength>-->
-            <!--<div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
-                <!--<input name="password" class="mdl-textfield__input" ng-model="signupCtrl.data.password" type="password" id="registerPass" pattern=".{3,}">-->
-                <!--<label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>-->
-                <!--<span class="mdl-textfield__error">{{'MINIMUM_PASS_LEN'|translate}}</span>-->
-            <!--</div>-->
-            <!--PASSWORD END-->
+                    <!--PASSWORD-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true"
+                               ng-blur="passFocus=false" password-strength strength-controller="signupCtrl.controlStrength"
+                               ng-change="signupCtrl.passwordChange()" ng-model="signupCtrl.data.password"
+                               type="password" id="registerPass">
+                        <label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>
+                        <span ng-show="signupCtrl.data.password && form.password.$error.strength"
+                              class="mdl-textfield__error errorShow" ng-class="form.password.strengthType">{{form.password.$error.strength}}</span>
+                        <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
+                    </div>
+                    <!--<password-strength min="signupCtrl.minStrength" strength="signupCtrl.strength" password="signupCtrl.data.password"></password-strength>-->
+                    <!--<div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
+                    <!--<input name="password" class="mdl-textfield__input" ng-model="signupCtrl.data.password" type="password" id="registerPass" pattern=".{3,}">-->
+                    <!--<label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>-->
+                    <!--<span class="mdl-textfield__error">{{'MINIMUM_PASS_LEN'|translate}}</span>-->
+                    <!--</div>-->
+                    <!--PASSWORD END-->
 
 
-            <!--RE PASSWORD-->
-            <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input name="password" class="mdl-textfield__input text-left" ng-model="signupCtrl.repassword" type="password" id="registerRePass">
-                <label class="mdl-textfield__label" for="registerRePass">{{'REPASSWORD' | translate}}</label>
-                <span ng-if="signupCtrl.data.password && signupCtrl.repassword && signupCtrl.data.password!==signupCtrl.repassword" class="mdl-textfield__error errorShow">{{'PASS_NOT_MATCH'|translate}}</span>
-            </div>
-            <!--RE PASSWORD END-->
+                    <!--RE PASSWORD-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input name="password" class="mdl-textfield__input text-left" ng-model="signupCtrl.repassword"
+                               type="password" id="registerRePass">
+                        <label class="mdl-textfield__label" for="registerRePass">{{'REPASSWORD' | translate}}</label>
+                        <span ng-if="signupCtrl.data.password && signupCtrl.repassword && signupCtrl.data.password!==signupCtrl.repassword"
+                              class="mdl-textfield__error errorShow">{{'PASS_NOT_MATCH'|translate}}</span>
+                    </div>
+                    <!--RE PASSWORD END-->
 
-            <!--AGREEMENT-->
-            <div class="m-b-md">
-                <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                    <input required type="checkbox" ng-model="signupCtrl.agreement" id="checkbox-1" class="mdl-checkbox__input" checked>
-                    <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">{{'TERMS' | translate}}</a><span class="mdl-checkbox__label">{{'AGREE' | translate}}</span>
-                </label>
-            </div>
+                    <!--AGREEMENT-->
+                    <div class="m-b-md">
+                        <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                            <input required type="checkbox" ng-model="signupCtrl.agreement" id="checkbox-1"
+                                   class="mdl-checkbox__input" checked>
+                            <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">{{'TERMS'| translate}}</a>
+                            <span class="mdl-checkbox__label">{{'AGREE' | translate}}</span>
+                        </label>
+                    </div>
 
-            <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">{{'TERMS' | translate}}</h4>
-                        </div>
-                        <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                            <terms-content></terms-content>
+                    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">{{'TERMS' | translate}}</h4>
+                                </div>
+                                <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                    <terms-content></terms-content>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!--RE CAPTCHA-->
+                    <div class="" style="margin:18px -33px">
+                        <no-captcha
+                                g-recaptcha-response="signupCtrl.data.gRecaptchaResponse"
+                                control="noCaptchaControl"
+                        >
+                        </no-captcha>
+                    </div>
+                    <!--RE CAPTCHA END-->
+
+                    <!--SUBMIT-->
+                    <button ng-if="!signupCtrl.isSigningUp" type="submit"
+                            ng-disabled="!signupCtrl.data.gRecaptchaResponse || !signupCtrl.data.email || !signupCtrl.data.password || form.$invalid || signupCtrl.isSigningUp"
+                            class="btn primary btn-block p-x-md">
+                        {{'SIGNUP' | translate}}
+                    </button>
+                    <button class="btn disabled btn-block p-x-md" ng-if="signupCtrl.isSigningUp">
+                        <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                            <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                                 style="color:green;margin:0 1px 0 0;"></div>
+                        </div>
+                    </button>
+                    <!--SUBMIT END-->
+
+                    <br>
+                    <small ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
+                    <h6 ng-bind="signupCtrl.registerAlert"></h6>
+                </form>
+
+            </div>
+            <div class="p-v-lg text-center">
+                <div>{{'HAVE_ACCOUNT' | translate}}
+                    <a ui-sref="signin" href="#/account/signin" class="text-primary _600">{{'SIGNIN' | translate}}</a>
                 </div>
             </div>
 
-            <!--RE CAPTCHA-->
-            <div class="" style="margin:18px -33px">
-                <no-captcha
-                        g-recaptcha-response="signupCtrl.data.gRecaptchaResponse"
-                        control="noCaptchaControl"
-                >
-                </no-captcha>
-            </div>
-            <!--RE CAPTCHA END-->
+        </div>
 
-            <!--SUBMIT-->
-            <button ng-if="!signupCtrl.isSigningUp" type="submit"
-                    ng-disabled="!signupCtrl.data.gRecaptchaResponse || !signupCtrl.data.email || !signupCtrl.data.password || form.$invalid || signupCtrl.isSigningUp"
-                    class="btn primary btn-block p-x-md">
-                {{'SIGNUP' | translate}}
-            </button>
-            <button class="btn disabled btn-block p-x-md" ng-if="signupCtrl.isSigningUp">
-                <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
-                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}" style="color:green;margin:0 1px 0 0;"></div>
-                </div>
-            </button>
-            <!--SUBMIT END-->
-
-            <br>
-            <small ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
-            <h6 ng-bind="signupCtrl.registerAlert"></h6>
-        </form>
-    </div>
-
-    <div class="p-v-lg text-center">
-        <div>{{'HAVE_ACCOUNT' | translate}}<a ui-sref="signin" href="#/account/signin" class="text-primary _600">{{'SIGNIN' | translate}}</a></div>
     </div>
 </div>

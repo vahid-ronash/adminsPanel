@@ -137,7 +137,7 @@ angular
         'GLOBAL_SEARCH_PLACEHOLDER':'جستجو.',
         'CANCEL':'انصراف',
         'OK':'تایید',
-        'HELP':'کمک',
+        'HELP':'راهنما',
         'SUPPORT':'پشتیبانی',
         'CHANGE_PASS':'تغییر رمز عبور',
         'ABOUT':'درباره',
@@ -258,7 +258,10 @@ angular
         'WOMEN':'زن',
         'MEN':'مرد',
         'SEX':'جنسیت',
-        'CHANGE_EMAIL_BUTTON':'درخواست تغییر ایمیل'
+        'CHANGE_EMAIL_BUTTON':'درخواست تغییر ایمیل',
+        'CHANGE_INFO':'تغییر اطلاعات',
+        'NEW_PASSWORD':'رمز عبور جدید',
+        'NEW_REPASSWORD':'تکرار رمز عبور جدید',
     });
 
     $translateProvider.preferredLanguage('fa');

@@ -27,6 +27,15 @@
                 password:""
             };
 
+            thisController.passwordChange=function(){
+                var pass=thisController.data.password;
+                var $element=$scope.form.password;
+                thisController.controlStrength.onChange(pass,$element);
+            };
+            
+            thisController.cancelCallback=function(){
+                $scope.cancelCallback();
+            };
             /**
              * @ngdoc method
              * @name app.controller.changePasswordController#sendChangeRequest

@@ -16,7 +16,9 @@
         .module("app")
         .directive('changePassword', function () {
             return {
-                scope: true,
+                scope: {
+                    cancelCallback:"="
+                },
                 restrict: 'EA',
                 controller: 'changePasswordController',
                 controllerAs: 'changePassCtrl',
