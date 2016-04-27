@@ -85,7 +85,7 @@
                                 'criterias': [{
                                     'key': 'imei',
                                     'operator': 'in',
-                                    'value': notificationData.contacts.join(",")
+                                    'value': notificationData.contacts.map(function(c){return c.text;})
                                 }]
                             });
                         }
