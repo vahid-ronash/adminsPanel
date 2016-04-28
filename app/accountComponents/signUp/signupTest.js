@@ -9,6 +9,7 @@ describe('sign up controller : ', function() {
         // The injector unwraps the underscores (_) from around the parameter names when matching
         var scope=$rootScope.$new();
         controller = _$controller_('signUpController', { "$scope": scope});
+        controller.controlStrength={isWeak:function(){return false;}}
     }));
 
     it('controller is defined', function () {

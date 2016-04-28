@@ -9,7 +9,7 @@
                 </div>
 
 
-                <form name="form" ng-submit="signupCtrl.register()">
+                <form ng-show="!signupCtrl.successed" name="form" ng-submit="signupCtrl.register()">
                     <!--EMAIL-->
                     <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input text-left"
@@ -105,10 +105,14 @@
                     <!--SUBMIT END-->
 
                     <br>
-                    <small ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
-                    <h6 ng-bind="signupCtrl.registerAlert"></h6>
+                    <div class="m-t">
+                        <small class="alert alert-warning" ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
+                    </div>
                 </form>
-
+                <div ng-show="signupCtrl.successed" class="p-t p-b">
+                    <span>{{'REGISTER_RESPONSE_MSG'|translate}}</span>
+                    <a ui-sref="signin" href="account/signin"  class="btn primary btn-block">{{'SIGNIN' | translate}}</a>
+                </div>
             </div>
             <div class="p-v-lg text-center">
                 <div>{{'HAVE_ACCOUNT' | translate}}

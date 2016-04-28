@@ -22,8 +22,6 @@
             };
             $scope.$root.ErrorContent=thisController.registerError={err:""};
             thisController.isSigningUp=false;
-            thisController.strength=50;
-            thisController.minStrength=10;
 
 
 
@@ -49,7 +47,7 @@
              */
             thisController.register=function(){
                 thisController.registerError.err="";
-                if(thisController.strength<thisController.minStrength){
+                if(thisController.controlStrength.isWeak()){
                     thisController.registerError.err=$filter('translate')('PASS_IS_WEAK');
                 }
                 else if(thisController.data.password!==thisController.repassword){
@@ -67,7 +65,7 @@
                             thisController.registerError.err = result.error;
                         }
                         else {
-                            thisController.registerAlert = $filter('translate')('REGISTER_RESPONSE_MSG');
+                            thisController.successed=true;
                         }
                         thisController.isSigningUp=false;
                     });

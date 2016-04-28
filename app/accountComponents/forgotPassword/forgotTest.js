@@ -2,7 +2,7 @@
  * Created by mojtaba on 3/12/16.
  */
 /*global describe it expect beforeEach inject */
-describe('forget password controller : ', function() {
+describe('forgot password controller : ', function() {
     beforeEach(module('app'));
     var controller;
     beforeEach(inject(function(_$controller_,$rootScope){
@@ -24,7 +24,7 @@ describe('forget password controller : ', function() {
         deferred.promise.then(function (data) {valueToVerify = data; });
         controller.forgotPassword().then(function(){
             //deferred.resolve(controller.loginError.length>0);
-            deferred.resolve(controller.forgetAlarm.length>0);
+            deferred.resolve(controller.successed);
         });
         //deferred.reject('There has been an Error!'+err);
         $timeout.flush();

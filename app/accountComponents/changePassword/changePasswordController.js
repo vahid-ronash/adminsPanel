@@ -43,7 +43,9 @@
              * @description
              * send reset password request data
              */
+
             thisController.sendChangeRequest=function(){
+                $scope.$root.ErrorContent=thisController.error={err:""};
                 if(thisController.data.password!==thisController.repassword){
                     thisController.error=$filter('translate')('PASS_NOT_MATCH');
                     thisController.data.password="";
@@ -52,14 +54,12 @@
                 else {
                     return $AuthService.changePassword(thisController.data).then(function (result) {
                         if (result.error) {
-                            thisController.error = result.error;
+                            thisController.error = result.error.text;
                         }
                         else  if(result.changed) {
+                            thisController.successed=true;
                             var alertText=thisController.alert  = $filter('translate')('PASS_CHANGED');
                             // evt.preventDefault();
-                            setTimeout(function(){
-                                $state.go("signin");
-                            },100);
                             // var sec=7;
                             // setInterval(function(){
                             //     thisController.alert=alertText+(sec--);

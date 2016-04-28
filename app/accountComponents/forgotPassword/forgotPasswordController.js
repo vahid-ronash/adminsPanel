@@ -30,8 +30,9 @@
                 return $AuthService.forgotPassword(thisController.data).then(function(result){
                     if(result.error){  thisController.forgetError=result.error;  }
                     else if(result.mail_sent){
-                        thisController.forgetAlarm=$filter('translate')('FORGOT_ALARM');
-                        setTimeout(function(){$location.path('/account/signin');},7000);//redirect to signin after 7 second
+                        thisController.successed=true;
+                        // thisController.forgetAlarm=$filter('translate')('FORGOT_ALARM');
+                        // setTimeout(function(){$location.path('/account/signin');},7000);//redirect to signin after 7 second
                     }
                 });
             };

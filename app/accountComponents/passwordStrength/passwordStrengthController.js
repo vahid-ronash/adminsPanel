@@ -14,6 +14,8 @@
         .module('app')
         .controller('passwordStrengthController', ['$scope','$filter','$element',function($scope,$filter,$element) {
 var thisController=this;
+            thisController.strength=50;
+            thisController.minStrength=10;
             /**
              * @ngdoc method
              * @name onChange
@@ -40,6 +42,17 @@ var thisController=this;
                         $element.strengthType = "strong";
                     }
                 }
+            };
+            /**
+             * @ngdoc method
+             * @name isWeak
+             * @methodOf app.controller.passwordStrengthController
+             * @description
+             * determine password condition
+             */
+            $scope.strengthController.isWeak=function(){
+                if(thisController.strength<thisController.minStrength)return true;
+                return false;
             };
 
             /**

@@ -262,6 +262,7 @@ angular
         'CHANGE_INFO':'تغییر اطلاعات',
         'NEW_PASSWORD':'رمز عبور جدید',
         'NEW_REPASSWORD':'تکرار رمز عبور جدید',
+        'SUCCESS_CHANGE_PASS':'رمز عبور شما با موفقیت تغییر یافت',
     });
 
     $translateProvider.preferredLanguage('fa');

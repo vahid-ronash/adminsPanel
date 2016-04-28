@@ -25,8 +25,8 @@
                     <div ng-if="profileCtrl.isEmailEditing">
                         <change-email cancel-callback="profileCtrl.cancelEditing" origin-email="profileCtrl.email"></change-email>
                     </div>
-                    <div ng-if="profileCtrl.isPasswordEditing" class="row">
-                        <change-password class="pd" cancel-callback="profileCtrl.cancelEditing"></change-password>
+                    <div ng-if="profileCtrl.isPasswordEditing">
+                        <div change-password cancel-callback="profileCtrl.cancelEditing"></div>
                     </div>
                 </div>
             </div>

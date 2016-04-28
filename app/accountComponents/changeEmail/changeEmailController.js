@@ -31,7 +31,8 @@
              * send reset password request data
              */
             thisController.submitChangeEmail=function(){
-
+                $scope.$root.ErrorContent=thisController.error={err:""};
+                
             };
 
             thisController.cancelCallback=function(){
