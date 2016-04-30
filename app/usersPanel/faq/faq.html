@@ -1,5 +1,410 @@
-<div class="container">
-    <div class="box">
-        <h5 class="text-center p-b p-t">Frequent Asked Questions</h5>
+<div class="padding">
+<div class="row">
+    <div class="col-sm-8 col-md-9">
+      <h4 class="m-a-0 m-b-sm text-md">عمومی</h4>
+      <div class="m-b" id="accordion_general">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_1">
+              نوتیفیکیشن چیست؟
+            </a>
+          </div>
+          <div id="c_g_1" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded success"><i class="fa fa-graduation-cap"></i></span>
+                  نوتیفیکیشن یا همان پوش نوتیفیکیشن، یک راه ارتباطی بین مالک اپلیکیشن موبایل و کاربرانش است. نوتیفیکیشن این اجازه را میدهد که صاحب اپلیکیشن خبر یا اتفاقی جدید را به کاربران خود برساند حتی اگر در آن هنگام کاربر در حال استفاده از اپلیکیشن نباشد.
+                  <br>
+                  <br>
+                  به طور مثال توسعه دهنده می خواهد به کاربران خود بگوید که اپلیکیشن خودشون رو آپدیت کنند او می تواند به راحتی از طریق نوتیفیکیشن این اطلاع را به کاربران خود بدهد و همچنین لینک آپدیت را در آن قرار دهد.
+                  <br>
+                  <br>
+                  یکی دیگر از کاربردهای نوتیفیکیشن، استفاده از آن برای تغییر مقداری در اپلیکیشن است. به طور مثال شما یک اپلیکیشن بازی دارید و می خواهید به مناسبتی به کاربران خود ستاره هدیه بدهید. برای این کار میتوایند در آن تاریخ نوتیفیکیشنی به کاربران خود ارسال کنید که در آن از طریق استفاده از json دلخواه متغیری در اپلیکیشن خود را مقدار دهی کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_2">
+              جدول پیامهای خطا و توضیحات
+            </a>
+          </div>
+          <div id="c_g_2" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded info"><i class="fa fa-graduation-cap"></i></span>
+                  در هنگام نصب کتابخانه پوشه بر روی logcat شما پیامهایی داده می شود. برخی از این پیامها تنها اطلاع رسانی هستند و برخی از آنها پیامهای خطا می باشند. در جدول زیر این دو دسته پیامها را مشاهده می کنید:
+            </p>
+                  <br>
+                  <br>
+                  <h7> پیامهای اطلاع رسانی</h7>
+                      <table class="table table-bordered text-sm text-muted">
+                        <thead>
+                          <tr>
+                            <th style="text-align:center">ردیف</th>
+                            <th style="text-align:center">پیام</th>
+                            <th style="text-align:center">توضیح</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td rowspan="1" class="ltr">"Trying to register to GCM"</td>
+                                <td >در حال تلاش برای ثبت نام در GCM</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td rowspan="1" class="ltr">"Successfully registered to GCM"</td>
+                                <td >با موفقیت در GCM ثبت شد</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td rowspan="1" class="ltr">"Trying to register to Pushe"</td>
+                                <td>در حال تلاش برای ثبت نام در "پوشه"</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td rowspan="1" class="ltr">"Successfully registered to pushe"</td>
+                                <td>با موفقیت در "پوشه" ثبت شد</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td rowspan="1" class="ltr">"Trying to subscribe to channel: " + channel</td>
+                                <td>در حال تلاش برای عضویت در کانال "نام کانال شما"</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td rowspan="1" class="ltr">"Successfully subscribed to channel: " + channel</td>
+                                <td>با موفقیت در کانال "نام کانال شما"اضافه شد</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td rowspan="1" class="ltr">"Trying to unsubscribe from channel: " + channel</td>
+                                <td>در حال تلاش برای خارج شدن از کانال "نام کانال شما"</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td rowspan="1" class="ltr">"Successfully unsubscribed from channel: " + channel</td>
+                                <td>با موفقیت از کانال "نام کانال شما" خارج شد</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    <br>
+                    <h7>پیام های خطا</h7>
+                    <br>
+                      <table class="table table-bordered text-sm text-muted">
+                        <thead>
+                          <tr>
+                            <th style="text-align:center">ردیف</th>
+                            <th style="text-align:center">پیام</th>
+                            <th style="text-align:center">راه حل</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td rowspan="1" class="ltr">"bad topic name, topic name must just contains [a-zA-Z0-9-_.~%]{1,900}"</td>
+                                <td >نام کنال خود را به خوبی انتخاب نکرده اید. نام انتخابی باید تنها شامل [a-zA-Z0-9-_.~%] باشد.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td rowspan="1" class="ltr">"Initializing Pushe failed, " </td>
+                                <td >این خطا ممکن است به دلایل مختلف پیش بیاید. با بخش پشتیبانی تماس بگیرید.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td rowspan="1" class="ltr">"Pushe must be initialized before unsubscribing from a topic"</td>
+                                <td >تابع Pushe.initialize را باید در کد MainActivity.java فراخوانی کنید. به آموزش نصب مراجعه کنید.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Token not found"</td>
+                                <td >کد مربوط به meta-data پوشه را در مانیفست خود قرار نداده اید. این کد را از فایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Token is null"</td>
+                                <td >توکن موجود در مانیفست خالی است. این توکن را ازفایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید. </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Bad Token"</td>
+                                <td >فرمت توکن قرار داده شده اشتباه است. توکن صحیح را از فایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td rowspan="1" class="ltr">"Google play services problem: " + result</td>
+                                <td >گوگل پلی سرویس استفاده شده نصب نشده است و یا به روز نیست. به صفحه آموزش مراجعه کنید.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td rowspan="1" class="ltr">"Pushe must be initialized before subscribing to a topic"</td>
+                                <td >تابع Pushe.initialize را باید در کد MainActivity.java فراخوانی کنید. به آموزش نصب مراجعه کنید.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td rowspan="1" class="ltr">“GCM error:” + error </td>
+                                <td >با بخش پشتیبانی تماس بگیرید.</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                  </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_3">
+              اجرای اپلیکیشن در ایمولاتور
+            </a>
+          </div>
+          <div id="c_g_3" class="collapse">
+            <div class="box-body">
+              <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-graduation-cap"></i></span>
+              <p class="text-sm text-muted clear">
+                  از آنجا که اجرای اپلیکیشن حاوی کتابخانه پوشه نیازمند Google Play Services است، توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_4">
+                ایا نوتیفیکیشن فقط به کاربرانی که جیمیل داشته باشند ارسال می شه ؟
+            </a>
+          </div>
+          <div id="c_g_4" class="collapse">
+            <div class="box-body">
+              <span class="text-md pull-left w-32 m-r rounded primary"><i class="fa fa-graduation-cap"></i></span>
+              <p class="text-sm text-muted clear">
+اگر منظور این است که کاربر حتما باید با اکانت گوگل داشته باشند و در گوشی خود وارد شده باشند، خیر اینگونه نیست و فقط اگر گوگل پلی سرویس داشته باشه کفایت میکند.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8 col-md-9">
+      <h4 class="m-a-0 m-b-sm text-md">اندروید استدیو</h4>
+      <div class="m-b" id="accordion_android_studio">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_android_studio" data-target="#c_as_1">
+                Error: Failed to resolve: co.ronash.android:pushe-base:0.9.1
+            </a>
+          </div>
+          <div id="c_as_1" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  با توجه به اینکه سایت Jcenter خدمات به ایران رو محدود کرده است در صورتی که با این خطا مواجه شده اید، از
+                  <b>روش اضافه کردن دستی</b>
+                  که در صفحه آموزش بیان شده است استفاده کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_android_studio" data-target="#c_as_2">
+                fd.runtime.BootstrapApplication ClassNotFoundException
+            </a>
+          </div>
+          <div id="c_as_2" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  این خطا برای توسعه دهندگانی که از Android Studio 2 استفاده می کنند گزارش شده است. برای آشنایی بیشتر در مورد این خطا میتوانید به
+                  <a href="https://code.google.com/p/android/issues/detail?id=199327" target="_blank">این سایت</a>
+                  مراجعه کنید.
+                               راه حلهایی که برای این مشکل پیشنهاد می شود موارد زیر است:
+              </p>
+                <ol class="text-sm text-muted">
+                    <li>
+                       در گریدل خودتون این کد رو حذف کنید preDexLibraries = false
+                    </li>
+                    <li>
+غیر فعال کردن instant run
+                       <a href="http://stackoverflow.com/questions/35168753/instant-run-in-android-studio-2-0-how-to-turn-off " target="_blank">به این روش</a>
+                    </li>
+                </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8 col-md-9">
+      <h4 class="m-a-0 m-b-sm text-md">اکلیپس</h4>
+      <div class="m-b" id="accordion_eclipse">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_eclipse" data-target="#c_ec_1">
+                خطای NoClassDevFound
+            </a>
+          </div>
+          <div id="c_ec_1" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  عموما این مشکل به دلیل به روز نبودن فایل android-support-v4.jar در اکلیپس شما است.
+یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل android-support-v4.jar می باشد. برای به روز رسانی
+                  <a href="http://static.pushe.co/useful-links/android-support-v4.jar " target="_blank">این فایل</a>
+                  را دانلود کنید و آن را جایگزین فایل android-support-v4.jar پروژه خود کنید. برای این کار به Workspace خود بروید و وارد فولدر پروژه و سپس وارد فولدر libs شوید و این فایل را جایگزین کنید و اگر این فایل از قبل موجود نیست آن را در این فولدر قرار دهید.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_eclipse" data-target="#c_ec_2">
+co.ronash.pushe.controller.controllers.c.d(Unknown Source)
+            </a>
+          </div>
+          <div id="c_ec_2" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  عموما این مشکل به دلیل به روز نبودن فایل android-support-v4.jar در اکلیپس شما است.
+یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل android-support-v4.jar می باشد. برای به روز رسانی
+                  <a href="http://static.pushe.co/useful-links/android-support-v4.jar " target="_blank">این فایل</a>
+                  را دانلود کنید و آن را جایگزین فایل android-support-v4.jar پروژه خود کنید. برای این کار به Workspace خود بروید و وارد فولدر پروژه و سپس وارد فولدر libs شوید و این فایل را جایگزین کنید و اگر این فایل از قبل موجود نیست آن را در این فولدر قرار دهید.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8 col-md-9">
+      <h4 class="m-a-0 m-b-sm text-md">بیسیک 4 اندروید</h4>
+      <div class="m-b" id="accordion_b4a">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_1">
+                NoClassDefFoundError: co.ronash.pushe.b4awrapper.PusheWrapper
+            </a>
+          </div>
+          <div id="c_b4a_1" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  کتابخانه android support v4.jar که شما استفاده می کنید با کتابخانه پوشه ناسازگار است. برای رفع این مشکل
+                <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank">این فایل</a>
+                  دانلود کنید و در فولدر additional libraries خودتون قرار دهید.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_2">
+                Install_parse_failed_manifest_malformed
+            </a>
+          </div>
+          <div id="c_b4a_2" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  این مشکل به دلیل این است که شما در Package Name اپلیکیشن خود از حروف بزرگ انگلیسی استفاده کرده اید. و اگر در منیفست شما از پکیج نیم استفاده شده باشد، بیسیک 4 اندروید نمی تواند کامپایل کند. برای آشنایی بیشتر می توانید به
+                  <a href="https://www.b4x.com/android/forum/threads/failure-install_parse_.27075/" target="_blank">این سایت</a>
+                  مراجعه کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_3">
+                Install_parse_failed_manifest_malformed
+            </a>
+          </div>
+          <div id="c_b4a_3" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  این مشکل به دلیل این است که شما در Package Name اپلیکیشن خود از حروف بزرگ انگلیسی استفاده کرده اید. و اگر در منیفست شما از پکیج نیم استفاده شده باشد، بیسیک 4 اندروید نمی تواند کامپایل کند. برای آشنایی بیشتر می توانید به
+                  <a href="https://www.b4x.com/android/forum/threads/failure-install_parse_.27075/" target="_blank">این سایت</a>
+                  مراجعه کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_4">
+                Install_parse_failed_manifest_malformed
+            </a>
+          </div>
+          <div id="c_b4a_4" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  این مشکل به دلیل این است که شما در Package Name اپلیکیشن خود از حروف بزرگ انگلیسی استفاده کرده اید. و اگر در منیفست شما از پکیج نیم استفاده شده باشد، بیسیک 4 اندروید نمی تواند کامپایل کند. برای آشنایی بیشتر می توانید به
+                  <a href="https://www.b4x.com/android/forum/threads/failure-install_parse_.27075/" target="_blank">این سایت</a>
+                  مراجعه کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8 col-md-9">
+      <h4 class="m-a-0 m-b-sm text-md">یونیتی</h4>
+      <div class="m-b" id="accordion_unity">
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_unity" data-target="#c_un_1">
+                Error: Failed to resolve: co.ronash.android:pushe-base:0.9.1
+            </a>
+          </div>
+          <div id="c_un_1" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  با توجه به اینکه سایت Jcenter خدمات به ایران رو محدود کرده است در صورتی که با این خطا مواجه شده اید، از
+                  <b>روش اضافه کردن دستی</b>
+                  که در صفحه آموزش بیان شده است استفاده کنید.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_unity" data-target="#c_un_2">
+                fd.runtime.BootstrapApplication ClassNotFoundException
+            </a>
+          </div>
+          <div id="c_un_2" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
+                  این خطا برای توسعه دهندگانی که از Android Studio 2 استفاده می کنند گزارش شده است. برای آشنایی بیشتر در مورد این خطا میتوانید به
+                  <a href="https://code.google.com/p/android/issues/detail?id=199327" target="_blank">این سایت</a>
+                  مراجعه کنید.
+                               راه حلهایی که برای این مشکل پیشنهاد می شود موارد زیر است:
+              </p>
+                <ol class="text-sm text-muted">
+                    <li>
+                       در گریدل خودتون این کد رو حذف کنید preDexLibraries = false
+                    </li>
+                    <li>
+غیر فعال کردن instant run
+                       <a href="http://stackoverflow.com/questions/35168753/instant-run-in-android-studio-2-0-how-to-turn-off " target="_blank">به این روش</a>
+                    </li>
+                </ol>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
