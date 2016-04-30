@@ -14,28 +14,33 @@
     angular
         .module('app')
         .controller('step1Controller', ['$scope', 'Upload', '$timeout', '$http', '$filter', 'URLS', function ($scope, Upload, $timeout, $http, $filter, URLS) {
-            //var thisController=this;
-            var contextData = $scope.$context.data;
-            var asThisController = $scope.step1Ctrl = {};
-            asThisController.data = {
-                isHidden: false,
-                selectedApps: []
-            };
-            $scope.$context.behavior.leaving = function (options, callback) {
-                if (!asThisController.data.selectedApps.length) {
-                    callback(false);
-                    $scope.$context.validationError = $filter('translate')('REQUIRE_APP_ERROR');
+            var thisController=this;
+            $scope.wizard.steps[1]={
+                leave:function(){
+                    if (!thisController.data.selectedApps.length) {
+                        $scope.wizard.error= $filter('translate')('REQUIRE_APP_ERROR');
+                        return false;
+                    }
+                    else {
+                        $scope.wizard.steps[1].data=thisController.data;
+                        return true;
+                    }
+                },
+                enter:function(callback){
+                    if(!thisController.appList) {
+                        $http.get(URLS.URL_APP).then(function (result) {
+                            thisController.appList = result.data.results;
+                            callback(true);
+                        });
+                    }
+                },
+                reset:function(){
+                    thisController.data = {
+                        isHidden: false,
+                        selectedApps: []
+                    };
                 }
-                else {
-                    contextData.stepData[0] = asThisController.data;
-                    callback(true);
-                }
             };
-            $scope.$context.behavior.entering = function (options, callback) {
-                $http.get(URLS.URL_APP).then(function (result) {
-                    asThisController.appList = result.data.results;
-                    callback(true);
-                });
-            };
+            $scope.wizard.steps[1].reset();
         }]);
 })());

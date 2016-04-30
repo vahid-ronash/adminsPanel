@@ -17,5 +17,10 @@
             var thisController=this;
             thisController.state=$state.current.name;
             thisController.app=$scope.app;//point to parent scope.app
+
+            thisController.notifCtrl={};
+            $scope.$root.startNotificationWizard=function(){
+                thisController.notifCtrl.start();
+            };
         }]);
 })());

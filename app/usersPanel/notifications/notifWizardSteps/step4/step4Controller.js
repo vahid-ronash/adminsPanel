@@ -14,30 +14,35 @@
     angular
         .module('app')
         .controller('step4Controller', ['$scope', function ($scope) {
-            //var thisController=this;
+            var thisController=this;
 
-            var asThisController=$scope.step4Ctrl={};
-            var contextData=$scope.$context.data;
-            $scope.$context.behavior.leaving = function(options, callback) {
-                contextData.stepData[3]=asThisController.data;
-                callback(true);
+            $scope.wizard.steps[4]={
+                leave:function(){
+                    $scope.wizard.steps[4].data=thisController.data;
+                    return true;
+                },
+                enter:function(){
+                    thisController.focusStart=true;
+                    return true;
+                },
+                reset:function(){
+                    thisController.data={
+                        buttons:[]//buttons
+                    };
+                }
             };
-            $scope.$context.behavior.entering = function(options, callback) {
-                callback(true);
-            };
+            $scope.wizard.steps[4].reset();
+            
+            thisController.maxButtonCount=3;
+            thisController.buttonList=[];
 
-            asThisController.maxButtonCount=3;
-            asThisController.buttonList=[];
 
-            asThisController.data={
-                buttons:[]//buttons
+            thisController.addAction=function(){
+                if(thisController.data.buttons.length<thisController.maxButtonCount)
+                    thisController.data.buttons.push({});
             };
-            asThisController.addAction=function(){
-                if(asThisController.data.buttons.length<asThisController.maxButtonCount)
-                    asThisController.data.buttons.push({});
-            };
-            asThisController.removeAction=function(index){
-                asThisController.data.buttons.splice(index,1);
+            thisController.removeAction=function(index){
+                thisController.data.buttons.splice(index,1);
             };
         }]);
 })());

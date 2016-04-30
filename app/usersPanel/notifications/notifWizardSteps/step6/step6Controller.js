@@ -14,46 +14,51 @@
     angular
         .module('app')
         .controller('step6Controller', ['$scope', function ($scope) {
-            // var thisController=this;
-            var asThisController=$scope.step6Ctrl={};
-
-            var contextData=$scope.$context.data;
-            $scope.$context.behavior.leaving = function(options, callback) {
-                contextData.stepData[5]=asThisController.data;
-                callback(true);
-            };
-
-            asThisController.vibrateTimes=["0.1","0.3","0.5","0.7"];
-
-            asThisController.LEDTimes=["0.2","0.5","0.6","0.9","1","1.5"];
-            asThisController.LEDColors=['yellow','red','green'];
-
-            asThisController.voiceList=[
-                {name:"voice1",path:"assets/voices/voice1.mp3"},
-                {name:"voice2",path:"assets/voices/voice2.mp3"},
-                {name:"voice3",path:"assets/voices/voice3.mp3"},
-                {name:"voice4",path:"assets/voices/voice4.mp3"}
-            ];
-
-            asThisController.data={
-                screen:{//wake_screen
-                    turnON:false
+            var thisController=this;
+            $scope.wizard.steps[6]={
+                leave:function(){
+                    $scope.wizard.steps[6].data=thisController.data;
+                    return true;
                 },
-                voice:{
-                    isOn:false,
-                    selected:asThisController.voiceList[0]
+                enter:function(){
+                    thisController.focusStart=true;
+                    return true;
                 },
-                vibrate:{
-                    isOn:false,
-                    offTime:asThisController.vibrateTimes[0],
-                    onTime:asThisController.vibrateTimes[0]
-                },
-                LED:{
-                    isOn:false,
-                    color:asThisController.LEDColors[0],
-                    offTime:asThisController.LEDTimes[0],
-                    onTime:asThisController.LEDTimes[0]
+                reset:function(){
+                    thisController.vibrateTimes=["0.1","0.3","0.5","0.7"];
+
+                    thisController.LEDTimes=["0.2","0.5","0.6","0.9","1","1.5"];
+                    thisController.LEDColors=['yellow','red','green'];
+
+                    thisController.voiceList=[
+                        {name:"voice1",path:"assets/voices/voice1.mp3"},
+                        {name:"voice2",path:"assets/voices/voice2.mp3"},
+                        {name:"voice3",path:"assets/voices/voice3.mp3"},
+                        {name:"voice4",path:"assets/voices/voice4.mp3"}
+                    ];
+
+                    thisController.data={
+                        screen:{//wake_screen
+                            turnON:false
+                        },
+                        voice:{
+                            isOn:false,
+                            selected:thisController.voiceList[0]
+                        },
+                        vibrate:{
+                            isOn:false,
+                            offTime:thisController.vibrateTimes[0],
+                            onTime:thisController.vibrateTimes[0]
+                        },
+                        LED:{
+                            isOn:false,
+                            color:thisController.LEDColors[0],
+                            offTime:thisController.LEDTimes[0],
+                            onTime:thisController.LEDTimes[0]
+                        }
+                    };
                 }
             };
+            $scope.wizard.steps[6].reset();
         }]);
 })());

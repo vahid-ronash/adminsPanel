@@ -14,18 +14,23 @@
     angular
         .module('app')
         .controller('step7Controller', ['$scope', function ($scope) {
-            // var thisController=this;
-            var asThisController=$scope.step7Ctrl={};
-
-            var contextData=$scope.$context.data;
-            $scope.$context.behavior.leaving = function(options, callback) {
-                contextData.stepData[6]={contacts:asThisController.selectedFavorites};
-                callback(true);
+            var thisController=this;
+            $scope.wizard.steps[7]={
+                leave:function(){
+                    $scope.wizard.steps[7].data=thisController.data;
+                    return true;
+                },
+                enter:function(){
+                    return true;
+                },
+                reset:function(){
+                    thisController.selectedFavorites =["356938035643809","651956116541","3213521651"];
+                }
             };
+            $scope.wizard.steps[7].reset();
 
-            asThisController.selectedFavorites =["356938035643809","651956116541","3213521651"];
             //TODO: it should add to tagging: but it has bug now and its solved some days ago and we can install latest version
-            asThisController.isIMEI=function(newTag){
+            thisController.isIMEI=function(newTag){
                 var imeiInput=newTag.text;
                 var etal = /^[0-9]{15}$/;
                 if (!etal.test(imeiInput))
@@ -48,6 +53,6 @@
                     return chk == parseInt(imeiInput.substring(14, 15), 10);
                 }
             };
-            asThisController.loadTags=function(){};
+            thisController.loadTags=function(){};
         }]);
 })());
