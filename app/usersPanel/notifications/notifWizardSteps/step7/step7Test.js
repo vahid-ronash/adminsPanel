@@ -12,18 +12,17 @@ describe('notification steps : ', function() {
 
     it('step 7 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{stepData:[{}]},behavior:{}};
-        $controller('step7Controller', {$scope:$scope});
-        expect($scope.step7Ctrl).toBeDefined(true);
-        $scope.$context.behavior.leaving({},function(){});
+        $scope.wizard={steps:{}};
+        var controller=$controller('step7Controller', {$scope:$scope});
+        expect(controller).toBeDefined(true);
     }));
 
     it('is IMEI test', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{stepData:[{},{},{},{},{},{},{},{}]},behavior:{}};
-        $controller('step7Controller', {$scope:$scope});
-        expect($scope.step7Ctrl.isIMEI({text:"3213211"})).toBe(false);
-        expect($scope.step7Ctrl.isIMEI({text:"165216516514621"})).toBe(false);
-        expect($scope.step7Ctrl.isIMEI({text:"359492064832138"})).toBe(true);
+        $scope.wizard={steps:{}};
+        var controller=$controller('step7Controller', {$scope:$scope});
+        expect(controller.isIMEI({text:"3213211"})).toBe(false);
+        expect(controller.isIMEI({text:"165216516514621"})).toBe(false);
+        expect(controller.isIMEI({text:"359492064832138"})).toBe(true);
     }));
 });

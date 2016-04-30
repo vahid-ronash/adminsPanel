@@ -12,9 +12,8 @@ describe('notification steps : ', function() {
 
     it('step 5 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{stepData:[{},{},{},{},{},{}]},behavior:{}};
-        $controller('step5Controller', {$scope:$scope});
-        expect($scope.step5Ctrl).toBeDefined(true);
-        $scope.$context.behavior.leaving({},function(){});
+        $scope.wizard={steps:{}};
+        var controller=$controller('step5Controller', {$scope:$scope});
+        expect(controller).toBeDefined(true);
     }));
 });
