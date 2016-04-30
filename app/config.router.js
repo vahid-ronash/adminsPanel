@@ -25,6 +25,13 @@
                         controller: 'usersPanelController',
                         controllerAs: 'panelCtrl'
                     })
+                    .state('users.faq',{
+                        url:'/faq',
+                        templateUrl: 'app/usersPanel/faq/faq.html',
+                        controller: 'faqController',
+                        controllerAs: 'faqCtrl',
+                        pageName:'FAQ'
+                    })
                     .state('users.dashboard',{
                         url:'/dashboard',
                         templateUrl: 'app/usersPanel/dashboard/dashboard.html',

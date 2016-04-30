@@ -263,6 +263,7 @@ angular
         'NEW_PASSWORD':'رمز عبور جدید',
         'NEW_REPASSWORD':'تکرار رمز عبور جدید',
         'SUCCESS_CHANGE_PASS':'رمز عبور شما با موفقیت تغییر یافت',
+        'FAQ':'سوالات متداول',
     });
 
     $translateProvider.preferredLanguage('fa');
