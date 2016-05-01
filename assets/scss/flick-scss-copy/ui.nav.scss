@@ -28,15 +28,12 @@
 					padding-left: 5.5rem;
 				}
 			}
-		    $min-black:rgba(0, 255, 13, 0.065);
-
 			a{
 				@include clearfix();
 				display: block;
 				padding: 0 1rem;
 				line-height: $aside-nav-height;
 				position: relative;
-			  @include transition(all 0.3s ease);
 				&:hover,
 				&:focus{
 					background-color: $min-black;
