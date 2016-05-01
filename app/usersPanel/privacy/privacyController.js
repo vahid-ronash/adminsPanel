@@ -6,13 +6,13 @@
     'use strict';
     /**
      * @ngdoc controller
-     * @name app.controller.faqController
+     * @name app.controller.privacyController
      * @description
      * control faq page
      */
     angular
         .module('app')
-        .controller('faqController', ['$scope',function($scope){
+        .controller('privacyController', ['$scope',function($scope){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
         }]);

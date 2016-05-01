@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/apps/create" ui-sref="users.createApp">
+                            <a ng-click="startApplicationWizard()">
                                 <span class="nav-text">{{'CREATE_APPLICATION' | translate}}</span>
                             </a>
                         </li>
@@ -60,7 +60,7 @@
                     <a><span class="nav-text">{{'NOTIFICATIONS' | translate}}</span></a>
                     <ul class="nav-sub">
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'ADD_NOTIFICATION' | translate}}</a>
+                            <a ng-click="startNotificationWizard()">{{'ADD_NOTIFICATION' | translate}}</a>
                         </li>
                         <li ui-sref-active="active">
                             <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
@@ -88,10 +88,10 @@
     <div flex-no-shrink class="b-t">
         <div class="row">
             <div class="col-xs-7 text-center">
-                <a href="#/help" ui-sref="help"><span class="nav-text">{{'HELP' | translate}}</span></a>
+                <a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>
             </div>
             <div class="col-xs-5">
-                <a><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
+                <a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
             </div>
         </div>
     </div>
