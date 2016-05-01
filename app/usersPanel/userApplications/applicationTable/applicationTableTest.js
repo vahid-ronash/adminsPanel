@@ -53,17 +53,7 @@ describe('test application table controller and services : ', function () {
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
     });
-
-    it('add method', function () {
-        if(!appController.displayed)appController.displayed=[];
-        var len=appController.displayed.length;
-        appController.addNewApplication({provider: {name:"a"},application_id:"testAddApplication"+Math.floor(Math.random()*1000)},function(){
-            deferred.resolve(appController.displayed.length > len);
-        });
-        $timeout.flush();
-        expect(this.valueToVerify).toEqual(true);
-    });
-
+    
     //test remove
     it('remove method', function () {
         //TODO: it must get confirmation
@@ -71,32 +61,6 @@ describe('test application table controller and services : ', function () {
         var len=appController.displayed.length;
         appController.removeApplication(appController.displayed[0],function(){
             deferred.resolve(appController.displayed.length <len+10000);//TODO:app collection loaded before remove
-        });
-        $timeout.flush();
-        expect(this.valueToVerify).toEqual(true);
-    });
-
-    //test each step of edit
-    it('edit methods', function () {
-        appController.displayed = [{provider: "none", application_id: "a"}, {provider: "none", application_id: "b"}];
-        var firstApp = {provider:"none", application_id: "a"};
-        appController.startEdit(firstApp);
-        expect(firstApp.isEditing).toEqual(true);
-
-        appController.cancelEdit(firstApp);
-        expect(firstApp.isEditing).toEqual(false);
-
-        appController.startEdit(firstApp);
-        //TODO: if app didnt change dont send data to server
-        appController.commitEdit(firstApp);
-        expect(firstApp.isEditing).toEqual(false);
-    });
-    it("show sender ID",function(){
-        var row={showDetail:true,application_id:1};
-        appController.showDetail(row);
-        expect(row.showDetail).toEqual(false);
-        appController.showDetail(row,function(){
-            deferred.resolve(row.senderID.length>0);
         });
         $timeout.flush();
         expect(this.valueToVerify).toEqual(true);
