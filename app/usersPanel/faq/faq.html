@@ -1,6 +1,6 @@
 <div class="padding">
-<div class="row">
-    <div class="col-sm-8 col-md-9">
+    <div class="row">
+        <div class="col-sm-8 col-md-9">
       <h4 class="m-a-0 m-b-sm text-md">عمومی</h4>
       <div class="m-b" id="accordion_general">
         <div class="panel box no-border m-b-xs">
@@ -33,7 +33,7 @@
           <div id="c_g_2" class="collapse">
             <div class="box-body">
               <p class="text-sm text-muted">
-                  <span class="text-md pull-left w-32 m-r rounded info"><i class="fa fa-graduation-cap"></i></span>
+                  <span class="text-md pull-left w-32 m-r rounded info"><i class="fa fa-info"></i></span>
                   در هنگام نصب کتابخانه پوشه بر روی logcat شما پیامهایی داده می شود. برخی از این پیامها تنها اطلاع رسانی هستند و برخی از آنها پیامهای خطا می باشند. در جدول زیر این دو دسته پیامها را مشاهده می کنید:
             </p>
                   <br>
@@ -161,7 +161,7 @@
           </div>
           <div id="c_g_3" class="collapse">
             <div class="box-body">
-              <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-graduation-cap"></i></span>
+              <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-info"></i></span>
               <p class="text-sm text-muted clear">
                   از آنجا که اجرای اپلیکیشن حاوی کتابخانه پوشه نیازمند Google Play Services است، توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
               </p>
@@ -183,11 +183,56 @@
             </div>
           </div>
         </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_5">
+                چرا تعداد کاربران من پس از ارسال کم می شود؟
+            </a>
+          </div>
+          <div id="c_g_5" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-info"></i></span>
+                برخی از کاربران شما هستند که پس از نصب اپلیکیشن شما، اون رو حذف میکنند. ما در دو زمان تعداد کاربران حذف شده رو شمارش می کنیم:
+                    <ul class="text-sm text-muted">
+                        <li>
+                            زمانی که شما یک اعلان به همه کاربران ارسال می کنید و ما متوجه می شویم که چه تعدادی از آنها اپ رو حدف کرده اند
+                        </li>
+                        <li>
+                            شب ها ما کاربرانی که اپ شما را حذف کرده اند را از نصب های شما کم می کنیم
+                        </li>
+                    </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel box no-border m-b-xs">
+          <div class="box-header p-y-sm">
+            <a data-toggle="collapse" data-parent="#accordion_general" data-target="#c_g_6">
+                من همه کار رو انجام داده ولی هیچ ثبتی در پنل نیامده است
+            </a>
+          </div>
+          <div id="c_g_6" class="collapse">
+            <div class="box-body">
+              <p class="text-sm text-muted">
+                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-info"></i></span>
+                  برای رفع این مشکل لازم است که ابتدا مطمئن شوید اپلیکیشن شما خطایی ندارد. برای این امر، به هنگام اجرا کردن اپلیشکن پنجره لاگ کت رو بررسی کنید و اگر خطایی داشت آن را رفع کنید. و اگر خطایی نداشت موارد زیر را بررسی کنید:
+                    <ol class="text-sm text-muted">
+                        <li>
+                          تابع Pushe.initialize() رو در یک اکتیویتی مناسب قرار داده باشید
+                        </li>
+                        <li>
+توکنی که در منیفست قرار داده اید همان توکنی باشد که پنل برای این اپلیکشن در اختیار شما قرار داده است (هر اپلیکیشن یک توکن مربوط به خود دارد)
+                        </li>
+                        <li>
+پکیج نیمی که در پنل ثبت کرده اید دقیقا برابر با پکیج نیمی باشد که در اپلیکیشن خود استفاده می کنید
+                        </li>
+                    </ol>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8 col-md-9">
       <h4 class="m-a-0 m-b-sm text-md">اندروید استدیو</h4>
       <div class="m-b" id="accordion_android_studio">
         <div class="panel box no-border m-b-xs">
@@ -235,10 +280,6 @@
           </div>
         </div>
       </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8 col-md-9">
       <h4 class="m-a-0 m-b-sm text-md">اکلیپس</h4>
       <div class="m-b" id="accordion_eclipse">
         <div class="panel box no-border m-b-xs">
@@ -278,10 +319,6 @@ co.ronash.pushe.controller.controllers.c.d(Unknown Source)
           </div>
         </div>
       </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8 col-md-9">
       <h4 class="m-a-0 m-b-sm text-md">بیسیک 4 اندروید</h4>
       <div class="m-b" id="accordion_b4a">
         <div class="panel box no-border m-b-xs">
@@ -322,58 +359,31 @@ co.ronash.pushe.controller.controllers.c.d(Unknown Source)
         <div class="panel box no-border m-b-xs">
           <div class="box-header p-y-sm">
             <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_3">
-                Install_parse_failed_manifest_malformed
+                messagereceived_service_create (java line: 146) java.lang.OutOfMemoryError:
             </a>
           </div>
           <div id="c_b4a_3" class="collapse">
             <div class="box-body">
               <p class="text-sm text-muted">
                   <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
-                  این مشکل به دلیل این است که شما در Package Name اپلیکیشن خود از حروف بزرگ انگلیسی استفاده کرده اید. و اگر در منیفست شما از پکیج نیم استفاده شده باشد، بیسیک 4 اندروید نمی تواند کامپایل کند. برای آشنایی بیشتر می توانید به
-                  <a href="https://www.b4x.com/android/forum/threads/failure-install_parse_.27075/" target="_blank">این سایت</a>
-                  مراجعه کنید.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel box no-border m-b-xs">
-          <div class="box-header p-y-sm">
-            <a data-toggle="collapse" data-parent="#accordion_b4a" data-target="#c_b4a_4">
-                Install_parse_failed_manifest_malformed
-            </a>
-          </div>
-          <div id="c_b4a_4" class="collapse">
-            <div class="box-body">
-              <p class="text-sm text-muted">
-                  <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
-                  این مشکل به دلیل این است که شما در Package Name اپلیکیشن خود از حروف بزرگ انگلیسی استفاده کرده اید. و اگر در منیفست شما از پکیج نیم استفاده شده باشد، بیسیک 4 اندروید نمی تواند کامپایل کند. برای آشنایی بیشتر می توانید به
-                  <a href="https://www.b4x.com/android/forum/threads/failure-install_parse_.27075/" target="_blank">این سایت</a>
-                  مراجعه کنید.
+                  این مشکل به دلیل کم آوردن رم برای کامپایل کردن است. برای کامپایل برنامه خود نیاز دارید تا 1 گیگ رم خالی به هنگام کامپایل داشته باشید. در ضمن ممکن است مقدار تخصیص داده شده رم به بیسیک شما کم باشد که میتوانید اون رو از طریق زیر افزایش بدید: به ادرس زیر در کامپیوتر خودتون برید C:\Users\User\AppData\Roaming\Anywhere Software\Basic4android  فایل b4xV5.ini رو باز کنید و مقدار MaxRamForDex=1024 رو با توجه به رم خودتون بالاتر از 1024 قرار بدید.
               </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8 col-md-9">
       <h4 class="m-a-0 m-b-sm text-md">یونیتی</h4>
       <div class="m-b" id="accordion_unity">
         <div class="panel box no-border m-b-xs">
           <div class="box-header p-y-sm">
             <a data-toggle="collapse" data-parent="#accordion_unity" data-target="#c_un_1">
-                Error: Failed to resolve: co.ronash.android:pushe-base:0.9.1
+
             </a>
           </div>
           <div id="c_un_1" class="collapse">
             <div class="box-body">
               <p class="text-sm text-muted">
                   <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
-                  با توجه به اینکه سایت Jcenter خدمات به ایران رو محدود کرده است در صورتی که با این خطا مواجه شده اید، از
-                  <b>روش اضافه کردن دستی</b>
-                  که در صفحه آموزش بیان شده است استفاده کنید.
               </p>
             </div>
           </div>
@@ -381,30 +391,25 @@ co.ronash.pushe.controller.controllers.c.d(Unknown Source)
         <div class="panel box no-border m-b-xs">
           <div class="box-header p-y-sm">
             <a data-toggle="collapse" data-parent="#accordion_unity" data-target="#c_un_2">
-                fd.runtime.BootstrapApplication ClassNotFoundException
+
             </a>
           </div>
           <div id="c_un_2" class="collapse">
             <div class="box-body">
               <p class="text-sm text-muted">
                   <span class="text-md pull-left w-32 m-r rounded warning"><i class="fa fa-bug"></i></span>
-                  این خطا برای توسعه دهندگانی که از Android Studio 2 استفاده می کنند گزارش شده است. برای آشنایی بیشتر در مورد این خطا میتوانید به
-                  <a href="https://code.google.com/p/android/issues/detail?id=199327" target="_blank">این سایت</a>
-                  مراجعه کنید.
-                               راه حلهایی که برای این مشکل پیشنهاد می شود موارد زیر است:
               </p>
-                <ol class="text-sm text-muted">
-                    <li>
-                       در گریدل خودتون این کد رو حذف کنید preDexLibraries = false
-                    </li>
-                    <li>
-غیر فعال کردن instant run
-                       <a href="http://stackoverflow.com/questions/35168753/instant-run-in-android-studio-2-0-how-to-turn-off " target="_blank">به این روش</a>
-                    </li>
-                </ol>
             </div>
           </div>
         </div>
       </div>
     </div>
+        <div class="col-sm-4 col-md-3">
+      <div class="m-b">
+        <p><i class="fa fa-fw text-muted m-r-xs fa-envelope"></i>support@pushe.co</p>
+        <p><i class="fa fa-fw text-muted m-r-xs fa-phone"></i>021-44668276</p>
+        <p><i class="fa fa-fw text-muted m-r-xs fa-clock-o"></i>شنبه تا پنجشنبه : 8 صبح تا 19 بعداز ظهر</p>
+      </div>
+    </div>
+</div>
 </div>
