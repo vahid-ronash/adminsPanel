@@ -36,7 +36,7 @@
                         url:'/dashboard',
                         templateUrl: 'app/usersPanel/dashboard/dashboard.html',
                         controller: 'dashboardController',
-                        controllerAs: 'dashboard',
+                        controllerAs: 'dashboardCtrl',
                         pageName:'DASHBOARD'
                     })
                     .state('users.apps',{

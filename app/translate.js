@@ -267,6 +267,9 @@ angular
         'SUCCESS_CHANGE_PASS':'رمز عبور شما با موفقیت تغییر یافت',
         'FAQ':'سوالات متداول',
         'NEW_APP_TITLE':'ایجاد اپلیکیشن جدید',
+        'ACTIVE_INSTALLATION':'تعداد کل نصب های فعال کاربر',
+        'USER_APP_COUNT':'تعداد اپ های کاربر',
+        'SEND_NOTIF_COUNT':'تعداد کل اعلانهایی که تاکنون با پوشه ارسال کرده'
     });
 
     $translateProvider.preferredLanguage('fa');
