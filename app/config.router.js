@@ -88,6 +88,22 @@
                         access: {isFree: true}
                         //resolve: need delay
                     })
+                    .state('users.documentation', {
+                        url:'/documentation',
+                        templateUrl: 'app/usersPanel/documentation/documentation.html',
+                        controller: 'docController',
+                        controllerAs:'docCtrl',
+                        access: {isFree: false}
+                        //resolve: need delay
+                    })
+                    .state('users.privacy', {
+                        url:'/privacy',
+                        templateUrl: 'app/usersPanel/privacy/privacy.html',
+                        controller: 'privacyController',
+                        controllerAs:'privacyCtrl',
+                        access: {isFree: false}
+                        //resolve: need delay
+                    })
                     .state('users.profile', {
                         url:'/account/profile',
                         templateUrl: 'app/accountComponents/profile/profile.html',
