@@ -117,10 +117,10 @@
                     $urlRouterProvider.otherwise('/dashboard');
 
                     // Hashbang in HTML5 Mode
-                    $locationProvider.html5Mode({//server must support (ali vakilzade promised that is support)
-                        enabled: true,
-                        requireBase: false
-                    });
+                    // $locationProvider.html5Mode({//server must support (ali vakilzade promised that is support)
+                    //     enabled: true,
+                    //     requireBase: false
+                    // });
                 }
             }])
         .run(['$rootScope', '$state', 'AuthService','$templateCache', function ($rootScope, $state, Auth,$templateCache) {
