@@ -44,7 +44,11 @@
                 res.visibility=!res.isHidden;
                 delete res.isHidden;
 
-                notificationResource.sendNotification(res).then(callback);
+                notificationResource.sendNotification(res).then(function(){
+
+                });
+                $('#notificationWizardDialog').modal('hide');
+
             };
             thisController.leaveCurrentStep=function(){
                 var canLeaveStep=thisController.wizardData.steps[thisController.currentStep].leave();

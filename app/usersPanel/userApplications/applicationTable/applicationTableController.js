@@ -65,6 +65,7 @@
              * start to make new application
              */
             thisController.startNewApplication = function () {
+                $scope.$root.startApplicationWizard();
                 thisController.addMode=true;
                 thisController.addFocusStart=true;
                 thisController.newApp={provider:thisController.providerList[0]};

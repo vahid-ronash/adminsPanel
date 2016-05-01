@@ -1,0 +1,64 @@
+<div class="modal fade bd-example-modal-lg" id="applicationWizardDialog" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <small class="modal-title" id="myModalLabel">{{'NEW_APP_TITLE' | translate}}</small>
+            </div>
+            <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                <form name="newAppForm" ng-submit="newAppCtrl.send()">
+
+                    <!--application id-->
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input name="email"
+                               type="text"
+                               class="mdl-textfield__input text-left"
+                               ng-model="newAppCtrl.data.application_id"
+                               focus-me="focusEmail" ng-init="focusEmail=true"
+                               id="app_id_EL">
+
+                        <label class="mdl-textfield__label" for="app_id_EL">{{'PACKNAME' | translate}}</label>
+                    </div>
+                    <!--application id END-->
+
+                    <!--provider list-->
+                    <div class="md-form-group">
+                        <label class="mdl-textfield__label" for="provider_EL">{{'PROVIDER' | translate}}</label>
+                        <ui-select class="rtl" id="provider_EL" ng-model="newAppCtrl.providerObject">
+                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
+                                <span ng-bind="newAppCtrl.providerObject.name"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="item in (newAppCtrl.providerList | filter: $select.search)">
+                                <span ng-bind="item.name"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <!--provider list END-->
+
+
+                    <!--SUBMIT-->
+                    <div ng-if="!newAppCtrl.isSending">
+                        <button type="submit"
+                                ng-disabled="form.$invalid || newAppCtrl.isSending"
+                                class="btn primary btn-block p-x-md">
+                            <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
+                            {{'NEW_APP_TITLE' | translate}}
+                        </button>
+                    </div>
+                    <button class="btn disabled btn-block p-x-md" ng-if="newAppCtrl.isSending">
+                        <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                            <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                                 style="color:green;margin:0 1px 0 0;"></div>
+                        </div>
+                    </button>
+                    <!--SUBMIT END-->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

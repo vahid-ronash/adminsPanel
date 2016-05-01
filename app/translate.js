@@ -213,7 +213,7 @@ angular
         'LOGO_PATH':'assets/images/logo.png',
         'URI_INCORRECT':'uri is not correct',
         'REQUIRED':'this field has to fill',
-        'PROVIDER':'provider',
+        'PROVIDER':'پروایدر',
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
         'UPLOAD':'آپلود',
         'FORGOT_DONE':'رمز عبور با موفقیت تغییر یافت.',
@@ -266,6 +266,7 @@ angular
         'NEW_REPASSWORD':'تکرار رمز عبور جدید',
         'SUCCESS_CHANGE_PASS':'رمز عبور شما با موفقیت تغییر یافت',
         'FAQ':'سوالات متداول',
+        'NEW_APP_TITLE':'ایجاد اپلیکیشن جدید',
     });
 
     $translateProvider.preferredLanguage('fa');

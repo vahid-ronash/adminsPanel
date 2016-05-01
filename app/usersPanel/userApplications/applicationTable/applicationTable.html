@@ -18,30 +18,30 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-if="appsTableCtrl.addMode">
-                <td>
-                    <div class="md-form-group float-label">
-                        <input class="md-input" ng-model="appsTableCtrl.newApp.application_id" focus-me="appsTableCtrl.addFocusStart">
-                        <label>{{'PACKNAME' | translate}}</label>
-                    </div>
-                </td>
-                <td>
-                    <div class="md-form-group float-label">
-                        <ui-select ng-model="appsTableCtrl.newApp.provider">
-                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                                <span ng-bind="appsTableCtrl.newApp.provider.name"></span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
-                                <span ng-bind="item.name"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
-                    <button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>
-                </td>
-            </tr>
+            <!--<tr ng-if="appsTableCtrl.addMode">-->
+                <!--<td>-->
+                    <!--<div class="md-form-group float-label">-->
+                        <!--<input class="md-input" ng-model="appsTableCtrl.newApp.application_id" focus-me="appsTableCtrl.addFocusStart">-->
+                        <!--<label>{{'PACKNAME' | translate}}</label>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<div class="md-form-group float-label">-->
+                        <!--<ui-select ng-model="appsTableCtrl.newApp.provider">-->
+                            <!--<ui-select-match placeholder="{{'PROVIDER' | translate}}">-->
+                                <!--<span ng-bind="appsTableCtrl.newApp.provider.name"></span>-->
+                            <!--</ui-select-match>-->
+                            <!--<ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">-->
+                                <!--<span ng-bind="item.name"></span>-->
+                            <!--</ui-select-choices>-->
+                        <!--</ui-select>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>-->
+                    <!--<button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>-->
+                <!--</td>-->
+            <!--</tr>-->
             <tr ng-repeat="row in appsTableCtrl.displayed">
                 <td>
                     <div>
