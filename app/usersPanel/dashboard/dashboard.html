@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="padding m-b m-l m-r">
+        <button ng-click="startApplicationWizard()" class="md-btn md-raised m-b-sm w-xs indigo">
+            {{'CREATE_APPLICATION'|translate}}
+        </button>
+        <button ng-click="startNotificationWizard()" class="md-btn md-raised m-b-sm w-xs indigo">
+            {{'ADD_NOTIFICATION'|translate}}
+        </button>
+    </div>
+    <div class="">
+        <div class="m-b">
+            <div class="padding">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="box p-a">
+                            <div class="pull-left m-r">
+                                <span class="w-40 warn text-center rounded">
+                                    <i class="material-icons">shopping_basket</i>
+                                </span>
+                            </div>
+                            <div class="clear">
+                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.activeInstallationCount}} <span class="text-sm">{{'INSTALLED'|translate}}</span></a></h4>
+                                <small class="text-muted">{{'ACTIVE_INSTALLATION'|translate}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="box-color p-a primary">
+                            <div class="pull-right m-l">
+                                <span class="w-40 dker text-center rounded">
+                                  <i class="material-icons">local_shipping</i>
+                                </span>
+                            </div>
+                            <div class="clear">
+                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.applicationCount}} <span class="text-sm">{{'APPLICATIONS'|translate}}</span></a></h4>
+                                <small class="text-muted">{{'USER_APP_COUNT'|translate}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="box p-a">
+                            <div class="pull-right m-l">
+                                <span class="w-40 accent text-center rounded">
+                                  <i class="material-icons">people</i>
+                                </span>
+                            </div>
+                            <div class="clear">
+                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.notificationSent}} <span class="text-sm">{{'NOTIFICATIONS'|translate}}</span></a></h4>
+                                <small class="text-muted">{{'SEND_NOTIF_COUNT'|translate}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

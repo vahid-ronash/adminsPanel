@@ -15,5 +15,10 @@
         .controller('dashboardController', ['$scope',function($scope){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
+            thisController.data={
+                activeInstallationCount:32062,
+                applicationCount:5,
+                notificationSent:3512,
+            };
         }]);
 })());
