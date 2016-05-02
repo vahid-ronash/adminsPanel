@@ -21,7 +21,7 @@
                 {id:3,active_users:51,creation_datetime:'1/5/1347',provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
                 {id:4,active_users:91,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
                 {id:5,active_users:101,creation_datetime:'1/5/1347',provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
-            ];
+            ];appList=[];
             $httpBackend.whenGET(/api\/platform\/applications\/.*\/$/).respond({credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',results:appList});
             $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
             $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
@@ -167,7 +167,7 @@
                     notificationSent:3512
                 }
             );
-            
+
             for (var ni = 0; ni < 1000; ni++) {
                 randomsNotifItems.push(createRandomNotif());
             }

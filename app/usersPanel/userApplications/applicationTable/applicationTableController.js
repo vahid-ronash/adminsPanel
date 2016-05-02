@@ -56,13 +56,12 @@
              * @methodOf app.controller.applicationTableController
              * @description
              * get confirm and remove selected application
-             * @param {object}  row     selected application
-             * @param {function} callback   callback when remove done
              */
             thisController.downloadManifest = function () {
                 var provider=thisController.selectedProvider;
                 var manifest_copy=thisController.manifest[provider].slice(0);
                 manifest_copy=manifest_copy.replace(/SENDER_ID/g,thisController.selectedRow.senderID);
+                manifest_copy=manifest_copy.replace(/PACKAGE_NAME/g,thisController.selectedRow.application_id);
                 var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "manifest_"+provider+".xml");
                 $('#manifestDialog').modal('hide');
@@ -116,7 +115,7 @@
                 thisController.selected4Remove=row;
                 $("#confirmDialog").modal();
             };
-            
+
             thisController.sendRemoveApplication = function () {
                 $applicationResource.delete({id:thisController.selected4Remove.id}, function () {
                     var index = thisController.displayed.indexOf(thisController.selected4Remove);
