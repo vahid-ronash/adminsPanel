@@ -72,8 +72,29 @@
     </div>
     <!--TODO : Add gallery here-->
     <div class="col-md-6 col-xm-12">
-
-
-
+        <div class="">
+            <div class="m-b">
+                <div class="padding">
+                    <div class="row">
+                      <div class="box">
+                        <div class="box-header">
+                          <h4>{{'DASHBOARD GALLERY'|translate}}</h4>
+                        </div>
+                        <div>
+                          <uib-carousel active="active" interval="dashboardCtrl.slide.interval" no-wrap="dashboardCtrl.slide.noWrapSlides">
+                            <uib-slide ng-repeat="slide in dashboardCtrl.slides" active="slide.active">
+                              <img ng-src="{{slide.image}}" style="margin:auto;" class="w-full">
+                              <div class="carousel-caption">
+                                <h6>{{'SLIDE'|translate}} {{$index}}</h6>
+                                <p>{{slide.text}}</p>
+                              </div>
+                            </uib-slide>
+                          </uib-carousel>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
