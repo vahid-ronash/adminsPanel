@@ -242,6 +242,7 @@ angular
         'USER_INFO':'اطلاعات کاربری',
         'PERSONAL_INFO':'اطلاعات شخصی',
         'NO_PERSONAL_DATA':'هنوز اطلاعاتی ثبت نکرده اید.',
+        'COPYRIGHT':'تمامی حقوق برای سایت پوشه محفوظ است.',
 
         'FAMILY':'نام خانوادگی',
         'NATIONALCODE':'کد ملی',
