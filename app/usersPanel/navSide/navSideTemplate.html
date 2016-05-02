@@ -21,24 +21,25 @@
  -->
 
 <div class="left navside white dk" layout="column">
-    <div class="navbar ng-scope">
+    <div class="navbar ng-scope p-a-md">
         <a class="navbar-brand ng-scope">
-            <img src="assets/images/logo.png" alt="." >
+            <img src="assets/images/logo.png" alt="." style="max-height:none" >
+
+            <!--TODO: CHANGE STYLE TO CSS-->
         </a>
     </div>
 <div class="nav-stacked nav-active-{{app.setting.theme.primary}}" flex>
-
-            <ul class="nav ng-scope" ui-nav="">
+            <ul class="nav ng-scope " ui-nav="">
                 <li  ui-sref-active="active">
                     <a href="#/dashboard" ui-sref="users.dashboard">
-                        <span class="nav-icon"><i class="fa fa-dashboard"></i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe871;</i></span>
                         <span class="nav-text">{{'DASHBOARD' | translate}}</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <span class="nav-caret text-muted"><i class="fa fa-caret-down"></i></span>
-                        <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
+                        <span class="nav-caret text-muted"><i class="material-icons">&#xe5c5;</i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe8f9;</i></span>
                         <span class="nav-text">{{'APPLICATIONS' | translate}}</span>
                     </a>
                     <ul class="nav-sub">
@@ -58,14 +59,14 @@
                 </li>
                 <li ui-sref-active="active">
                     <a href="#/installed" ui-sref="users.installed">
-                        <span class="nav-icon"><i class="fa fa-user"></i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe7fd;</i></span>
                         <span class="nav-text">{{'INSTALLED' | translate}}</span>
                     </a>
                 </li>
                 <li>
                     <a>
                         <span class="nav-caret text-muted"><i class="fa fa-caret-down"></i></span>
-                        <span class="nav-icon"><i class="fa fa-paper-plane"></i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe158;</i></span>
                         <span class="nav-text">{{'NOTIFICATIONS' | translate}}</span>
                     </a>
                     <ul class="nav-sub">
@@ -115,14 +116,47 @@
                 </li>
             </ul>
 </div>
-    <div flex-no-shrink class="b-t">
-        <div class="row">
-            <div class="col-xs-7 text-center">
-                <a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>
-            </div>
-            <div class="col-xs-5">
-                <a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
-            </div>
-        </div>
-    </div>
+
+<div flex-no-shrink  class="ng-scope">
+    <nav ui-nav>
+      <ul class="nav">
+        <li><div class="b-b b m-v-sm"></div></li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+              <i class="material-icons">&#xe565;</i>
+            </span>
+            <span class="nav-text">{{'HELP' | translate}}</span>
+          </a>
+        </li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+              <i class="material-icons">&#xe8fd;</i>
+            </span>
+            <span class="nav-text">
+              {{'SUPPORT' | translate}}
+            </span>
+          </a>
+        </li>
+        <li><div class="b-b b m-t-sm"></div></li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+             <i class="material-icons">&#xe8ac;</i>
+            </span>
+            <span class="nav-text">{{'SIGNOUT' | translate}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+        <!--<div class="row">-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>-->
+            <!--</div>-->
+        <!--</div>-->
+</div>
 </div>
