@@ -15,6 +15,58 @@
         .controller('applicationTableController', ['$scope', 'applicationResource', function ($scope, $applicationResource) {
             var thisController = this;
 
+            thisController.manifest={};
+            thisController.loadManifests=function() {
+                function loadManifest(fileName,keyName){
+                    var androidManifestLoader = new XMLHttpRequest();
+                    androidManifestLoader.open('GET', '/assets/pushe-manifests/'+fileName+'.xml');
+                    androidManifestLoader.onreadystatechange = function () { thisController.manifest[keyName]=androidManifestLoader.responseText; };
+                    androidManifestLoader.send();
+                }
+                loadManifest('android_studio_manifest','androidStudio');
+                loadManifest('eclipse_manifest','eclipse');
+                loadManifest('b4a_manifest','basic4android');
+                loadManifest('unity_manifest','unity');
+            };
+            thisController.loadManifests();
+
+            thisController.showManifestDialog=function(row){
+                thisController.selectedRow=row;
+                $('#manifestDialog').modal({
+                    // backdrop: 'static',
+                    // keyboard: false
+                });
+                if(!row.senderID) {
+                    $applicationResource.getSenderID(row.application_id, function (newrow) {
+                        row.senderID = JSON.parse(newrow.data.credentials).node;
+                    });
+                }
+            };
+
+            thisController.providers=[
+                {name:"android studio",value:"androidStudio"},
+                {name:"eclipse",value:"eclipse"},
+                {name:"basic 4 android",value:"basic4android"},
+                {name:"unity",value:"unity"},
+                {name:"joapp",value:"joapp"},
+            ];
+            /**
+             * @ngdoc method
+             * @name downloadManifest
+             * @methodOf app.controller.applicationTableController
+             * @description
+             * get confirm and remove selected application
+             * @param {object}  row     selected application
+             * @param {function} callback   callback when remove done
+             */
+            thisController.downloadManifest = function () {
+                var provider=thisController.selectedProvider;
+                var manifest_copy=thisController.manifest[provider].slice(0);
+                manifest_copy=manifest_copy.replace(/SENDER_ID/g,thisController.selectedRow.senderID);
+                var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "manifest_"+provider+".xml");
+                $('#manifestDialog').modal('hide');
+            };
             //send a request to get application list
             thisController.isLoading = true;
 
@@ -47,89 +99,6 @@
                         thisController.isLoading = false;
                     }
                 });
-            };
-
-            thisController.providerList=[
-                {name:"none",value:"none"},
-                {name:"JOAPP",value:"JOAPP"},
-                {name:"puzzely",value:"puzzely"}
-            ];
-            var providerHash={};
-            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
-
-            /**
-             * @ngdoc method
-             * @name startNewApplication
-             * @methodOf app.controller.applicationTableController
-             * @description
-             * start to make new application
-             */
-            thisController.startNewApplication = function () {
-                $scope.$root.startApplicationWizard();
-                thisController.addMode=true;
-                thisController.addFocusStart=true;
-                thisController.newApp={provider:thisController.providerList[0]};
-            };
-            /**
-             * @ngdoc method
-             * @name startEdit
-             * @methodOf app.controller.applicationTableController
-             * @description
-             * add new application to database
-             */
-            thisController.addNewApplication = function (newApplicationData,callback) {
-                if(newApplicationData.provider.name)
-                    newApplicationData.provider=newApplicationData.provider.value;
-                $applicationResource.save(newApplicationData, function (createdApplication) {
-                    thisController.displayed.push(createdApplication.data);
-                    thisController.addMode=false;
-                    callback && callback();
-                });
-            };
-
-
-            /**
-             * @ngdoc method
-             * @name startEdit
-             * @methodOf app.controller.applicationTableController
-             * @description
-             * cause to show edit panel
-             * @param {object}      row     selected application
-             */
-            thisController.startEdit = function (row) {
-                row.isEditing = true;
-                row.isFocused= true;
-                row.backupName = row.name;
-                row.provider=providerHash[row.provider.toLowerCase()];
-            };
-
-            /**
-             * @ngdoc method
-             * @name commitEdit
-             * @methodOf app.controller.applicationTableController
-             * @description
-             * apply edit and save result on server
-             * @param {object} row selected application
-             */
-            thisController.commitEdit = function (row) {
-                //send edited data
-                row.provider=row.provider.value;
-                if(row.name!==row.backupName) {$applicationResource.update({id: row.id}); }
-                row.isEditing = false;
-            };
-
-            /**
-             * @ngdoc method
-             * @name cancelEdit
-             * @methodOf app.controller.applicationTableController
-             * @description
-             * rollback to origin data
-             * @param {object}  row      selected application
-             */
-            thisController.cancelEdit = function (row) {
-                row.name = row.backupName;
-                row.isEditing = false;
-                row.provider=row.provider.value;
             };
 
 

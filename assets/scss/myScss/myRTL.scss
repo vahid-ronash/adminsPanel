@@ -30,11 +30,6 @@ body{
 	width: 100px;
   }
 }
-.nav-link {
-	.material-icons {
-		font-size: 18px;
-	}
-}
 
 
 
@@ -47,12 +42,15 @@ body{
 .app-footer:not(.hide)~.app-body {
 	padding-bottom: 10.125rem;
 }
+@media (max-width: 47.9em) {
+	.app-footer:not(.hide)~.app-body {
+		padding-bottom: 17.125rem;
+	}
+}
+
 .app-header~.app-body {
 	padding-top: 4.5rem;
 }
-
-
-
 
 
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {

@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('notificationWizardController', ['$scope', function ($scope) {
+        .controller('notificationWizardController', ['$scope','notificationResource', function ($scope,notificationResource) {
             var thisController=this;
             thisController.currentStep=0;
 
