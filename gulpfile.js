@@ -95,8 +95,9 @@ gulp.task('watchSCSS', function () {
     gulp.watch('assets/scss/**/*.scss', ['makeCSS']);
 });
 
-gulp.task('copyFontAwsome', function () {
+gulp.task('copyIconFonts', function () {
     gulp.src('assets/libs/font-awesome/fonts/*').pipe(gulp.dest('assets/fonts'));
+    gulp.src('assets/libs/material-design-icons/iconfont/*').pipe(gulp.dest('assets/fonts/MaterialIcons'));
 });
 
 
@@ -177,7 +178,7 @@ gulp.task('codacy', function codacyTask() {
 
 
 
-gulp.task('build', ['copyFontAwsome','makeCSS','compressJsFiles']);
+gulp.task('build', ['copyIconFonts','makeCSS','compressJsFiles']);
 gulp.task('production', ['makeProductionEnvironment','build']);
 gulp.task('development', ['makeDevelopmentEnvironment','build']);
 gulp.task('default', ['makeCSS','watchSCSS']);
