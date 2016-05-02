@@ -160,6 +160,14 @@
                     dismissed_count:clickdismissCount- clickedCount
                 };
             }
+            $httpBackend.whenGET(URLS.URL_GET_DASHBOARD_DATA).respond(
+                {
+                    activeInstallationCount:32062,
+                    applicationCount:5,
+                    notificationSent:3512
+                }
+            );
+            
             for (var ni = 0; ni < 1000; ni++) {
                 randomsNotifItems.push(createRandomNotif());
             }

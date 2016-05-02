@@ -15,6 +15,7 @@
     angular.module('app')
         .constant('URLS', {
             "URL_NOTIF": "api/notification/notifications/",
+            "URL_GET_DASHBOARD_DATA":"api/statistics/dashboard/",
             "URL_UPLOAD_ICON": "api/notification/images/",
             "URL_UPLOAD_IMAGE": "api/notification/images/",
             "URL_APP": "api/platform/applications/",

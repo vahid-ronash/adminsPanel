@@ -12,27 +12,26 @@
      */
     angular
         .module('app')
-        .controller('dashboardController', ['$scope',function($scope){
+        .controller('dashboardController', ['$scope','$http','URLS',function($scope,$http,URLS){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
-            thisController.data={
-                activeInstallationCount:32062,
-                applicationCount:5,
-                notificationSent:3512,
+            $http.get(URLS.URL_GET_DASHBOARD_DATA).then(function (result) {
+                thisController.data = result.data;
+            });
+            thisController.slideData={
+                cycleSlides:true,
+                interval:5000,
+                active:0,
+                list:[
+                    {id:1,image:"/assets/images/dashboard/Pushe.co-1.png",text:"تاثیر فرستادن اعلان در درصد افرادی که استفاده مداوم از نرم افزار دارند",active:true},
+                    {id:2,image:"/assets/images/dashboard/Pushe.co-2.png",text:"افزایش استفاده کاربر از نرم افزار"},
+                    {id:3,image:"/assets/images/dashboard/Pushe.co-3.png",text:"تاثیر تعداد کلمات اعلان بر روی میزان کلیک شدن روی آن"},
+                    {id:4,image:"/assets/images/dashboard/Pushe.co-4.png",text:"تاثیر فعال بودن دریافت اعلان"},
+                    {id:5,image:"/assets/images/dashboard/Pushe.co-5.png",text:"تاثیر نوع جمله در میزان کلیک روی اعلان ها"},
+                    {id:6,image:"/assets/images/dashboard/Pushe.co-6.png",text:"درصد کلیک روی اعلان ها در ساعات مختلف روز"},
+                    {id:7,image:"/assets/images/dashboard/Pushe.co-7.png",text:"مشغول بودن به نرم افزار در تمام ساعات روز"},
+                    {id:8,image:"/assets/images/dashboard/Pushe.co-8.png",text:"مزایای باز شدن اعلان های هدفمند در مقایسه با اعلان با مخاطب عام"}
+                ]
             };
-            thisController.slide={
-                noWrapSlides:false,
-                interval:5000
-            };
-            thisController.slides=[
-                {image:"/assets/images/dashboard/Pushe.co-1.jpg",text:"تاثیر فرستادن اعلان در درصد افرادی که استفاده مداوم از نرم افزار دارند"},
-                {image:"/assets/images/dashboard/Pushe.co-2.jpg",text:"افزایش استفاده کاربر از نرم افزار"},
-                {image:"/assets/images/dashboard/Pushe.co-3.jpg",text:"تاثیر تعداد کلمات اعلان بر روی میزان کلیک شدن روی آن"},
-                {image:"/assets/images/dashboard/Pushe.co-4.jpg",text:"تاثیر فعال بودن دریافت اعلان"},
-                {image:"/assets/images/dashboard/Pushe.co-5.jpg",text:"تاثیر نوع جمله در میزان کلیک روی اعلان ها"},
-                {image:"/assets/images/dashboard/Pushe.co-6.jpg",text:"درصد کلیک روی اعلان ها در ساعات مختلف روز"},
-                {image:"/assets/images/dashboard/Pushe.co-7.jpg",text:"مشغول بودن به نرم افزار در تمام ساعات روز"},
-                {image:"/assets/images/dashboard/Pushe.co-8.jpg",text:"مزایای باز شدن اعلان های هدفمند در مقایسه با اعلان با مخاطب عام"}
-            ]
         }]);
 })());
