@@ -1,54 +1,97 @@
 <div class="container">
-    <div class="padding m-b m-l m-r">
-        <button ng-click="startApplicationWizard()" class="md-btn md-raised m-b-sm w-xs indigo">
-            {{'CREATE_APPLICATION'|translate}}
-        </button>
-        <button ng-click="startNotificationWizard()" class="md-btn md-raised m-b-sm w-xs indigo">
-            {{'ADD_NOTIFICATION'|translate}}
-        </button>
+    <div class="col-md-6 col-xm-12">
+        <div class="">
+            <div class="m-b">
+                <div class="padding">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box p-a">
+                                <div class="pull-left m-r">
+                                    <span class="w-40 primary text-center rounded">
+                                        <i class="material-icons">people</i>
+                                    </span>
+                                </div>
+                                <div class="clear">
+                                    <h4 class="m-a-0 text-md">
+                                        <a href>{{dashboardCtrl.data.activeInstallationCount}}
+                                            <span class="text-sm">{{'INSTALLED'|translate}}</span>
+                                        </a>
+                                    </h4>
+                                    <small class="text-muted">{{'ACTIVE_INSTALLATION'|translate}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="box p-a">
+                                <div class="pull-left m-r">
+                                    <span class="w-40 primary text-center rounded">
+                                        <i class="material-icons">shopping_basket</i>
+                                    </span>
+                                </div>
+                                <div class="pull-right m-l">
+                                    <button ng-click="startApplicationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
+                                        <i class="material-icons md-8">add</i>
+                                    </button>
+                                </div>
+                                <div class="clear">
+                                    <h4 class="m-a-0 text-md">
+                                        <a href>{{dashboardCtrl.data.applicationCount}}
+                                            <span class="text-sm">{{'APPLICATIONS'|translate}}</span>
+                                        </a>
+                                    </h4>
+                                    <small class="text-muted">{{'USER_APP_COUNT'|translate}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="box p-a">
+                                <div class="pull-left m-r">
+                                    <span class="w-40 primary text-center rounded">
+                                        <i class="material-icons">shopping_basket</i>
+                                    </span>
+                                </div>
+                                <div class="pull-right m-l">
+                                    <button ng-click="startNotificationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
+                                        <i class="material-icons md-8">add</i>
+                                    </button>
+                                </div>
+                                <div class="clear">
+                                    <h4 class="m-a-0 text-md">
+                                        <a href>{{dashboardCtrl.data.notificationSent}}
+                                            <span class="text-sm">{{'NOTIFICATIONS'|translate}}</span>
+                                        </a>
+                                    </h4>
+                                    <small class="text-muted">{{'SEND_NOTIF_COUNT'|translate}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="">
-        <div class="m-b">
-            <div class="padding">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="box p-a">
-                            <div class="pull-left m-r">
-                                <span class="w-40 warn text-center rounded">
-                                    <i class="material-icons">shopping_basket</i>
-                                </span>
-                            </div>
-                            <div class="clear">
-                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.activeInstallationCount}} <span class="text-sm">{{'INSTALLED'|translate}}</span></a></h4>
-                                <small class="text-muted">{{'ACTIVE_INSTALLATION'|translate}}</small>
-                            </div>
+    <!--TODO : Add gallery here-->
+    <div class="col-md-6 col-xm-12">
+        <div class="">
+            <div class="m-b">
+                <div class="padding">
+                    <div class="row">
+                      <div class="box">
+                        <div class="box-header">
+                          <h4>{{'DASHBOARD GALLERY'|translate}}</h4>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="box-color p-a primary">
-                            <div class="pull-right m-l">
-                                <span class="w-40 dker text-center rounded">
-                                  <i class="material-icons">local_shipping</i>
-                                </span>
-                            </div>
-                            <div class="clear">
-                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.applicationCount}} <span class="text-sm">{{'APPLICATIONS'|translate}}</span></a></h4>
-                                <small class="text-muted">{{'USER_APP_COUNT'|translate}}</small>
-                            </div>
+                        <div>
+                          <uib-carousel active="active" interval="dashboardCtrl.slide.interval" no-wrap="dashboardCtrl.slide.noWrapSlides">
+                            <uib-slide ng-repeat="slide in dashboardCtrl.slides" active="slide.active">
+                              <img ng-src="{{slide.image}}" style="margin:auto;" class="w-full">
+                              <div class="carousel-caption">
+                                <h6>{{'SLIDE'|translate}} {{$index}}</h6>
+                                <p>{{slide.text}}</p>
+                              </div>
+                            </uib-slide>
+                          </uib-carousel>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="box p-a">
-                            <div class="pull-right m-l">
-                                <span class="w-40 accent text-center rounded">
-                                  <i class="material-icons">people</i>
-                                </span>
-                            </div>
-                            <div class="clear">
-                                <h4 class="m-a-0 text-md"><a href>{{dashboardCtrl.data.notificationSent}} <span class="text-sm">{{'NOTIFICATIONS'|translate}}</span></a></h4>
-                                <small class="text-muted">{{'SEND_NOTIF_COUNT'|translate}}</small>
-                            </div>
-                        </div>
+                      </div>
                     </div>
                 </div>
             </div>

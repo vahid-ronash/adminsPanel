@@ -128,7 +128,7 @@
 @include border-wariant(light, $light);
 @include border-wariant(grey, $grey);
 @include border-wariant(dark, $dark);
-@include border-wariant('black', $black);//FIXME:compatibility with gulp
+@include border-wariant(black, $black);
 @include border-wariant(white, $white);
 @include border-wariant(blue, $blue);
 
