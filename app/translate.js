@@ -276,6 +276,10 @@ angular
         'REMOVE':'حذف',
         'DASHBOARD_GALLERY':'گالری داشبورد',
         'SLIDE':'صفحه',
+        'YES':'بلی',
+        'NO':'خیر',
+        'YOU_SURE_TITLE':'حذف',
+        'ARE_YOU_SURE_TEXT':'آیا مطمین هستید؟',
     });
 
     $translateProvider.preferredLanguage('fa');

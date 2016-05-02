@@ -52,7 +52,6 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/ace-builds/src-min-noconflict/ace.js",
             "assets/libs/angular-ui-ace/ui-ace.js",
 
-            "assets/libs/ng-password-strength/dist/scripts/ng-password-strength.js",
             "assets/libs/material-design-lite/material.js",
             "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
 

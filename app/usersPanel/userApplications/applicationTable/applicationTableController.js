@@ -111,10 +111,15 @@
              * @param {object}  row     selected application
              * @param {function} callback   callback when remove done
              */
-            thisController.removeApplication = function (row,callback) {
-                //TODO:get confirm
-                $applicationResource.delete({id:row.id}, function () {
-                    var index = thisController.displayed.indexOf(row);
+            thisController.selected4Remove=0;
+            thisController.removeApplication = function (row) {
+                thisController.selected4Remove=row;
+                $("#confirmDialog").modal();
+            };
+            
+            thisController.sendRemoveApplication = function () {
+                $applicationResource.delete({id:thisController.selected4Remove.id}, function () {
+                    var index = thisController.displayed.indexOf(thisController.selected4Remove);
                     thisController.displayed.splice(index, 1);
                     callback && callback();
                     //alert('application ' + row.name + ' deleted');
