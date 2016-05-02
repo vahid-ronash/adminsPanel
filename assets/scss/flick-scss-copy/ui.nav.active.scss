@@ -10,7 +10,7 @@
 
 @include active-variant(bg, $body-bg, $text-color);
 @include active-variant(dark, $dark, $dark-color);
-@include active-variant('black', $black, $black-color);//FIXME:compatibility with gulp
+@include active-variant(black, $black, $black-color);
 @include active-variant(primary, $primary, $primary-color);
 @include active-variant(accent, $accent, $accent-color);
 @include active-variant(warn, $warn, $warn-color);

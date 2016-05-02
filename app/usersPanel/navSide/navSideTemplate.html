@@ -19,80 +19,144 @@
      </div>
    </div>
  -->
+
 <div class="left navside white dk" layout="column">
-    <div class="navbar no-radius">
-        <!-- brand -->
-        <a class="navbar-brand">
-            <img src="assets/images/logo.png" alt="." >
-            <!--class="hide"-->
-            <!--<span class="hidden-folded inline">{{app.name}}</span>-->
+    <div class="navbar ng-scope p-a-md">
+        <a class="navbar-brand ng-scope">
+            <img src="assets/images/logo.png" alt="." style="max-height:none" >
+
+            <!--TODO: CHANGE STYLE TO CSS-->
         </a>
-        <!-- / brand -->
     </div>
-    <div flex class="hide-scroll">
-        <nav class="scroll nav-light">
-            <ul class="nav ng-scope" ui-nav="">
-                <li ui-sref-active="active">
-                    <a href="#/dashboard" ui-sref="users.dashboard"><span class="nav-text">{{'DASHBOARD' | translate}}</span></a>
-                </li>
-                <li class="nav-header hidden-folded">
-                    <small class="text-muted">Main</small>
+<div class="nav-stacked nav-active-{{app.setting.theme.primary}}" flex>
+            <ul class="nav ng-scope " ui-nav="">
+                <li  ui-sref-active="active">
+                    <a href="#/dashboard" ui-sref="users.dashboard">
+                        <span class="nav-icon"><i class="material-icons">&#xe871;</i></span>
+                        <span class="nav-text">{{'DASHBOARD' | translate}}</span>
+                    </a>
                 </li>
                 <li>
-                    <a><span class="nav-text">{{'APPLICATIONS' | translate}}</span></a>
+                    <a>
+                        <span class="nav-caret text-muted"><i class="material-icons">&#xe5c5;</i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe8f9;</i></span>
+                        <span class="nav-text">{{'APPLICATIONS' | translate}}</span>
+                    </a>
                     <ul class="nav-sub">
                         <li ui-sref-active="active">
                             <a href="#/apps" ui-sref="users.apps">
+                                <!--<span class="nav-icon"><i class="fa fa-list-ol"></i></span>-->
                                 <span class="nav-text">{{'APPLICATIONS_LIST' | translate}}</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
                             <a ng-click="startApplicationWizard()">
+                                <!--<span class="nav-icon"><i class="fa fa-plus-square"></i></span>-->
                                 <span class="nav-text">{{'CREATE_APPLICATION' | translate}}</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li ui-sref-active="active">
-                    <a href="#/installed" ui-sref="users.installed"><span class="nav-text">{{'INSTALLED' | translate}}</span></a>
+                    <a href="#/installed" ui-sref="users.installed">
+                        <span class="nav-icon"><i class="material-icons">&#xe7fd;</i></span>
+                        <span class="nav-text">{{'INSTALLED' | translate}}</span>
+                    </a>
                 </li>
                 <li>
-                    <a><span class="nav-text">{{'NOTIFICATIONS' | translate}}</span></a>
+                    <a>
+                        <span class="nav-caret text-muted"><i class="fa fa-caret-down"></i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe158;</i></span>
+                        <span class="nav-text">{{'NOTIFICATIONS' | translate}}</span>
+                    </a>
                     <ul class="nav-sub">
                         <li ui-sref-active="active">
-                            <a ng-click="startNotificationWizard()">{{'ADD_NOTIFICATION' | translate}}</a>
+                            <a ng-click="startNotificationWizard()">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'ADD_NOTIFICATION' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_ALL' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_SENT' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_SENT' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_SENDING' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_SENDING' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_PROGRAMMED' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_PROGRAMMED' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_DRAFT' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_DRAFT' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_REMOVED' | translate}}</a>
+                            <a href="#/notification" ui-sref="users.notification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_REMOVED' | translate}}</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
             </ul>
-        </nav>
-    </div>
-    <div flex-no-shrink class="b-t">
-        <div class="row">
-            <div class="col-xs-7 text-center">
-                <a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>
-            </div>
-            <div class="col-xs-5">
-                <a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
-            </div>
-        </div>
-    </div>
+</div>
+
+<div flex-no-shrink  class="ng-scope">
+    <nav ui-nav>
+      <ul class="nav">
+        <li><div class="b-b b m-v-sm"></div></li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+              <i class="material-icons">&#xe565;</i>
+            </span>
+            <span class="nav-text">{{'HELP' | translate}}</span>
+          </a>
+        </li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+              <i class="material-icons">&#xe8fd;</i>
+            </span>
+            <span class="nav-text">
+              {{'SUPPORT' | translate}}
+            </span>
+          </a>
+        </li>
+        <li><div class="b-b b m-t-sm"></div></li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+             <i class="material-icons">&#xe8ac;</i>
+            </span>
+            <span class="nav-text">{{'SIGNOUT' | translate}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+        <!--<div class="row">-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>-->
+            <!--</div>-->
+        <!--</div>-->
+</div>
 </div>
