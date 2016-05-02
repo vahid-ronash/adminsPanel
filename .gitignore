@@ -10,5 +10,6 @@
 .vagrant
 /assets/fonts/fontawesome*
 /assets/fonts/FontAwesome*
+/assets/fonts/MaterialIcons
 /app/environment.js
 /public

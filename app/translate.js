@@ -274,7 +274,8 @@ angular
         'ACTIVE_USER_COUNT':'تعداد کاربران فعال در پوشه',
         'DOWNLOAD_MANIFEST':'دانلود مانیفست',
         'REMOVE':'حذف',
-        
+        'DASHBOARD_GALLERY':'گالری داشبورد',
+        'SLIDE':'صفحه',
     });
 
     $translateProvider.preferredLanguage('fa');
