@@ -45,7 +45,8 @@
     "raven-js": "^2.3.0",
     "angular-no-captcha": "^0.6.0",
     "SpinKit": "spinkit#^1.2.5",
-    "angular-detect-caps-lock": "^0.0.1"
+    "angular-detect-caps-lock": "^0.0.1",
+    "FileSaver": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.3",

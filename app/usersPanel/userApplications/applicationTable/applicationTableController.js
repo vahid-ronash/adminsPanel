@@ -15,6 +15,58 @@
         .controller('applicationTableController', ['$scope', 'applicationResource', function ($scope, $applicationResource) {
             var thisController = this;
 
+            thisController.manifest={};
+            thisController.loadManifests=function() {
+                function loadManifest(fileName,keyName){
+                    var androidManifestLoader = new XMLHttpRequest();
+                    androidManifestLoader.open('GET', '/assets/pushe-manifests/'+fileName+'.xml');
+                    androidManifestLoader.onreadystatechange = function () { thisController.manifest[keyName]=androidManifestLoader.responseText; };
+                    androidManifestLoader.send();
+                }
+                loadManifest('android_studio_manifest','androidStudio');
+                loadManifest('eclipse_manifest','eclipse');
+                loadManifest('b4a_manifest','basic4android');
+                loadManifest('unity_manifest','unity');
+            };
+            thisController.loadManifests();
+
+            thisController.showManifestDialog=function(row){
+                thisController.selectedRow=row;
+                $('#manifestDialog').modal({
+                    // backdrop: 'static',
+                    // keyboard: false
+                });
+                if(!row.senderID) {
+                    $applicationResource.getSenderID(row.application_id, function (newrow) {
+                        row.senderID = JSON.parse(newrow.data.credentials).node;
+                    });
+                }
+            };
+
+            thisController.providers=[
+                {name:"android studio",value:"androidStudio"},
+                {name:"eclipse",value:"eclipse"},
+                {name:"basic 4 android",value:"basic4android"},
+                {name:"unity",value:"unity"},
+                {name:"joapp",value:"joapp"},
+            ];
+            /**
+             * @ngdoc method
+             * @name downloadManifest
+             * @methodOf app.controller.applicationTableController
+             * @description
+             * get confirm and remove selected application
+             * @param {object}  row     selected application
+             * @param {function} callback   callback when remove done
+             */
+            thisController.downloadManifest = function () {
+                var provider=thisController.selectedProvider;
+                var manifest_copy=thisController.manifest[provider].slice(0);
+                manifest_copy=manifest_copy.replace(/SENDER_ID/g,thisController.selectedRow.senderID);
+                var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
+                saveAs(blob, "manifest_"+provider+".xml");
+                $('#manifestDialog').modal('hide');
+            };
             //send a request to get application list
             thisController.isLoading = true;
 

@@ -273,7 +273,8 @@ angular
         'CREATION_TIME':'زمان ایجاد',
         'ACTIVE_USER_COUNT':'تعداد کاربران فعال در پوشه',
         'DOWNLOAD_MANIFEST':'دانلود مانیفست',
-        'REMOVE':'حذف'
+        'REMOVE':'حذف',
+        
     });
 
     $translateProvider.preferredLanguage('fa');

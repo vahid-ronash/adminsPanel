@@ -1,4 +1,27 @@
 <div>
+    <div class="modal fade bd-example-modal-lg" id="manifestDialog" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{'DOWNLOAD_MANIFEST' | translate}}</h4>
+                </div>
+                <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                    <div ng-repeat="provider in appsTableCtrl.providers" class="radio">
+                        <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
+                            <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
+                            {{provider.name}}
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" ng-click="appsTableCtrl.downloadManifest()" ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >{{'DOWNLOAD_MANIFEST'|translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="box">
         <table st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped">
             <thead>
@@ -32,7 +55,7 @@
                     </div>
                 </td>
                 <td>
-                    <button type="button" ng-click="appsTableCtrl.downloadManifest(row)" class="btn btn-sm white">
+                    <button type="button" ng-click="appsTableCtrl.showManifestDialog(row)" class="btn btn-sm white">
                         <i class="fa fa-download"></i>
                     </button>
                 </td>

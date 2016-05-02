@@ -60,7 +60,10 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/raven-js/dist/plugins/angular.js",
 
             "assets/libs/angular-no-captcha/src/angular-no-captcha.js",
-            "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js"
+            "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js",
+
+            "assets/libs/blob/Blob.js",
+            "assets/libs/FileSaver/FileSaver.js"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())
