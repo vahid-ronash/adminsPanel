@@ -48,7 +48,7 @@
                 {name:"eclipse",value:"eclipse"},
                 {name:"basic 4 android",value:"basic4android"},
                 {name:"unity",value:"unity"},
-                {name:"joapp",value:"joapp"},
+                {name:"joapp",value:"joapp"}
             ];
             /**
              * @ngdoc method
@@ -60,7 +60,7 @@
             thisController.downloadManifest = function () {
                 var provider=thisController.selectedProvider;
                 var manifest_copy=thisController.manifest[provider].slice(0);
-                manifest_copy=manifest_copy.replace(/SENDER_ID/g,thisController.selectedRow.senderID);
+                manifest_copy=manifest_copy.replace(/TOKEN/g,thisController.selectedRow.senderID);
                 manifest_copy=manifest_copy.replace(/PACKAGE_NAME/g,thisController.selectedRow.application_id);
                 var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "manifest_"+provider+".xml");
@@ -77,13 +77,16 @@
              * request to load page it will called by smart table
              * @param {object}      tableState      it served by smart table
              */
+            thisController.rowInPage=6;
+            thisController.displayedPage=1;
             thisController.callServer=function(tableState){
+                tableState.pagination.numberOfPages = 1;
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;
 
                 var filters={
-                    offset:pagination.start || 0,
-                    limit:pagination.number || 10
+                    offset:pagination.start*thisController.rowInPage || 0,
+                    limit:pagination.number || thisController.rowInPage
                 };
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
@@ -94,7 +97,11 @@
                 return $applicationResource.query(filters).then(function (result) {
                     if(result) {
                         thisController.displayed = result.data.results;
-                        tableState.pagination.numberOfPages = 5;//TODO: set page number
+
+                        if(result.data.previous)thisController.hasPrevious=true;
+                        if(result.data.next)thisController.hasNext=true;
+                        if(thisController.hasNext)tableState.pagination.numberOfPages=pagination.start+1;
+                        
                         thisController.isLoading = false;
                     }
                 });

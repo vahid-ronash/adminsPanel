@@ -39,8 +39,8 @@
                 filters=angular.extend(filters,tableState.search.predicateObject);
 
                 return $notificationResource.query(filters).then(function (result) {
-                    if(!result)return;
-                    thisController.displayed = result;
+                    if(!result.data.results)return;
+                    thisController.displayed = result.data.results;
                     for(var i=0;i<thisController.displayed.length;i++){
                         var di=thisController.displayed[i];
                         var sum=di.clicked_count+di.dismissed_count;

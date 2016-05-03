@@ -31,7 +31,7 @@
                     return $http.get(url,{
                         params:filters
                     }).then(function (result) {
-                        return result.data.results;
+                        return result;
                     },$rootScope.handleError);
                 };
 

@@ -21,9 +21,36 @@
                 {id:3,active_users:51,creation_datetime:'1/5/1347',provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
                 {id:4,active_users:91,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
                 {id:5,active_users:101,creation_datetime:'1/5/1347',provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
-            ];appList=[];
-            $httpBackend.whenGET(/api\/platform\/applications\/.*\/$/).respond({credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',results:appList});
-            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
+            ];
+            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond(function(method, url, keys,headers,param){
+                var searchFilters=JSON.parse(JSON.stringify(param));
+                searchFilters.ordering && delete searchFilters.ordering;
+                searchFilters.offset && delete searchFilters.offset;
+                searchFilters.limit && delete searchFilters.limit;
+                var filtered = param ? $filter('filter')(appList, searchFilters) : appList;
+
+                if (param.ordering) {
+                    var order = param.ordering;
+                    var isReverse = (order[0] === "-");
+                    if (isReverse) order = order.substr(1);
+                    filtered = $filter('orderBy')(filtered, order, isReverse);
+                }
+                var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
+
+                var resultobj={
+                    results: result,
+                    numberOfPages: Math.ceil(filtered.length / param.limit)
+                };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
+                return [200, resultobj, {}];
+            });
+            $httpBackend.whenGET(/api\/platform\/applications\/.*\/$/).respond(
+                {
+                    credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',
+                    results:appList
+                }
+            );
             $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
@@ -126,6 +153,8 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
             });
 
@@ -195,6 +224,8 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
             });
             $httpBackend.whenPOST(URLS.URL_NOTIF).respond(function(method, url, keys,headers,param){

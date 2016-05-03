@@ -149,7 +149,7 @@
             };
 
             $templateCache.put('template/smart-table/pagination.html',
-                '<nav ng-if="numPages && pages.length >= 2"><ul class="pagination">' +
+                '<nav ng-if="numPages && pages.length >= 1"><ul class="pagination">' +
                 '<li ng-class=""><a ng-click="selectPage(currentPage-1)"><i class="fa fa-fw fa-angle-double-right"></i></a></li>' +
                 '<li ng-class=""><a ng-click="">{{currentPage}}</a></li>' +
                 // '<li ng-repeat="page in currentPage" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a></li>' +
