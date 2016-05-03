@@ -22,13 +22,15 @@
              * request to load page it will called by smart table
              * @param {object} tableState   served by smart table
              */
+            thisController.itemByPage=6;
+            thisController.displayedPages=2;
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;
 
                 var filters={
                     offset:pagination.start || 0,
-                    limit:pagination.number || 10
+                    limit:pagination.number || thisController.itemByPage
                 };
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
@@ -45,7 +47,11 @@
                         if(!sum){di.clicked_count=di.dismissed_count=1;sum=2}
                         di.clickedPrecent=Math.floor(100*di.clicked_count/sum);
                     }
-                    tableState.pagination.numberOfPages = 5;//TODO:result.numberOfPages;//set the number of pages so the pagination can update
+                    
+                    if(result.data.previous)thisController.hasPrevious=true;
+                    if(result.data.next)thisController.hasNext=true;
+                    if(thisController.hasNext)tableState.pagination.numberOfPages=pagination.start+1;
+                    
                     thisController.isLoading = false;
                 });
             };
