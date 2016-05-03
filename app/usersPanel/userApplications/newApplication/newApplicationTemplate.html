@@ -1,6 +1,6 @@
 <div class="modal fade bd-example-modal-lg" id="applicationWizardDialog" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -10,31 +10,26 @@
             </div>
             <div class="modal-body" style="max-height: 500px;overflow:auto;">
                 <form name="newAppForm" ng-submit="newAppCtrl.send()">
-
                     <!--application id-->
                     <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input name="email"
+                        <input name="applicationId"
                                type="text"
                                class="mdl-textfield__input text-left"
                                ng-model="newAppCtrl.data.application_id"
-                               focus-me="focusEmail" ng-init="focusEmail=true"
+                               focus-me="focusNewAPP" ng-init="focusNewAPP=true"
+                               pattern="/^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]$/i"
                                id="app_id_EL">
-
                         <label class="mdl-textfield__label" for="app_id_EL">{{'PACKNAME' | translate}}</label>
+                        <span class="mdl-textfield__error">{{'NOT_VALID_PACKAGE_NAME'|translate}}</span>
                     </div>
                     <!--application id END-->
 
                     <!--provider list-->
                     <div class="md-form-group">
-                        <label class="mdl-textfield__label" for="provider_EL">{{'PROVIDER' | translate}}</label>
-                        <ui-select class="rtl" id="provider_EL" ng-model="newAppCtrl.providerObject">
-                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                                <span ng-bind="newAppCtrl.providerObject.name"></span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="item in (newAppCtrl.providerList | filter: $select.search)">
-                                <span ng-bind="item.name"></span>
-                            </ui-select-choices>
-                        </ui-select>
+                        <label class="" for="provider_EL">{{'PROVIDER' | translate}}</label>
+                        <select id="provider_EL" class="form-control">
+                            <option ng-repeat="item in newAppCtrl.providerList" value="{{item.value}}">{{item.name}}</option>
+                        </select>
                     </div>
                     <!--provider list END-->
 

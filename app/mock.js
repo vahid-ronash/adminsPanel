@@ -22,7 +22,7 @@
                 {id:4,active_users:91,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
                 {id:5,active_users:101,creation_datetime:'1/5/1347',provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/applications\/\?.*/).respond(function(method, url, keys,headers,param){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
@@ -45,7 +45,7 @@
                 if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
             });
-            $httpBackend.whenGET(/api\/platform\/applications\/.*\/$/).respond(
+            $httpBackend.whenGET(/api\/v1\/applications\/.*\/$/).respond(
                 {
                     credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',
                     results:appList
@@ -134,7 +134,7 @@
             for (var i = 0; i < 1000; i++) {
                 randomsItems.push(createRandomItem(i));
             }
-            $httpBackend.whenGET(/api\/platform\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
@@ -201,7 +201,7 @@
                 randomsNotifItems.push(createRandomNotif());
             }
             // $httpBackend.whenGET(getRegex(URLS.URL_NOTIF,"\\?.*")).respond(function(method, url, keys,headers,param){
-            $httpBackend.whenGET(/api\/notification\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
                 // var filters=angular.fromJson(keys);
 
                 //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response

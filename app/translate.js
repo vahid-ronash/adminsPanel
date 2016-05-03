@@ -213,7 +213,7 @@ angular
         'LOGO_PATH':'assets/images/logo.png',
         'URI_INCORRECT':'uri is not correct',
         'REQUIRED':'this field has to fill',
-        'PROVIDER':'پروایدر',
+        'PROVIDER':'اپلیکیشن ساز',
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
         'UPLOAD':'آپلود',
         'FORGOT_DONE':'رمز عبور با موفقیت تغییر یافت.',
@@ -280,6 +280,7 @@ angular
         'NO':'خیر',
         'YOU_SURE_TITLE':'حذف',
         'ARE_YOU_SURE_TEXT':'آیا مطمین هستید؟',
+        'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.'
     });
 
     $translateProvider.preferredLanguage('fa');
