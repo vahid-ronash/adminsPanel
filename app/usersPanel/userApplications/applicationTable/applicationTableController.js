@@ -100,7 +100,7 @@
 
                         if(result.data.previous)thisController.hasPrevious=true;
                         if(result.data.next)thisController.hasNext=true;
-                        if(thisController.hasNext)tableState.pagination.numberOfPages=pagination.start+1;
+                        if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
                         
                         thisController.isLoading = false;
                     }
