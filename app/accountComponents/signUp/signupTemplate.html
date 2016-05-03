@@ -1,4 +1,4 @@
-<div class="dark bg-auto w-full">
+<div class="bg-auto w-full">
     <!--class="fade-in-right-big smooth pos-rlt" has problem with modal-->
     <div class="fade-in-right-big smooth pos-rlt">
 
@@ -54,12 +54,18 @@
                     <!--RE PASSWORD END-->
 
                     <!--AGREEMENT-->
-                    <div class="m-b-md">
+                    <div class="m-b-md text-sm">
                         <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                             <input required type="checkbox" ng-model="signupCtrl.agreement" id="checkbox-1"
                                    class="mdl-checkbox__input" checked>
-                            <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">{{'TERMS'| translate}}</a>
-                            <span class="mdl-checkbox__label">{{'AGREE' | translate}}</span>
+                            <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">
+                                {{'TERMS'| translate}}
+                            </a>
+                            <span class="mdl-checkbox__label text-sm">{{'AND' | translate}}</span>
+                            <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">
+                                {{'PRIVACY'| translate}}
+                            </a>
+                            <span class="mdl-checkbox__label text-sm">{{'AGREE' | translate}}</span>
                         </label>
                     </div>
 
@@ -114,8 +120,8 @@
                     <a ui-sref="signin" href="account/signin"  class="btn primary btn-block">{{'SIGNIN' | translate}}</a>
                 </div>
             </div>
-            <div class="p-v-lg text-center">
-                <div>{{'HAVE_ACCOUNT' | translate}}
+            <div class="p-a-md box-color-transparent r box-shadow-z1 text-color m-a p-v-lg text-center">
+                <div class="text-sm">{{'HAVE_ACCOUNT' | translate}}
                     <a ui-sref="signin" href="#/account/signin" class="text-primary _600">{{'SIGNIN' | translate}}</a>
                 </div>
             </div>

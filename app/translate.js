@@ -242,6 +242,7 @@ angular
         'USER_INFO':'اطلاعات کاربری',
         'PERSONAL_INFO':'اطلاعات شخصی',
         'NO_PERSONAL_DATA':'هنوز اطلاعاتی ثبت نکرده اید.',
+        'COPYRIGHT':'تمامی حقوق برای سایت پوشه محفوظ است.',
 
         'FAMILY':'نام خانوادگی',
         'NATIONALCODE':'کد ملی',
@@ -280,7 +281,9 @@ angular
         'NO':'خیر',
         'YOU_SURE_TITLE':'حذف',
         'ARE_YOU_SURE_TEXT':'آیا مطمین هستید؟',
-        'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.'
+        'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.',
+        'PRIVACY' : 'حریم خصوصی',
+        'AND' : 'و',
     });
 
     $translateProvider.preferredLanguage('fa');

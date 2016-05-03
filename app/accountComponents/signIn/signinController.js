@@ -60,6 +60,7 @@
             thisController.loginAsDemo=function(){
                 thisController.data.email="demo@pushe.co";
                 thisController.data.password="demo";
+                thisController.isAsDemo=true;
                 // return thisController.login();
             };
         }]);
