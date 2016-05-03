@@ -26,6 +26,10 @@
                     backdrop: 'static',
                     keyboard: false
                 });
+                thisController.data={
+                    application_id:"",
+                    provider:thisController.providerList[0].value
+                };
             };
 
             thisController.providerList=[
@@ -37,13 +41,7 @@
             for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
             thisController.providerObject=null;
 
-            thisController.data={
-                application_id:""
-            };
             thisController.send=function(){
-                if(thisController.providerObject.name)
-                    thisController.data.provider=thisController.providerObject.value;
-
                 $applicationResource.save(thisController.data, function (createdApplication) {
                     thisController.appCreated=true;
                 });

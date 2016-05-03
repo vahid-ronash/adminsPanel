@@ -1,66 +1,53 @@
-<div class="modal fade bd-example-modal-lg" id="applicationWizardDialog" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <small class="modal-title" id="myModalLabel">{{'NEW_APP_TITLE' | translate}}</small>
+<simple-modal mclass="modal-sm" mid="applicationWizardDialog" mtitle="{{'NEW_APP_TITLE' | translate}}">
+    <form ng-hide="newAppCtrl.appCreated" name="newAppForm" ng-submit="newAppCtrl.send()">
+        <!--application id-->
+        <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input name="applicationId"
+                   type="text"
+                   class="mdl-textfield__input text-left"
+                   ng-model="newAppCtrl.data.application_id"
+                   focus-me="focusNewAPP" ng-init="focusNewAPP=true"
+                   pattern='^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]'
+                   id="app_id_EL">
+            <label class="mdl-textfield__label" for="app_id_EL">{{'PACKNAME' | translate}}</label>
+            <span ng-show="newAppForm.applicationId.$error.pattern" class="mdl-textfield__error">{{'NOT_VALID_PACKAGE_NAME'|translate}}</span>
+        </div>
+        <!--application id END-->
+
+        <!--provider list-->
+        <div class="md-form-group">
+            <label class="" for="provider_EL">{{'PROVIDER' | translate}}</label>
+            <select ng-model="newAppCtrl.data.provider" id="provider_EL" class="form-control">
+                <option ng-repeat="item in newAppCtrl.providerList" value="{{item.value}}">{{item.name}}</option>
+            </select>
+        </div>
+        <!--provider list END-->
+
+
+        <!--SUBMIT-->
+        <div ng-if="!newAppCtrl.isSending">
+            <button type="submit"
+                    ng-disabled="newAppForm.$invalid || !newAppCtrl.data.application_id"
+                    class="btn primary btn-block p-x-md">
+                <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
+                {{'NEW_APP_TITLE' | translate}}
+            </button>
+        </div>
+        <button class="btn disabled btn-block p-x-md" ng-if="newAppCtrl.isSending">
+            <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                     style="color:green;margin:0 1px 0 0;"></div>
             </div>
-            <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                <form ng-hide="newAppCtrl.appCreated" name="newAppForm" ng-submit="newAppCtrl.send()">
-                    <!--application id-->
-                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input name="applicationId"
-                               type="text"
-                               class="mdl-textfield__input text-left"
-                               ng-model="newAppCtrl.data.application_id"
-                               focus-me="focusNewAPP" ng-init="focusNewAPP=true"
-                               pattern='^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]'
-                               id="app_id_EL">
-                        <label class="mdl-textfield__label" for="app_id_EL">{{'PACKNAME' | translate}}</label>
-                        <span ng-show="newAppForm.applicationId.$error.pattern" class="mdl-textfield__error">{{'NOT_VALID_PACKAGE_NAME'|translate}}</span>
-                    </div>
-                    <!--application id END-->
+        </button>
+        <!--SUBMIT END-->
 
-                    <!--provider list-->
-                    <div class="md-form-group">
-                        <label class="" for="provider_EL">{{'PROVIDER' | translate}}</label>
-                        <select id="provider_EL" class="form-control">
-                            <option ng-repeat="item in newAppCtrl.providerList" value="{{item.value}}">{{item.name}}</option>
-                        </select>
-                    </div>
-                    <!--provider list END-->
-
-
-                    <!--SUBMIT-->
-                    <div ng-if="!newAppCtrl.isSending">
-                        <button type="submit"
-                                ng-disabled="form.$invalid || newAppCtrl.isSending"
-                                class="btn primary btn-block p-x-md">
-                            <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
-                            {{'NEW_APP_TITLE' | translate}}
-                        </button>
-                    </div>
-                    <button class="btn disabled btn-block p-x-md" ng-if="newAppCtrl.isSending">
-                        <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
-                            <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
-                                 style="color:green;margin:0 1px 0 0;"></div>
-                        </div>
-                    </button>
-                    <!--SUBMIT END-->
-
-                </form>
-                <div ng-show="newAppCtrl.appCreated">
-                    <h6 class="text-center text-success">{{'APP_CREATED_SUCCESSFULLY' | translate}}</h6>
-                    <p class="text-center">{{'TO_LEARN_APP_INSTALL' | translate}}</p>
-                    <div class="text-center">
-                        <a class="btn btn-primary text-center">{{'LEARN_INSTALL' | translate}}</a>
-                    </div>
-                </div>
-            </div>
+    </form>
+    <div ng-show="newAppCtrl.appCreated">
+        <h6 class="text-center text-success">{{'APP_CREATED_SUCCESSFULLY' | translate}}</h6>
+        <p class="text-center">{{'TO_LEARN_APP_INSTALL' | translate}}</p>
+        <div class="text-center">
+            <a class="btn btn-primary text-center">{{'LEARN_INSTALL' | translate}}</a>
         </div>
     </div>
-</div>
+</simple-modal>
 
