@@ -278,7 +278,8 @@ angular
         'DASHBOARD_GALLERY':'گالری داشبورد',
         'SLIDE':'صفحه',
         'PRIVACY' : 'حریم خصوصی',
-        'AND' : 'و'
+        'AND' : 'و',
+        'PHONE_NUMBER':'021-44668276'
     });
 
     $translateProvider.preferredLanguage('fa');
