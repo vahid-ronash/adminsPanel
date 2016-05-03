@@ -5,9 +5,9 @@
 -->
 AddManifestText(
 	<permission
-		android:name="co.ronash.pushesampleeclipse.permission.C2D_MESSAGE"
+		android:name="PACKAGE_NAME.permission.C2D_MESSAGE"
 		android:protectionLevel="signature" />
-	<uses-permission android:name="co.ronash.pushesampleeclipse.permission.C2D_MESSAGE" />
+	<uses-permission android:name="PACKAGE_NAME.permission.C2D_MESSAGE" />
 
 	<!-- Optional permissions -->
 	
@@ -23,7 +23,7 @@ AddApplicationText(
 			<action android:name="android.intent.action.PACKAGE_REPLACED" />
 
 			<data
-				android:path="co.ronash.pushesampleeclipse"
+				android:path="PACKAGE_NAME"
 				android:scheme="package" />
 		</intent-filter>
 	</receiver>
@@ -36,7 +36,7 @@ AddApplicationText(
 
 			<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-			<category android:name="co.ronash.pushesampleeclipse" />
+			<category android:name="PACKAGE_NAME" />
 		</intent-filter>
 	</receiver>
 	<service
@@ -86,5 +86,5 @@ AddApplicationText(
 		android:theme="@style/PusheTransparent">
 	</activity>
 	<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
-	<meta-data android:name="co.ronash.pushe.token" android:value="73-eb39-4e_950593322797"/>
+	<meta-data android:name="co.ronash.pushe.token" android:value="TOKEN"/>
 )
