@@ -9,7 +9,7 @@
                 <small class="modal-title" id="myModalLabel">{{'NEW_APP_TITLE' | translate}}</small>
             </div>
             <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                <form name="newAppForm" ng-submit="newAppCtrl.send()">
+                <form ng-hide="newAppCtrl.appCreated" name="newAppForm" ng-submit="newAppCtrl.send()">
                     <!--application id-->
                     <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input name="applicationId"
@@ -17,10 +17,10 @@
                                class="mdl-textfield__input text-left"
                                ng-model="newAppCtrl.data.application_id"
                                focus-me="focusNewAPP" ng-init="focusNewAPP=true"
-                               pattern="/^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]$/i"
+                               pattern='^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]'
                                id="app_id_EL">
                         <label class="mdl-textfield__label" for="app_id_EL">{{'PACKNAME' | translate}}</label>
-                        <span class="mdl-textfield__error">{{'NOT_VALID_PACKAGE_NAME'|translate}}</span>
+                        <span ng-show="newAppForm.applicationId.$error.pattern" class="mdl-textfield__error">{{'NOT_VALID_PACKAGE_NAME'|translate}}</span>
                     </div>
                     <!--application id END-->
 
@@ -52,6 +52,13 @@
                     <!--SUBMIT END-->
 
                 </form>
+                <div ng-show="newAppCtrl.appCreated">
+                    <h6 class="text-center text-success">{{'APP_CREATED_SUCCESSFULLY' | translate}}</h6>
+                    <p class="text-center">{{'TO_LEARN_APP_INSTALL' | translate}}</p>
+                    <div class="text-center">
+                        <a class="btn btn-primary text-center">{{'LEARN_INSTALL' | translate}}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

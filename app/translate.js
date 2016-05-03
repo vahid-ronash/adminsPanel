@@ -284,6 +284,10 @@ angular
         'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.',
         'PRIVACY' : 'حریم خصوصی',
         'AND' : 'و',
+        'DONT_HAVE_PROVIDER':'از اپلیکیشن ساز استفاده نکرده ام',
+        'TO_LEARN_APP_INSTALL':'جهت آموزش نحوه نصب پوشه در اپلیکیشن روی گزینه آموزش نصب کلیک کنید.',
+        'APP_CREATED_SUCCESSFULLY':'اپلیکیشن شما با موفقیت ایجاد شد',
+        'LEARN_INSTALL':'آموزش نصب',
     });
 
     $translateProvider.preferredLanguage('fa');

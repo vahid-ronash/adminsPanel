@@ -34,13 +34,15 @@
              * request to load page it will called by smart table
              * @param {object}  tableState     (it served by smart table and contain navigation data)
              */
+            thisController.itemByPage=6;
+            thisController.displayedPages=2;
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;
 
                 var filters={
                     offset:pagination.start || 0,
-                    limit:pagination.number || 10
+                    limit:pagination.number || thisController.itemByPage
                 };
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;

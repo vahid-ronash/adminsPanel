@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('newApplicationController', ['$scope','applicationResource', function ($scope,$applicationResource) {
+        .controller('newApplicationController', ['$scope','applicationResource','$filter', function ($scope,$applicationResource,$filter) {
             var thisController=this;
             thisController.currentStep=0;
 
@@ -21,6 +21,7 @@
                 canSendNotification:false
             };
             $scope.control.start=function(){
+                thisController.appCreated=false;
                 $('#applicationWizardDialog').modal({
                     backdrop: 'static',
                     keyboard: false
@@ -28,7 +29,7 @@
             };
 
             thisController.providerList=[
-                {name:"none",value:"none"},
+                {name:$filter('translate')('DONT_HAVE_PROVIDER'),value:"none"},
                 {name:"JOAPP",value:"JOAPP"},
                 {name:"puzzely",value:"puzzely"}
             ];
@@ -44,9 +45,9 @@
                     thisController.data.provider=thisController.providerObject.value;
 
                 $applicationResource.save(thisController.data, function (createdApplication) {
-
+                    thisController.appCreated=true;
                 });
-                $('#applicationWizardDialog').modal('hide');
+                // $('#applicationWizardDialog').modal('hide');
             };
         }]);
 })());

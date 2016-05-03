@@ -10,13 +10,13 @@
                     <h4 class="modal-title">{{'DOWNLOAD_MANIFEST' | translate}}</h4>
                 </div>
                 <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                    <div ng-repeat="provider in appsTableCtrl.providers" class="radio">
+                    <div ng-repeat="provider in appsTableCtrl.providers" class="radio ltr">
                         <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
                             <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
                             {{provider.name}}
                         </label>
                     </div>
-                    <button class="btn btn-primary pull-right" ng-click="appsTableCtrl.downloadManifest()" ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >{{'DOWNLOAD_MANIFEST'|translate}}</button>
+                    <button class="btn btn-primary" ng-click="appsTableCtrl.downloadManifest()" ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >{{'DOWNLOAD_MANIFEST'|translate}}</button>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <tfoot>
             <tr>
                 <td colspan="7" class="text-center">
-                    <div st-pagination="" st-items-by-page="appsTableCtrl.rowInPage" st-displayed-pages="{{appsTableCtrl.displayedPage}}" class="m-a-0 ng-isolate-scope">
+                    <div st-pagination="" st-items-by-page="appsTableCtrl.rowInPage" st-displayed-pages="appsTableCtrl.displayedPage" class="m-a-0 ng-isolate-scope">
                     </div>
                 </td>
             </tr>
