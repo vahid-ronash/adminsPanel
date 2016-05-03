@@ -277,6 +277,8 @@ angular
         'REMOVE':'حذف',
         'DASHBOARD_GALLERY':'گالری داشبورد',
         'SLIDE':'صفحه',
+        'PRIVACY' : 'حریم خصوصی',
+        'AND' : 'و'
     });
 
     $translateProvider.preferredLanguage('fa');

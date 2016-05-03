@@ -1,4 +1,10 @@
 body{
-  background-image: url("http://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-62.jpg") !important;
-  background-size: cover !important;
+  background-image: url("http://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-62.jpg") ;
+  background-size: cover ;
+}
+
+.box-color-transparent{
+	background-color: rgba(250, 255, 255, 0.5);
+	position: relative;
+	margin-bottom: 1.5rem;
 }
