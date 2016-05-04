@@ -127,10 +127,10 @@
             };
 
             thisController.sendRemoveApplication = function () {
-                $applicationResource.delete({id:thisController.selected4Remove.id}, function () {
+                $applicationResource.delete(thisController.selected4Remove.application_id, function () {
                     var index = thisController.displayed.indexOf(thisController.selected4Remove);
                     thisController.displayed.splice(index, 1);
-                    callback && callback();
+                    // callback && callback();
                     //alert('application ' + row.name + ' deleted');
                 });
             };
