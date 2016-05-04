@@ -31,6 +31,7 @@
                 tableState.pagination.start = tableState.pagination.start || 0;
                 
                 thisController.isLoading = true;
+                thisController.searchNotFound=false;
                 var pagination = tableState.pagination;
 
                 var filters={
@@ -45,7 +46,9 @@
 
                 return $notificationResource.query(filters).then(function (result) {
                     if(!result.data.results)return;
+
                     thisController.displayed = result.data.results;
+                    if(tableState.search.predicateObject && !thisController.displayed.length){thisController.searchNotFound=true;}
                     for(var i in thisController.displayed){
                         var d=new Date(thisController.displayed[i].send_time);
                         thisController.displayed[i].send_time=moment(d).format('jYYYY/jM/jD');
