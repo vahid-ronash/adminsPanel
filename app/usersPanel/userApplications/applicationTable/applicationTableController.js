@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('applicationTableController', ['$scope', 'applicationResource', function ($scope, $applicationResource) {
+        .controller('applicationTableController', ['$scope', 'applicationResource','$filter', function ($scope, $applicationResource,$filter) {
             var thisController = this;
 
             thisController.manifest={};
@@ -102,9 +102,14 @@
                 return $applicationResource.query(filters).then(function (result) {
                     if(result) {
                         thisController.displayed = result.data.results;
-                        for(var i in thisController.displayed){
-                            var d=new Date(thisController.displayed[i].creation_datetime);
-                            thisController.displayed[i].creation_datetime=moment(d).format('jYYYY/jM/jD');
+                        try{
+                            for(var i in thisController.displayed){
+                                var d=new Date(thisController.displayed[i].creation_datetime);
+                                thisController.displayed[i].creation_datetime=moment(d).format('jYYYY/jM/jD');
+                            }
+                        }
+                        catch(e){
+                            $scope.$root.handleError({localError:{type:'danger',text:"data may don't have date",title:'data error'}});
                         }
                         if(result.data.previous)thisController.hasPrevious=true;
                         if(result.data.next)thisController.hasNext=true;
@@ -135,6 +140,7 @@
                 $applicationResource.delete(thisController.selected4Remove.application_id, function () {
                     var index = thisController.displayed.indexOf(thisController.selected4Remove);
                     thisController.displayed.splice(index, 1);
+                    $scope.$root.handleError({localError:{type:'danger',text:$filter('translate')('SUCCESS_DELETE'),title:$filter('translate')('DELETE')}});
                     // callback && callback();
                     //alert('application ' + row.name + ' deleted');
                 });

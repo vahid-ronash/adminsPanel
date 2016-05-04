@@ -35,6 +35,9 @@
             };
             $rootScope.handleError=function(data){
                 //TODO:if user was exited from server and we save it on localstorage
+                if(data.localError){
+                    $scope.alertMSGS.push(data.localError)
+                }
                 if(data.status == 403 && data.data && data.data.Authentication=="required"){//&& data.data.detail===""
                     $AuthService.logout();
                 }

@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('newApplicationController', ['$scope','applicationResource','$filter', function ($scope,$applicationResource,$filter) {
+        .controller('newApplicationController', ['$scope','applicationResource','$filter','$state', function ($scope,$applicationResource,$filter,$state) {
             var thisController=this;
             thisController.currentStep=0;
 
@@ -40,10 +40,10 @@
             var providerHash={};
             for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
             thisController.providerObject=null;
-
             thisController.send=function(){
                 $applicationResource.save(thisController.data, function (createdApplication) {
                     thisController.appCreated=true;
+                    $state.transitionTo('users.apps');
                 });
                 // $('#applicationWizardDialog').modal('hide');
             };

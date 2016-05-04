@@ -288,6 +288,8 @@ angular
         'TO_LEARN_APP_INSTALL':'جهت آموزش نحوه نصب پوشه در اپلیکیشن روی گزینه آموزش نصب کلیک کنید.',
         'APP_CREATED_SUCCESSFULLY':'اپلیکیشن شما با موفقیت ایجاد شد',
         'LEARN_INSTALL':'آموزش نصب',
+        'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
+        'DELETE':'حذف',
     });
 
     $translateProvider.preferredLanguage('fa');
