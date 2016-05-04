@@ -7,11 +7,16 @@
 
 .ace_editor { height: 200px; }
 
-
-.publicError{
+.publicErrors{
   z-index: 10000;
   position: absolute;
-  min-width: 50%;
+  top:10px;
+  width:100%;
+
+}
+.publicError{
+  margin: 2px auto;
+  width:50%;
 }
 
 .errorShow{

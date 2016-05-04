@@ -166,6 +166,7 @@
                 if(!searchFilters.offset)resultobj.previous="we have previous";
                 if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
+                // return [504, "<html><body>its an error i mocked to show here</body></html>"];
             });
 
 

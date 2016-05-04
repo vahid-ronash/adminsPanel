@@ -61,10 +61,9 @@
                         if(data.data.indexOf('(404)')>-1){
                             $scope.alertMSGS.push({title: "not found (404)", text: 'request not implemented'});
                         }
-                        else if (data.data.indexOf("Time-out")) {
-
+                        else if(data.data.indexOf('<html')>-1){
+                            $scope.alertMSGS.push({type:'danger',title: "Error "+data.status, html: data.data})
                         }
-                        else $scope.alertMSGS.push({title: "Error", text: data.data});
                     }
                     else
                         $scope.alertMSGS.push({title: "wrong Error", text: JSON.stringify(data)});

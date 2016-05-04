@@ -34,20 +34,24 @@
              * request to load page it will called by smart table
              * @param {object}  tableState     (it served by smart table and contain navigation data)
              */
-            thisController.itemByPage=6;
+
+            thisController.rowInPage=6;
             thisController.displayedPages=2;
             thisController.callServer=function(tableState){
+                //test ERROR
+                // $scope.$root.handleError({status:504,data:"<html><body>its an error i mocked to show here</body></html>"});
+                // $scope.$root.handleError({status:504,data:"<html><body>its an error i mocked to show here</body></html>"});
                 thisController.isLoading = true;
 
                 //TO fix bug two times loading
                 tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
                 tableState.pagination.start = tableState.pagination.start || 0;
-                
+
                 var pagination = tableState.pagination;
 
                 var filters={
                     offset:pagination.start || 0,
-                    limit:pagination.number || thisController.itemByPage
+                    limit:pagination.number || thisController.rowInPage
                 };
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
