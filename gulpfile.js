@@ -62,7 +62,10 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js",
 
             "assets/libs/blob/Blob.js",
-            "assets/libs/FileSaver/FileSaver.js"
+            "assets/libs/FileSaver/FileSaver.js",
+
+            "assets/libs/moment/moment.js",
+            "assets/libs/moment-jalaali/build/moment-jalaali.js"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())

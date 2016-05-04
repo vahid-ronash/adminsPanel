@@ -52,7 +52,10 @@
 
                 return $installedResource.query(filters).then(function (result) {
                     thisController.displayed = result.data.results;
-
+                    for(var i in thisController.displayed){
+                        var d=new Date(thisController.displayed[i].creation_time);
+                        thisController.displayed[i].creation_time=moment(d).format('jYYYY/jM/jD');
+                    }
                     if(result.data.previous)thisController.hasPrevious=true;
                     if(result.data.next)thisController.hasNext=true;
                     if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
