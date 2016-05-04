@@ -80,6 +80,11 @@
             thisController.rowInPage=6;
             thisController.displayedPage=1;
             thisController.callServer=function(tableState){
+
+                //TO fix bug two times loading
+                tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
+                tableState.pagination.start = tableState.pagination.start || 0;
+
                 tableState.pagination.numberOfPages = 1;
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;

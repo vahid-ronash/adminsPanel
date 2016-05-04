@@ -38,6 +38,11 @@
             thisController.displayedPages=2;
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
+
+                //TO fix bug two times loading
+                tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
+                tableState.pagination.start = tableState.pagination.start || 0;
+                
                 var pagination = tableState.pagination;
 
                 var filters={
