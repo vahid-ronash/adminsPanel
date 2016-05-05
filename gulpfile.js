@@ -52,7 +52,6 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/ace-builds/src-min-noconflict/ace.js",
             "assets/libs/angular-ui-ace/ui-ace.js",
 
-            "assets/libs/ng-password-strength/dist/scripts/ng-password-strength.js",
             "assets/libs/material-design-lite/material.js",
             "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
 
@@ -63,7 +62,10 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js",
 
             "assets/libs/blob/Blob.js",
-            "assets/libs/FileSaver/FileSaver.js"
+            "assets/libs/FileSaver/FileSaver.js",
+
+            "assets/libs/moment/moment.js",
+            "assets/libs/moment-jalaali/build/moment-jalaali.js"
         ])
         .pipe(concat("req.js"))
         // .pipe(uglify())
@@ -78,14 +80,16 @@ gulp.task('compressJsFiles',function(){
 var cleanCSS = require('gulp-clean-css');
 var addsrc = require('gulp-add-src');
 gulp.task('makeCSS', function() {
+    gulp.src('assets/libs/material-design-lite/material.min.css').pipe(gulp.dest('assets/css'));
     gulp.src('assets/scss/app.scss')
         .pipe(sass({
             outputStyle: 'compressed',
             includePaths:['assets/libs/foundation/scss','bower_components']
-        }).on('error', sass.logError)).pipe(addsrc([
+        }).on('error', sass.logError))
+        .pipe(addsrc([
             "assets/libs/ui-select/dist/select.css",
             "assets/libs/ng-tags-input/ng-tags-input.css",
-            "assets/libs/animate.css/animate.css",
+            "assets/libs/animate.css/animate.css"
         ]))
         .pipe(concat('app.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
@@ -120,7 +124,13 @@ gulp.task('makeDevelopmentEnvironment', function () {
 gulp.task('makePublic', function () {
     gulp.src('index.html').pipe(gulp.dest('public/'));
     gulp.src('app/**/*.*').pipe(gulp.dest('public/app'));
-    gulp.src('assets/**/*.*').pipe(gulp.dest('public/assets'));
+
+    gulp.src('assets/css/*.*').pipe(gulp.dest('public/assets/css'));
+    gulp.src('assets/font/*.*').pipe(gulp.dest('public/assets/font'));
+    gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
+    gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
+    gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
+    gulp.src('assets/voices/*.*').pipe(gulp.dest('public/assets/voices'));
 });
 
 

@@ -26,7 +26,7 @@
                  */
                 thisService.query = function (filters) {
                     return $http.get(URLS.URL_INSTALLED,{params:filters}).then(function (result) {
-                        return result.data.results;
+                        return result;
                     });
                 };
 

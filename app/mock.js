@@ -15,15 +15,45 @@
             
             $rootScope.serverAddress="";
             var appList = [
-                {id:1,active_users:15,creation_datetime:'1/5/1347',provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:1,active_users:2,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:2,active_users:1321,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
-                {id:3,active_users:51,creation_datetime:'1/5/1347',provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
-                {id:4,active_users:91,creation_datetime:'1/5/1347',provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
-                {id:5,active_users:101,creation_datetime:'1/5/1347',provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
+                {id:1,active_users:15,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:1,active_users:2,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:2,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
+                {id:3,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
+                {id:4,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
+                {id:5,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(/api\/platform\/applications\/.*\/$/).respond({credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',results:appList});
-            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
+            for(var i in appList){
+                appList[i].creation_datetime=getRandomTime();
+            }
+            $httpBackend.whenGET(/api\/v1\/applications\/\?.*/).respond(function(method, url, keys,headers,param){
+                var searchFilters=JSON.parse(JSON.stringify(param));
+                searchFilters.ordering && delete searchFilters.ordering;
+                searchFilters.offset && delete searchFilters.offset;
+                searchFilters.limit && delete searchFilters.limit;
+                var filtered = param ? $filter('filter')(appList, searchFilters) : appList;
+
+                if (param.ordering) {
+                    var order = param.ordering;
+                    var isReverse = (order[0] === "-");
+                    if (isReverse) order = order.substr(1);
+                    filtered = $filter('orderBy')(filtered, order, isReverse);
+                }
+                var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
+
+                var resultobj={
+                    results: result,
+                    numberOfPages: Math.ceil(filtered.length / param.limit)
+                };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
+                return [200, resultobj, {}];
+            });
+            $httpBackend.whenGET(/api\/v1\/applications\/.*\/$/).respond(
+                {
+                    credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',
+                    results:appList
+                }
+            );
             $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
@@ -92,6 +122,13 @@
             $httpBackend.whenPOST(URLS.URL_UPLOAD_IMAGE).respond(function(method, url, data){
                 return [200, {success:true}, {}];
             });
+
+            function getRandomTime(){
+                var d=new Date();
+                d.setHours(Math.floor(Math.random() * -20000));
+                return d.toJSON();
+            }
+
             var randomsItems = [];
             function createRandomItem(id) {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
@@ -99,15 +136,15 @@
                     id: id,
                     application_id: apps[Math.floor(Math.random() * apps.length)],
                     instance_id: Math.floor(Math.random() * 10000000),
-                    creation_time: Math.floor(Math.random() * 10000),
-                    last_visit: Math.floor(Math.random() * 10000),
+                    creation_time: getRandomTime(),
+                    last_visit: new Date().setHours(Math.floor(Math.random() * 10000000)),
                     test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/'
                 };
             }
             for (var i = 0; i < 1000; i++) {
                 randomsItems.push(createRandomItem(i));
             }
-            $httpBackend.whenGET(/api\/platform\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
@@ -126,7 +163,10 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
+                // return [504, "<html><body>its an error i mocked to show here</body></html>"];
             });
 
 
@@ -151,7 +191,7 @@
                         content:randomNameBuilder(7),
                     },
                     application:apps[Math.floor(Math.random() * apps.length)],
-                    send_time:Math.floor(Math.random() * 10000000),
+                    send_time:getRandomTime(),
                     status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
                     sent_count:sent_count,
                     delivered_count:Math.floor(Math.random() * sent_count),
@@ -167,12 +207,12 @@
                     notificationSent:3512
                 }
             );
-            
+
             for (var ni = 0; ni < 1000; ni++) {
                 randomsNotifItems.push(createRandomNotif());
             }
             // $httpBackend.whenGET(getRegex(URLS.URL_NOTIF,"\\?.*")).respond(function(method, url, keys,headers,param){
-            $httpBackend.whenGET(/api\/notification\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
                 // var filters=angular.fromJson(keys);
 
                 //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
@@ -195,6 +235,8 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
             });
             $httpBackend.whenPOST(URLS.URL_NOTIF).respond(function(method, url, keys,headers,param){

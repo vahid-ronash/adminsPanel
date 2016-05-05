@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('applicationTableController', ['$scope', 'applicationResource', function ($scope, $applicationResource) {
+        .controller('applicationTableController', ['$scope', 'applicationResource','$filter', function ($scope, $applicationResource,$filter) {
             var thisController = this;
 
             thisController.manifest={};
@@ -48,7 +48,7 @@
                 {name:"eclipse",value:"eclipse"},
                 {name:"basic 4 android",value:"basic4android"},
                 {name:"unity",value:"unity"},
-                {name:"joapp",value:"joapp"},
+                {name:"joapp",value:"joapp"}
             ];
             /**
              * @ngdoc method
@@ -56,13 +56,12 @@
              * @methodOf app.controller.applicationTableController
              * @description
              * get confirm and remove selected application
-             * @param {object}  row     selected application
-             * @param {function} callback   callback when remove done
              */
             thisController.downloadManifest = function () {
                 var provider=thisController.selectedProvider;
                 var manifest_copy=thisController.manifest[provider].slice(0);
-                manifest_copy=manifest_copy.replace(/SENDER_ID/g,thisController.selectedRow.senderID);
+                manifest_copy=manifest_copy.replace(/TOKEN/g,thisController.selectedRow.senderID);
+                manifest_copy=manifest_copy.replace(/PACKAGE_NAME/g,thisController.selectedRow.application_id);
                 var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "manifest_"+provider+".xml");
                 $('#manifestDialog').modal('hide');
@@ -78,13 +77,21 @@
              * request to load page it will called by smart table
              * @param {object}      tableState      it served by smart table
              */
+            thisController.rowInPage=6;
+            thisController.displayedPage=1;
             thisController.callServer=function(tableState){
+
+                //TO fix bug two times loading
+                tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
+                tableState.pagination.start = tableState.pagination.start || 0;
+
+                tableState.pagination.numberOfPages = 1;
                 thisController.isLoading = true;
                 var pagination = tableState.pagination;
 
                 var filters={
-                    offset:pagination.start || 0,
-                    limit:pagination.number || 10
+                    offset:pagination.start*thisController.rowInPage || 0,
+                    limit:pagination.number || thisController.rowInPage
                 };
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
@@ -95,7 +102,19 @@
                 return $applicationResource.query(filters).then(function (result) {
                     if(result) {
                         thisController.displayed = result.data.results;
-                        tableState.pagination.numberOfPages = 5;//TODO: set page number
+                        try{
+                            for(var i in thisController.displayed){
+                                var d=new Date(thisController.displayed[i].creation_datetime);
+                                thisController.displayed[i].creation_datetime=moment(d).format('jYYYY/jM/jD');
+                            }
+                        }
+                        catch(e){
+                            $scope.$root.handleError({localError:{type:'danger',text:"data may don't have date",title:'data error'}});
+                        }
+                        if(result.data.previous)thisController.hasPrevious=true;
+                        if(result.data.next)thisController.hasNext=true;
+                        if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
+                        
                         thisController.isLoading = false;
                     }
                 });
@@ -111,12 +130,18 @@
              * @param {object}  row     selected application
              * @param {function} callback   callback when remove done
              */
-            thisController.removeApplication = function (row,callback) {
-                //TODO:get confirm
-                $applicationResource.delete({id:row.id}, function () {
-                    var index = thisController.displayed.indexOf(row);
+            thisController.selected4Remove=0;
+            thisController.removeApplication = function (row) {
+                thisController.selected4Remove=row;
+                $("#confirmDialog").modal();
+            };
+
+            thisController.sendRemoveApplication = function () {
+                $applicationResource.delete(thisController.selected4Remove.application_id, function () {
+                    var index = thisController.displayed.indexOf(thisController.selected4Remove);
                     thisController.displayed.splice(index, 1);
-                    callback && callback();
+                    $scope.$root.handleError({localError:{type:'danger',text:$filter('translate')('SUCCESS_DELETE'),title:$filter('translate')('DELETE')}});
+                    // callback && callback();
                     //alert('application ' + row.name + ' deleted');
                 });
             };

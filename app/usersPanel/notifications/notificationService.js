@@ -31,7 +31,7 @@
                     return $http.get(url,{
                         params:filters
                     }).then(function (result) {
-                        return result.data.results;
+                        return result;
                     },$rootScope.handleError);
                 };
 
@@ -57,14 +57,14 @@
                                 {
                                     'key': 'application_id',
                                     'operator': '=',
-                                    'value': notificationData.selectedApps[0].id
+                                    'value': JSON.stringify(notificationData.selectedApps[0].id)
                                 });
                         }
                         else {
                             output.filters[0].criterias.push({
                                 'key': 'application_id',
                                 'operator': 'in',
-                                'value': notificationData.selectedApps.map(function (app) {return app.id})
+                                'value': JSON.stringify(notificationData.selectedApps.map(function (app) {return app.id}))
                             });
                         }
                         delete notificationData.selectedApps;
@@ -72,13 +72,13 @@
 
                     if(notificationData.contacts) {
                         if (notificationData.contacts.length < 2) {
-                            output.filters[0].criterias.push({'key': 'imei', 'operator': '=', 'value': notificationData.contacts[0].text});
+                            output.filters[0].criterias.push({'key': 'imei', 'operator': '=', 'value': JSON.stringify(notificationData.contacts[0].text)});
                         }
                         else {
                             output.filters[0].criterias.push({
                                 'key': 'imei',
                                 'operator': 'in',
-                                'value': notificationData.contacts.map(function(c){return c.text;})
+                                'value': JSON.stringify(notificationData.contacts.map(function(c){return c.text;}))
                             });
                         }
                         delete notificationData.contacts;

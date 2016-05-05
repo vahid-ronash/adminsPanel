@@ -35,7 +35,10 @@
             };
             $rootScope.handleError=function(data){
                 //TODO:if user was exited from server and we save it on localstorage
-                if(data.status == 403 && data.data && data.data.detail==="Authentication credentials were not provided."){//&& data.data.detail===""
+                if(data.localError){
+                    $scope.alertMSGS.push(data.localError)
+                }
+                if(data.status == 403 && data.data && data.data.Authentication=="required"){//&& data.data.detail===""
                     $AuthService.logout();
                 }
                 if(typeof data.data==="object") {
@@ -61,10 +64,9 @@
                         if(data.data.indexOf('(404)')>-1){
                             $scope.alertMSGS.push({title: "not found (404)", text: 'request not implemented'});
                         }
-                        else if (data.data.indexOf("Time-out")) {
-
+                        else if(data.data.indexOf('<html')>-1){
+                            $scope.alertMSGS.push({type:'danger',title: "Error "+data.status, html: data.data})
                         }
-                        else $scope.alertMSGS.push({title: "Error", text: data.data});
                     }
                     else
                         $scope.alertMSGS.push({title: "wrong Error", text: JSON.stringify(data)});

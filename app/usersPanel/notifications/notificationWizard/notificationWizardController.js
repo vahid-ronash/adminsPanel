@@ -37,18 +37,19 @@
 
 
             thisController.success=function(){
-                var res={};
-                for(var i in thisController.wizardData.steps){
-                    res=angular.extend(res,thisController.wizardData.steps[i].data);
+                if(thisController.leaveCurrentStep()) {
+                    var res={};
+                    for(var i in thisController.wizardData.steps){
+                        res=angular.extend(res,thisController.wizardData.steps[i].data);
+                    }
+                    res.visibility=!res.isHidden;
+                    delete res.isHidden;
+
+                    notificationResource.sendNotification(res).then(function(){
+
+                    });
+                    $('#notificationWizardDialog').modal('hide');
                 }
-                res.visibility=!res.isHidden;
-                delete res.isHidden;
-
-                notificationResource.sendNotification(res).then(function(){
-
-                });
-                $('#notificationWizardDialog').modal('hide');
-
             };
             thisController.leaveCurrentStep=function(){
                 var canLeaveStep=thisController.wizardData.steps[thisController.currentStep].leave();

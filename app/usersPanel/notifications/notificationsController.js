@@ -38,11 +38,7 @@
              */
 
             thisController.jsonSuccessing=function($data, $step, $isLastStep, callback) {
-                var res={};
-                for(var i in $data.jsonStepData){
-                    if($data.jsonStepData.hasOwnProperty(i))
-                        res=angular.extend(res,$data.jsonStepData[i]);
-                }
+                var res=JSON.parse($data.jsonStepData[0].json);
                 notificationResource.sendNotification(res).then(callback);
                 return true;
             };

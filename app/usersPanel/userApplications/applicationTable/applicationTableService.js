@@ -26,8 +26,8 @@
                         params:filters
                     }).then(successCallback,failedCallback||$rootScope.handleError);
                 },
-                delete:function(data,successCallback,failedCallback){
-                    return $http.delete(URLS.URL_APP+data.id).then(successCallback,failedCallback||$rootScope.handleError);
+                delete:function(applicationID,successCallback,failedCallback){
+                    return $http.delete(URLS.URL_APP+applicationID+"/").then(successCallback,failedCallback||$rootScope.handleError);
                 },
                 getSenderID:function(applicationID,successCallback,failedCallback){
                     return $http.get(URLS.URL_APP+applicationID+"/").then(successCallback,failedCallback||$rootScope.handleError);

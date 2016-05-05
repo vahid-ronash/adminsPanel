@@ -213,7 +213,7 @@ angular
         'LOGO_PATH':'assets/images/logo.png',
         'URI_INCORRECT':'uri is not correct',
         'REQUIRED':'this field has to fill',
-        'PROVIDER':'پروایدر',
+        'PROVIDER':'اپلیکیشن ساز',
         'IMAGE_IS_UPLOADED':'عکس آپلود شده است.',
         'UPLOAD':'آپلود',
         'FORGOT_DONE':'رمز عبور با موفقیت تغییر یافت.',
@@ -277,9 +277,21 @@ angular
         'REMOVE':'حذف',
         'DASHBOARD_GALLERY':'گالری داشبورد',
         'SLIDE':'صفحه',
+        'YES':'بلی',
+        'NO':'خیر',
+        'YOU_SURE_TITLE':'حذف',
+        'ARE_YOU_SURE_TEXT':'آیا مطمین هستید؟',
+        'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.',
         'PRIVACY' : 'حریم خصوصی',
         'AND' : 'و',
-        'PHONE_NUMBER':'021-44668276'
+        'PHONE_NUMBER':'021-44668276',
+        'DONT_HAVE_PROVIDER':'از اپلیکیشن ساز استفاده نکرده ام',
+        'TO_LEARN_APP_INSTALL':'جهت آموزش نحوه نصب پوشه در اپلیکیشن روی گزینه آموزش نصب کلیک کنید.',
+        'APP_CREATED_SUCCESSFULLY':'اپلیکیشن شما با موفقیت ایجاد شد',
+        'LEARN_INSTALL':'آموزش نصب',
+        'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
+        'DELETE':'حذف',
+        
     });
 
     $translateProvider.preferredLanguage('fa');

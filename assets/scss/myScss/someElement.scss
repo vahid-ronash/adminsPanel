@@ -1,18 +1,22 @@
 @import "elements/imageUpload";
 @import "elements/progress-wizard";
 @import "elements/table";
-@import "elements/wizard";
 @import "elements/table";
 @import "elements/pace";
 
 
 .ace_editor { height: 200px; }
 
-
-.publicError{
+.publicErrors{
   z-index: 10000;
   position: absolute;
-  min-width: 50%;
+  top:10px;
+  width:100%;
+
+}
+.publicError{
+  margin: 2px auto;
+  width:50%;
 }
 
 .errorShow{
@@ -26,7 +30,7 @@
 no-captcha>div>div{
   margin:auto;
 }
-@media (min-width: 992px) {
+@media (min-width: 543px) {
   .hasCaptcha{
     width:345px;
   }
