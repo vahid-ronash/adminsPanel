@@ -290,6 +290,12 @@ angular
         'LEARN_INSTALL':'آموزش نصب',
         'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
         'DELETE':'حذف',
+        'DEVICE_MODEL':'مدل دستگاه',
+        'ADD_FAVORITE':'ذخیره',
+        'FAVORITE_DEVICE':'دستگاه مورد علاقه',
+        'FAVORITE_DEVICE_NAME':'نام دستگاه',
+        'FAVORITE_DEVICE_IMEI':'شناسه دستگاه',
+        'CHOOSE_NAME_4_FAVORITE':'لطفا یکنام برای این دستگاه انتخاب کنید.',
     });
 
     $translateProvider.preferredLanguage('fa');

@@ -1,29 +1,98 @@
+<simple-modal mclass="modal-sm" mid="removeFavDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
+    <div class="modal-body text-center p-lg">
+        <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">{{'NO'|translate}}</button>
+        <button type="button" class="btn danger p-x-md" data-dismiss="modal" ng-click="installTableCtrl.removeIMEI()">{{'YES'|translate}}</button>
+    </div>
+</simple-modal>
+<simple-modal mclass="modal-sm" mid="addFavoriteDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
+    <form name="newFavForm" ng-submit="installTableCtrl.addNewFavorite()">
+        <div class="m-b">
+            <label class="" for="fav_name">{{'CHOOSE_NAME_4_FAVORITE' | translate}}</label>
+            <input name="favName"
+                   type="text"
+                   class="form-control"
+                   ng-model="installTableCtrl.favName"
+                   placeholder="{{'FAVORITE_DEVICE_NAME'|translate}}"
+                   id="fav_name">
+        </div>
+
+        <div>
+            <span>{{'FAVORITE_DEVICE_IMEI'|translate}}</span>
+            <h6>{{installTableCtrl.selectedToFavorite.imei}}</h6>
+        </div>
+
+        <!--SUBMIT-->
+        <div ng-if="!installTableCtrl.isSubmiting">
+            <button type="submit"
+                    ng-disabled="form.$invalid || installTableCtrl.isSubmiting"
+                    class="btn primary btn-block p-x-md">
+                <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
+                {{'ADD_FAVORITE' | translate}}
+            </button>
+        </div>
+        <button class="btn disabled btn-block p-x-md" ng-if="installTableCtrl.isSubmiting">
+            <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                     style="color:green;margin:0 1px 0 0;"></div>
+            </div>
+        </button>
+        <!--SUBMIT END-->
+
+    </form>
+</simple-modal>
 <div class="box">
     <table st-table="installTableCtrl.displayed" st-pipe="installTableCtrl.callServer" class="table table-striped">
         <thead>
         <tr>
+            <th>{{'TEST' | translate}}</th>
+            <th st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
             <th st-sort="instance_id">{{'DEVICE' | translate}}</th>
             <th st-sort="application_id">{{'APPLICATION' | translate}}</th>
             <th st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
-            <th st-sort="last_visit">{{'LASTSEEN' | translate}}</th>
-            <th>{{'TEST' | translate}}</th>
-            <!-- TODO: its hard code naming we change that later -->
         </tr>
         <tr>
+            <th><a class="btn primary"><i class="fa fa-send"></i></a></th>
+            <th>
+                <tags-input ng-model="installTableCtrl.selectedDevice">
+                    <auto-complete source="installTableCtrl.loadPhones()"
+                                   min-length="0"
+                                   load-on-focus="true"
+                                   load-on-empty="true"
+                                   max-results-to-show="5"
+                                   >
+                    </auto-complete>
+                    <!--template="my-custom-template"-->
+                </tags-input>
+            </th>
+            <!--<th><input st-search="'smart_device'" class="form-control" placeholder="{{'DEVICE_MODEL' | translate}}.." type="text"/></th>-->
             <th><input st-search="'instance_id'" class="form-control" placeholder="{{'DEVICE' | translate}}.." type="text"/></th>
             <th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
             <th><input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
-            <th><input st-search="'last_visit'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
-            <th><a class="btn primary"><i class="fa fa-send"></i></a></th>
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in installTableCtrl.displayed">
+            <tr ng-repeat="row in installTableCtrl.displayed" ng-mouseleave="row.showRemoveBtn=false;">
+                <td>
+                    <div ng-show="row.favorite">
+                        <div>
+                            <a ng-mouseenter="row.showRemoveBtn=true;" class="btn have-beside" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a>
+                            <div ng-if="row.showRemoveBtn" class="animate fade-in-left removeIMEI">
+                                <span class="muted">{{row.favorite.name}}</span>
+                                <a ng-click="installTableCtrl.startRemoveIMEI(row)"><i class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="row.favorite">
+                        <div><a class="btn" ng-click="installTableCtrl.addToFavorite(row)"><i class="fa fa-star-o"></i></a></div>
+                    </div>
+                </td>
+                <td>{{row.smart_device}}</td>
                 <td> {{row.instance_id}} </td>
                 <td>{{row.application_id}}</td>
                 <td>{{row.creation_time}}</td>
-                <td>{{row.last_visit}}</td>
-                <td><a class="btn" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a></td>
             </tr>
         </tbody>
         <tfoot>

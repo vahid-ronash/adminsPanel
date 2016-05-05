@@ -129,27 +129,29 @@
                 return d.toJSON();
             }
 
-            var randomsItems = [];
+            var randomsInstallationItems = [];
             function createRandomItem(id) {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
+                var mobileModels = ['Sumsong', 'LG', 'i phone', 'motorola', 'nokia'];
                 return {
                     id: id,
                     application_id: apps[Math.floor(Math.random() * apps.length)],
                     instance_id: Math.floor(Math.random() * 10000000),
                     creation_time: getRandomTime(),
-                    last_visit: new Date().setHours(Math.floor(Math.random() * 10000000)),
-                    test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/'
+                    test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/',
+                    imei: Math.floor(Math.random() * 621616132155),
+                    smart_device:mobileModels[Math.floor(Math.random() * 5)]+" "+Math.floor(Math.random() * 9000+1000)
                 };
             }
             for (var i = 0; i < 1000; i++) {
-                randomsItems.push(createRandomItem(i));
+                randomsInstallationItems.push(createRandomItem(i));
             }
             $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
                 searchFilters.limit && delete searchFilters.limit;
-                var filtered = param ? $filter('filter')(randomsItems, searchFilters) : randomsItems;
+                var filtered = param ? $filter('filter')(randomsInstallationItems, searchFilters) : randomsInstallationItems;
 
                 if (param.ordering) {
                     var order = param.ordering;
@@ -168,6 +170,13 @@
                 return [200, resultobj, {}];
                 // return [504, "<html><body>its an error i mocked to show here</body></html>"];
             });
+            var imeiList=[];
+            for(var c =Math.floor(Math.random()*4);c<100 ;c+=Math.floor(Math.random()*10+1)){
+                imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
+            }
+            $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(true);
+            $httpBackend.whenGET(URLS.URL_IMEI).respond(imeiList);
+            $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 
 
             var randomsNotifItems = [];
