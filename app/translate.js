@@ -292,6 +292,15 @@ angular
         'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
         'DELETE':'حذف',
         
+        'ERROR404':'خطای 404',
+        'ERROR404_TITLE':'نداریم',
+        'ERROR404_DESCRIPTION':'همچینین صفحه ای در سایت پوشه وجود ندارد',
+        'ERROR404_BACKTOHOM':'بازکشت به صفحه اصلی',
+        'ERROR500':'خطای 500',
+        'ERROR500_DESCRIPTION':'سرور ما با مشکل روبرو است، ما در حال بررسی مشکل هستیم، انشاالله به زودی مشکل برطرف خواهد شد. ',
+        'ERROR500_INFORM':'در صورتی که مدتی است مشکل بر طرف نشده لطفا به support@pushe.co اطلاع دهید.',
+        'ERROR500_SENDMAIL':'ارسال ایمیل'
+
     });
 
     $translateProvider.preferredLanguage('fa');
