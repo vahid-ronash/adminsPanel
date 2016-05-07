@@ -296,6 +296,10 @@ angular
         'FAVORITE_DEVICE_NAME':'نام دستگاه',
         'FAVORITE_DEVICE_IMEI':'شناسه دستگاه',
         'CHOOSE_NAME_4_FAVORITE':'لطفا یکنام برای این دستگاه انتخاب کنید.',
+        'FAV_REMOVE_SUCCESS_TEXT':'favorite device removed successfully',
+        'FAV_REMOVE_SUCCESS_TITLE':'remove favorites',
+        'SEND_TEST_SUCCESS_TEXT':'favorite device removed successfully',
+        'SEND_TEST_SUCCESS_TITLE':'remove favorites'
     });
 
     $translateProvider.preferredLanguage('fa');

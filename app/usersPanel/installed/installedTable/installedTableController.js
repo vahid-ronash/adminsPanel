@@ -12,7 +12,7 @@
      */
     angular
         .module("app")
-        .controller('installedTableController', ['$scope', 'installedResource','$timeout', function ($scope, $installedResource,$timeout) {
+        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter', function ($scope, $installedResource,$timeout,$filter) {
             var thisController = this;
 
             thisController.imeiList=[];
@@ -48,6 +48,13 @@
                 thisController.selectedToFavorite=row;
                 $("#addFavoriteDialog").modal();
             };
+            /**
+             * @ngdoc method
+             * @name addNewFavorite
+             * @methodOf app.controller.installedTableController
+             * @description
+             * send data to server to add to favorite list
+             */
             thisController.addNewFavorite=function(){
                 $("#addFavoriteDialog").modal('hide');
                 var favData={imei:thisController.selectedToFavorite.imei,name:thisController.favName};
@@ -56,6 +63,7 @@
                     thisController.imeiHash[thisController.selectedToFavorite.imei]=favData;
                 });
             };
+
             /**
              * @ngdoc method
              * @name selectPage
@@ -85,7 +93,7 @@
             };
             thisController.removeIMEI=function(){
                 $installedResource.removeFromFavorites(thisController.selectedToRemoveFavorite.favorite,function(){
-                    // $scope.root.handleError({loc})//tODO
+                    $scope.root.handleError({localError:{type:'success',text:$filter('translate')('FAV_REMOVE_SUCCESS_TEXT'),title:$filter('translate')('FAV_REMOVE_SUCCESS_TITLE')}});
                 });
             };
 
@@ -132,8 +140,5 @@
                     thisController.isLoading = false;
                 });
             };
-
-            //send a request to get installation list
-            //thisController.selectPage();
         }]);
 })());

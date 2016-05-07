@@ -176,6 +176,7 @@
             }
             $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(true);
             $httpBackend.whenGET(URLS.URL_IMEI).respond(imeiList);
+            $httpBackend.whenDELETE(URLS.URL_IMEI).respond(true);
             $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 
 

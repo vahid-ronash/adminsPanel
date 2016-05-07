@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('installedResource', ['$http','URLS','$rootScope', function ($http,URLS,$rootScope) {
+        .factory('installedResource', ['$http','URLS','$rootScope','$filter', function ($http,URLS,$rootScope,$filter) {
             function InstalledService() {
                 var thisService = this;
 
@@ -40,9 +40,10 @@
                  */
                 thisService.sendTest = function (installationID) {
                     return $http.post(URLS.URL_INSTALLED+installationID+"/send_test_notification/",{}).then(function () {
-                        $rootScope.handleError({localError:{title:'send test',text:'your test has sent',type:'success'}});
+                        $rootScope.handleError({localError:{title:$filter('translate')('SEND_TEST_SUCCESS_TITLE'),text:$filter('translate')('SEND_TEST_SUCCESS_TEXT'),type:'success'}});
                     },$rootScope.handleError);
                 };
+
                 /**
                  * @ngdoc method
                  * @name addToFavorites
@@ -50,6 +51,7 @@
                  * @description
                  * add to favorite list
                  * @param {object}  favData    it has imei and a name
+                 * @param {function}  callback it called when its done
                  */
                 thisService.addToFavorites = function (favData,callback) {
                     return $http.post(URLS.URL_IMEI,favData).then(function (result) {
@@ -64,6 +66,7 @@
                  * @description
                  * add to favorite list
                  * @param {object}  favData    it has imei and a name
+                 * @param {function}  callback it called when its done
                  */
                 thisService.removeFromFavorites = function (favData,callback) {
                     return $http.delete(URLS.URL_IMEI,favData).then(function (result) {
@@ -77,7 +80,7 @@
                  * @methodOf app.services.installedResource
                  * @description
                  * get all user imei list for user test
-                 * @param {object}  callback  it called when its done
+                 * @param {function}  callback  it called when its done
                  */
                 thisService.getImeiList = function (callback) {
                     return $http.get(URLS.URL_IMEI).then(function (result) {
