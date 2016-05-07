@@ -12,8 +12,17 @@
      */
     angular
         .module("app")
-        .controller('installedTableController', ['$scope', 'installedResource', function ($scope, $installedResource,$http) {
+        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter', function ($scope, $installedResource,$timeout,$filter) {
             var thisController = this;
+
+            thisController.imeiList=[];
+            thisController.imeiHash={};
+            $installedResource.getImeiList(function(result){
+                var imeiList=result.data;
+                for(var i in imeiList){
+                    thisController.imeiHash[imeiList[i].imei]=imeiList[i];
+                }
+            });
             /**
              * @ngdoc method
              * @name sendTest
@@ -28,12 +37,65 @@
 
             /**
              * @ngdoc method
+             * @name addToFavorite
+             * @methodOf app.controller.installedTableController
+             * @description
+             * make dialog to add this device to favorite list
+             * @param {object}  row     (selected install)
+             */
+            thisController.selectedToFavorite=0;
+            thisController.addToFavorite=function(row){
+                thisController.selectedToFavorite=row;
+                $("#addFavoriteDialog").modal();
+            };
+            /**
+             * @ngdoc method
+             * @name addNewFavorite
+             * @methodOf app.controller.installedTableController
+             * @description
+             * send data to server to add to favorite list
+             */
+            thisController.addNewFavorite=function(){
+                $("#addFavoriteDialog").modal('hide');
+                var favData={imei:thisController.selectedToFavorite.imei,name:thisController.favName};
+                $installedResource.addToFavorites(favData,function(){
+                    thisController.selectedToFavorite.favorite=favData;
+                    thisController.imeiHash[thisController.selectedToFavorite.imei]=favData;
+                });
+            };
+
+            /**
+             * @ngdoc method
              * @name selectPage
              * @methodOf app.controller.installedTableController
              * @description
              * request to load page it will called by smart table
              * @param {object}  tableState     (it served by smart table and contain navigation data)
              */
+            thisController.deviceModels=[
+                {text:"LG1"},
+                {text:"LG2"},
+                {text:"LG3"},
+                {text:"LG4"},
+                {text:"LG5"},
+                {text:"LG6"},
+                {text:"LG7"},
+                {text:"LG8"},
+                {text:"LG9"},
+                {text:"LG10"},
+            ];
+            thisController.loadPhones=function(){
+                return thisController.deviceModels;
+            };
+            thisController.startRemoveIMEI=function(row){
+                $("#removeFavDialog").modal();
+                thisController.selectedToRemoveFavorite=row;
+            };
+            thisController.removeIMEI=function(){
+                $installedResource.removeFromFavorites(thisController.selectedToRemoveFavorite.favorite,function(){
+                    $scope.root.handleError({localError:{type:'success',text:$filter('translate')('FAV_REMOVE_SUCCESS_TEXT'),title:$filter('translate')('FAV_REMOVE_SUCCESS_TITLE')}});
+                });
+            };
 
             thisController.rowInPage=6;
             thisController.displayedPages=2;
@@ -62,6 +124,12 @@
                 return $installedResource.query(filters).then(function (result) {
                     thisController.displayed = result.data.results;
                     for(var i in thisController.displayed){
+                        //make it favourite
+                        if(thisController.imeiHash[thisController.displayed[i].imei]){
+                            thisController.displayed[i].favorite=thisController.imeiHash[thisController.displayed[i].imei];
+                        }
+
+                        //convert time
                         var d=new Date(thisController.displayed[i].creation_time);
                         thisController.displayed[i].creation_time=moment(d).format('jYYYY/jM/jD');
                     }
@@ -72,8 +140,5 @@
                     thisController.isLoading = false;
                 });
             };
-
-            //send a request to get installation list
-            //thisController.selectPage();
         }]);
 })());

@@ -102,14 +102,11 @@
                 return $applicationResource.query(filters).then(function (result) {
                     if(result) {
                         thisController.displayed = result.data.results;
-                        try{
-                            for(var i in thisController.displayed){
-                                var d=new Date(thisController.displayed[i].creation_datetime);
-                                thisController.displayed[i].creation_datetime=moment(d).format('jYYYY/jM/jD');
+                        for(var i in thisController.displayed){
+                            if(thisController.displayed[i].creation_datetime) {
+                                var d = new Date(thisController.displayed[i].creation_datetime);
+                                thisController.displayed[i].creation_datetime = moment(d).format('jYYYY/jM/jD');
                             }
-                        }
-                        catch(e){
-                            $scope.$root.handleError({localError:{type:'danger',text:"data may don't have date",title:'data error'}});
                         }
                         if(result.data.previous)thisController.hasPrevious=true;
                         if(result.data.next)thisController.hasNext=true;

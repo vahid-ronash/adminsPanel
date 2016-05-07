@@ -26,6 +26,7 @@
             "URL_CHANGE_PASS":"api/v1/accounting/change_password/",
             "URL_RESET_PASS_DONE":"api/v1/accounting/reset_password_done/",
             "URL_LOGOUT":"api/v1/accounting/logout/",
-            "URL_GET_PROFILE":"api/v1/get_profile/"
+            "URL_GET_PROFILE":"api/v1/get_profile/",
+            "URL_IMEI":"api/v1/imei/",
         });
 })());

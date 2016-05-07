@@ -291,7 +291,6 @@ angular
         'LEARN_INSTALL':'آموزش نصب',
         'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
         'DELETE':'حذف',
-        
         'ERROR404':'خطای 404',
         'ERROR404_TITLE':'نداریم',
         'ERROR404_DESCRIPTION':'همچینین صفحه ای در سایت پوشه وجود ندارد',
@@ -299,8 +298,17 @@ angular
         'ERROR500':'خطای 500',
         'ERROR500_DESCRIPTION':'سرور ما با مشکل روبرو است، ما در حال بررسی مشکل هستیم، انشاالله به زودی مشکل برطرف خواهد شد. ',
         'ERROR500_INFORM':'در صورتی که مدتی است مشکل بر طرف نشده لطفا به support@pushe.co اطلاع دهید.',
-        'ERROR500_SENDMAIL':'ارسال ایمیل'
-
+        'ERROR500_SENDMAIL':'ارسال ایمیل',
+        'DEVICE_MODEL':'مدل دستگاه',
+        'ADD_FAVORITE':'ذخیره',
+        'FAVORITE_DEVICE':'دستگاه مورد علاقه',
+        'FAVORITE_DEVICE_NAME':'نام دستگاه',
+        'FAVORITE_DEVICE_IMEI':'شناسه دستگاه',
+        'CHOOSE_NAME_4_FAVORITE':'لطفا یکنام برای این دستگاه انتخاب کنید.',
+        'FAV_REMOVE_SUCCESS_TEXT':'favorite device removed successfully',
+        'FAV_REMOVE_SUCCESS_TITLE':'remove favorites',
+        'SEND_TEST_SUCCESS_TEXT':'favorite device removed successfully',
+        'SEND_TEST_SUCCESS_TITLE':'remove favorites'
     });
 
     $translateProvider.preferredLanguage('fa');
