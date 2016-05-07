@@ -1,13 +1,35 @@
-<div ng-repeat="action in step4Ctrl.data.buttons">
+<div ng-repeat="actionButton in step4Ctrl.data.buttons">
     <div class="container">
-        <div class="col-xs-1 col-sm-2">
-            <button class="btn btn-secondary">
-                <i class="fa fa-remove"></i>
-            </button>
+
+        <div class="row">
+            <div class="col-xs-1">
+                <button class="btn btn-secondary">
+                    <i class="fa fa-remove"></i>
+                </button>
+            </div>
+            <div class="col-xs-3">
+                <!--<div class="md-form-group">-->
+                    <input class="md-input" placeholder="{{'NOTIF_TITLE' | translate}}" ng-model="actionButton.btn_content">
+                    <!--<label>{{'NOTIF_TITLE' | translate}}</label>-->
+                <!--</div>-->
+            </div>
+            <div class="col-xs-4">
+                <ui-select ng-model="actionButton.btn_icon">
+                    <ui-select-match placeholder="{{'ICON' | translate}}">
+                        <span>{{$select.selected}}</span>
+                        <i class="material-icons" ng-bind="$select.selected"></i>
+                    </ui-select-match>
+                    <ui-select-choices repeat="item in (step4Ctrl.icons | filter: $select.search)">
+                        <!--<span class="pull-right" ng-bind="item"></span>-->
+                        <i class="material-icons" ng-bind="item"></i>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+            <div class="col-xs-4">
+                <notification-action action-data="actionButton.btn_action"></notification-action>
+            </div>
         </div>
-        <div class="col-xs-11 col-sm-10">
-            <notification-Button-Setter data="action"></notification-Button-Setter>
-        </div>
+        
     </div>
 </div>
 <button class="btn" ng-if="step4Ctrl.data.buttons.length<3" ng-click="step4Ctrl.addAction()">{{'ADD_NOTIF_BUTTON' | translate}}</button>

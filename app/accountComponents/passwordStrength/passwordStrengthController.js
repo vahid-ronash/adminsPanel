@@ -104,7 +104,7 @@ var thisController=this;
                     counts.pos.symbols = matches.pos.symbols ? matches.pos.symbols.length : 0;
 
                     tmp=0;
-                    for(var i in counts.pos){tmp+=Math.min(1,counts.pos[i]);}
+                    for(i=0;i<counts.pos.length;i++){tmp+=Math.min(1,counts.pos[i]);}
                     // tmp = _.reduce(counts.pos, function (memo, val) {
                     //     if has count will add 1
                     // return memo + Math.min(1, val);
@@ -162,9 +162,9 @@ var thisController=this;
                     var chs=password.toLowerCase().split('');
                     var seenChars={};
                     var repeated=0;
-                    for(var i in chs){
-                        if(seenChars[chs[i]])repeated++;
-                        else seenChars[chs[i]]=1;
+                    for(var ci in chs){
+                        if(seenChars[chs[ci]]){repeated++;}
+                        else {seenChars[chs[ci]]=1;}
                     }
                     counts.neg.repeated = repeated;
 

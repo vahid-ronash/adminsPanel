@@ -23,7 +23,7 @@
              * @param {object} tableState   served by smart table
              */
             thisController.itemByPage=6;
-            thisController.displayedPages=2;
+            thisController.displayedPages=1;
             thisController.callServer=function(tableState){
 
                 //TO fix bug two times loading

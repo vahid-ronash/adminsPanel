@@ -7,7 +7,7 @@
  * @description
  * control new application wizard
  */
-/*global angular */
+/* $ global angular */
 ((function () {
     'use strict';
     angular
@@ -22,6 +22,9 @@
             };
             $scope.control.start=function(){
                 thisController.appCreated=false;
+                setTimeout(function(){
+                    thisController.startFocus=true;
+                },1000);
                 $('#applicationWizardDialog').modal({
                     backdrop: 'static',
                     keyboard: false

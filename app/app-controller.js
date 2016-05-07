@@ -34,22 +34,21 @@
                 $scope.alertMSGS.splice(index, 1);
             };
             $rootScope.handleError=function(data){
-                //TODO:if user was exited from server and we save it on localstorage
                 if(data.localError){
                     $scope.alertMSGS.push(data.localError);
                     return;
                 }
                 if(data.status == 403 && data.data && data.data.Authentication=="required"){//&& data.data.detail===""
-                    $AuthService.logout();
+                    return $AuthService.logout();
                 }
                 if(typeof data.data==="object") {
-                    for (var title in data.data) {
-                        var text = data.data[title];
-                        if (typeof text !== "string")text = text.join("\n");
-                        if (data.data.hasOwnProperty(title)) {
+                    for (var dataKey in data.data) {
+                        var dataValue = data.data[dataKey];
+                        if (typeof dataValue !== "string")dataValue = dataValue.join("\n");
+                        if (data.data.hasOwnProperty(dataKey)) {
                             var newAlert = {
-                                title: title,
-                                text: text,
+                                title: dataKey,
+                                text: dataValue,
                                 verbose: JSON.stringify(data)
                             };
 

@@ -72,7 +72,10 @@ gulp.task('compressJsFiles',function(){
         // .pipe(rename("public/myfiles.js"))
         // .pipe(gzip())
         .pipe(gulp.dest('assets/js'));
-
+    gulp.src("assets/libs/ace-builds/src/mode-json.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
+    gulp.src("assets/libs/ace-builds/src/theme-twilight.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
+    gulp.src("assets/libs/ace-builds/src/theme-light.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
+    gulp.src("assets/libs/ace-builds/src/worker-json.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
 });
 
 
@@ -113,6 +116,7 @@ gulp.task('makeProductionEnvironment', function () {
         .pipe(gulpNgConfig('app.config', {
             environment: 'production'
         })).pipe(gulp.dest('app/'));
+    
 });
 gulp.task('makeDevelopmentEnvironment', function () {
     gulp.src('environment.json')

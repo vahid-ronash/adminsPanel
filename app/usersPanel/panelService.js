@@ -26,12 +26,12 @@
                  * load users application
                  */
                 thisService.applications=0;
-                thisService.loadApplications = function () {
-                    if(thisService.applications)return thisService.applications;
+                thisService.loadApplications = function (callback) {
+                    if(thisService.applications)callback(thisService.applications);
                     else {
                         return $http.get(URLS.URL_APP, {}).then(function (result) {
                             thisService.applications =result.data.results;
-                            return thisService.applications;
+                            callback(thisService.applications);
                         }, $rootScope.handleError);
                     }
                 };

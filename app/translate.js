@@ -125,7 +125,7 @@ angular
         'INSTALLED':'نصب ها',
         'NOTIFICATIONS':'اعلان ها',
         'SECTIONNAME':'مدیریت نوتیفیکیشن',
-        'DEVICE':'دستگاه',
+        'DEVICE':'مشخصه دستگاه',
         'APPLICATION':'اپلیکیشن',
         'INSTALLTIME':'تاریخ نصب',
         'LASTSEEN':'آخرین بازدید',
@@ -142,7 +142,7 @@ angular
         'CHANGE_PASS':'تغییر رمز عبور',
         'ABOUT':'درباره',
         'RONASH':' روناش ',
-        'TEST':' آزمایش ',
+        'TEST':'ارسال تست',
         'NOTIF_TITLE':'تیتر',
         'TEXT':'متن',
         'SENDTIME':'زمان ارسال',
@@ -198,7 +198,7 @@ angular
         'SELECT_VOICE':'انتخاب صدا',
         'REQUIRE_APP_ERROR':'ابتدااپلیکیشن های مورد نظر را انتخاب کنید',
         'REQUIRE_TEXT_TITLE':'لطفا فیلد های تیتر و متن را کامل کنید.',
-        "NOTHING_HAPPEN_NAME":'هیچ',
+        "NOTHING_HAPPEN_NAME":'با کلیک روی آن اتفاقی نمی افتد',
         "OPEN_APP_NAME":'باز کردن نرم افزار',
         "OPEN_URL_NAME":'بازکردن لینک',
         "OPEN_URI_NAME":'انجام اتفاق',
@@ -296,10 +296,10 @@ angular
         'FAVORITE_DEVICE_NAME':'نام دستگاه',
         'FAVORITE_DEVICE_IMEI':'شناسه دستگاه',
         'CHOOSE_NAME_4_FAVORITE':'لطفا یکنام برای این دستگاه انتخاب کنید.',
-        'FAV_REMOVE_SUCCESS_TEXT':'favorite device removed successfully',
-        'FAV_REMOVE_SUCCESS_TITLE':'remove favorites',
-        'SEND_TEST_SUCCESS_TEXT':'favorite device removed successfully',
-        'SEND_TEST_SUCCESS_TITLE':'remove favorites'
+        'FAV_REMOVE_SUCCESS_TEXT':'نصب از علاقه مندی ها خارج شد',
+        'FAV_REMOVE_SUCCESS_TITLE':'حذف از علاقه مندی',
+        'SEND_TEST_SUCCESS_TEXT':'تست با موفقیت ارسال شد.',
+        'SEND_TEST_SUCCESS_TITLE':'تست'
     });
 
     $translateProvider.preferredLanguage('fa');

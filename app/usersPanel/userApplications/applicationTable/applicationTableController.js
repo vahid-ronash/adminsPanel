@@ -7,7 +7,7 @@
  * @description
  * it can do CRUD on user's applications by using smartTable
  */
-/*global angular */
+/*global angular moment saveAs */
 ((function() {
     'use strict';
     angular
@@ -27,6 +27,7 @@
                 loadManifest('eclipse_manifest','eclipse');
                 loadManifest('b4a_manifest','basic4android');
                 loadManifest('unity_manifest','unity');
+                loadManifest('Token','joapp');
             };
             thisController.loadManifests();
 
@@ -154,7 +155,7 @@
              * @param {function} callback   callback when its done
              */
             thisController.showDetail = function (row,callback) {
-                if(row.showDetail)row.showDetail=false;
+                if(row.showDetail){row.showDetail=false;}
                 else{
                     row.showDetail=true;
                     if(!row.senderID){

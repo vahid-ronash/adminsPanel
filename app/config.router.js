@@ -140,6 +140,10 @@
                 }
             }])
         .run(['$rootScope', '$state', 'AuthService','$templateCache', function ($rootScope, $state, Auth,$templateCache) {
+
+            ace.config.set('basePath', 'assets/js');
+            window.define = window.define || ace.define;
+
             $rootScope.errorAlert=function(e){
                 $rootScope.alertMSG={
                     text:e.error.message,

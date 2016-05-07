@@ -61,6 +61,7 @@
                 thisController.data.email="demo@pushe.co";
                 thisController.data.password="demo";
                 thisController.isAsDemo=true;
+                thisController.data.rememberMe=false;
                 // return thisController.login();
             };
         }]);

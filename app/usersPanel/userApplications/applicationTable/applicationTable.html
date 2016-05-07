@@ -1,70 +1,49 @@
+<simple-modal mid="manifestDialog" mtitle="{{'DOWNLOAD_MANIFEST' | translate}}" mclass="modal-sm">
+    <div ng-repeat="provider in appsTableCtrl.providers" class="radio ltr">
+        <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
+            <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
+            {{provider.name}}
+        </label>
+    </div>
+    <button class="btn btn-primary"
+            ng-click="appsTableCtrl.downloadManifest()"
+            ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >
+        {{'DOWNLOAD_MANIFEST'|translate}}
+    </button>
+</simple-modal>
+
+<simple-modal mid="confirmDialog" mtitle="{{'YOU_SURE_TITLE' | translate}}" mclass="modal-sm">
+    <div class="text-center p-lg">
+        <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">{{'NO'|translate}}</button>
+        <button type="button" class="btn danger p-x-md" data-dismiss="modal" ng-click="appsTableCtrl.sendRemoveApplication()">{{'YES'|translate}}</button>
+    </div>
+</simple-modal>
+
 <div>
-    <div class="modal fade" id="manifestDialog" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">{{'DOWNLOAD_MANIFEST' | translate}}</h4>
-                </div>
-                <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                    <div ng-repeat="provider in appsTableCtrl.providers" class="radio ltr">
-                        <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
-                            <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
-                            {{provider.name}}
-                        </label>
-                    </div>
-                    <button class="btn btn-primary" ng-click="appsTableCtrl.downloadManifest()" ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >{{'DOWNLOAD_MANIFEST'|translate}}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="confirmDialog" tabindex="-1" role="dialog"
-         aria-labelledby="confirmLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">{{'YOU_SURE_TITLE' | translate}}</h4>
-                </div>
-                <div class="modal-body text-center p-lg">
-                    <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">{{'NO'|translate}}</button>
-                    <button type="button" class="btn danger p-x-md" data-dismiss="modal" ng-click="appsTableCtrl.sendRemoveApplication()">{{'YES'|translate}}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="box">
-
-        <table ng-show="appsTableCtrl.displayed && appsTableCtrl.displayed.length" st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped">
+        <table ng-show="appsTableCtrl.displayed && appsTableCtrl.displayed.length" st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped text-center">
             <thead>
             <tr>
-                <th st-sort="application_id">{{'PACKNAME' | translate}}</th>
-                <th st-sort="creation_datetime">{{'CREATION_TIME' | translate}}</th>
-                <th st-sort="active_users">{{'ACTIVE_USER_COUNT' | translate}}</th>
-                <th>{{'DOWNLOAD_MANIFEST' | translate}}</th>
-                <th>{{'REMOVE' | translate}}</th>
+                <th  class="text-center" st-sort="application_id">{{'PACKNAME' | translate}}</th>
+                <th  class="text-center" st-sort="creation_datetime">{{'CREATION_TIME' | translate}}</th>
+                <th  class="text-center" st-sort="active_users">{{'ACTIVE_USER_COUNT' | translate}}</th>
+                <th  class="text-center">{{'DOWNLOAD_MANIFEST' | translate}}</th>
+                <th  class="text-center">{{'REMOVE' | translate}}</th>
             </tr>
             <tr>
-                <th colspan="5"><input st-search="''" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
+                <th colspan="5"><input st-search="'application_id'" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="row in appsTableCtrl.displayed">
+            <tr ng-repeat="row in appsTableCtrl.displayed" >
                 <td>
                     <div>
                         {{row.application_id}}
                     </div>
-                    <small ng-if="row.provider">{{'PROVIDER' | translate}} : {{row.provider}}</small>
+                    <small ng-if="row.provider && row.provider!=='none'">{{'PROVIDER' | translate}} : {{row.provider}}</small>
                 </td>
                 <td>
                     <div class="">
@@ -72,8 +51,11 @@
                     </div>
                 </td>
                 <td>
-                    <div class="">
+                    <div >
                         {{row.active_users}}
+                    </div>
+                    <div ng-if="!row.active_users">
+                        <a class="text-primary" ui-sref="users.documentation" href="#/documentation">{{'LEARN_INSTALL' | translate}}</a>
                     </div>
                 </td>
                 <td>

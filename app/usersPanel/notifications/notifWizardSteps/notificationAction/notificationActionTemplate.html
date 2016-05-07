@@ -1,9 +1,9 @@
 <ui-select ng-model="notifActionCtrl.selectedAction">
     <ui-select-match placeholder="{{'ACTION_PLACEHOLDER' | translate}}">
-        <small uib-tooltip="{{$select.selected.desc}}" tooltip-trigger="mouseenter" ng-bind="$select.selected.name"></small>
+        <small ng-bind="$select.selected.name"></small>
     </ui-select-match>
     <ui-select-choices repeat="item in (notifActionCtrl.buttonClickActionList | filter: $select.search) track by item.id">
-        <span uib-tooltip="{{item.desc}}" tooltip-trigger="mouseenter" ng-bind="item.name"></span>
+        <span ng-bind="item.name"></span>
     </ui-select-choices>
 </ui-select>
 

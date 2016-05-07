@@ -32,9 +32,9 @@
 
                     thisController.voiceList=[
                         {name:"voice1",path:"assets/voices/voice1.mp3"},
-                        {name:"voice2",path:"assets/voices/voice2.mp3"},
-                        {name:"voice3",path:"assets/voices/voice3.mp3"},
-                        {name:"voice4",path:"assets/voices/voice4.mp3"}
+                        {name:"voice2",path:"assets/voices/voice1.mp3"},
+                        {name:"voice3",path:"assets/voices/voice1.mp3"},
+                        {name:"voice4",path:"assets/voices/voice1.mp3"}
                     ];
 
                     thisController.data={

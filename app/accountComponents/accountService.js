@@ -133,8 +133,10 @@
                 return $http
                     .get(URLS.URL_LOGOUT)
                     .then(function (result) {
-                        if(result.data.logged_out)
+                        if(result.data.logged_out) {
                             Session.destroy();
+                            $timeout(function () { $location.path('/account/signin'); }, 10);
+                        }
                     },$rootScope.handleError);
             };
 

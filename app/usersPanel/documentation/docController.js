@@ -12,8 +12,9 @@
      */
     angular
         .module('app')
-        .controller('docController', ['$scope',function($scope){
+        .controller('docController', ['$scope','$state',function($scope,$state){
             var thisController=this;
             thisController.app=$scope.app;//point to parent scope.app
+            $state.$uiViewScrollProvider.useAnchorScroll();
         }]);
 })());

@@ -25,11 +25,7 @@
              * send logout request to server
              */
             thisController.logout=function(){
-                return $AuthService.logout().then(function(){
-                    $timeout(function(){
-                        $location.path('/account/signin');
-                    },10);
-                });
+                return $AuthService.logout();
             };
         }]);
 })());

@@ -16,7 +16,7 @@
             $rootScope.serverAddress="";
             var appList = [
                 {id:1,active_users:15,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:1,active_users:2,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:1,active_users:0,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
                 {id:2,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
                 {id:3,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
                 {id:4,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
@@ -143,7 +143,7 @@
                     smart_device:mobileModels[Math.floor(Math.random() * 5)]+" "+Math.floor(Math.random() * 9000+1000)
                 };
             }
-            for (var i = 0; i < 1000; i++) {
+            for (i = 0; i < 1000; i++) {
                 randomsInstallationItems.push(createRandomItem(i));
             }
             $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
@@ -192,9 +192,9 @@
             }
             function createRandomNotif() {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
-                var sent_count=Math.floor(Math.random() * 10)+1;
-                var clickdismissCount=Math.floor(Math.random() * sent_count);
-                var clickedCount=Math.floor(Math.random() *clickdismissCount);
+                var sentCount=Math.floor(Math.random() * 10)+1;
+                var clickDismissCount=Math.floor(Math.random() * sentCount);
+                var clickedCount=Math.floor(Math.random() *clickDismissCount);
                 return {
                     notification_data:{
                         title:randomNameBuilder(4),
@@ -203,18 +203,18 @@
                     application:apps[Math.floor(Math.random() * apps.length)],
                     send_time:getRandomTime(),
                     status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
-                    sent_count:sent_count,
-                    delivered_count:Math.floor(Math.random() * sent_count),
+                    sent_count:sentCount,
+                    delivered_count:Math.floor(Math.random() * sentCount),
 
                     clicked_count:clickedCount,
-                    dismissed_count:clickdismissCount- clickedCount
+                    dismissed_count:clickDismissCount- clickedCount
                 };
             }
             $httpBackend.whenGET(URLS.URL_GET_DASHBOARD_DATA).respond(
                 {
-                    activeInstallationCount:32062,
-                    applicationCount:5,
-                    notificationSent:3512
+                    installations:32062,
+                    applications:5,
+                    notifications:3512
                 }
             );
 

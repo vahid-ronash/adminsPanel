@@ -1,7 +1,7 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
-/*global angular */
+/*global angular moment*/
 ((function() {
     'use strict';
     /**
@@ -97,7 +97,7 @@
              * @description
              * load apps using panelServices to load in ngtag
              */
-            panelServices.loadApplications().then(function(results){thisController.applist=results});
+            panelServices.loadApplications(function(results){thisController.applist=results});
             thisController.loadApps=function(){
                 return thisController.applist;
             };
