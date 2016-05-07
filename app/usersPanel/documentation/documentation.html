@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="p-a-md success p-y-lg">
+    <div class="p-a-md primary p-y-lg">
         <h1 class="display-3 _500 l-s-n-2x" style="text-align:right">راهنمای استفاده</h1>
 
         <div class="row">
@@ -9,26 +9,25 @@
     <div class="p-a-md">
         <div class="row p-t-md">
             <div class="col-sm-3 col-sm-push-9">
-                <div bs-affix data-offset-top="-80" class="pos-stc-sm text affix" style="position: fixed; width: 316px; top: 160px;">
+                <div bs-affix data-offset-top="-80" class="pos-stc-sm text affix-top p-a">
                     <h5>آموزش نصب</h5>
-                    <nav>
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a href="#android_studio" ui-scroll-to="android_studio">اندروید استدیو</a>
+                    <hr>
+                    <div class="m-b nav-active-accent">
+                        <ul class="nav nav-pills nav-stacked" ui-nav>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#android_studio" ui-scroll-to="android_studio">اندروید استدیو</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#eclipse" ui-scroll-to="build">اکلیپس</a>
+                                <a class="nav-link" href="#eclipse" ui-scroll-to="build">اکلیپس</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#b4a" ui-scroll-to="includes">بیسیک4اندروید</a>
+                                <a class="nav-link" href="#b4a" ui-scroll-to="includes">بیسیک4اندروید</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#unity" ui-scroll-to="css">یونیتی</a>
+                                <a class="nav-link" href="#unity" ui-scroll-to="css">یونیتی</a>
                             </li>
                         </ul>
-                    </nav>
-                    <a href="http://themeforest.net/user/flatfull/portfolio" target="_blank"
-                       class="btn rounded danger m-y-md">Get this theme</a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-9 col-sm-pull-3">
@@ -61,7 +60,7 @@
                                 <div class="box-header dker">
                                     <div class="row text-center">
                                         <div class="col-md-6">
-                                             <a data-toggle="modal" data-target="#myModal" >
+                                             <a data-toggle="modal" data-target="#as_Modal" >
                                                 <i class="fa fa-play-circle fa-3x" style="color: black">
                                                 </i>
                                                 <footer class="cite ">فیلم آموزش</footer>
@@ -88,7 +87,7 @@
                                 </div>
                             </div>
                         <!--Video -->
-                        <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
+                        <div class="modal fade bd-example-modal-lg" id="as_Modal" tabindex="-1" role="dialog"
                              aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -96,7 +95,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title" id="myModalLabel">آموزش نصب</h4>
+                                        <h4 class="modal-title" id="as_ModalLabel">آموزش نصب</h4>
                                     </div>
                                     <div class="modal-body" style="max-height: 500px;overflow:auto;">
                                         <div class="embed-responsive embed-responsive-16by9">
@@ -382,7 +381,7 @@ public class MyPushListener extends PusheListenerService &lcub;
                                             <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه گوگل پلی سرویس</a>
                                         </ul>
                                         <ul>
-                                            <a href="http://static.pushe.co/sdk/pushe-0.9.1.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه android-support-v4.jar</a>
+                                            <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه android-support-v4.jar</a>
                                         </ul>
                                     </ol>
                                 </div>
@@ -395,7 +394,7 @@ public class MyPushListener extends PusheListenerService &lcub;
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title" id="myModalEclipseLabel">آموزش نصب</h4>
+                                        <h4 class="modal-title" id="eclipse_myModalLabel">آموزش نصب</h4>
                                     </div>
                                     <div class="modal-body" style="max-height: 500px;overflow:auto;">
                                         <div class="embed-responsive embed-responsive-16by9">
@@ -688,14 +687,14 @@ public void onMessageReceived(JSONObject message) &lcub;
                                 <div class="box-header dker">
                                     <div class="row text-center">
                                         <div class="col-md-6">
-                                             <a data-toggle="modal" data-target="#myModal" >
+                                             <a data-toggle="modal" data-target="#b4a_Modal" >
                                                 <i class="fa fa-play-circle fa-3x" style="color: black">
                                                 </i>
                                                 <footer class="cite ">فیلم آموزش</footer>
                                              </a>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="https://github.com/pusheco/android-studio-sample" target="_blank" class="icon-content inverter img-circle">
+                                            <a href="https://github.com/pusheco/b4a-sample" target="_blank" class="icon-content inverter img-circle">
                                                 <i class="fa fa-github-square fa-3x" style="color: black"></i>
                                                 <footer class="cite">کد نمونه</footer>
                                             </a>
@@ -706,10 +705,13 @@ public void onMessageReceived(JSONObject message) &lcub;
                                     <p style="font-weight:bold">فایل های مورد نیاز</p>
                                     <ol>
                                         <ul>
-                                            <a href="http://static.pushe.co/sdk/pushe-lib-0.9.1.aar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه: pushe-lib-0.1.0.aar</a>
+                                            <a href="http://static.pushe.co/sdk/pushe-lib-0.9.1.aar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه و ملزومات آن</a>
                                         </ul>
                                         <ul>
                                             <a href="http://static.pushe.co/useful-links/google-play-services/android-studio/sdk.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه گوگل پلی سرویس</a>
+                                        </ul>
+                                        <ul>
+                                            <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه android-support-v4.jar</a>
                                         </ul>
                                     </ol>
                                 </div>
@@ -787,16 +789,14 @@ public void onMessageReceived(JSONObject message) &lcub;
                                     <code>JSON</code>
                                     شما باید یک
                                     <code>receiver</code>
-                                    به پروژه خود اضافه کنید. برای این کار
-                                <a href="http://static.pushe.co/useful-links/b4a/MessageReceived.bas" target="_blank">این ماژول</a>
-                                    را دانلود کنید.
+                                    به پروژه خود اضافه کنید. (این فایل در فولدر ملزومات که دانلود کردید قرار دارد)
                                 </li>
                                 <li>
                                     از مسیر
                                     <code>project>add existing module</code>
                                     در نرم افزار
                                     <code>B4A</code>
-                                    ، ماژول دانلود شده بالا را انتخاب کنید.
+                                    ، ماژول موجود در فولدر ملزومات را انتخاب کنید.
                                 </li>
                                 از این طریق
                                 <code>JSON</code>
@@ -871,7 +871,13 @@ public void onMessageReceived(JSONObject message) &lcub;
                                 اضافه کردن ریسورس ها
                             </h5>
                             <p class="text-justify">
-                         برای افزودن فایلهای Resourse کتابخانه پوشه و کتابخانه گوگل پلی سرویس، کدهای زیر را در کلاس Main پروژه خود و در بخش Project Attributes وارد نمایید:
+                                برای افزودن فایلهای
+                                <code>Resource</code>
+                                کتابخانه پوشه و کتابخانه گوگل پلی سرویس، کدهای زیر را در کلاس
+                                <code>Main</code>
+                                پروژه خود و در بخش
+                                <code>Project Attributes</code>
+                                وارد نمایید:
                             </p>
                             <pre style="direction: ltr; text-align: left; font-family: monospace;">
         #AdditionalRes: &lt; google play service-base library res folder path &gt; , com.google.android.gms
@@ -879,7 +885,17 @@ public void onMessageReceived(JSONObject message) &lcub;
         #AdditionalRes: &lt; library res folder path &gt;, co.ronash.pushe
                             </pre>
                             <p class="text-justify">
-                                به جای &lt; play service library res folder path &gt; آدرس فولدر res داخل فولدر اکسترکت شده Google-Play-Services را آدرس دهی کنید. به جای &lt; library res folder path& &gt; آدرس فولدر res داخل فولدر اکسترکت شده کتابخانه پوشه را آدرس دهی کنید.
+                                به جای
+                                <code>&lt; play service library res folder path &gt;</code>
+                                آدرس فولدر
+                                <code>res</code>
+                                داخل فولدر اکسترکت شده
+                                <code>Google-Play-Services</code>
+                                را آدرس دهی کنید. به جای
+                                <code>&lt; library res folder path& &gt;</code>
+                                آدرس فولدر
+                                <code>res</code>
+                                داخل فولدر اکسترکت شده کتابخانه پوشه را آدرس دهی کنید.
                             </p>
                             <p class="text-justify">
                                 به طور مثال اگر دو فولدر اکسترکت شده را در دسکتاپ قرار داده باشید با توجه به آدرس دسکتاپ از آدرس دهی زیر استفاده کنید:
@@ -895,17 +911,199 @@ public void onMessageReceived(JSONObject message) &lcub;
                             </h5>
                             <ol class="text-justify">
                                 <li>
-                                    وارد پنل پوشه شوید و اپلیکیشن خود ثبت کنید. توجه داشته باشید که از همان Package Name استفاده کنید که در Build Configuration خود ثبت کرده اید.
+                                    وارد پنل پوشه شوید و اپلیکیشن خود ثبت کنید. توجه داشته باشید که از همان
+                                    <code>Package Name</code>
+                                    استفاده کنید که در
+                                    <code>Build Configuration</code>
+                                    خود ثبت کرده اید.
                                 </li>
                                 <li>
-                                   فایل منیفست مربوط به B4A را دانلود کنید. منیفست پروژه را از طریق Project>Manifest Editor در نرم افزار B4A باز کنید و محتویات داخل فایل را در آن جایگذاری کنید.
+                                    فایل منیفست مربوط به
+                                    <code>B4A</code>
+                                    را دانلود کنید. منیفست پروژه را از طریق
+                                    <code>Project>Manifest Editor</code>
+                                    در نرم افزار
+                                    <code>B4A</code>
+                                    باز کنید و محتویات داخل فایل را در آن جایگذاری کنید.
                                 </li>
-                                <li>مقدار min sdk  رو 16 قرار دهید.</li>
                             </ol>
                             <p class="text-justify">
                                 برخی از دسترسی ها (permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید.
                             </p>
                         </div>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">7</span>
+                            تست و عیب یابی
+                        </h5>
+
+                        <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید،
+                            میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید.
+
+                        <p>
+                            <ol class="text-justify">
+                                <li>به صفحه نصب ها بروید.</li>
+                                <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که
+                                    متعلق به گوشی شما است.
+                                </li>
+                                <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                            </ol>
+                        <div class="box warn p-a">
+                            توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                        </div>
+
+                        <div class="modal fade bd-example-modal-lg" id="b4a_Modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="b4a_myModalLabel">آموزش نصب</h4>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item"
+                                                    src="http://www.aparat.com/video/video/embed/videohash/Qyfbz/vt/frame"
+                                                    allowFullScreen="true" webkitallowfullscreen="true"
+                                                    mozallowfullscreen="true"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                    <div id="unity">
+                        <hr>
+                        <h3 class="m-t-lg m-b">یونیتی</h3>
+                        <div class="box">
+                                <div class="box-header dker">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                             <a data-toggle="modal" data-target="#unity_Modal" >
+                                                <i class="fa fa-play-circle fa-3x" style="color: black">
+                                                </i>
+                                                <footer class="cite ">فیلم آموزش</footer>
+                                             </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="https://github.com/pusheco/unity-sample" target="_blank" class="icon-content inverter img-circle">
+                                                <i class="fa fa-github-square fa-3x" style="color: black"></i>
+                                                <footer class="cite">کد نمونه</footer>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <p style="font-weight:bold">فایل های مورد نیاز</p>
+                                    <ol>
+                                        <ul>
+                                            <a href="http://static.pushe.co/sdk/pushe-0.9.1.unitypackage" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>پلاگین پوشه</a>
+                                        </ul>
+                                    </ol>
+                                </div>
+                            </div>
+                        <div class="modal fade bd-example-modal-lg" id="unity_Modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="unity_myModalLabel">آموزش نصب</h4>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                        <h3>به زودی!</h3>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">1</span>
+                            Import کردن کتابخانه
+                        </h5>
+                        <ol class="text-justify">
+                            <li>
+                                فایل
+                                <code>Pushe.unitypackage</code>
+                                را
+                                <a href="http://static.pushe.co/sdk/pushe-0.9.1.unitypackage" target="_blank">از این لینک </a>
+دانلود کنید.
+                            </li>
+                            <li>
+                                در پروژه یونیتی خود بر روی فولدر
+                                <code>Assets</code>
+                                کلیک راست کنید و از
+                                <code>Import Package</code>
+                                ، بر روی
+                                <code>Custom Package</code>
+                                کلیک کنید و فایل پکیج دانلود شده بالا را آدرس دهی کنید.
+                            </li>
+                            <li>
+                                از مسیر
+                                <code>Assets/Source</code>
+                                پریفب
+                                <code>PusheGameObject</code>
+                                را درگ کرده و در پنجره ی
+                                <code>Hierarchy</code>
+                                رها کنید.
+                            </li>
+                        </ol>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">2</span>
+                            تنظیمات پروژه
+                        </h5>
+                        <ol class="text-justify">
+                            <li>
+                                از منوی
+                                <code>File</code>
+                                گزینه ی
+                                <code>Build Setting</code>
+                                را فشار دهید.
+                            </li>
+                            <li>
+                                در بین پلتفرم ها
+                                <code>Android</code>
+                                را انتخاب کنید و دکمه ی
+                                <code>Player Setting</code>
+                                را بزنید.
+                            </li>
+                            <li>
+                                در قسمت
+                                <code>Bundle Identifier</code>
+                                از همین پنجره، نام اپلیکیشن خود را انتخاب کنید.
+                            </li>
+                        </ol>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">2</span>
+                            تغییرات AndroidManifest.xml
+                        </h5>
+                        <ol class="text-justify">
+                            <li>
+                                وارد
+                                <a href="http://pushe.co/panel/platform/application/add/" target="_blank">پنل پوشه</a>
+                                بشوید و اپلیکیشن خود را با همان نام درج شده در
+                                <code>Bundle Identifier</code>
+                                وارد کنید.
+                            </li>
+                            <li>
+                                فایل
+                                <code>Manifest</code>
+                                در اختیار گذاشته شده را دانلود کرده و محتوای آن را در منیفست خود در مسیر
+                                <code>Assets/Plugins/Android</code>
+                                ادغام نمایید.
+                            <div class="box info p-a text-justify">
+                                اگر فایل AndroidManifest.xml در این مسیر موجود نیست، ابتدا این فایل را از مسیر
+C:\Program Files\Unity\Editor\Data\PlaybackEngines\androidplayer\apk
+کپی کرده و در مسیر Assets/Plugins/Android در پروژه ی خود Paste نمایید.
+                            </div>
+                            </li>
+                        </ol>
+
+                        <p class="text-justify">
+                            برخی از دسترسی ها (Permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. در نسخه های بعدی سرویس شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید. پس اگر قصد استفاده از این قابلیت را در آینده دارید از ابتدا این دسترسی ها را قرار دهید تا در آینده نیاز به، به روز رسانی اپلیکیشن خود نداشته باشید.
+                        </p>
 
                         <h5>
                             <span class="label rounded label-lg  pos-rlt m-r-xs">7</span>
@@ -927,82 +1125,6 @@ public void onMessageReceived(JSONObject message) &lcub;
                             توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
                         </div>
 
-                        <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
-                             aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title" id="myModalLabel">آموزش نصب</h4>
-                                    </div>
-                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item"
-                                                    src="http://www.aparat.com/video/video/embed/videohash/HVuXo/vt/frame"
-                                                    allowFullScreen="true" webkitallowfullscreen="true"
-                                                    mozallowfullscreen="true"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
-                    </div>
-                    <div id="unity">
-                        <hr>
-                        <h3 class="m-t-lg m-b">یونیتی</h3>
-                        <div class="box">
-                                <div class="box-header dker">
-                                    <div class="row text-center">
-                                        <div class="col-md-6">
-                                             <a data-toggle="modal" data-target="#myModal" >
-                                                <i class="fa fa-play-circle fa-3x" style="color: black">
-                                                </i>
-                                                <footer class="cite ">فیلم آموزش</footer>
-                                             </a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="https://github.com/pusheco/android-studio-sample" target="_blank" class="icon-content inverter img-circle">
-                                                <i class="fa fa-github-square fa-3x" style="color: black"></i>
-                                                <footer class="cite">کد نمونه</footer>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-body">
-                                    <p style="font-weight:bold">فایل های مورد نیاز</p>
-                                    <ol>
-                                        <ul>
-                                            <a href="http://static.pushe.co/sdk/pushe-lib-0.9.1.aar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه: pushe-lib-0.1.0.aar</a>
-                                        </ul>
-                                        <ul>
-                                            <a href="http://static.pushe.co/useful-links/google-play-services/android-studio/sdk.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه گوگل پلی سرویس</a>
-                                        </ul>
-                                    </ol>
-                                </div>
-                            </div>
-                        <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
-                             aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title" id="myModalLabel">آموزش نصب</h4>
-                                    </div>
-                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item"
-                                                    src="http://www.aparat.com/video/video/embed/videohash/HVuXo/vt/frame"
-                                                    allowFullScreen="true" webkitallowfullscreen="true"
-                                                    mozallowfullscreen="true"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
                     </div>
             </div>
         </div>
