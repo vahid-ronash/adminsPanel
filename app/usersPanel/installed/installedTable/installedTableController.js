@@ -12,7 +12,7 @@
      */
     angular
         .module("app")
-        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter', function ($scope, $installedResource,$timeout,$filter) {
+        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter','panelServices', function ($scope, $installedResource,$timeout,$filter,panelServices) {
             var thisController = this;
 
             thisController.imeiList=[];
@@ -23,6 +23,7 @@
                     thisController.imeiHash[imeiList[i].imei]=imeiList[i];
                 }
             });
+
             /**
              * @ngdoc method
              * @name sendTest
@@ -48,6 +49,7 @@
                 thisController.selectedToFavorite=row;
                 $("#addFavoriteDialog").modal();
             };
+
             /**
              * @ngdoc method
              * @name addNewFavorite
@@ -87,16 +89,51 @@
             thisController.loadPhones=function(){
                 return thisController.deviceModels;
             };
+
+            /**
+             * @ngdoc method
+             * @name loadApps
+             * @methodOf app.controller.installedTableController
+             * @description
+             * load apps using panelServices to load in ngtag
+             */
+            panelServices.loadApplications().then(function(results){thisController.applist=results});
+            thisController.loadApps=function(){
+                return thisController.applist;
+            };
+
+            /**
+             * @ngdoc method
+             * @name startRemoveIMEI
+             * @methodOf app.controller.installedTableController
+             * @description
+             * start remove imei get confirmation
+             */
             thisController.startRemoveIMEI=function(row){
                 $("#removeFavDialog").modal();
                 thisController.selectedToRemoveFavorite=row;
             };
+
+            /**
+             * @ngdoc method
+             * @name removeIMEI
+             * @methodOf app.controller.installedTableController
+             * @description
+             * send request to remove Favorite
+             */
             thisController.removeIMEI=function(){
                 $installedResource.removeFromFavorites(thisController.selectedToRemoveFavorite.favorite,function(){
                     $scope.root.handleError({localError:{type:'success',text:$filter('translate')('FAV_REMOVE_SUCCESS_TEXT'),title:$filter('translate')('FAV_REMOVE_SUCCESS_TITLE')}});
                 });
             };
 
+            /**
+             * @ngdoc method
+             * @name callServer
+             * @methodOf app.controller.installedTableController
+             * @description
+             * get data from server for installed table
+             */
             thisController.rowInPage=6;
             thisController.displayedPages=2;
             thisController.callServer=function(tableState){

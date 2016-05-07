@@ -61,15 +61,30 @@
                                    min-length="0"
                                    load-on-focus="true"
                                    load-on-empty="true"
-                                   max-results-to-show="5"
+                                   max-results-to-show="7"
                                    >
                     </auto-complete>
                     <!--template="my-custom-template"-->
                 </tags-input>
             </th>
             <!--<th><input st-search="'smart_device'" class="form-control" placeholder="{{'DEVICE_MODEL' | translate}}.." type="text"/></th>-->
-            <th><input st-search="'instance_id'" class="form-control" placeholder="{{'DEVICE' | translate}}.." type="text"/></th>
-            <th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
+            <th><input st-search="'instance_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
+            <th>
+                <tags-input ng-model="installTableCtrl.selectedApp">
+                    <auto-complete source="installTableCtrl.loadApps()"
+                                   display-property="name"
+                                   key-property="id"
+                                   placeholder="{{'APPLICATION' | translate}}.."
+                                   min-length="0"
+                                   load-on-focus="true"
+                                   load-on-empty="true"
+                                   max-results-to-show="7"
+                    >
+                    </auto-complete>
+                    <!--template="my-custom-template"-->
+                </tags-input>
+            </th>
+            <!--<th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>-->
             <th><input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
         </tr>
         </thead>
