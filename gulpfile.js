@@ -107,9 +107,6 @@ gulp.task('copyIconFonts', function () {
     gulp.src('assets/libs/material-design-icons/iconfont/*').pipe(gulp.dest('assets/fonts/MaterialIcons'));
 });
 
-
-
-
 var gulpNgConfig = require('gulp-ng-config');
 gulp.task('makeProductionEnvironment', function () {
     gulp.src('environment.json')
@@ -125,11 +122,27 @@ gulp.task('makeDevelopmentEnvironment', function () {
         })).pipe(gulp.dest('app/'));
 });
 
+
+var useref = require('gulp-useref');
+var gulpif = require('gulp-if');
 gulp.task('makePublic', function () {
+    gulp.src('index.html')
+        .pipe(useref())
+        .pipe(gulpif('*.js', uglify()))
+        .pipe(gulpif('*.css', cleanCSS()))
+        .pipe(gulp.dest('public'));
+    
+    gulp.src('assets/font/*.*').pipe(gulp.dest('public/assets/font'));
+    gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
+    gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
+    gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
+    gulp.src('assets/voices/*.*').pipe(gulp.dest('public/assets/voices'));
+});
+gulp.task('makePublicTest', function () {
     gulp.src('index.html').pipe(gulp.dest('public/'));
     gulp.src('app/**/*.*').pipe(gulp.dest('public/app'));
-
     gulp.src('assets/css/*.*').pipe(gulp.dest('public/assets/css'));
+    
     gulp.src('assets/font/*.*').pipe(gulp.dest('public/assets/font'));
     gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
     gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));

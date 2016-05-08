@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('userMenuController', ['$scope','AuthService','$location','$timeout',function($scope,$AuthService,$location,$timeout){
+        .controller('userMenuController', ['$scope','AuthService','$location',function($scope,$AuthService,$location){
             var thisController=this;
             // thisController.app=$scope.app;//point to parent scope.app
             thisController.userEmail=$AuthService.getUserEmail();

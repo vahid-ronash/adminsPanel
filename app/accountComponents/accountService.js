@@ -12,7 +12,7 @@
      */
     angular
         .module('app')
-        .factory('AuthService', function ($http, Session,$rootScope,URLS) {
+        .factory('AuthService', function ($http, Session,$rootScope,URLS,$timeout) {
             var authService = {};
 
             /**

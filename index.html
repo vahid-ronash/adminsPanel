@@ -16,9 +16,10 @@
     <meta name="mobile-web-app-capable" content="yes">
     <!--<link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">-->
 
-
+    <!-- build:css css/combined.css -->
     <link rel="stylesheet" href="assets/css/material.min.css" type="text/css"/>
     <link rel="stylesheet" href="assets/css/app.css" type="text/css"/>
+    <!-- endbuild -->
 </head>
 <body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}"
       ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
@@ -37,6 +38,9 @@
 
 <!--REQUREMENT JS (angular,...)-->
 <script type="text/javascript" src="assets/js/req.js"></script>
+
+
+<!-- build:js js/mine.js -->
 
 <!--SENTRY-->
 <script type="text/javascript" src="app/raven.js"></script>
@@ -141,6 +145,6 @@
 
 
 <script src="app/usersPanel/notifications/notifWizardSteps/jsonNotifStep/jsonStep1Controller.js"></script>
-
+<!-- endbuild -->
 </body>
 </html>
