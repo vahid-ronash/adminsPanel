@@ -98,11 +98,12 @@
              * @description
              * load apps using panelServices to load in ngtag
              */
-            panelServices.loadApplications(function(results){thisController.applist=results});
+            panelServices.loadApplications().then(function(results){thisController.applist=results});
             thisController.loadApps=function(){
                 return thisController.applist;
             };
 
+            thisController.dateFilter=1450197600000;
             /**
              * @ngdoc method
              * @name startRemoveIMEI
@@ -161,15 +162,11 @@
 
                 return $installedResource.query(filters).then(function (result) {
                     thisController.displayed = result.data.results;
-                    for(var i in thisController.displayed){
+                    for(var i=0;i<thisController.displayed.length;i++){
                         //make it favourite
                         if(thisController.imeiHash[thisController.displayed[i].imei]){
                             thisController.displayed[i].favorite=thisController.imeiHash[thisController.displayed[i].imei];
                         }
-
-                        //convert time
-                        var d=new Date(thisController.displayed[i].creation_time);
-                        thisController.displayed[i].creation_time=moment(d).format('jYYYY/jM/jD');
                     }
                     if(result.data.previous)thisController.hasPrevious=true;
                     if(result.data.next)thisController.hasNext=true;

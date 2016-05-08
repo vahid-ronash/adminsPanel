@@ -28,7 +28,7 @@
                 },
                 enter:function(callback){
                     if(!thisController.appList) {
-                        panelServices.loadApplications(function(result){
+                        panelServices.loadApplications().then(function(result){
                             thisController.appList = result;
                             callback(true);
                         });

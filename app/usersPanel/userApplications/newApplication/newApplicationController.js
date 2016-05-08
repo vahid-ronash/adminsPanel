@@ -41,7 +41,9 @@
                 {name:"puzzely",value:"puzzely"}
             ];
             var providerHash={};
-            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
+            for(var i=0;i<thisController.providerList.length;i++){
+                providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];
+            }
             thisController.providerObject=null;
             thisController.send=function(){
                 $applicationResource.save(thisController.data, function (createdApplication) {

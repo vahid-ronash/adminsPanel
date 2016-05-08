@@ -25,15 +25,20 @@
                  * @description
                  * load users application
                  */
-                thisService.applications=0;
-                thisService.loadApplications = function (callback) {
-                    if(thisService.applications)callback(thisService.applications);
+                var applications=0;
+                var appPromise=0;
+                thisService.loadApplications = function () {
+                    if(!appPromise && applications){
+                        appPromise= {then:function(callback){callback(thisService.applications)}};
+                    }
                     else {
-                        return $http.get(URLS.URL_APP, {}).then(function (result) {
-                            thisService.applications =result.data.results;
-                            callback(thisService.applications);
+                         appPromise=$http.get(URLS.URL_APP, {}).then(function (result) {
+                             appPromise=0;
+                             thisService.applications =result.data.results;
+                             return thisService.applications;
                         }, $rootScope.handleError);
                     }
+                    return appPromise
                 };
             })();
         }]);

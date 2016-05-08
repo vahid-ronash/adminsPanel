@@ -88,7 +88,10 @@
                 </tags-input>
             </th>
             <!--<th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>-->
-            <th><input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
+            <th width="200" class="ltr" style="max-width: 25%">
+                <adm-dtp ng-model='installTableCtrl.dateFilter' options='{calType: "jalali", format: "YYYY/MM/DD", default: 1450197600000}'></adm-dtp>
+                <!--<input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/>-->
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -109,8 +112,8 @@
                 </td>
                 <td>{{row.smart_device}}</td>
                 <td> {{row.instance_id}} </td>
-                <td>{{row.application_id}}</td>
-                <td>{{row.creation_time}}</td>
+                <td>{{row.application|appName}}</td>
+                <td>{{row.creation_time | jalali}}</td>
             </tr>
         </tbody>
         <tfoot>

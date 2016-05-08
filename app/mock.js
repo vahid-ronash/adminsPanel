@@ -135,7 +135,7 @@
                 var mobileModels = ['Sumsong', 'LG', 'i phone', 'motorola', 'nokia'];
                 return {
                     id: id,
-                    application_id: apps[Math.floor(Math.random() * apps.length)],
+                    application: Math.floor(Math.random() * apps.length),
                     instance_id: Math.floor(Math.random() * 10000000),
                     creation_time: getRandomTime(),
                     test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/',
@@ -202,7 +202,7 @@
                     },
                     application:apps[Math.floor(Math.random() * apps.length)],
                     send_time:getRandomTime(),
-                    status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
+                    status:Math.floor(Math.random() * 5)+1,
                     sent_count:sentCount,
                     delivered_count:Math.floor(Math.random() * sentCount),
 

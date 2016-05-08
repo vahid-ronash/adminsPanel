@@ -53,7 +53,8 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/FileSaver/FileSaver.js",
             
             "assets/libs/moment/moment.js",
-            "assets/libs/moment-jalaali/build/moment-jalaali.js"
+            "assets/libs/moment-jalaali/build/moment-jalaali.js",
+            "assets/libs/adm-dtp/dist/ADM-dateTimePicker.js"
         ])
         .pipe(concat("req.js"))
         .pipe(uglify())
@@ -90,7 +91,8 @@ gulp.task('makeCSS', function() {
         .pipe(addsrc([
             "assets/libs/ui-select/dist/select.css",
             "assets/libs/ng-tags-input/ng-tags-input.css",
-            "assets/libs/animate.css/animate.css"
+            "assets/libs/animate.css/animate.css",
+            "assets/libs/adm-dtp/dist/ADM-dateTimePicker.css"
         ]))
         .pipe(concat('app.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
