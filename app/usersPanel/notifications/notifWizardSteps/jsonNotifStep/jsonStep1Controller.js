@@ -21,25 +21,24 @@
                 "selectedApps": [{
                     "id": 1
                 }],
-                "title": "dddd",
-                "content": "sdvsdvsdvsdvsdvsd",
-                "ticker": "",
+                "title": "JSON Test",
+                "content": "Small Text",
+                "ticker": "Tickeeeeeeeeeeeeeeeeeeeeeer",
                 "icon": "",
-                "action": {},
-                "big_tiltle": "ffdsfgvsddf",
-                "big_content": "fdsgsfdg",
-                "summary": "sdfgsfdgsdfgsdf",
+                "action": {
+                    "action_type":"U",
+                    "action_url":"http://pushe.co"
+                },
+                "big_tiltle": "BIG title",
+                "big_content": "BIG Content",
+                "summary": "summary",
                 "buttons": [],
                 "json": "",
-                "screen": {"turnON": false},
-                "voice": {
-                    "isOn": false,
-                    "selected": {"name": "voice1", "path": "assets/voices/voice1.mp3"}
-                },
-                "vibrate": {"isOn": false, "offTime": "0.1", "onTime": "0.1"},
-                "LED": {"isOn": false, "color": "yellow", "offTime": "0.2", "onTime": "0.2"},
-                "contacts": [{"text": "356938035643809"}, {"text": "651956116541"}],
-                "visibility": true
+                "sound_url": "",
+                "led_color": "-65574",
+                "led_off": "0.2",
+                "led_on": "0.2",
+                "show_app": true
             };
             $scope.$context.behavior.leaving = function(options, callback) {
                 if(asThisController.aceSession) {

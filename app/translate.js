@@ -284,12 +284,21 @@ angular
         'NOT_VALID_PACKAGE_NAME':'نام بسته اشتباه میباشد.',
         'PRIVACY' : 'حریم خصوصی',
         'AND' : 'و',
+        'PHONE_NUMBER':'021-44668276',
         'DONT_HAVE_PROVIDER':'از اپلیکیشن ساز استفاده نکرده ام',
         'TO_LEARN_APP_INSTALL':'جهت آموزش نحوه نصب پوشه در اپلیکیشن روی گزینه آموزش نصب کلیک کنید.',
         'APP_CREATED_SUCCESSFULLY':'اپلیکیشن شما با موفقیت ایجاد شد',
         'LEARN_INSTALL':'آموزش نصب',
         'SUCCESS_DELETE':'اپ شما با موفقیت حذف شد.',
         'DELETE':'حذف',
+        'ERROR404':'خطای 404',
+        'ERROR404_TITLE':'نداریم',
+        'ERROR404_DESCRIPTION':'همچینین صفحه ای در سایت پوشه وجود ندارد',
+        'ERROR404_BACKTOHOM':'بازکشت به صفحه اصلی',
+        'ERROR500':'خطای 500',
+        'ERROR500_DESCRIPTION':'سرور ما با مشکل روبرو است، ما در حال بررسی مشکل هستیم، انشاالله به زودی مشکل برطرف خواهد شد. ',
+        'ERROR500_INFORM':'در صورتی که مدتی است مشکل بر طرف نشده لطفا به support@pushe.co اطلاع دهید.',
+        'ERROR500_SENDMAIL':'ارسال ایمیل',
         'DEVICE_MODEL':'مدل دستگاه',
         'ADD_FAVORITE':'ذخیره',
         'FAVORITE_DEVICE':'دستگاه مورد علاقه',
@@ -299,7 +308,8 @@ angular
         'FAV_REMOVE_SUCCESS_TEXT':'نصب از علاقه مندی ها خارج شد',
         'FAV_REMOVE_SUCCESS_TITLE':'حذف از علاقه مندی',
         'SEND_TEST_SUCCESS_TEXT':'تست با موفقیت ارسال شد.',
-        'SEND_TEST_SUCCESS_TITLE':'تست'
+        'SEND_TEST_SUCCESS_TITLE':'تست',
+        'NO_RESULT':'جستجوی شما نتیجه ای نداشت',
     });
 
     $translateProvider.preferredLanguage('fa');

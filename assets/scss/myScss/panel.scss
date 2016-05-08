@@ -1,5 +1,5 @@
 body{
-  background-image: url("http://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-62.jpg") ;
+  background-image: url("../images/background.jpg") ;
   background-size: cover ;
 }
 
@@ -7,4 +7,7 @@ body{
 	background-color: rgba(250, 255, 255, 0.5);
 	position: relative;
 	margin-bottom: 1.5rem;
+}
+.btn-cursor-default{
+	cursor: default;
 }

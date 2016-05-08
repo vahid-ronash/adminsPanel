@@ -79,8 +79,22 @@
             </tr>
             </tfoot>
         </table>
-        <div ng-click="startApplicationWizard()" ng-if="appsTableCtrl.displayed && !appsTableCtrl.displayed.length">
-            <h1 class="text-center p-t p-b">please ye done biafza</h1>
+        <div class="col-md-6 col-md-offset-3">
+        <div class="box" ng-if="appsTableCtrl.displayed && !appsTableCtrl.displayed.length">
+            <div class="box-header warn text-center p-a">
+                شما تاکنون اپلیکیشنی در پوشه ایجاد نکرده اید.
+                <br>
+                 برای شروع روی دکمه ایجاد اپلیکیشن کلیک کنید.
+            </div>
+            <div class="box-body dker">
+                <div class="text-center">
+                    <button class="btn btn-fw info" ng-click="startApplicationWizard()">
+                        ایجاد اپلیکیشن
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+        </div>
+    <div class="col-md-3"></div>
 </div>
