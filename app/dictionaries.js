@@ -1,16 +1,12 @@
 /**
  * Created by mojtaba on 5/1/16.
  */
-/**
- * Created by mojtaba on 4/4/16.
- */
 
 /**
  * @ngdoc function
- * @name app.config:uiRouter
+ * @name app.constants:DICS
  * @description
- * # Config
- * Config for the router
+ * determine dictionaries constants
  */
 /*global angular */
 ((function() {

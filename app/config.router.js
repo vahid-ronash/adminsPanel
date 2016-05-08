@@ -62,7 +62,14 @@
                         controllerAs:'notifsCtrl',
                         //resolve: need delay
                         pageName:'NOTIFICATIONS'
-
+                    })
+                    .state('home', {
+                        url:'/home',
+                        templateUrl: 'app/home/homeTemplate.html',
+                        controller: 'homeController',
+                        controllerAs:'homeCtrl',
+                        access: {isFree: true}
+                        //resolve: need delay
                     })
                     .state('signin', {
                         url:'/account/signin',

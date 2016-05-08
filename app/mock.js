@@ -6,11 +6,11 @@
     'use strict';
     angular
         .module('app')
-        .config(function($provide,EnvironmentConfig) {
+        .config(['$provide','EnvironmentConfig',function($provide,EnvironmentConfig) {
             if(EnvironmentConfig.mode==="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-        })
-        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
+        }])
+        .run(["$httpBackend","$filter","$rootScope","EnvironmentConfig","URLS",function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
             if(EnvironmentConfig.mode==="production")return true;
             
             $rootScope.serverAddress="";
@@ -282,5 +282,5 @@
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html").passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationAction/notificationActionTemplate.html").passThrough();
             $httpBackend.whenGET("app/shared/sxWizardCopy/wizardTemplate.html").respond("<div></div>");
-        });
+        }]);
 })());

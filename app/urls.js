@@ -4,10 +4,9 @@
 
 /**
  * @ngdoc function
- * @name app.config:uiRouter
+ * @name app.constants:URLS
  * @description
- * # Config
- * Config for the router
+ * determine URLS constants
  */
 /*global angular */
 ((function() {

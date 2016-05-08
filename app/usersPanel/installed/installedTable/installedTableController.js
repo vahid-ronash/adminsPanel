@@ -1,15 +1,16 @@
 /**
  * Created by mojtaba on 3/14/16.
  */
+
+/**
+ * @ngdoc controller
+ * @name app.controller.installedTableController
+ * @description
+ * it shows all installed devices
+ */
 /*global angular moment*/
 ((function() {
     'use strict';
-    /**
-     * @ngdoc controller
-     * @name app.controller.installedTableController
-     * @description
-     * it shows all installed devices
-     */
     angular
         .module("app")
         .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter','panelServices', function ($scope, $installedResource,$timeout,$filter,panelServices) {

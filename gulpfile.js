@@ -15,20 +15,11 @@ var uglify = require('gulp-uglify');
 
 // var gzip = require('gulp-gzip');
 gulp.task('compressJsFiles',function(){
-    gulp.src([
-            "app/**/*.js"
-        ])
-        .pipe(concat("mine.js"))
-        .pipe(uglify())
-        // .pipe(rename("public/myfiles.js"))
-        //.pipe(gzip())
-        .pipe(gulp.dest('public/js'));
     gulp.src("assets/libs/PACE/pace.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
     gulp.src([
             "assets/libs/jquery/dist/jquery.js",
             "assets/libs/tether/dist/js/tether.js",
             "assets/libs/bootstrap/dist/js/bootstrap.js",
-
 
             "assets/libs/ng-file-upload-shim/ng-file-upload-shim.js",//it comes here because of conflict between upload and pace
             "assets/libs/angular/angular.js",
@@ -42,9 +33,8 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-touch/angular-touch.js",
             "assets/libs/ui-select/dist/select.js",
             "assets/libs/ng-tags-input/ng-tags-input.js",
-
+            
             "assets/libs/ng-file-upload/ng-file-upload.js",
-            "assets/libs/ngImgCrop/compile/unminified/ng-img-crop.js",
             "assets/libs/angular-ui-router/release/angular-ui-router.js",
             "assets/libs/angular-mocks/angular-mocks.js",
             "assets/libs/angular-ui-utils/ui-utils.js",
@@ -53,25 +43,33 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular-ui-ace/ui-ace.js",
 
             "assets/libs/material-design-lite/material.js",
-            "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
 
             "assets/libs/raven-js/dist/raven.js",
             "assets/libs/raven-js/dist/plugins/angular.js",
-
+            
             "assets/libs/angular-no-captcha/src/angular-no-captcha.js",
-            "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js",
 
             "assets/libs/blob/Blob.js",
             "assets/libs/FileSaver/FileSaver.js",
-
+            
             "assets/libs/moment/moment.js",
             "assets/libs/moment-jalaali/build/moment-jalaali.js"
         ])
         .pipe(concat("req.js"))
-        // .pipe(uglify())
+        .pipe(uglify())
         // .pipe(rename("public/myfiles.js"))
         // .pipe(gzip())
         .pipe(gulp.dest('assets/js'));
+
+
+    gulp.src([
+        "assets/libs/angular-material-design-lite/src/angular-material-design-lite.js",
+        "assets/libs/angular-detect-caps-lock/dist/angular-detect-caps-lock.js",
+            "assets/libs/ngImgCrop/compile/unminified/ng-img-crop.js"
+    ])
+        .pipe(concat("req_un.js"))
+        .pipe(gulp.dest('assets/js'));
+
     gulp.src("assets/libs/ace-builds/src/mode-json.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
     gulp.src("assets/libs/ace-builds/src/theme-twilight.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
     gulp.src("assets/libs/ace-builds/src/theme-light.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
@@ -132,7 +130,7 @@ gulp.task('makePublic', function () {
         .pipe(gulpif('*.css', cleanCSS()))
         .pipe(gulp.dest('public'));
     
-    gulp.src('assets/font/*.*').pipe(gulp.dest('public/assets/font'));
+    gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/fonts'));
     gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
     gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
     gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
@@ -143,7 +141,7 @@ gulp.task('makePublicTest', function () {
     gulp.src('app/**/*.*').pipe(gulp.dest('public/app'));
     gulp.src('assets/css/*.*').pipe(gulp.dest('public/assets/css'));
     
-    gulp.src('assets/font/*.*').pipe(gulp.dest('public/assets/font'));
+    gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/font'));
     gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
     gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
     gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
