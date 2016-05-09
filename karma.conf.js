@@ -15,42 +15,9 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            //'app/**/*test.js'
-            // "assets/js/pace.js",
             "assets/libs/PACE/pace.min.js",
             "assets/js/req.js",
-            "assets/libs/ace-builds/src-min-noconflict/ace.js",
-            // "assets/libs/jquery/dist/jquery.js",
-            //
-            // "assets/libs/tether/dist/js/tether.min.js",
-            // "assets/libs/bootstrap/dist/js/bootstrap.js",
-            //
-            //
-            // "assets/libs/angular/angular.js",
-            // "assets/libs/angular-translate/angular-translate.js",
-            // "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
-            // "assets/libs/angular-animate/angular-animate.js",
-            // "assets/libs/angular-smart-table/dist/smart-table.js",
-            // "assets/libs/angular-resource/angular-resource.js",
-            // "assets/libs/angular-sanitize/angular-sanitize.js",
-            // "assets/libs/angular-touch/angular-touch.js",
-            // "assets/libs/ngImgCrop/compile/unminified/ng-img-crop.js",
-            //
-            // "assets/libs/ui-select/dist/select.js",
-            // "assets/libs/ng-tags-input/ng-tags-input.js",
-            // "assets/libs/ng-file-upload-shim/ng-file-upload-shim.min.js",
-            // "assets/libs/ng-file-upload/ng-file-upload.min.js",
-            //
-            // "assets/libs/angular-route/angular-route.js",
-            // "assets/libs/angular-mocks/angular-mocks.js",
-            //
-            // "assets/libs/ngstorage/ngStorage.js",
-            // "assets/libs/angular-ui-utils/ui-utils.js",
-            // "assets/libs/oclazyload/dist/ocLazyLoad.js",
-            //
-            //   "assets/libs/angular-ui-ace/ui-ace.js",
-            //   "assets/libs/ace-builds/src-min-noconflict/ace.js",
-
+            "assets/js/req_un.js",
 
             "app/app.js",
             "app/environment.js",

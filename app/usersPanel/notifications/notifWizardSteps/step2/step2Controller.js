@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controller.step1Controller
+ * @name app.controller.step2Controller
  * @description
  * control notification wizard step 2
  * it gives title text icon ticker fields
@@ -33,7 +33,6 @@
                     thisController.focusStart=true;
                     thisController.isMessageHidden = $scope.wizard.steps[1].data.isHidden;
                     if (thisController.isMessageHidden)$scope.wizard.canSendNotification=true;
-                    callback(true);
                 },
                 reset:function(){
                     thisController.data = {

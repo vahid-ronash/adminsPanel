@@ -43,25 +43,26 @@
 
     </form>
 </simple-modal>
+
 <div class="box">
-    <table st-table="installTableCtrl.displayed" st-pipe="installTableCtrl.callServer" class="table table-striped">
+    <table st-table="installTableCtrl.displayed" st-pipe="installTableCtrl.callServer" class="table table-striped text-center">
         <thead>
         <tr>
-            <th>{{'TEST' | translate}}</th>
-            <th st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
-            <th st-sort="instance_id">{{'DEVICE' | translate}}</th>
-            <th st-sort="application_id">{{'APPLICATION' | translate}}</th>
-            <th st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
+            <th class="text-center">{{'TEST' | translate}}</th>
+            <th class="text-center" st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
+            <th class="text-center" st-sort="instance_id">{{'DEVICE' | translate}}</th>
+            <th class="text-center" st-sort="application_id">{{'APPLICATION' | translate}}</th>
+            <th class="text-center" st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
         </tr>
         <tr>
-            <th><a class="btn primary"><i class="fa fa-send"></i></a></th>
+            <th></th>
             <th>
-                <tags-input ng-model="installTableCtrl.selectedDevice">
+                <tags-input ng-model="installTableCtrl.selectedDevice" placeholder="{{'DEVICE_MODEL' | translate}}..">
                     <auto-complete source="installTableCtrl.loadPhones()"
                                    min-length="0"
                                    load-on-focus="true"
                                    load-on-empty="true"
-                                   max-results-to-show="5"
+                                   max-results-to-show="7"
                                    >
                     </auto-complete>
                     <!--template="my-custom-template"-->
@@ -69,8 +70,28 @@
             </th>
             <!--<th><input st-search="'smart_device'" class="form-control" placeholder="{{'DEVICE_MODEL' | translate}}.." type="text"/></th>-->
             <th><input st-search="'instance_id'" class="form-control" placeholder="{{'DEVICE' | translate}}.." type="text"/></th>
-            <th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>
-            <th><input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/></th>
+            <th>
+                <tags-input ng-model="installTableCtrl.selectedApp"
+                            key-property="id"
+                            display-property="name"
+                            placeholder="{{'APPLICATION' | translate}}.."
+                >
+                    <auto-complete source="installTableCtrl.loadApps()"
+                                   display-property="name"
+                                   min-length="0"
+                                   load-on-focus="true"
+                                   load-on-empty="true"
+                                   max-results-to-show="7"
+                    >
+                    </auto-complete>
+                    <!--template="my-custom-template"-->
+                </tags-input>
+            </th>
+            <!--<th><input st-search="'application_id'" class="form-control" placeholder="{{'APPLICATION' | translate}}.." type="text"/></th>-->
+            <th width="200" class="ltr" style="max-width: 25%">
+                <adm-dtp ng-model='installTableCtrl.dateFilter' options='{calType: "jalali", format: "YYYY/MM/DD", default: 1450197600000}'></adm-dtp>
+                <!--<input st-search="'creation_time'" class="form-control" placeholder="{{'INSTALL_TIME_PLACE_HOLDER' | translate}}" type="text"/>-->
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -91,8 +112,8 @@
                 </td>
                 <td>{{row.smart_device}}</td>
                 <td> {{row.instance_id}} </td>
-                <td>{{row.application_id}}</td>
-                <td>{{row.creation_time}}</td>
+                <td>{{row.application|appName}}</td>
+                <td>{{row.creation_time | jalali}}</td>
             </tr>
         </tbody>
         <tfoot>

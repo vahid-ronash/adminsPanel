@@ -23,7 +23,7 @@
              * @param {object} tableState   served by smart table
              */
             thisController.itemByPage=6;
-            thisController.displayedPages=2;
+            thisController.displayedPages=1;
             thisController.callServer=function(tableState){
 
                 //TO fix bug two times loading
@@ -49,10 +49,6 @@
 
                     thisController.displayed = result.data.results;
                     if(tableState.search.predicateObject && !thisController.displayed.length){thisController.searchNotFound=true;}
-                    for(var i in thisController.displayed){
-                        var d=new Date(thisController.displayed[i].send_time);
-                        thisController.displayed[i].send_time=moment(d).format('jYYYY/jM/jD');
-                    }
                     for(var i=0;i<thisController.displayed.length;i++){
                         var di=thisController.displayed[i];
                         var sum=di.clicked_count+di.dismissed_count;

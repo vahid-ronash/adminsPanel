@@ -13,7 +13,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('step1Controller', ['$scope', 'Upload', '$timeout', '$http', '$filter', 'URLS', function ($scope, Upload, $timeout, $http, $filter, URLS) {
+        .controller('step1Controller', ['$scope', 'Upload', '$timeout', '$http', '$filter', 'URLS','panelServices', function ($scope, Upload, $timeout, $http, $filter, URLS,panelServices) {
             var thisController=this;
             $scope.wizard.steps[1]={
                 leave:function(){
@@ -28,8 +28,8 @@
                 },
                 enter:function(callback){
                     if(!thisController.appList) {
-                        $http.get(URLS.URL_APP).then(function (result) {
-                            thisController.appList = result.data.results;
+                        panelServices.loadApplications().then(function(result){
+                            thisController.appList = result;
                             callback(true);
                         });
                     }

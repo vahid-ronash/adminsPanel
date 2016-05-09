@@ -26,7 +26,6 @@
                     $("#signPass").focus();
             },1000);
 
-
             /**
              * @ngdoc method
              * @name login
@@ -37,9 +36,14 @@
             thisController.isSigningIn=false;
             thisController.login=function(){
                 thisController.isSigningIn=true;
+                if(thisController.data.email==demo.email){
+                    thisController.data.rememberMe=false;
+                }
                 return $AuthService.login(thisController.data).then(function(result){
                     if(result.error){
                         thisController.loginError.err=result.error.text;
+                        if(thisController.noCaptchaControl)
+                            thisController.noCaptchaControl.reset();
                     }
                     else{
                         $timeout(function(){
@@ -57,10 +61,15 @@
              * @description
              * use demo user and send them to login method
              */
+            var demo={
+                email:"demo@pushe.co",
+                pass:"demo",
+            };
             thisController.loginAsDemo=function(){
-                thisController.data.email="demo@pushe.co";
-                thisController.data.password="demo";
+                thisController.data.email=demo.email;
+                thisController.data.password=demo.pass;
                 thisController.isAsDemo=true;
+                thisController.data.rememberMe=false;
                 // return thisController.login();
             };
         }]);

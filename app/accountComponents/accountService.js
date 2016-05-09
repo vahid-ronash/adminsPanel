@@ -1,18 +1,18 @@
 /**
  * Created by mojtaba on 3/9/16.
  */
+/**
+ * @ngdoc service
+ * @name app.services.AuthService
+ * @description
+ * it make connection between this app and server
+ */
 /*global angular */
 ((function() {
     'use strict';
-    /**
-     * @ngdoc service
-     * @name app.services.AuthService
-     * @description
-     * it make connection between this app and server
-     */
     angular
         .module('app')
-        .factory('AuthService', function ($http, Session,$rootScope,URLS) {
+        .factory('AuthService', ['$http', 'Session','$rootScope','URLS','$timeout','$location',function ($http, Session,$rootScope,URLS,$timeout,$location) {
             var authService = {};
 
             /**
@@ -133,8 +133,10 @@
                 return $http
                     .get(URLS.URL_LOGOUT)
                     .then(function (result) {
-                        if(result.data.logged_out)
+                        if(result.data.logged_out) {
                             Session.destroy();
+                            $timeout(function () { $location.path('/account/signin'); }, 10);
+                        }
                     },$rootScope.handleError);
             };
 
@@ -191,5 +193,5 @@
             //};
 
             return authService;
-        });
+        }]);
 })());

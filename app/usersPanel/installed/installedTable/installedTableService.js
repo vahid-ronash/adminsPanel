@@ -55,7 +55,7 @@
                  */
                 thisService.addToFavorites = function (favData,callback) {
                     return $http.post(URLS.URL_IMEI,favData).then(function (result) {
-                        callback(true);
+                        callback(result);
                     },$rootScope.handleError);
                 };
 
@@ -69,7 +69,7 @@
                  * @param {function}  callback it called when its done
                  */
                 thisService.removeFromFavorites = function (favData,callback) {
-                    return $http.delete(URLS.URL_IMEI,favData).then(function (result) {
+                    return $http.delete(URLS.URL_IMEI+favData.id+"/",favData).then(function (result) {
                         callback(true);
                     },$rootScope.handleError);
                 };

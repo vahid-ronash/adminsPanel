@@ -7,6 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
+    <link rel="apple-touch-icon" sizes="57x57"          href="/assets/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"          href="/assets/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"          href="/assets/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"          href="/assets/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"        href="/assets/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"        href="/assets/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"        href="/assets/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"        href="/assets/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"        href="/assets/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png"  sizes="32x32"    href="/assets/favicons/favicon-32x32.png" >
+    <link rel="icon" type="image/png"  sizes="194x194"  href="/assets/favicons/favicon-194x194.png" >
+    <link rel="icon" type="image/png"  sizes="96x96"    href="/assets/favicons/favicon-96x96.png" >
+    <link rel="icon" type="image/png"  sizes="192x192"  href="/assets/favicons/android-chrome-192x192.png" >
+    <link rel="icon" type="image/png"  sizes="16x16"    href="/assets/favicons/favicon-16x16.png" >
+    <link rel="manifest"                            href="/assets/favicons/manifest.json">
+    <link rel="mask-icon"                           href="/assets/favicons/safari-pinned-tab.svg" color="#0088ff">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
     <!-- for ios 7 style, multi-resolution icon of 152x152 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
@@ -16,19 +38,20 @@
     <meta name="mobile-web-app-capable" content="yes">
     <!--<link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">-->
 
-
+    <!-- build:css assets/css/combined.css -->
     <link rel="stylesheet" href="assets/css/material.min.css" type="text/css"/>
     <link rel="stylesheet" href="assets/css/app.css" type="text/css"/>
+    <!-- endbuild -->
 </head>
 <body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}"
       ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
-    <div class="publicErrors">
-        <uib-alert dismiss-on-timeout="7000" class="publicError animated fade-in-up" ng-repeat="alert in alertMSGS" type="{{alert.type}}" close="closeAlert($index)" >
-            <strong ng-bind="alert.title"></strong>
-            <span ng-bind="alert.text" ng-bind-html="alert.html"></span>
-        </uib-alert>
-    </div>
-    <div class="app" ui-view></div>
+<div class="publicErrors">
+    <uib-alert dismiss-on-timeout="7000" class="publicError animated fade-in-up" ng-repeat="alert in alertMSGS" type="{{alert.type}}" close="closeAlert($index)" >
+        <strong ng-bind="alert.title"></strong>
+        <span ng-bind="alert.text" ng-bind-html="alert.html"></span>
+    </uib-alert>
+</div>
+<div class="app" ui-view></div>
 
 
 <!--PACE-->
@@ -37,6 +60,9 @@
 
 <!--REQUREMENT JS (angular,...)-->
 <script type="text/javascript" src="assets/js/req.js"></script>
+<script type="text/javascript" src="assets/js/req_un.js"></script>
+
+<!-- build:js assets/js/mine.js -->
 
 <!--SENTRY-->
 <script type="text/javascript" src="app/raven.js"></script>
@@ -46,11 +72,22 @@
 <script src="app/environment.js"></script>
 <script src="app/app.js"></script>
 <script src="app/urls.js"></script>
+<script src="app/dictionaries.js"></script>
 <script src="app/config.router.js"></script>
+
 <script src="app/mock.js"></script>
 <script src="app/app-controller.js"></script>
 <script src="app/translate.js"></script>
 <script src="app/shared/focusDirective.js"></script>
+<script src="app/shared/jalaliFilter/jalaliFilter.js"></script>
+<script src="app/shared/applicationNameFilter/appNameFilter.js"></script>
+<script src="app/usersPanel/notifications/notificationStatusFilter/notificationStatusFilter.js"></script>
+
+<script src="app/shared/alert/alertDirective.js"></script>
+<script src="app/shared/alert/alertController.js"></script>
+
+<script src="app/shared/collapse/collapse.js"></script>
+<script src="app/shared/progress/progress.js"></script>
 
 <script src="app/shared/modal/modalDirective.js"></script>
 <!---->
@@ -78,6 +115,7 @@
 <script src="app/accountComponents/sessionService.js"></script>
 
 <script src="app/usersPanel/panelController.js"></script>
+<script src="app/usersPanel/panelService.js"></script>
 
 <script src="app/usersPanel/ui-nav/ui-nav.js"></script>
 <script src="app/usersPanel/header/headerDirective.js"></script>
@@ -97,11 +135,6 @@
 <script src="app/usersPanel/installed/installedTable/installedTableController.js"></script>
 <script src="app/usersPanel/installed/installedTable/installTableDirective.js"></script>
 <script src="app/usersPanel/installed/installedTable/installedTableService.js"></script>
-
-<!-- include wizard modules-->
-<script src="app/shared/sxWizardCopy/sx-wizard.js"></script>
-<script src="app/shared/sxWizardCopy/sxWizardDirective.js"></script>
-<!--<script src="app/shared/sxWizardCopy/sx-wizard-tpls.js"></script>-->
 
 <script src="app/usersPanel/notifications/notificationsController.js"></script>
 <script src="app/usersPanel/notifications/notificationTable/notificationTableController.js"></script>
@@ -140,6 +173,6 @@
 
 
 <script src="app/usersPanel/notifications/notifWizardSteps/jsonNotifStep/jsonStep1Controller.js"></script>
-
+<!-- endbuild -->
 </body>
 </html>

@@ -7,7 +7,7 @@
  * @description
  * it can do CRUD on user's applications by using smartTable
  */
-/*global angular */
+/*global angular moment saveAs */
 ((function() {
     'use strict';
     angular
@@ -27,6 +27,7 @@
                 loadManifest('eclipse_manifest','eclipse');
                 loadManifest('b4a_manifest','basic4android');
                 loadManifest('unity_manifest','unity');
+                loadManifest('Token','joapp');
             };
             thisController.loadManifests();
 
@@ -102,12 +103,6 @@
                 return $applicationResource.query(filters).then(function (result) {
                     if(result) {
                         thisController.displayed = result.data.results;
-                        for(var i in thisController.displayed){
-                            if(thisController.displayed[i].creation_datetime) {
-                                var d = new Date(thisController.displayed[i].creation_datetime);
-                                thisController.displayed[i].creation_datetime = moment(d).format('jYYYY/jM/jD');
-                            }
-                        }
                         if(result.data.previous)thisController.hasPrevious=true;
                         if(result.data.next)thisController.hasNext=true;
                         if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
@@ -154,7 +149,7 @@
              * @param {function} callback   callback when its done
              */
             thisController.showDetail = function (row,callback) {
-                if(row.showDetail)row.showDetail=false;
+                if(row.showDetail){row.showDetail=false;}
                 else{
                     row.showDetail=true;
                     if(!row.senderID){

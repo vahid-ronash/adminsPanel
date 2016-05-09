@@ -7,7 +7,7 @@
  * @description
  * control new application wizard
  */
-/*global angular */
+/* $ global angular */
 ((function () {
     'use strict';
     angular
@@ -22,6 +22,9 @@
             };
             $scope.control.start=function(){
                 thisController.appCreated=false;
+                setTimeout(function(){
+                    thisController.startFocus=true;
+                },1000);
                 $('#applicationWizardDialog').modal({
                     backdrop: 'static',
                     keyboard: false
@@ -38,7 +41,9 @@
                 {name:"puzzely",value:"puzzely"}
             ];
             var providerHash={};
-            for(var i in thisController.providerList){providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];}
+            for(var i=0;i<thisController.providerList.length;i++){
+                providerHash[thisController.providerList[i].value.toLowerCase()]=thisController.providerList[i];
+            }
             thisController.providerObject=null;
             thisController.send=function(){
                 $applicationResource.save(thisController.data, function (createdApplication) {

@@ -6,21 +6,21 @@
     'use strict';
     angular
         .module('app')
-        .config(function($provide,EnvironmentConfig) {
+        .config(['$provide','EnvironmentConfig',function($provide,EnvironmentConfig) {
             if(EnvironmentConfig.mode==="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-        })
-        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
+        }])
+        .run(["$httpBackend","$filter","$rootScope","EnvironmentConfig","URLS",function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
             if(EnvironmentConfig.mode==="production")return true;
             
             $rootScope.serverAddress="";
             var appList = [
                 {id:1,active_users:15,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:1,active_users:2,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:2,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
-                {id:3,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
-                {id:4,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
-                {id:5,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
+                {id:2,active_users:0,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:3,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
+                {id:4,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
+                {id:5,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
+                {id:6,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
             for(var i in appList){
                 appList[i].creation_datetime=getRandomTime();
@@ -135,7 +135,7 @@
                 var mobileModels = ['Sumsong', 'LG', 'i phone', 'motorola', 'nokia'];
                 return {
                     id: id,
-                    application_id: apps[Math.floor(Math.random() * apps.length)],
+                    application: Math.floor(Math.random() * apps.length),
                     instance_id: Math.floor(Math.random() * 10000000),
                     creation_time: getRandomTime(),
                     test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/',
@@ -143,7 +143,7 @@
                     smart_device:mobileModels[Math.floor(Math.random() * 5)]+" "+Math.floor(Math.random() * 9000+1000)
                 };
             }
-            for (var i = 0; i < 1000; i++) {
+            for (i = 0; i < 1000; i++) {
                 randomsInstallationItems.push(createRandomItem(i));
             }
             $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
@@ -175,8 +175,8 @@
                 imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
             }
             $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(true);
-            $httpBackend.whenGET(URLS.URL_IMEI).respond(imeiList);
-            $httpBackend.whenDELETE(URLS.URL_IMEI).respond(true);
+            $httpBackend.whenGET(URLS.URL_IMEI).respond({results:imeiList});
+            $httpBackend.whenDELETE(/api\/v1\/favorites\/\.*\//).respond(true);
             $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 
 
@@ -192,9 +192,9 @@
             }
             function createRandomNotif() {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
-                var sent_count=Math.floor(Math.random() * 10)+1;
-                var clickdismissCount=Math.floor(Math.random() * sent_count);
-                var clickedCount=Math.floor(Math.random() *clickdismissCount);
+                var sentCount=Math.floor(Math.random() * 10)+1;
+                var clickDismissCount=Math.floor(Math.random() * sentCount);
+                var clickedCount=Math.floor(Math.random() *clickDismissCount);
                 return {
                     notification_data:{
                         title:randomNameBuilder(4),
@@ -202,19 +202,19 @@
                     },
                     application:apps[Math.floor(Math.random() * apps.length)],
                     send_time:getRandomTime(),
-                    status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
-                    sent_count:sent_count,
-                    delivered_count:Math.floor(Math.random() * sent_count),
+                    status:Math.floor(Math.random() * 5)+1,
+                    sent_count:sentCount,
+                    delivered_count:Math.floor(Math.random() * sentCount),
 
                     clicked_count:clickedCount,
-                    dismissed_count:clickdismissCount- clickedCount
+                    dismissed_count:clickDismissCount- clickedCount
                 };
             }
             $httpBackend.whenGET(URLS.URL_GET_DASHBOARD_DATA).respond(
                 {
-                    activeInstallationCount:32062,
-                    applicationCount:5,
-                    notificationSent:3512
+                    installations:32062,
+                    applications:5,
+                    notifications:3512
                 }
             );
 
@@ -282,5 +282,5 @@
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html").passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationAction/notificationActionTemplate.html").passThrough();
             $httpBackend.whenGET("app/shared/sxWizardCopy/wizardTemplate.html").respond("<div></div>");
-        });
+        }]);
 })());
