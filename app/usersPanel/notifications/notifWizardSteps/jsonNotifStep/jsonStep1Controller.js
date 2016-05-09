@@ -35,10 +35,12 @@
                 "buttons": [],
                 "json": "",
                 "sound_url": "",
-                "led_color": "-65574",
-                "led_off": "0.2",
-                "led_on": "0.2",
-                "show_app": true
+                "led_color": -65574,
+                "led_off": 300,
+                "led_on": 200,
+                "show_app": true,
+                "delay_while_idle" : false,
+                "collapse_key" : "demo"
             };
             $scope.$context.behavior.leaving = function(options, callback) {
                 if(asThisController.aceSession) {
