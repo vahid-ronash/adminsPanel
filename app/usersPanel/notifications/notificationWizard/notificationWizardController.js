@@ -21,7 +21,7 @@
                 canSendNotification:false
             };
             $scope.control.start=function(){
-                $('#notificationWizardDialog').modal({
+                thisController.newNotifModal.open({
                     backdrop: 'static',
                     keyboard: false
                 });
@@ -48,7 +48,7 @@
                     notificationResource.sendNotification(res).then(function(){
 
                     });
-                    $('#notificationWizardDialog').modal('hide');
+                    thisController.newNotifModal.close();
                 }
             };
             thisController.leaveCurrentStep=function(){

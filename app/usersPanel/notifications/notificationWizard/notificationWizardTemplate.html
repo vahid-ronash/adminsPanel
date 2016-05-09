@@ -1,4 +1,4 @@
-<simple-modal mclass="modal-lg" mid="notificationWizardDialog" mtitle="{{'NEW_NOTIF_TITLE' | translate}}">
+<simple-modal mcontrol="notifWizardCtrl.newNotifModal" mclass="modal-lg" mid="notificationWizardDialog" mtitle="{{'NEW_NOTIF_TITLE' | translate}}">
 
     <ul class="progress-indicator">
         <li ng-class="{'completed':notifWizardCtrl.wizardData.steps[1].hasSeen,'active':notifWizardCtrl.currentStep==1}"><span class="bubble"></span>{{'NOTIF_FIRST_STEP'|translate}}</li>
@@ -41,4 +41,3 @@
     <span class="pull-left alert alert-danger" ng-if="notifWizardCtrl.wizardData.error">{{notifWizardCtrl.wizardData.error}}</span>
 
 </simple-modal>
-

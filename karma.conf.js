@@ -25,7 +25,7 @@ module.exports = function (config) {
             "app/app-controller.js",
             "app/mock.js",
             "app/config.router.js",
-            "app/shared/focusDirective.js",
+            "app/shared/focus/focusDirective.js",
             "app/translate.js",
             "app/**/*.js"
         ],

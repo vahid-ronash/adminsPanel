@@ -15,7 +15,7 @@
     'use strict';
     angular
         .module("app")
-        .directive('focusMe', function ($timeout, $parse) {
+        .directive('focusMe', ['$timeout', '$parse',function ($timeout, $parse) {
             return {
                 //scope: true,   // optionally create a child scope
                 link: function (scope, element, attrs) {
@@ -34,5 +34,5 @@
                     });
                 }
             };
-        });
+        }]);
 })());

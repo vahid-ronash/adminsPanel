@@ -33,10 +33,7 @@
 
             thisController.showManifestDialog=function(row){
                 thisController.selectedRow=row;
-                $('#manifestDialog').modal({
-                    // backdrop: 'static',
-                    // keyboard: false
-                });
+                thisController.manifestDialog.open();
                 if(!row.senderID) {
                     $applicationResource.getSenderID(row.application_id, function (newrow) {
                         row.senderID = JSON.parse(newrow.data.credentials).node;
@@ -65,7 +62,7 @@
                 manifest_copy=manifest_copy.replace(/PACKAGE_NAME/g,thisController.selectedRow.application_id);
                 var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
                 saveAs(blob, "manifest_"+provider+".xml");
-                $('#manifestDialog').modal('hide');
+                thisController.manifestDialog.close();
             };
             //send a request to get application list
             thisController.isLoading = true;
@@ -125,7 +122,7 @@
             thisController.selected4Remove=0;
             thisController.removeApplication = function (row) {
                 thisController.selected4Remove=row;
-                $("#confirmDialog").modal();
+                thisController.confirmRemoveDialog.open();
             };
 
             thisController.sendRemoveApplication = function () {

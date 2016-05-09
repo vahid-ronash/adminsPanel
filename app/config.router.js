@@ -100,6 +100,7 @@
                         templateUrl: 'app/usersPanel/documentation/documentation.html',
                         controller: 'docController',
                         controllerAs:'docCtrl',
+                        pageName:'DOCUMENTATION',
                         access: {isFree: false}
                         //resolve: need delay
                     })

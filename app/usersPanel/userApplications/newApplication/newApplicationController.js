@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .controller('newApplicationController', ['$scope','applicationResource','$filter','$state', function ($scope,$applicationResource,$filter,$state) {
+        .controller('newApplicationController', ['$scope','applicationResource','$filter','$state','$timeout', function ($scope,$applicationResource,$filter,$state,$timeout) {
             var thisController=this;
             thisController.currentStep=0;
 
@@ -20,15 +20,17 @@
                 steps:{},
                 canSendNotification:false
             };
+            thisController.modal={};
             $scope.control.start=function(){
                 thisController.appCreated=false;
-                setTimeout(function(){
-                    thisController.startFocus=true;
-                },1000);
-                $('#applicationWizardDialog').modal({
+                thisController.modal.open({
                     backdrop: 'static',
                     keyboard: false
                 });
+                $timeout(function(){
+                    thisController.startFocus=true;
+                },600);
+
                 thisController.data={
                     application_id:"",
                     provider:thisController.providerList[0].value

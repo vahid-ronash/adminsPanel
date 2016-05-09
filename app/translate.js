@@ -312,6 +312,7 @@
                 'SEND_TEST_SUCCESS_TEXT':'تست با موفقیت ارسال شد.',
                 'SEND_TEST_SUCCESS_TITLE':'تست',
                 'NO_RESULT':'جستجوی شما نتیجه ای نداشت',
+                'DOCUMENTATION':'راهنمای نصب'
             });
 
             $translateProvider.preferredLanguage('fa');
