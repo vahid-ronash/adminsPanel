@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module('app')
-        .factory('AuthService', ['$http', 'Session','$rootScope','URLS','$timeout',function ($http, Session,$rootScope,URLS,$timeout) {
+        .factory('AuthService', ['$http', 'Session','$rootScope','URLS','$timeout','$location',function ($http, Session,$rootScope,URLS,$timeout,$location) {
             var authService = {};
 
             /**

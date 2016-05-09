@@ -19,8 +19,8 @@
             thisController.imeiList=[];
             thisController.imeiHash={};
             $installedResource.getImeiList(function(result){
-                var imeiList=result.data;
-                for(var i in imeiList){
+                var imeiList=result.data.results;
+                for(var i=0;i<imeiList.length;i++){
                     thisController.imeiHash[imeiList[i].imei]=imeiList[i];
                 }
             });
@@ -61,9 +61,9 @@
             thisController.addNewFavorite=function(){
                 $("#addFavoriteDialog").modal('hide');
                 var favData={imei:thisController.selectedToFavorite.imei,name:thisController.favName};
-                $installedResource.addToFavorites(favData,function(){
-                    thisController.selectedToFavorite.favorite=favData;
-                    thisController.imeiHash[thisController.selectedToFavorite.imei]=favData;
+                $installedResource.addToFavorites(favData,function(favResult){
+                    thisController.selectedToFavorite.favorite=favResult;
+                    thisController.imeiHash[thisController.selectedToFavorite.imei]=favResult;
                 });
             };
 
@@ -98,7 +98,9 @@
              * @description
              * load apps using panelServices to load in ngtag
              */
-            panelServices.loadApplications().then(function(results){thisController.applist=results});
+            panelServices.loadApplications().then(function(results){
+                thisController.applist=results;
+            });
             thisController.loadApps=function(){
                 return thisController.applist;
             };

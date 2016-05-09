@@ -17,9 +17,8 @@
             var appHashByName={};
             panelServices.loadApplications().then(function(result){
                 for(var i=0;i<result.length;i++){
-                    appHashByName[result.id]=result.name;
+                    appHashByName[result[i].id]=result[i].name;
                 }
-                appHashByName=result;
             });
             return function(input){
                 return appHashByName[input];

@@ -25,7 +25,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/angular/angular.js",
             "assets/libs/ngstorage/ngStorage.js",
             "assets/libs/angular-translate/angular-translate.js",
-            "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
+            // "assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js",
             "assets/libs/angular-animate/angular-animate.js",
             "assets/libs/angular-smart-table/dist/smart-table.js",
             "assets/libs/angular-resource/angular-resource.js",

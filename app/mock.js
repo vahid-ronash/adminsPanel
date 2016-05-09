@@ -16,11 +16,11 @@
             $rootScope.serverAddress="";
             var appList = [
                 {id:1,active_users:15,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:1,active_users:0,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:2,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
-                {id:3,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
-                {id:4,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
-                {id:5,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
+                {id:2,active_users:0,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:3,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
+                {id:4,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
+                {id:5,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
+                {id:6,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
             for(var i in appList){
                 appList[i].creation_datetime=getRandomTime();
@@ -175,8 +175,8 @@
                 imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
             }
             $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(true);
-            $httpBackend.whenGET(URLS.URL_IMEI).respond(imeiList);
-            $httpBackend.whenDELETE(URLS.URL_IMEI).respond(true);
+            $httpBackend.whenGET(URLS.URL_IMEI).respond({results:imeiList});
+            $httpBackend.whenDELETE(/api\/v1\/favorites\/\.*\//).respond(true);
             $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 
 
