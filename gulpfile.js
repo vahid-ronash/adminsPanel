@@ -126,6 +126,7 @@ gulp.task('makeDevelopmentEnvironment', function () {
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
 gulp.task('copyToPublic', function () {
+    gulp.src('app/**/*.html').pipe(gulp.dest('public/app'));
     gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/fonts'));
     gulp.src('assets/images/**/*.*').pipe(gulp.dest('public/assets/images'));
     gulp.src('assets/favicons/*.*').pipe(gulp.dest('public/assets/favicons'));

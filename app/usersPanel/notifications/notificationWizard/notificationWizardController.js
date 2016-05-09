@@ -23,7 +23,6 @@
             $scope.control.start=function(){
                 thisController.newNotifModal.open({
                     backdrop: 'static',
-                    keyboard: false
                 });
                 thisController.currentStep=1;
                 if(thisController.wizardData.steps[thisController.currentStep]){
@@ -49,6 +48,7 @@
 
                     });
                     thisController.newNotifModal.close();
+                    $state.transitionTo('users.notification',{},{reload:true, inherit: false, notify: false });
                 }
             };
             thisController.leaveCurrentStep=function(){

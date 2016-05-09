@@ -39,8 +39,8 @@
                         controllerAs: 'dashboardCtrl',
                         pageName:'DASHBOARD'
                     })
-                    .state('users.apps',{
-                        url:'/apps',
+                    .state('users.applications',{
+                        url:'/applications',
                         templateUrl: 'app/usersPanel/userApplications/userApplications.html',
                         controller: 'userApplicationController',
                         controllerAs: 'appCtrl',

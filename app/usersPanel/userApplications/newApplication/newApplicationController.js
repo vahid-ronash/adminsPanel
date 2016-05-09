@@ -25,7 +25,6 @@
                 thisController.appCreated=false;
                 thisController.modal.open({
                     backdrop: 'static',
-                    keyboard: false
                 });
                 $timeout(function(){
                     thisController.startFocus=true;
@@ -50,7 +49,7 @@
             thisController.send=function(){
                 $applicationResource.save(thisController.data, function (createdApplication) {
                     thisController.appCreated=true;
-                    $state.transitionTo('users.apps');
+                    $state.transitionTo('users.applications',{},{reload:true, inherit: false, notify: false });
                 });
                 // $('#applicationWizardDialog').modal('hide');
             };

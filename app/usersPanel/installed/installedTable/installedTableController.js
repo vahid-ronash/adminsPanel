@@ -62,8 +62,9 @@
                 thisController.newFavModal.close();
                 var favData={imei:thisController.selectedToFavorite.imei,name:thisController.favName};
                 $installedResource.addToFavorites(favData,function(favResult){
-                    thisController.selectedToFavorite.favorite=favResult.data;
-                    thisController.imeiHash[thisController.selectedToFavorite.imei]=favResult.data;
+                    $state.transitionTo('users.installed',{},{reload:true, inherit: false, notify: false });
+                    // thisController.selectedToFavorite.favorite=favResult.data;
+                    // thisController.imeiHash[thisController.selectedToFavorite.imei]=favResult.data;
                 });
             };
 
@@ -128,6 +129,7 @@
             thisController.removeIMEI=function(){
                 $installedResource.removeFromFavorites(thisController.selectedToRemoveFavorite.favorite,function(){
                     $scope.$root.handleError({localError:{type:'success',text:$filter('translate')('FAV_REMOVE_SUCCESS_TEXT'),title:$filter('translate')('FAV_REMOVE_SUCCESS_TITLE')}});
+                    thisController.selectedToRemoveFavorite.favorite=0;
                 });
             };
 
