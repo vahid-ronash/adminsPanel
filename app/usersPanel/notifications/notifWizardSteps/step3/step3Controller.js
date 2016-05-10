@@ -32,6 +32,8 @@
                         summary:"",
                         image:""
                     };
+                    thisController.resultImg="";
+                    thisController.selectedFile=0;
                 }
             };
             $scope.wizard.steps[3].reset();
@@ -40,7 +42,7 @@
                 thisController.selectedFile = 0;
                 thisController.isUploaded=false;
             };
-            thisController.resultImg="";
+
             thisController.upload = function () {
                 thisController.isUploading = true;
                 notificationResource.uploadImage(thisController.resultImg,thisController.selectedFile,function success(res){
@@ -57,6 +59,6 @@
                     thisController.uploadData = progressData;
                 });
             };
-            thisController.selectedFile=0;
+
         }]);
 })());

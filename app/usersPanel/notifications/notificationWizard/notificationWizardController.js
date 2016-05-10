@@ -41,12 +41,11 @@
                     for(var i in thisController.wizardData.steps){
                         res=angular.extend(res,thisController.wizardData.steps[i].data);
                     }
-                    res.visibility=!res.isHidden;
+                    
+                    res.show_app=!res.isHidden;
                     delete res.isHidden;
 
-                    notificationResource.sendNotification(res).then(function(){
-
-                    });
+                    notificationResource.sendNotification(res).then(function(){ });
                     thisController.newNotifModal.close();
                     $state.transitionTo('users.notification',{},{reload:true, inherit: false, notify: false });
                 }

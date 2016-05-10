@@ -32,6 +32,7 @@
                 "big_tiltle": "BIG title",
                 "big_content": "BIG Content",
                 "summary": "summary",
+                "image":"",
                 "buttons": [],
                 "json": "",
                 "sound_url": "",

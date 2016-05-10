@@ -42,21 +42,23 @@
                         icon:"",
                         action: {}
                     };
+                    thisController.focusStart=true;
+                    thisController.selectedFile = 0;
+                    thisController.isUploaded=false;
                 }
             };
             $scope.wizard.steps[2].reset();
-            thisController.focusStart=true;
+
             thisController.dataChange=function(){
                 var data=thisController.data;
                 $scope.wizard.canSendNotification = !!(thisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length);
             };
-            thisController.selectedFile = 0;
+
             thisController.changeImage=function(){
                 thisController.selectedFile = 0;
                 thisController.isUploaded=false;
             };
-            thisController.isUploaded=false;
-            //TODO:image should have origin image
+
             thisController.upload = function () {
                 thisController.isUploading = true;
                 notificationResource.uploadImage(thisController.resultIcon,thisController.selectedFile,function success(res){

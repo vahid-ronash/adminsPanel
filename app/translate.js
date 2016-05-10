@@ -312,7 +312,10 @@
                 'SEND_TEST_SUCCESS_TEXT':'تست با موفقیت ارسال شد.',
                 'SEND_TEST_SUCCESS_TITLE':'تست',
                 'NO_RESULT':'جستجوی شما نتیجه ای نداشت',
-                'DOCUMENTATION':'راهنمای نصب'
+                'DOCUMENTATION':'راهنمای نصب',
+                'COLLAPSE_KEY':'کلید جابجایی',
+                'TIME_TO_LIVE':'زمان زنده موندن',
+                'DELAY_WHILE_IDLE':'مزاحمش نشویم؟',
             });
 
             $translateProvider.preferredLanguage('fa');
