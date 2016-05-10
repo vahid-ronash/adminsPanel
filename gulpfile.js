@@ -125,29 +125,26 @@ gulp.task('makeDevelopmentEnvironment', function () {
 
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
-gulp.task('makePublic', function () {
+gulp.task('copyToPublic', function () {
+    gulp.src('app/**/*.html').pipe(gulp.dest('public/app'));
+    gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/fonts'));
+    gulp.src('assets/images/**/*.*').pipe(gulp.dest('public/assets/images'));
+    gulp.src('assets/favicons/*.*').pipe(gulp.dest('public/assets/favicons'));
+    gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
+    gulp.src('assets/pushe-manifests/*.*').pipe(gulp.dest('public/assets/pushe-manifests'));
+    gulp.src('assets/voices/*.*').pipe(gulp.dest('public/assets/voices'));
+});
+gulp.task('makePublic',['copyToPublic'] ,function () {
     gulp.src('index.html')
         .pipe(useref())
         .pipe(gulpif('*.js', uglify()))
         .pipe(gulpif('*.css', cleanCSS()))
         .pipe(gulp.dest('public'));
-    
-    gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/fonts'));
-    gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
-    gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
-    gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
-    gulp.src('assets/voices/*.*').pipe(gulp.dest('public/assets/voices'));
 });
-gulp.task('makePublicTest', function () {
+gulp.task('makePublicTest',['copyToPublic'], function () {
     gulp.src('index.html').pipe(gulp.dest('public/'));
     gulp.src('app/**/*.*').pipe(gulp.dest('public/app'));
     gulp.src('assets/css/*.*').pipe(gulp.dest('public/assets/css'));
-    
-    gulp.src('assets/fonts/**/*.*').pipe(gulp.dest('public/assets/font'));
-    gulp.src('assets/images/*.*').pipe(gulp.dest('public/assets/images'));
-    gulp.src('assets/js/*.*').pipe(gulp.dest('public/assets/js'));
-    gulp.src('assets/pushe-manifest/*.*').pipe(gulp.dest('public/assets/pushe-manifest'));
-    gulp.src('assets/voices/*.*').pipe(gulp.dest('public/assets/voices'));
 });
 
 

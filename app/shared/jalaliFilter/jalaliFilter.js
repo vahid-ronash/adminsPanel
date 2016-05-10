@@ -15,8 +15,13 @@
         .module("app")
         .filter('jalali', function () {
             return function(input){
-                var d=new Date(input);
-                return moment(d).format('jYYYY/jM/jD');
+                try {
+                    var d = new Date(input);
+                    return moment(d).format('jYYYY/jM/jD');
+                }
+                catch(e){
+                    console.log()
+                }
             };
         });
 })());

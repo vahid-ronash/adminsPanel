@@ -6,7 +6,7 @@
  * @ngdoc controller
  * @name app.controller.alertController
  * @description
- * control alert
+ * control modal
  */
 ((function() {
     'use strict';

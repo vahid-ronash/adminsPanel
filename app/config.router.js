@@ -39,8 +39,8 @@
                         controllerAs: 'dashboardCtrl',
                         pageName:'DASHBOARD'
                     })
-                    .state('users.apps',{
-                        url:'/apps',
+                    .state('users.applications',{
+                        url:'/applications',
                         templateUrl: 'app/usersPanel/userApplications/userApplications.html',
                         controller: 'userApplicationController',
                         controllerAs: 'appCtrl',
@@ -100,6 +100,7 @@
                         templateUrl: 'app/usersPanel/documentation/documentation.html',
                         controller: 'docController',
                         controllerAs:'docCtrl',
+                        pageName:'DOCUMENTATION',
                         access: {isFree: false}
                         //resolve: need delay
                     })

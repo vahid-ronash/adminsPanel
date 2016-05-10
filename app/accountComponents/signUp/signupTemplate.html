@@ -64,16 +64,16 @@
                     </div>
 
                     <!--TERMS MODAL-->
-                    <simple-modal mclass="modal-lg" mid="termsModal" mtitle="{{'TERMS' | translate}}">
+                    <simple-modal mcontrol="signupCtrl.termsModal" mclass="modal-lg" mid="termsModal" mtitle="{{'TERMS' | translate}}">
                         <terms-content></terms-content>
                     </simple-modal>
                     <!--TERMS MODAL END-->
 
-                    <!--TERMS MODAL-->
-                    <simple-modal mclass="modal-lg" mid="privacyModal" mtitle="{{'PRIVACY' | translate}}">
+                    <!--PRIVACY MODAL-->
+                    <simple-modal mcontrol="signupCtrl.privacyModal" mclass="modal-lg" mid="privacyModal" mtitle="{{'PRIVACY' | translate}}">
                         <privacy-content></privacy-content>
-                    </simple-modal>
-                    <!--TERMS MODAL END-->
+                    </simple-modal >
+                    <!--PRIVACY MODAL END-->
 
                     <!--RE CAPTCHA-->
                     <div class="" style="margin:18px -33px">
@@ -100,9 +100,7 @@
                     <!--SUBMIT END-->
 
                     <br>
-                    <div class="m-t">
-                        <small class="alert alert-warning" ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
-                    </div>
+                    <small class="mdl-textfield__error errorShow" ng-bind="signinCtrl.registerError.err"></small>
                 </form>
                 <div ng-show="signupCtrl.successed" class="p-t p-b">
                     <span>{{'REGISTER_RESPONSE_MSG'|translate}}</span>

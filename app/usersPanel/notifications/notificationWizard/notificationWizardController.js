@@ -21,9 +21,8 @@
                 canSendNotification:false
             };
             $scope.control.start=function(){
-                $('#notificationWizardDialog').modal({
+                thisController.newNotifModal.open({
                     backdrop: 'static',
-                    keyboard: false
                 });
                 thisController.currentStep=1;
                 if(thisController.wizardData.steps[thisController.currentStep]){
@@ -42,13 +41,13 @@
                     for(var i in thisController.wizardData.steps){
                         res=angular.extend(res,thisController.wizardData.steps[i].data);
                     }
-                    res.visibility=!res.isHidden;
+                    
+                    res.show_app=!res.isHidden;
                     delete res.isHidden;
 
-                    notificationResource.sendNotification(res).then(function(){
-
-                    });
-                    $('#notificationWizardDialog').modal('hide');
+                    notificationResource.sendNotification(res).then(function(){ });
+                    thisController.newNotifModal.close();
+                    $state.transitionTo('users.notification',{},{reload:true, inherit: false, notify: false });
                 }
             };
             thisController.leaveCurrentStep=function(){

@@ -9,7 +9,7 @@
 
 <div ng-if="notifActionCtrl.selectedAction.id==3" class="md-form-group float-label">
     <form name="urlform">
-        <input placeholder="" name="urlpath" type="text" class="md-input" ng-model="notifActionCtrl.actionData.url" required
+        <input placeholder="" name="urlpath" type="text" class="md-input" ng-model="notifActionCtrl.actionData.action_url" required
                ng-pattern=/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/i>
         <label>{{'URL' | translate}}</label>
         <small ng-if="urlform.urlpath.$error.required" class="error">{{'REQUIRED',|translate}}</small>
@@ -19,7 +19,7 @@
 
 <div ng-if="notifActionCtrl.actionData.action.id==4" class="md-form-group float-label">
     <form name="uriform">
-        <input placeholder="" name="uriCommand" type="text" class="md-input" ng-model="notifActionCtrl.actionData.url" required
+        <input placeholder="" name="uriCommand" type="text" class="md-input" ng-model="notifActionCtrl.actionData.action_url" required
                ng-pattern=/^([a-z0-9+.-]+):(?:\/\/(?:((?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*)@)?((?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*)(?::(\d*))?(\/(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?|(\/?(?:[a-z0-9-._~!$&'()*+,;=:@]|%[0-9A-F]{2})+(?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*)?)(?:\?((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?(?:#((?:[a-z0-9-._~!$&'()*+,;=:\/?@]|%[0-9A-F]{2})*))?$/i>
         <label>{{'URI' | translate}}</label>
         <small ng-if="uriform.uriCommand.$error.required" class="error">{{'REQUIRED',|translate}}</small>

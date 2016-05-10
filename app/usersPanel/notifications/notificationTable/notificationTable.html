@@ -22,11 +22,11 @@
         </thead>
         <tbody>
         <tr ng-repeat="row in notifTableCtrl.displayed">
-            <td> {{row.notification_data.title}} </td>
-            <td> {{row.notification_data.content}} </td>
-            <td> {{row.filters.caritera.application}} </td>
-            <td> {{row.send_time | jalali}} </td>
-            <td> {{row.status|notificationStatus}} </td>
+            <td>{{row.notification_data.title}}</td>
+            <td>{{row.notification_data.content}}</td>
+            <td>{{row.application|appName}}</td>
+            <td>{{row.send_time | jalali}}</td>
+            <td>{{row.status|notificationStatus}}</td>
             <td>
                 <uib-progressbar
                         type="success"

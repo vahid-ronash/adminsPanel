@@ -29,27 +29,11 @@
                     thisController.data={
                         buttons:[]//buttons
                     };
+                    thisController.maxButtonCount=3;
+                    thisController.buttonList=[];
+                    thisController.selectedIcon=thisController.icons[0];
                 }
             };
-            $scope.wizard.steps[4].reset();
-            
-            thisController.maxButtonCount=3;
-            thisController.buttonList=[];
-
-
-            thisController.addAction=function(){
-                if(thisController.data.buttons.length<thisController.maxButtonCount)
-                    thisController.data.buttons.push({
-                        btn_content: "",
-                        btn_icon: "",
-                        btn_action: ""
-                    });
-            };
-            
-            thisController.removeAction=function(index){
-                thisController.data.buttons.splice(index,1);
-            };
-
             thisController.icons = [
                 " --- ", "add_box", "airplanemode_active", "alarm", "announcement", "apps",
                 "attach_money", "attach_file", "audiotrack", "build", "business", "call",
@@ -62,6 +46,19 @@
                 "search", "settings", "share", "shopping_basket", "shopping_cart", "sms", "star", "store", "sync",
                 "thumb_down", "thumb_up", "view_list", "visibility", "visibility_off", "work"
             ];
-            thisController.selectedIcon=thisController.icons[0];
+            $scope.wizard.steps[4].reset();
+            
+            thisController.addAction=function(){
+                if(thisController.data.buttons.length<thisController.maxButtonCount)
+                    thisController.data.buttons.push({
+                        btn_content: "",
+                        btn_icon: "",
+                        btn_action: ""
+                    });
+            };
+            
+            thisController.removeAction=function(index){
+                thisController.data.buttons.splice(index,1);
+            };
         }]);
 })());

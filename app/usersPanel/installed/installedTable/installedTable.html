@@ -1,4 +1,4 @@
-<simple-modal mclass="modal-sm" mid="removeFavDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
+<simple-modal mcontrol="installTableCtrl.removeConfirmModal"  mclass="modal-sm" mid="removeFavDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
     <div class="modal-body text-center p-lg">
         <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
     </div>
@@ -6,8 +6,8 @@
         <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">{{'NO'|translate}}</button>
         <button type="button" class="btn danger p-x-md" data-dismiss="modal" ng-click="installTableCtrl.removeIMEI()">{{'YES'|translate}}</button>
     </div>
-</simple-modal>
-<simple-modal mclass="modal-sm" mid="addFavoriteDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
+</simple-modal >
+<simple-modal mcontrol="installTableCtrl.newFavModal" mclass="modal-sm" mid="addFavoriteDialog" mtitle="{{'FAVORITE_DEVICE' | translate}}">
     <form name="newFavForm" ng-submit="installTableCtrl.addNewFavorite()">
         <div class="m-b">
             <label class="" for="fav_name">{{'CHOOSE_NAME_4_FAVORITE' | translate}}</label>
@@ -50,7 +50,7 @@
         <tr>
             <th class="text-center">{{'TEST' | translate}}</th>
             <th class="text-center" st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
-            <th class="text-center" st-sort="instance_id">{{'DEVICE' | translate}}</th>
+            <th class="text-center" st-sort="imei">{{'DEVICE' | translate}}</th>
             <th class="text-center" st-sort="application_id">{{'APPLICATION' | translate}}</th>
             <th class="text-center" st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
         </tr>
@@ -111,8 +111,8 @@
                     </div>
                 </td>
                 <td>{{row.smart_device}}</td>
-                <td> {{row.instance_id}} </td>
-                <td>{{row.application|appName}}</td>
+                <td>{{row.imei}}</td>
+                <td>{{row.application|appName:this}}</td>
                 <td>{{row.creation_time | jalali}}</td>
             </tr>
         </tbody>

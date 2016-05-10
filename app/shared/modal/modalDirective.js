@@ -20,8 +20,11 @@
                 scope: {
                     modalID:"@mid",
                     modalTitle:"@mtitle",
-                    modalSizeClass:"@mclass"
+                    modalSizeClass:"@mclass",
+                    control:"=mcontrol"
                 },
+                controller:"modalController",
+                controllerAs:"modalCtrl",
                 transclude: true,
                 restrict: 'EA',
                 templateUrl: 'app/shared/modal/modal.html'

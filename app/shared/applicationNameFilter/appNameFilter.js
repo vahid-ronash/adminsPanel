@@ -20,8 +20,10 @@
                     appHashByName[result[i].id]=result[i].name;
                 }
             });
-            return function(input){
+            function appNameFilter(input){
                 return appHashByName[input];
-            };
+            }
+            appNameFilter.$stateful=true;
+            return appNameFilter;
         }]);
 })());

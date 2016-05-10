@@ -174,7 +174,11 @@
             for(var c =Math.floor(Math.random()*4);c<100 ;c+=Math.floor(Math.random()*10+1)){
                 imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
             }
-            $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(true);
+            $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(function(method, url, keys,headers,param){
+                var params=JSON.parse(JSON.stringify(param));
+                params.id=25615;
+                return {data:params};
+            });
             $httpBackend.whenGET(URLS.URL_IMEI).respond({results:imeiList});
             $httpBackend.whenDELETE(/api\/v1\/favorites\/\.*\//).respond(true);
             $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);

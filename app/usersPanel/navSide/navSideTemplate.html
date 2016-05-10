@@ -30,13 +30,14 @@
     </div>
 <div class="nav-stacked nav-active-{{app.setting.theme.primary}}" flex>
             <ul class="nav ng-scope " ui-nav="">
-                <li  ui-sref-active="active">
+                <li ui-sref-active="active">
                     <a href="#/dashboard" ui-sref="users.dashboard">
                         <span class="nav-icon"><i class="material-icons">&#xe871;</i></span>
                         <span class="nav-text">{{'DASHBOARD' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li ui-sref-active="active">
+                    <a class="hide" ui-sref="users.applications"></a>
                     <a>
                         <span class="nav-caret text-muted"><i class="material-icons">&#xe5c5;</i></span>
                         <span class="nav-icon"><i class="material-icons">&#xe8f9;</i></span>
@@ -44,7 +45,7 @@
                     </a>
                     <ul class="nav-sub">
                         <li ui-sref-active="active">
-                            <a href="#/apps" ui-sref="users.apps">
+                            <a href="#/apps" ui-sref="users.applications">
                                 <!--<span class="nav-icon"><i class="fa fa-list-ol"></i></span>-->
                                 <span class="nav-text">{{'APPLICATIONS_LIST' | translate}}</span>
                             </a>
@@ -63,7 +64,7 @@
                         <span class="nav-text">{{'INSTALLED' | translate}}</span>
                     </a>
                 </li>
-                <li>
+                <li ui-sref-active="active">
                     <a>
                         <span class="nav-caret text-muted"><i class="fa fa-caret-down"></i></span>
                         <span class="nav-icon"><i class="material-icons">&#xe158;</i></span>
@@ -121,12 +122,12 @@
             </ul>
 </div>
 
-<div flex-no-shrink  class="ng-scope">
+<div flex-no-shrink  class="ng-scope nav-stacked">
     <nav ui-nav>
       <ul class="nav">
         <li><div class="b-b b m-v-sm"></div></li>
-        <li class="no-bg">
-          <a>
+        <li ui-sref-active="active" class="no-bg">
+          <a href="#/documentation" ui-sref="users.documentation">
             <span class="nav-icon">
               <i class="material-icons">&#xe565;</i>
             </span>

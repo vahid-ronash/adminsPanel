@@ -1,4 +1,4 @@
-<simple-modal mid="manifestDialog" mtitle="{{'DOWNLOAD_MANIFEST' | translate}}" mclass="modal-sm">
+<simple-modal mcontrol="appsTableCtrl.manifestDialog" mid="manifestDialog" mtitle="{{'DOWNLOAD_MANIFEST' | translate}}" mclass="modal-sm">
     <div ng-repeat="provider in appsTableCtrl.providers" class="radio ltr">
         <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
             <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
@@ -12,7 +12,7 @@
     </button>
 </simple-modal>
 
-<simple-modal mid="confirmDialog" mtitle="{{'YOU_SURE_TITLE' | translate}}" mclass="modal-sm">
+<simple-modal mcontrol="appsTableCtrl.confirmRemoveDialog" mid="confirmDialog" mtitle="{{'YOU_SURE_TITLE' | translate}}" mclass="modal-sm">
     <div class="text-center p-lg">
         <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
     </div>

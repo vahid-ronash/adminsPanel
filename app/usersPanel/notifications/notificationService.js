@@ -44,6 +44,10 @@
                  * @param {object}  notificationData     indicate notification data
                  */
                 thisService.sendNotification= function (notificationData) {
+                    
+                    notificationData.visibility=notificationData.show_app;
+                    if(!notificationData.show_app){notificationData.image="lostimage.png"}
+
                     var output={
                         notification_data:notificationData,
                         filters:[{
