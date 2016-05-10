@@ -24,7 +24,7 @@
                             return false;
                         }
                         else {
-                            $scope.wizard.steps[5].data={json: value};
+                            $scope.wizard.steps[5].data={custom_content: value};
                             return true;
                         }
                     }

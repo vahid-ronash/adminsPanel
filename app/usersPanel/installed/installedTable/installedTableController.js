@@ -100,11 +100,8 @@
              * load apps using panelServices to load in ngtag
              */
             panelServices.loadApplications().then(function(results){
-                thisController.applist=results;
+                thisController.appList=results;
             });
-            thisController.loadApps=function(){
-                return thisController.applist;
-            };
 
             thisController.dateFilter=1450197600000;
             /**
@@ -135,13 +132,24 @@
 
             /**
              * @ngdoc method
+             * @name runSearch
+             * @methodOf app.controller.installedTableController
+             * @description
+             * run callserver method with search parameter
+             */
+            thisController.runSearch=function(){
+
+            };
+
+            /**
+             * @ngdoc method
              * @name callServer
              * @methodOf app.controller.installedTableController
              * @description
              * get data from server for installed table
              */
-            thisController.rowInPage=6;
-            thisController.displayedPages=2;
+            thisController.rowInPage=20;
+            thisController.displayedPages=1;
             thisController.callServer=function(tableState){
                 //test ERROR
                 // $scope.$root.handleError({status:504,data:"<html><body>its an error i mocked to show here</body></html>"});
@@ -149,8 +157,8 @@
                 thisController.isLoading = true;
 
                 //TO fix bug two times loading
-                tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
-                tableState.pagination.start = tableState.pagination.start || 0;
+                // tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
+                // tableState.pagination.start = tableState.pagination.start || 0;
 
                 var pagination = tableState.pagination;
 
@@ -165,16 +173,23 @@
                 filters=angular.extend(filters,tableState.search.predicateObject);
 
                 return $installedResource.query(filters).then(function (result) {
-                    thisController.displayed = result.data.results;
-                    for(var i=0;i<thisController.displayed.length;i++){
-                        //make it favourite
-                        if(thisController.imeiHash[thisController.displayed[i].imei]){
-                            thisController.displayed[i].favorite=thisController.imeiHash[thisController.displayed[i].imei];
+
+                    var resData=result.data.results;
+                    for(var i=0;i<resData.length;i++){
+                        if(thisController.imeiHash[resData[i].imei]){
+                            resData[i].favorite=thisController.imeiHash[resData[i].imei];
                         }
                     }
+
+                    if(pagination.start===0)
+                        thisController.displayed = resData;
+                    else{
+                        thisController.displayed=thisController.displayed.concat(resData);
+                    }
+
                     if(result.data.previous)thisController.hasPrevious=true;
                     if(result.data.next)thisController.hasNext=true;
-                    if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
+                    // if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
 
                     thisController.isLoading = false;
                 });
