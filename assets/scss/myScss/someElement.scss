@@ -23,6 +23,12 @@
 
 
 .scrollabeTable{
+  position:relative;
+  .searchToggle{
+    position:absolute;
+    left:5px;
+    top:5px;
+  }
   table{
     height:500px;
     overflow:auto;
