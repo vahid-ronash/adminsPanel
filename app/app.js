@@ -31,7 +31,8 @@
                     'ngImgCrop',
                     'app.config',
                     'noCAPTCHA',
-                'ADM-dateTimePicker',
+                    'angular-echarts',
+                    'ADM-dateTimePicker',
                     //'ui.router',
                     //'ui.utils',its depricated for angular ui
                     //'ui.load',//a service that differ load css and script and lazyload

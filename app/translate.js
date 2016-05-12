@@ -272,7 +272,7 @@
                 'NEW_APP_TITLE':'ایجاد اپلیکیشن جدید',
                 'ACTIVE_INSTALLATION':'تعداد کل نصب های فعال کاربر',
                 'USER_APP_COUNT':'تعداد اپ های کاربر',
-                'SEND_NOTIF_COUNT':'تعداد کل اعلانهایی که تاکنون با پوشه ارسال کرده',
+                'SEND_NOTIF_COUNT':'اعلان ارسال شده با پوشه',
                 'CREATION_TIME':'زمان ایجاد',
                 'ACTIVE_USER_COUNT':'تعداد کاربران فعال در پوشه',
                 'DOWNLOAD_MANIFEST':'دانلود مانیفست',
