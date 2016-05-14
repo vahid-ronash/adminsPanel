@@ -13,7 +13,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter','panelServices', function ($scope, $installedResource,$timeout,$filter,panelServices) {
+        .controller('installedTableController', ['$scope', 'installedResource','$timeout','$filter','panelServices','$window', function ($scope, $installedResource,$timeout,$filter,panelServices,$window) {
             var thisController = this;
 
             thisController.imeiList=[];
@@ -165,8 +165,11 @@
              */
             thisController.search={};
             thisController.rowInPage=20;
-            thisController.displayedPages=1;
             thisController.lastTableState=0;
+            thisController.displayed=[];
+
+            thisController.tableHeight=$window.innerHeight-56-64-100;//height of header footer and margin
+            thisController.rowInPage=Math.floor(thisController.tableHeight/55*2);//heightOfRow=55
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
                 thisController.lastTableState=tableState;
@@ -185,7 +188,6 @@
 
                 //SEARCH
                 filters=angular.extend(filters,tableState.search.predicateObject);
-                thisController.displayed=[];
                 function serverCallback(result){
                     var resData=result.data.results;
                     for(var i=0;i<resData.length;i++){

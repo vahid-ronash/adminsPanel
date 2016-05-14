@@ -46,7 +46,7 @@
 
 
 <div ng-hide="installTableCtrl.hasNoResult" class="row">
-    <div ng-class="{'hidden-md-down col-md-6 col-lg-8':installTableCtrl.startSearch,'col-sx-12':!installTableCtrl.startSearch}">
+    <div ng-class="{'hidden-md-down col-md-6 col-lg-9':installTableCtrl.startSearch,'col-sx-12':!installTableCtrl.startSearch}">
         <div class="box">
             <div class="scrollabeTable">
                 <div class="searchToggle">
@@ -55,11 +55,13 @@
                         <i class="mdl-icon-toggle__label material-icons">search</i>
                     </label>
                 </div>
+                <!---->
                 <table
-                fixed-header st-pagination-scroll
+                        ng-style="{'height':installTableCtrl.tableHeight}"
+                        fixed-header st-pagination-scroll
                        st-table="installTableCtrl.displayed"
                        st-pipe="installTableCtrl.callServer"
-                       class="table table-striped text-center mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                       class="table table-striped text-center ">
                     <thead>
                     <tr>
                         <th class="text-center">{{'TEST' | translate}}</th>
@@ -87,20 +89,22 @@
                         </td>
                         <td class="hidden-md-down">{{row.smart_device}}</td>
                         <td class="">{{row.imei}}</td>
-                        <td class="hidden-md-down">{{row.application|appName:this}}</td>
+                        <td class="hidden-md-down">{{row.application|appName}}</td>
                         <td class="hidden-lg-down" colspan="2">{{row.creation_time | jalali}}</td>
                     </tr>
                     </tbody>
                 </table>
-                <div ng-show="installTableCtrl.isLoading" class="sk-wave" style="width:auto;margin:auto;height:24px;">
-                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
-                         style="color:green;margin:0 1px 0 ;"></div>
+                <div ng-show="installTableCtrl.isLoading" class="loadingTable">
+                    <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                        <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                             style="color:green;margin:0 1px 0 ;"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div ng-class="{'col-xs-12 col-md-6 col-lg-4 animated ':installTableCtrl.startSearch,'hide animated':!installTableCtrl.startSearch}">
+    <div ng-class="{'col-xs-12 col-md-6 col-lg-3 animated ':installTableCtrl.startSearch,'hide animated':!installTableCtrl.startSearch}">
         <div class="box">
             <button type="button" class="hidden-sm-up p-a-1 close" ng-click="installTableCtrl.startSearch=false">
                 <span aria-hidden="true">&times;</span>
@@ -161,5 +165,5 @@
     </div>
 </div>
 <div ng-show="installTableCtrl.hasNoResult">
-    <h4 class="text-center m-t-3">chizi yaft nashod boro amozesh bebin mago chist Amoozesh</h4>
+    <h4 class="text-center m-t-3">{{'NO_RESULT'|translate}}</h4>
 </div>

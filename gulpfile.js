@@ -54,7 +54,10 @@ gulp.task('compressJsFiles',function(){
             
             "assets/libs/moment/moment.js",
             "assets/libs/moment-jalaali/build/moment-jalaali.js",
-            "assets/libs/adm-dtp/dist/ADM-dateTimePicker.js"
+            "assets/libs/adm-dtp/dist/ADM-dateTimePicker.js",
+
+            // "assets/libs/echarts/build/dist/echarts-all.js",
+            // "assets/libs/angular-echarts/dist/angular-echarts.js"
         ])
         .pipe(concat("req.js"))
         .pipe(uglify())

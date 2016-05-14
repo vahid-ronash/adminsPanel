@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('notificationTableController', ['$scope', 'notificationResource','$stateParams', function ($scope, $notificationResource,$stateParams) {
+        .controller('notificationTableController', ['$scope', 'notificationResource','$stateParams','$window','panelServices', function ($scope, $notificationResource,$stateParams,$window,panelServices) {
             var thisController = this;
             /**
              * @ngdoc method
@@ -22,51 +22,60 @@
              * request to load page it will called by smart table
              * @param {object} tableState   served by smart table
              */
-            thisController.itemByPage=6;
-            thisController.displayedPages=1;
+            thisController.search={};
+            thisController.displayed=[];
+            thisController.rowInPage=20;
+            thisController.lastTableState=0;
+            //set table height
+            thisController.tableHeight=$window.innerHeight-56-64-100;//height of header footer and margin
+            thisController.rowInPage=Math.floor(thisController.tableHeight/55*2);//heightOfRow=55
+
+
+            panelServices.loadApplications().then(function(results){
+                thisController.appList=results;
+            });
+
             thisController.callServer=function(tableState){
-
-                //TO fix bug two times loading
-                tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
-                tableState.pagination.start = tableState.pagination.start || 0;
-                
                 thisController.isLoading = true;
-                thisController.searchNotFound=false;
-                var pagination = tableState.pagination;
+                thisController.lastTableState=tableState;
 
+                //PAGINATION
+                var pagination = tableState.pagination;
                 var filters={
                     offset:pagination.start || 0,
-                    limit:pagination.number || thisController.itemByPage
+                    limit:pagination.number || thisController.rowInPage
                 };
+
+                //SORT
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
                 }
 
-
+                //SEARCH
                 filters=angular.extend(filters,tableState.search.predicateObject);
-                if($stateParams.status){
-                    // if(!filters.search)filters.search={};
-                    // if(!filters.search.predicateObject)filters.search.predicateObject={};
-                    // filters.search.predicateObject.status=
-                    filters.status=$stateParams.status;
-                }
-                return $notificationResource.query(filters).then(function (result) {
-                    if(!result.data.results)return;
+                if($stateParams.status)filters.status=$stateParams.status;
 
-                    thisController.displayed = result.data.results;
-                    if(tableState.search.predicateObject && !thisController.displayed.length){thisController.searchNotFound=true;}
-                    for(var i=0;i<thisController.displayed.length;i++){
-                        var di=thisController.displayed[i];
+                function serverCallback(result){
+                    var resData=result.data.results;
+                    for(var i=0;i<resData.length;i++){
+                        var di=resData[i];
                         var sum=di.clicked_count+di.dismissed_count;
                         if(!sum){di.clicked_count=di.dismissed_count=1;sum=2}
                         di.clickedPrecent=Math.floor(100*di.clicked_count/sum);
                     }
-                    
+                    if(pagination.start===0)
+                        thisController.displayed = resData;
+                    else if(resData.length){
+                        thisController.displayed=thisController.displayed.concat(resData);
+                    }
+                    thisController.hasNoResult=thisController.displayed.length?false:true;
+
                     if(result.data.previous)thisController.hasPrevious=true;
                     if(result.data.next)thisController.hasNext=true;
-                    if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
+
                     thisController.isLoading = false;
-                });
+                }
+                return $notificationResource.query(filters).then(serverCallback);
             };
         }]);
 })());

@@ -232,7 +232,7 @@
                         title:randomNameBuilder(4),
                         content:randomNameBuilder(7),
                     },
-                    application:apps[Math.floor(Math.random() * apps.length)],
+                    application:Math.floor(Math.random() * apps.length),
                     send_time:getRandomTime(),
                     status:Math.floor(Math.random() * 5)+1,
                     sent_count:sentCount,

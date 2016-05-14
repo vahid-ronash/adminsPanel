@@ -25,10 +25,10 @@
                  * @description
                  * load users application
                  */
-                var applications=0;
+                thisService.applications=0;
                 var appPromise=0;
                 thisService.loadApplications = function () {
-                    if(!appPromise && applications){
+                    if(!appPromise && thisService.applications){
                         appPromise= {then:function(callback){callback(thisService.applications)}};
                     }
                     else {
