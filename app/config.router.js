@@ -71,7 +71,7 @@
                         controllerAs:'notifsCtrl',
                         //resolve: need delay
                         pageName:'NOTIFICATIONS',
-                        params:{status:'4'}
+                        params:{status:'SENT'}
                     })
                     .state('users.inqueueNotification', {
                         url:'/notification/inqueue',
@@ -80,7 +80,7 @@
                         controllerAs:'notifsCtrl',
                         //resolve: need delay
                         pageName:'NOTIFICATIONS',
-                        params:{status:'3'}
+                        params:{status:''}
                     })
                     .state('home', {
                         url:'/home',
@@ -139,13 +139,11 @@
                         access: {isFree: false}
                         //resolve: need delay
                     })
-                    .state('users.changePassword', {
-                        url:'/account/change-password',
-                        templateUrl: 'app/accountComponents/changePassword/changePassword.html',
-                        controller: 'changePasswordController',
-                        controllerAs:'changePassCtrl',
+                    .state('users.changePassword',{
+                        url:'/change-password',
+                        templateUrl: 'app/accountComponents/changePassword/changePasswordPage.html',
+                        pageName:'CHANGE_PASSWORD',
                         access: {isFree: false}
-                        //resolve: need delay
                     })
                     .state('resetPassword', {
                         url:'/reset-password/:token/',
