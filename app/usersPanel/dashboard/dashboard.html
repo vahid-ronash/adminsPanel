@@ -1,118 +1,124 @@
 <div class="container">
-    <div class="col-md-6 col-xm-12">
-        <div class="">
-            <div class="m-b">
-                <div class="padding">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box p-a">
-                                <div class="pull-left m-r">
-                                    <span class="w-40 primary text-center rounded">
-                                        <i class="material-icons">people</i>
-                                    </span>
-                                </div>
-                                <div class="clear">
-                                    <h4 class="m-a-0 text-md">
-                                        <a href>{{dashboardCtrl.data.installations}}
-                                            <span class="text-sm">{{'INSTALLED'|translate}}</span>
-                                        </a>
-                                    </h4>
-                                    <small class="text-muted">{{'ACTIVE_INSTALLATION'|translate}}</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="box p-a">
-                                <div class="pull-left m-r">
-                                    <span class="w-40 primary text-center rounded">
-                                        <i class="material-icons">shopping_basket</i>
-                                    </span>
-                                </div>
-                                <div class="pull-right m-l">
-                                    <button ng-click="startApplicationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
-                                        <i class="material-icons md-8">add</i>
-                                    </button>
-                                </div>
-                                <div class="clear">
-                                    <h4 class="m-a-0 text-md">
-                                        <a href>{{dashboardCtrl.data.applications}}
-                                            <span class="text-sm">{{'APPLICATIONS'|translate}}</span>
-                                        </a>
-                                    </h4>
-                                    <small class="text-muted">{{'USER_APP_COUNT'|translate}}</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="box p-a">
-                                <div class="pull-left m-r">
-                                    <span class="w-40 primary text-center rounded">
-                                        <i class="material-icons">shopping_basket</i>
-                                    </span>
-                                </div>
-                                <div class="pull-right m-l">
-                                    <button ng-click="startNotificationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
-                                        <i class="material-icons md-8">add</i>
-                                    </button>
-                                </div>
-                                <div class="clear">
-                                    <h4 class="m-a-0 text-md">
-                                        <a href>{{dashboardCtrl.data.notifications}}
-                                            <span class="text-sm">{{'NOTIFICATIONS'|translate}}</span>
-                                        </a>
-                                    </h4>
-                                    <small class="text-muted">{{'SEND_NOTIF_COUNT'|translate}}</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="col-md-4">
+            <div class="box p-a">
+                <div class="pull-left m-r">
+                    <span class="w-40 primary text-center rounded">
+                        <i class="material-icons">people</i>
+                    </span>
+                </div>
+                <div class="clear">
+                    <h4 class="m-a-0 text-md">
+                        <a href="#/installed">{{dashboardCtrl.data.installations}}
+                            <span class="text-sm">{{'INSTALLED'|translate}}</span>
+                        </a>
+                    </h4>
+                    <small class="text-muted">{{'ACTIVE_INSTALLATION'|translate}}</small>
                 </div>
             </div>
         </div>
-    </div>
-    <!--GALLERY-->
-    <div class="col-md-6 col-xm-12">
-        <div class="">
-            <div class="m-b">
-                <div class="padding">
-                    <div class="row">
-                      <div class="box">
-                        <div class="box-header">
-                          <h4>{{'DASHBOARD_GALLERY'|translate}}</h4>
-                        </div>
-                        <div>
-                            <div id="dashboardGallery" class="carousel slide"
-                                 data-ride="carousel" data-interval="{{dashboardCtrl.slideData.interval}}"
-                                 data-wrap="{{dashboardCtrl.slideData.cycleSlides}}" keyboard="true"
-                            >
-                                <ol class="carousel-indicators">
-                                    <li ng-repeat="slidedata in dashboardCtrl.slideData.list"
-                                        ng-class="{'active':dashboardCtrl.slideData.active==$index}"
-                                        data-target="#dashboardGallery" data-slide-to="{{$index}}"
-                                    ></li>
-                                </ol>
-                                <div class="carousel-inner" role="listbox">
-                                    <div ng-repeat="slidedata in dashboardCtrl.slideData.list" class="carousel-item" ng-class="{'active':dashboardCtrl.slideData.active==$index}">
-                                        <img alt="dashboard image{{$index}}" ng-src="{{slidedata.image}}" style="margin:auto;" class="w-full">
-                                        <div class="carousel-caption">
-                                            <h6>{{'SLIDE'|translate}} {{$index}}</h6>
-                                            <p>{{slidedata.text}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="left carousel-control" data-target="#dashboardGallery" role="button" data-slide="prev">
-                                    <span class="icon-next" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </span>
-                                <a class="right carousel-control"  data-target="#dashboardGallery" role="button" data-slide="next">
-                                    <span class="icon-prev" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+    <div class="col-md-4">
+            <div class="box p-a">
+                <div class="pull-left m-r">
+                    <span class="w-40 primary text-center rounded">
+                        <i class="material-icons">shopping_basket</i>
+                    </span>
                 </div>
+                <div class="pull-right m-l">
+                    <button ng-click="startApplicationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
+                        <i class="material-icons md-8">add</i>
+                    </button>
+                </div>
+                <div class="clear">
+                    <h4 class="m-a-0 text-md">
+                        <a href="#/apps">{{dashboardCtrl.data.applications}}
+                            <span class="text-sm">{{'APPLICATIONS'|translate}}</span>
+                        </a>
+                    </h4>
+                    <small class="text-muted">{{'USER_APP_COUNT'|translate}}</small>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-4">
+            <div class="box p-a">
+                <div class="pull-left m-r">
+                    <span class="w-40 primary text-center rounded">
+                        <i class="material-icons">shopping_basket</i>
+                    </span>
+                </div>
+                <div class="pull-right m-l">
+                    <button ng-click="startNotificationWizard()" class="md-btn md-fab m-b-xs indigo add-button-dashboard">
+                        <i class="material-icons md-8">add</i>
+                    </button>
+                </div>
+                <div class="clear">
+                    <h4 class="m-a-0 text-md">
+                        <a href="#/notification">{{dashboardCtrl.data.notifications}}
+                            <span class="text-sm">{{'NOTIFICATIONS'|translate}}</span>
+                        </a>
+                    </h4>
+                    <small class="text-muted">{{'SEND_NOTIF_COUNT'|translate}}</small>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-md-12">
+        <div class="box ">
+            <div class="box-header">
+                <h3>{{'INSTALLATION_CHART_TITLE'|translate}}</h3>
+                <small class="block text-muted">{{'INSTALLATION_CHART_DESCRIPTION'|translate}}</small>
+            </div>
+            <div class="box-tool">
+		        <ul class="nav">
+		          <li class="nav-item inline dropdown">
+		            <a class="nav-link" data-toggle="dropdown">
+		              <i class="material-icons md-18">&#xe5d4;</i>
+		            </a>
+		            <div class="dropdown-menu dropdown-menu-scale pull-right">
+		              <a class="dropdown-item" href>This week</a>
+		              <a class="dropdown-item" href>This month</a>
+		              <a class="dropdown-item" href>This week</a>
+		              <div class="dropdown-divider"></div>
+		              <a class="dropdown-item">Today</a>
+		            </div>
+		          </li>
+		        </ul>
+		      </div>
+            <div class="box ltr">
+                <div id="installationChart" style="height:400px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-6">
+        <div class="box ">
+            <div class="box-header">
+                <h3>{{'APP_VERSION_CHART_TITLE'|translate}}</h3>
+                <small class="block text-muted">{{'APP_VERSION_CHART_DESCRIPTION'|translate}}</small>
+            </div>
+            <div class="box ltr">
+                <div id="appVersionChart" style="height:400px;"></div>
+            </div>
+            </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="box ">
+            <div class="box-header">
+                <h3>{{'OS_VERSION_CHART_TITLE'|translate}}</h3>
+                <small class="block text-muted">{{'OS_VERSION_CHART_DESCRIPTION'|translate}}</small>
+            </div>
+            <div class="box ltr">
+                <div id="osVersionChart" style="height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class="box ">
+            <div class="box-header">
+                <h3>{{'MARKETS_CHART_TITLE'|translate}}</h3>
+                <small class="block text-muted">{{'MARKETS_CHART_DESCRIPTION'|translate}}</small>
+            </div>
+            <div class="box ltr">
+                <div id="marketChart" style="height:400px;"></div>
             </div>
         </div>
     </div>
