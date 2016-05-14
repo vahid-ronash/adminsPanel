@@ -44,90 +44,114 @@
     </form>
 </simple-modal>
 
-<div class="row">
-    <div ng-class="{'col-sm-8':installTableCtrl.startSearch,'col-sx-12':!installTableCtrl.startSearch}">
+
+<div ng-hide="installTableCtrl.hasNoResult" class="row">
+    <div ng-class="{'hidden-md-down col-md-6 col-lg-8':installTableCtrl.startSearch,'col-sx-12':!installTableCtrl.startSearch}">
         <div class="box">
             <div class="scrollabeTable">
-                    <table table-height="500" fixed-header st-table="installTableCtrl.displayed" st-pagination-scroll st-pipe="installTableCtrl.callServer" class="table table-striped text-center">
-                        <thead>
-                        <tr>
-                            <th class="text-center">{{'TEST' | translate}}</th>
-                            <th class="text-center" st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
-                            <th class="text-center" st-sort="imei">{{'DEVICE' | translate}}</th>
-                            <th class="text-center" st-sort="application_id">{{'APPLICATION' | translate}}</th>
-                            <th class="text-center" st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
-                            <th width="0">
-                                <label ng-hide="" mdl-upgrade class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-search">
-                                    <input ng-model="installTableCtrl.startSearch" type="checkbox" id="icon-toggle-search" class="mdl-icon-toggle__input" checked>
-                                    <i class="mdl-icon-toggle__label material-icons">search</i>
-                                </label>
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="row in installTableCtrl.displayed" ng-mouseleave="row.showRemoveBtn=false;">
-                            <td>
-                                <div ng-show="row.favorite">
-                                    <div>
-                                        <a ng-mouseenter="row.showRemoveBtn=true;" class="btn have-beside" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a>
-                                        <div ng-if="row.showRemoveBtn" class="animate fade-in-left removeIMEI">
-                                            <span class="muted">{{row.favorite.name}}</span>
-                                            <a ng-click="installTableCtrl.startRemoveIMEI(row)"><i class="fa fa-trash"></i></a>
-                                        </div>
+                <div class="searchToggle">
+                    <label ng-hide="" mdl-upgrade class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-search">
+                        <input ng-model="installTableCtrl.startSearch" type="checkbox" id="icon-toggle-search" class="mdl-icon-toggle__input" checked>
+                        <i class="mdl-icon-toggle__label material-icons">search</i>
+                    </label>
+                </div>
+                <table
+                fixed-header st-pagination-scroll
+                       st-table="installTableCtrl.displayed"
+                       st-pipe="installTableCtrl.callServer"
+                       class="table table-striped text-center mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                    <thead>
+                    <tr>
+                        <th class="text-center">{{'TEST' | translate}}</th>
+                        <th class="text-center hidden-md-down" st-sort="smart_device">{{'DEVICE_MODEL' | translate}}</th>
+                        <th class="text-center" st-sort="imei">{{'DEVICE' | translate}}</th>
+                        <th class="text-center hidden-md-down" st-sort="application_id">{{'APPLICATION' | translate}}</th>
+                        <th class="text-center hidden-lg-down" st-sort="creation_time">{{'INSTALLTIME' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in installTableCtrl.displayed" ng-mouseleave="row.showRemoveBtn=false;">
+                        <td class="faveTD">
+                            <div ng-show="row.favorite">
+                                <div>
+                                    <a ng-mouseenter="row.showRemoveBtn=true;" class="btn have-beside" ng-click="installTableCtrl.sendTest(row)"><i class="fa fa-send"></i></a>
+                                    <div ng-if="row.showRemoveBtn" class="animate fade-in-left removeIMEI">
+                                        <span class="muted">{{row.favorite.name}}</span>
+                                        <a ng-click="installTableCtrl.startRemoveIMEI(row)"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </div>
-                                <div ng-hide="row.favorite">
-                                    <div><a class="btn" ng-click="installTableCtrl.addToFavorite(row)"><i class="fa fa-star-o"></i></a></div>
-                                </div>
-                            </td>
-                            <td>{{row.smart_device}}</td>
-                            <td>{{row.imei}}</td>
-                            <td>{{row.application|appName:this}}</td>
-                            <td colspan="2">{{row.creation_time | jalali}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            </div>
+                            <div ng-hide="row.favorite">
+                                <div><a class="btn" ng-click="installTableCtrl.addToFavorite(row)"><i class="fa fa-star-o"></i></a></div>
+                            </div>
+                        </td>
+                        <td class="hidden-md-down">{{row.smart_device}}</td>
+                        <td class="">{{row.imei}}</td>
+                        <td class="hidden-md-down">{{row.application|appName:this}}</td>
+                        <td class="hidden-lg-down" colspan="2">{{row.creation_time | jalali}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-show="installTableCtrl.isLoading" class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                    <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                         style="color:green;margin:0 1px 0 ;"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div ng-class="{'col-sm-4 animated ':installTableCtrl.startSearch,'hide animated':!installTableCtrl.startSearch}">
+    <div ng-class="{'col-xs-12 col-md-6 col-lg-4 animated ':installTableCtrl.startSearch,'hide animated':!installTableCtrl.startSearch}">
         <div class="box">
+            <button type="button" class="hidden-sm-up p-a-1 close" ng-click="installTableCtrl.startSearch=false">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
             <form class="p-a-1">
-                <div>
-                    <label mdl-upgrade class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1">
-                        <input ng-model="installTableCtrl.search.justFavorites" type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input" checked>
-                        <i class="mdl-icon-toggle__label material-icons">format_bold</i>
+                <!--check installation type filter-->
+                <div class="m-b-md">
+                    <label class="md-check">
+                        <input type="checkbox" ng-model="installTableCtrl.search.fav"><i class="primary"></i>{{'JUST_FAVOR_INSTALLED' | translate}}
                     </label>
                 </div>
+
+                <!--filter by application-->
+                <div class="m-t">
+                    <select class="form-control" ng-model="installTableCtrl.search.application">
+                        <option value="">{{'SEARCH_BY_APPLICATION'|translate}}</option>
+                        <option ng-repeat="option in installTableCtrl.appList" ng-value="option.id" ng-bind="option.name"></option>
+                    </select>
+                </div>
+
+                <!--filter by date-->
+                <div class="ltr m-t">
+                    <adm-dtp ng-model='installTableCtrl.search.creation_time' options='{calType: "jalali",autoClose:true,multiple:false, format: "YYYY/MM/DD", default: ""}'></adm-dtp>
+                </div>
+
+                <!--filter by device model-->
                 <div>
                     <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input text-left"
                                ng-model="installTableCtrl.search.smart_device"
                                type="text" id="smartDeviceTextSearch"
                         >
-                        <label class="mdl-textfield__label" for="smartDeviceTextSearch">{{'APPLICATION' | translate}}</label>
+                        <label class="mdl-textfield__label" for="smartDeviceTextSearch">{{'DEVICE_MODEL' | translate}}</label>
                     </div>
                 </div>
+
+                <!--filter by imei-->
                 <div>
-                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield">
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input text-left"
                                ng-model="installTableCtrl.search.imei"
                                type="text" id="imeiTextSearch"
                         >
-                        <label class="mdl-textfield__label" for="imeiTextSearch">{{'IMEI' | translate}}</label>
+                        <label class="mdl-textfield__label" for="imeiTextSearch">{{'DEVICE' | translate}}</label>
                     </div>
                 </div>
-                <div>
-                    <select class="form-control" ng-model="installTableCtrl.search.application">
-                        <option ng-repeat="option in installTableCtrl.appList" ng-value="option.value" ng-bind="option.name"></option>
-                    </select>
-                </div>
-                <div class="ltr m-t">
-                    <adm-dtp ng-model='installTableCtrl.dateFilter' options='{calType: "jalali",autoClose:true,multiple:false, format: "YYYY/MM/DD", default: 1450197600000}'></adm-dtp>
-                </div>
+
+                <!--run search by imei or device model-->
                 <div class="text-center m-t-2">
-                    <button class="mdl-button mdl-js-ripple-effect">
+                    <button ng-click="installTableCtrl.runSearch()" class="mdl-button mdl-js-ripple-effect">
                         {{'SEARCH'|translate}}
                         <i class="material-icons">search</i>
                     </button>
@@ -136,14 +160,6 @@
         </div>
     </div>
 </div>
-
-
-
-<!--<tfoot>-->
-<!--<tr>-->
-<!--<td colspan="5" class="text-center">-->
-<!--<div st-pagination="" st-items-by-page="installTableCtrl.rowInPage" st-displayed-pages="installTableCtrl.displayedPages" class="m-a-0 ng-isolate-scope">-->
-<!--</div>-->
-<!--</td>-->
-<!--</tr>-->
-<!--</tfoot>-->
+<div ng-show="installTableCtrl.hasNoResult">
+    <h4 class="text-center m-t-3">chizi yaft nashod boro amozesh bebin mago chist Amoozesh</h4>
+</div>

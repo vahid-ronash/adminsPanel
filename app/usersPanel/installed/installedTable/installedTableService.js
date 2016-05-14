@@ -29,6 +29,19 @@
                         return result;
                     },$rootScope.handleError);
                 };
+                /**
+                 * @ngdoc method
+                 * @name queryFavorites
+                 * @methodOf app.services.installedResource
+                 * @description
+                 * get installed list for pagination
+                 * @param {object}  filters     indicate page data to load
+                 */
+                thisService.queryFavorites = function (filters) {
+                    return $http.get(URLS.URL_FAVED_INSTALLED,{params:filters}).then(function (result) {
+                        return result;
+                    },$rootScope.handleError);
+                };
 
                 /**
                  * @ngdoc method

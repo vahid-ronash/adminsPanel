@@ -27,5 +27,6 @@
             "URL_LOGOUT":"api/v1/accounting/logout/",
             "URL_GET_PROFILE":"api/v1/get_profile/",
             "URL_IMEI":"api/v1/favorites/",
+            "URL_FAVED_INSTALLED":"api/v1/installations/favorites/",
         });
 })());

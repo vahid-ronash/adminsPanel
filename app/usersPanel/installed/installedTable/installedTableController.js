@@ -138,7 +138,22 @@
              * run callserver method with search parameter
              */
             thisController.runSearch=function(){
-
+                var predicate={};
+                for(var att in thisController.search){
+                    if(thisController.search[att] ) {
+                        if (att == 'creation_time') {
+                            var time = moment(thisController.search[att], 'jYYYY/jM/jD').format('YYYY-MM-DD');
+                            predicate[att+"__gte"]=time+" 00:00:00";
+                            predicate[att+"__lte"]=time+" 23:59:59";
+                        }
+                        else {
+                            predicate[att] = thisController.search[att];
+                        }
+                    }
+                }
+                thisController.lastTableState.search.predicateObject=predicate;
+                thisController.lastTableState.pagination.start=0;
+                thisController.callServer(thisController.lastTableState);
             };
 
             /**
@@ -148,32 +163,30 @@
              * @description
              * get data from server for installed table
              */
+            thisController.search={};
             thisController.rowInPage=20;
             thisController.displayedPages=1;
+            thisController.lastTableState=0;
             thisController.callServer=function(tableState){
-                //test ERROR
-                // $scope.$root.handleError({status:504,data:"<html><body>its an error i mocked to show here</body></html>"});
-                // $scope.$root.handleError({status:504,data:"<html><body>its an error i mocked to show here</body></html>"});
                 thisController.isLoading = true;
+                thisController.lastTableState=tableState;
 
-                //TO fix bug two times loading
-                // tableState.pagination.number = tableState.pagination.number || thisController.rowInPage;
-                // tableState.pagination.start = tableState.pagination.start || 0;
-
+                //PAGINATION
                 var pagination = tableState.pagination;
-
                 var filters={
                     offset:pagination.start || 0,
                     limit:pagination.number || thisController.rowInPage
                 };
+
+                //SORT
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
                 }
 
+                //SEARCH
                 filters=angular.extend(filters,tableState.search.predicateObject);
-
-                return $installedResource.query(filters).then(function (result) {
-
+                thisController.displayed=[];
+                function serverCallback(result){
                     var resData=result.data.results;
                     for(var i=0;i<resData.length;i++){
                         if(thisController.imeiHash[resData[i].imei]){
@@ -183,16 +196,22 @@
 
                     if(pagination.start===0)
                         thisController.displayed = resData;
-                    else{
+                    else if(resData.length){
                         thisController.displayed=thisController.displayed.concat(resData);
                     }
+                    thisController.hasNoResult=thisController.displayed.length?false:true;
 
                     if(result.data.previous)thisController.hasPrevious=true;
                     if(result.data.next)thisController.hasNext=true;
-                    // if(thisController.hasNext) tableState.pagination.numberOfPages=Math.ceil(pagination.start/pagination.number)+2;
 
                     thisController.isLoading = false;
-                });
+                }
+                if(tableState.search.predicateObject && tableState.search.predicateObject.fav==true){
+                    delete filters.fav;
+                    return $installedResource.queryFavorites(filters).then(serverCallback);
+                }
+                else
+                    return $installedResource.query(filters).then(serverCallback);
             };
         }]);
 })());

@@ -146,12 +146,26 @@
             for (i = 0; i < 1000; i++) {
                 randomsInstallationItems.push(createRandomItem(i));
             }
-            $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+            function filterData(param,data){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
                 searchFilters.limit && delete searchFilters.limit;
-                var filtered = param ? $filter('filter')(randomsInstallationItems, searchFilters) : randomsInstallationItems;
+                for(var i in searchFilters){
+                    if(i.indexOf('__lte')){
+                        var field=i.substr(i.indexOf('__lte'));
+                        data=data.filter(function(row){
+                            return row[field]<=searchFilters[i];
+                        });
+                    }
+                    if(i.indexOf('__gte')){
+                        var field=i.substr(i.indexOf('__gte'));
+                        data=data.filter(function(row){
+                            return row[field]>=searchFilters[i];
+                        });
+                    }
+                }
+                var filtered = param ? $filter('filter')(data, searchFilters) : data;
 
                 if (param.ordering) {
                     var order = param.ordering;
@@ -167,12 +181,18 @@
                 };
                 if(!searchFilters.offset)resultobj.previous="we have previous";
                 if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
+                return resultobj;
+            }
+            $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+                var resultobj=filterData(param,randomsInstallationItems);
                 return [200, resultobj, {}];
                 // return [504, "<html><body>its an error i mocked to show here</body></html>"];
             });
             var imeiList=[];
+            var imeiHash={};
             for(var c =Math.floor(Math.random()*4);c<100 ;c+=Math.floor(Math.random()*10+1)){
                 imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
+                imeiHash[randomsInstallationItems[c].imei]=1;
             }
             $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(function(method, url, keys,headers,param){
                 var params=JSON.parse(JSON.stringify(param));
@@ -180,6 +200,14 @@
                 return {data:params};
             });
             $httpBackend.whenGET(URLS.URL_IMEI).respond({results:imeiList});
+            $httpBackend.whenGET(/api\/v1\/installations\/favorites\/\?.*/).respond(function(method, url, keys,headers,param){
+                var rn=randomsInstallationItems.filter(function(installation){
+                    if(imeiHash[installation.imei])return true;
+                    else return false;
+                });
+                var resultobj=filterData(param,rn);
+                return [200, resultobj, {}];
+            });
             $httpBackend.whenDELETE(/api\/v1\/favorites\/\.*\//).respond(true);
             $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 

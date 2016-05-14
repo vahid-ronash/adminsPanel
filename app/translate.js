@@ -316,6 +316,10 @@
                 'COLLAPSE_KEY':'کلید جابجایی',
                 'TIME_TO_LIVE':'زمان زنده موندن',
                 'DELAY_WHILE_IDLE':'مزاحمش نشویم؟',
+                'JUST_FAVOR_INSTALLED':'فقط مورد علاقهها',
+                'ALL_INSTALLED':'تمام نصب ها',
+                'SEARCH_BY_APPLICATION':'همه اپلیکیشن ها',
+
             });
 
             $translateProvider.preferredLanguage('fa');
