@@ -61,7 +61,7 @@
                 manifest_copy=manifest_copy.replace(/TOKEN/g,thisController.selectedRow.senderID);
                 manifest_copy=manifest_copy.replace(/PACKAGE_NAME/g,thisController.selectedRow.application_id);
                 var blob = new Blob([manifest_copy], {type: "text/plain;charset=utf-8"});
-                saveAs(blob, "manifest_"+provider+".xml");
+                saveAs(blob, "manifest_"+provider+".txt");
                 thisController.manifestDialog.close();
             };
             //send a request to get application list

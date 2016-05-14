@@ -36,24 +36,24 @@ describe('test notification controller and services : ', function () {
         });
     });
 
-    it("test notificationResource with page",function () {
-        notificationTableController.callServer({
-            pagination:{
-                start:1,number:10
-            },
-            search:{
-                predicateObject:{
-                    application:'b4'
-                }
-            },
-            sort:{
-                predicate:'title',
-                reverse:false
-            }
-        }).then(function(){
-            deferred.resolve(notificationTableController.displayed.length>0);
-        });
-        $timeout.flush();
-        expect(this.valueToVerify).toEqual(true);
-    });
+    // it("test notificationResource with page",function () {
+    //     notificationTableController.callServer({
+    //         pagination:{
+    //             start:1,number:10
+    //         },
+    //         search:{
+    //             predicateObject:{
+    //                 application:'b4'
+    //             }
+    //         },
+    //         sort:{
+    //             predicate:'title',
+    //             reverse:false
+    //         }
+    //     }).then(function(){
+    //         deferred.resolve(notificationTableController.displayed.length>0);
+    //     });
+    //     $timeout.flush();
+    //     expect(this.valueToVerify).toEqual(true);
+    // });
 });

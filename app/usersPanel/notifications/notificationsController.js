@@ -18,19 +18,6 @@
 
             /**
              * @ngdoc method
-             * @name showWizard
-             * @methodOf app.controller.notificationsController
-             * @description
-             * ignite the wizard
-             */
-            thisController.showWizard=function(){
-                $scope.$root.startNotificationWizard(function(){
-                    
-                });
-            };
-
-            /**
-             * @ngdoc method
              * @name showJSONSending
              * @methodOf app.controller.notificationsController
              * @description
