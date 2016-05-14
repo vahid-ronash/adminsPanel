@@ -57,7 +57,7 @@ gulp.task('compressJsFiles',function(){
             "assets/libs/adm-dtp/dist/ADM-dateTimePicker.js",
 
             // "assets/libs/echarts/build/dist/echarts-all.js",
-            // "assets/libs/angular-echarts/dist/angular-echarts.js"
+            "assets/libs/angular-echarts/dist/angular-echarts.js"
         ])
         .pipe(concat("req.js"))
         .pipe(uglify())
@@ -74,6 +74,7 @@ gulp.task('compressJsFiles',function(){
         .pipe(concat("req_un.js"))
         .pipe(gulp.dest('assets/js'));
 
+    gulp.src("assets/libs/echarts/build/dist/echarts-all.js").pipe(gulp.dest('assets/js'));
     gulp.src("assets/libs/ace-builds/src/mode-json.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
     gulp.src("assets/libs/ace-builds/src/theme-twilight.js").pipe(uglify()).pipe(gulp.dest('assets/js'));
     gulp.src("assets/libs/ace-builds/src/theme-light.js").pipe(uglify()).pipe(gulp.dest('assets/js'));

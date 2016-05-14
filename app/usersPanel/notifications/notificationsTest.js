@@ -12,8 +12,8 @@ describe('notification page', function() {
         this.timeout=$timeout;
     }));
 
-    it('controller is work', function () {
-        var controller = $controller('notificationsController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.showWizard).toBeDefined();
-    });
+    // it('controller is work', function () {
+    //     var controller = $controller('notificationsController', { "$scope": {app:{name:"adminsPanel"}} });
+    //     expect(controller.showWizard).toBeDefined();
+    // });
 });
