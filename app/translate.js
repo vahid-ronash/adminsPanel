@@ -270,7 +270,6 @@
                 'SUCCESS_CHANGE_PASS':'رمز عبور شما با موفقیت تغییر یافت',
                 'FAQ':'سوالات متداول',
                 'NEW_APP_TITLE':'ایجاد اپلیکیشن جدید',
-                'ACTIVE_INSTALLATION':'تعداد کل نصب های فعال کاربر',
                 'USER_APP_COUNT':'تعداد اپ های کاربر',
                 'SEND_NOTIF_COUNT':'اعلان ارسال شده با پوشه',
                 'CREATION_TIME':'زمان ایجاد',
@@ -319,7 +318,17 @@
                 'JUST_FAVOR_INSTALLED':'فقط مورد علاقهها',
                 'ALL_INSTALLED':'تمام نصب ها',
                 'SEARCH_BY_APPLICATION':'همه اپلیکیشن ها',
-
+                'INSTALLATION_CHART_TITLE': 'تعداد کاربران',
+                'INSTALLATION_CHART_DESCRIPTION':'تعداد کل کاربران فعال، نصب ها و حذف ها در هر روز ',
+                'INSTALLATION':'نصب',
+                'UNINSTALATION':'حذف',
+                'ACTIVE_INSTALLATION':'نصب های فعال',
+                'APP_VERSION_CHART_TITLE':'نسخه اپلیکیشن',
+                'APP_VERSION_CHART_DESCRIPTION':'',
+                'OS_VERSION_CHART_TITLE':'نسخه آندروید',
+                'OS_VERSION_CHART_DESCRIPTION':'',
+                'MARKETS_CHART_TITLE':'مارکت',
+                'MARKETS_CHART_DESCRIPTION':''
             });
 
             $translateProvider.preferredLanguage('fa');

@@ -28,22 +28,17 @@
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['data1','data2','data3']
+                    data:[
+                        $filter('translate')("ACTIVE_INSTALLATION"),
+                        $filter('translate')("INSTALLATION"),
+                        $filter('translate')("UNINSTALATION")
+                    ]
                 },
-                toolbox: {
-                    show : true,
-                    feature : {
-                        magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                        restore : {show: true},
-                        saveAsImage : {show: true}
-                    }
-                },
-                calculable : true,
                 xAxis : [
                     {
                         type : 'category',
                         boundaryGap : false,
-                        data : ['2','3','4','5','6','7','8']
+                        data : []
                     }
                 ],
                 yAxis : [
@@ -53,240 +48,172 @@
                 ],
                 series : [
                     {
-                        name:'data1',
+                        name:$filter('translate')("ACTIVE_INSTALLATION"),
                         type:'line',
                         smooth:true,
                         itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[10, 12, 21, 54, 260, 830, 710]
+                        data:[]
                     },
                     {
-                        name:'data2',
+                        name:$filter('translate')("INSTALLATION"),
                         type:'line',
                         smooth:true,
                         itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[30, 182, 434, 791, 390, 30, 10]
+                        data: []
                     },
                     {
-                        name:'data3',
+                        name:$filter('translate')("UNINSTALATION"),
                         type:'line',
                         smooth:true,
                         itemStyle: {normal: {areaStyle: {type: 'default'}}},
-                        data:[1320, 1132, 601, 234, 120, 90, 20]
+                        data:[]
                     }
                 ]
             };
             var marketOption = {
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            magicType : {
-                show: true,
-                type: ['pie', 'funnel'],
-                option: {
-                    funnel: {
-                        x: '25%',
-                        width: '50%',
-                        funnelAlign: 'center',
-                        max: 1548
-                    }
-                }
-            },
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    calculable : true,
-    series : [
-        {
-            name:'访问来源',
-            type:'pie',
-            radius : ['50%', '70%'],
-            itemStyle : {
-                normal : {
-                    label : {
-                        show : false
-                    },
-                    labelLine : {
-                        show : false
-                    }
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data: []
                 },
-                emphasis : {
-                    label : {
-                        show : true,
-                        position : 'center',
-                        textStyle : {
-                            fontSize : '30',
-                            fontWeight : 'bold'
-                        }
+                calculable : true,
+                series : [
+                    {
+                        name:$filter('translate')("MARKETS"),
+                        type:'pie',
+                        radius : ['50%', '70%'],
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            },
+                            emphasis : {
+                                label : {
+                                    show : true,
+                                    position : 'center',
+                                    textStyle : {
+                                        fontSize : '30',
+                                        fontWeight : 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        data:[]
                     }
-                }
-            },
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
-            ]
-        }
-    ]
-};
+                ]
+            };
             var osVersionOption = {
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            magicType : {
-                show: true,
-                type: ['pie', 'funnel'],
-                option: {
-                    funnel: {
-                        x: '25%',
-                        width: '50%',
-                        funnelAlign: 'center',
-                        max: 1548
-                    }
-                }
-            },
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    calculable : true,
-    series : [
-        {
-            name:'访问来源',
-            type:'pie',
-            radius : ['50%', '70%'],
-            itemStyle : {
-                normal : {
-                    label : {
-                        show : false
-                    },
-                    labelLine : {
-                        show : false
-                    }
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:[]
                 },
-                emphasis : {
-                    label : {
-                        show : true,
-                        position : 'center',
-                        textStyle : {
-                            fontSize : '30',
-                            fontWeight : 'bold'
-                        }
+                calculable : true,
+                series : [
+                    {
+                        name:$filter('translate')("OS_VERSION"),
+                        type:'pie',
+                        radius : ['50%', '70%'],
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            },
+                            emphasis : {
+                                label : {
+                                    show : true,
+                                    position : 'center',
+                                    textStyle : {
+                                        fontSize : '30',
+                                        fontWeight : 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        data:[]
                     }
-                }
-            },
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
-            ]
-        }
-    ]
-};
+                ]
+            };
             var appVersionOption = {
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            magicType : {
-                show: true,
-                type: ['pie', 'funnel'],
-                option: {
-                    funnel: {
-                        x: '25%',
-                        width: '50%',
-                        funnelAlign: 'center',
-                        max: 1548
-                    }
-                }
-            },
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    calculable : true,
-    series : [
-        {
-            name:'访问来源',
-            type:'pie',
-            radius : ['50%', '70%'],
-            itemStyle : {
-                normal : {
-                    label : {
-                        show : false
-                    },
-                    labelLine : {
-                        show : false
-                    }
+
+                legend: {
+                    orient : 'vertical',
+                    x : 'left',
+                    data:[]
                 },
-                emphasis : {
-                    label : {
-                        show : true,
-                        position : 'center',
-                        textStyle : {
-                            fontSize : '30',
-                            fontWeight : 'bold'
-                        }
+                calculable : true,
+                series : [
+                    {
+                        name:$filter('translate')("APP_VERSION"),
+                        type:'pie',
+                        radius : ['50%', '70%'],
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    show : false
+                                },
+                                labelLine : {
+                                    show : false
+                                }
+                            },
+                            emphasis : {
+                                label : {
+                                    show : true,
+                                    position : 'center',
+                                    textStyle : {
+                                        fontSize : '30',
+                                        fontWeight : 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        data:[]
                     }
-                }
-            },
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
-            ]
-        }
-    ]
-};
+                ]
+            };
+
+            installationOption.xAxis[0].data = ['95/02/01','95/02/02','95/02/03','95/02/04','95/02/05','95/02/06'];
+            installationOption.series[0].data = [10, 12, 21, 54, 260, 830];
+            installationOption.series[1].data = [30, 182, 434, 791, 390, 30];
+            installationOption.series[2].data = [1320, 1132, 601, 234, 120, 90];
+
+            marketOption.series[0].data = [
+                                        {value:335, name: '4.4.2'},
+                                        {value:310, name: '5.0.1'},
+                                        {value:234, name: '4.0.3'},
+                                        {value:135, name: '6.0.1'}
+                                        ];
+            marketOption.legend.data=marketOption.series[0].data.map(function(d){return d.name});
+
+            osVersionOption.series[0].data = [
+                                        {value:335, name:'CafeBazaar'},
+                                        {value:310, name:'Myket'},
+                                        {value:234, name:'Iran Apps'},
+                                        {value:135, name:'Candoo'}
+                                        ];
+            osVersionOption.legend.data=osVersionOption.series[0].data.map(function(d){return d.name});
+
+            appVersionOption.series[0].data = [
+                                        {value:33, name:'10.1'},
+                                        {value:3, name:'3.5'},
+                                        {value:24, name:'4'},
+                                        {value:1, name:'1.0.4'}
+                                        ];
+            appVersionOption.legend.data=appVersionOption.series[0].data.map(function(d){return d.name});
+
 
             installationChart.setOption(installationOption);
             marketChart.setOption(marketOption);
             osVersionChart.setOption(osVersionOption);
             appVersionChart.setOption(appVersionOption);
-
-
-
-
-
-
 
         }]);
 })());
