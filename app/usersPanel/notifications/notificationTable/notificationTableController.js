@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('notificationTableController', ['$scope', 'notificationResource', function ($scope, $notificationResource) {
+        .controller('notificationTableController', ['$scope', 'notificationResource','$stateParams', function ($scope, $notificationResource,$stateParams) {
             var thisController = this;
             /**
              * @ngdoc method
@@ -41,9 +41,15 @@
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
                 }
-                
-                filters=angular.extend(filters,tableState.search.predicateObject);
 
+
+                filters=angular.extend(filters,tableState.search.predicateObject);
+                if($stateParams.status){
+                    // if(!filters.search)filters.search={};
+                    // if(!filters.search.predicateObject)filters.search.predicateObject={};
+                    // filters.search.predicateObject.status=
+                    filters.status=$stateParams.status;
+                }
                 return $notificationResource.query(filters).then(function (result) {
                     if(!result.data.results)return;
 

@@ -55,13 +55,32 @@
                         pageName:'INSTALLED'
 
                     })
-                    .state('users.notification', {
-                        url:'/notification',
+                    .state('users.allNotification', {
+                        url:'/notification/all',
                         templateUrl: 'app/usersPanel/notifications/notifications.html',
                         controller: 'notificationsController',
                         controllerAs:'notifsCtrl',
                         //resolve: need delay
-                        pageName:'NOTIFICATIONS'
+                        pageName:'NOTIFICATIONS',
+                        params:{status:null}
+                    })
+                    .state('users.sentNotification', {
+                        url:'/notification/sent',
+                        templateUrl: 'app/usersPanel/notifications/notifications.html',
+                        controller: 'notificationsController',
+                        controllerAs:'notifsCtrl',
+                        //resolve: need delay
+                        pageName:'NOTIFICATIONS',
+                        params:{status:'4'}
+                    })
+                    .state('users.inqueueNotification', {
+                        url:'/notification/inqueue',
+                        templateUrl: 'app/usersPanel/notifications/notifications.html',
+                        controller: 'notificationsController',
+                        controllerAs:'notifsCtrl',
+                        //resolve: need delay
+                        pageName:'NOTIFICATIONS',
+                        params:{status:'3'}
                     })
                     .state('home', {
                         url:'/home',
