@@ -70,7 +70,7 @@
                     }
                 ]
             };
-            var marketOption = {
+            var brandOption = {
                 legend: {
                     orient : 'vertical',
                     x : 'left',
@@ -180,38 +180,38 @@
                 ]
             };
 
-            installationOption.xAxis[0].data = ['95/02/01','95/02/02','95/02/03','95/02/04','95/02/05','95/02/06'];
-            installationOption.series[0].data = [10, 12, 21, 54, 260, 830];
-            installationOption.series[1].data = [30, 182, 434, 791, 390, 30];
-            installationOption.series[2].data = [1320, 1132, 601, 234, 120, 90];
+            function convert2PieChart(items) {
+                var res = [];
+                for (var item in items) {
+                    if (items.hasOwnProperty(item))
+                        res.push({name: item, value: items[item]});
+                }
+                return res;
+            }
+            
+            var diagData=thisController.data.diagrams[36];
 
-            marketOption.series[0].data = [
-                                        {value:335, name: '4.4.2'},
-                                        {value:310, name: '5.0.1'},
-                                        {value:234, name: '4.0.3'},
-                                        {value:135, name: '6.0.1'}
-                                        ];
-            marketOption.legend.data=marketOption.series[0].data.map(function(d){return d.name});
+            var brandPieData=convert2PieChart(diagData.smart_device);
+            var osPieData=convert2PieChart(diagData.os);
+            var appVersionPieData=convert2PieChart(diagData.app_version);
 
-            osVersionOption.series[0].data = [
-                                        {value:335, name:'CafeBazaar'},
-                                        {value:310, name:'Myket'},
-                                        {value:234, name:'Iran Apps'},
-                                        {value:135, name:'Candoo'}
-                                        ];
+            installationOption.xAxis[0].data = diagData.date;
+            installationOption.series[0].data = diagData.installed;
+            installationOption.series[1].data = diagData.installed_sum;
+            installationOption.series[2].data = diagData.uninstalled;
+            installationOption.series[3].data = diagData.uninstalled_sum;
+
+            brandOption.series[0].data = brandPieData;
+            brandOption.legend.data=brandOption.series[0].data.map(function(d){return d.name});
+
+            osVersionOption.series[0].data = osPieData;
             osVersionOption.legend.data=osVersionOption.series[0].data.map(function(d){return d.name});
 
-            appVersionOption.series[0].data = [
-                                        {value:33, name:'10.1'},
-                                        {value:3, name:'3.5'},
-                                        {value:24, name:'4'},
-                                        {value:1, name:'1.0.4'}
-                                        ];
+            appVersionOption.series[0].data = appVersionPieData;
             appVersionOption.legend.data=appVersionOption.series[0].data.map(function(d){return d.name});
 
-
             installationChart.setOption(installationOption);
-            marketChart.setOption(marketOption);
+            marketChart.setOption(brandOption);
             osVersionChart.setOption(osVersionOption);
             appVersionChart.setOption(appVersionOption);
 
