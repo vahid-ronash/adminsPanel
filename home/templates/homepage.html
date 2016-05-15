@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="alexaVerifyID" content="ncRdsZHPSqydrbeeIX0pXHaP_Wg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/png" href="static/images/logo.png">
+    <link rel="apple-touch-icon" type="image/png" href="static/images/apple-touch-icon.png">
+
+    <meta name="description" content="پوشه، پنل ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+    <meta name="keywords" content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+    <meta name="author" content="Ronash">
+    <title>
+پوشه - پنل ارسال پوش نوتیفیکیشن
+    </title>
+    <link rel="stylesheet" href="static/css/font-awesome.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.css">
+    <link rel="stylesheet" href="static/css/owl.theme.css">
+    <link rel="stylesheet" href="static/css/device-mockups2.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/main-responsive.css">
+    <link rel="stylesheet" href="static/css/base.css">
+    <link rel="stylesheet" href="static/css/docs.min.css">
+    <link rel="stylesheet" href="static/accounts/css/accounts.css">
+    <link id="primary_color_scheme" rel="stylesheet" href="static/css/theme_meadow.css">
+    <noscript>
+        <link rel="stylesheet" href="static/css/styleNoJs.css">
+    </noscript>
+
+        <style type="text/css">
+            .limited-content {
+                display: none;
+            }
+        </style>
+    <!--Google Plus-->
+    <script type="text/javascript" async defer  src="https://apis.google.com/js/platform.js?publisherid=108169505840956447848">
+</script>
+</head>
+<body>
+<div id="load"></div>
+<!--[if lt IE 9]>
+    <p class="browsehappy">شما از یک نسخه قدیم مرورگر اینترنت استفاده می کنید.<br>لطفا مرور گر خود را <a href="https://www.google.com/chrome/browser/desktop/index.html">به روز</a>کنید</p>
+    <![endif]-->
+
+<div class="page">
+    <!-- message block -->
+
+
+        <nav id="main-navigation" role="navigation" class="navbar navbar-fixed-top navbar-standard">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <i class="fa fa-align-justify fa-lg"></i>
+                    </button>
+                    <a href="#" class="navbar-brand"><img src="static/images/logo-white.png" alt="" class="logo-white">
+                        <img src="static/images/logo-dark.png" alt="" class="logo-dark">
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left service-nav rtl">
+                        <li>
+                                <a id="dropdownMenuLogin" href="#" data-toggle="dropdown"
+                                   class="upper dropdown-toggle">ورود / ثبت نام</a>
+                                <div aria-labelledby="dropdownMenuLogin" class="dropdown-menu widget-box">
+                                <div class="ajax-loading display-none">
+                                    <i class="fa fa-refresh fa-spin fa-2x"></i>
+                                </div>
+                                    <form id="login-form">
+                                        
+                                        <div id="ajax-login-error" role="alert"
+                                             class="alert alert-dismissible display-none">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only">نام کاربری</label>
+                                            <input type="text" value="" placeholder="رایانامه (e-mail)"
+                                                   name="username"
+                                                   class="form-control input-lg">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only">رمز عبور</label>
+                                            <input type="password" onkeypress="tryLogin(event);" value=""
+                                                   placeholder="کلمه عبور" name="password"
+                                                   class="form-control input-lg">
+                                        </div>
+                                        <div class="form-inline form-group">
+                                            <button id="login-submit" type="button" class="btn btn-primary btn-xs"
+                                                    style=" font-size: x-small;">
+                                                ورود
+                                            </button>
+                                        </div>
+                                        <label id="dropmenu-ForgotBtn" style="cursor:pointer">
+                                            <a>
+                                                <small style="font-size: 75%">رمز عبور خود را فراموش کرده ام</small>
+                                            </a>
+                                        </label>
+                                        <label id="dropmenu-SignupBtn" style="cursor:pointer;">
+                                            <a>
+                                                <small style="font-size: 75%; color:tomato">حساب کاربری ندارید؟ اینجا را کلیک
+                                                    کنید.
+                                                </small>
+                                            </a>
+                                        </label>
+                                    </form>
+
+                                    <form id="invitation-form" class="display-none">
+                                        
+                                        <div id="invitation-error-message" role="alert"
+                                             class="alert alert-dismissible display-none">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="alert alert-info">
+                                                <div style="margin-bottom: 10px;">
+                                                    کاربر گرامی
+                                                </div>
+                                                <div>
+استفاده از سامانه‌ی پوشه، در حال حاضر تنها با داشتن دعوتنامه امکان‌پذیر است، لطفا ایمیل خود را وارد کنید.
+                                                </div>
+                                                </div>
+                                            <label class="sr-only">ایمیل: </label>
+                                            <input type="text" value="" id="id_invitation_email"
+                                                   placeholder="ایمیل  (e-mail)"
+                                                   name="email"
+                                                   class="form-control input-lg">
+                                        </div>
+                                        <div class="form-inline form-group">
+                                            <button type="button" id="invitation-submit" class="btn btn-primary btn-xs"
+                                                    style="margin:0; ">
+ادامه
+                                            </button>
+                                            <button type="button" id="issue-invitation"  style="margin:0; float: left;font-size: smaller;"
+                                                    class="btn btn-primary btn-bordered btn-xs">
+درخواست دعوتنامه
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <form id="forgot-form" class="display-none">
+                                        
+                                        <div id="forgot-message" role="alert"
+                                             class="alert alert-dismissible display-none">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only">نام کاربری</label>
+                                            <input type="text" value="" id="id_email"
+                                                   placeholder="رایانامه (e-mail)"
+                                                   name="email"
+                                                   class="form-control input-lg">
+                                        </div>
+                                        <div class="form-inline form-group">
+                                            <button type="button" id="forgot-submit" class="btn btn-primary btn-xs">
+                                                به
+                                                یاد آوری
+                                            </button>
+                                        </div>
+                                    </form>
+                                <form id="signup-form" class="display-none" onsubmit="return false;">
+                                    
+                                    <div id="signup-message" role="alert"
+                                         class="alert alert-dismissible display-none">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only">نام</label>
+                                        <input type="text" value="" placeholder="نام" name="first_name"
+                                               id="signup_first_name"
+                                               class="form-control input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">ایمیل</label>
+                                        <input type="text" id="signup_email" value=""
+                                               placeholder="رایانامه (e-mail)" name="email"
+                                               class="form-control input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">رمز عبور</label>
+                                        <input type="password" value="" id="signup_password"
+                                               placeholder="کلمه عبور"
+                                               name="password"
+                                               class="form-control input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">تکرار کلمه عبور</label>
+                                        <input type="password" value="" placeholder="تکرار کلمه عبور"
+                                               name="confirm_password" id="signup_confirm_password"
+                                               class="form-control input-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">
+
+                                            <span class="starred"> * </span>
+
+                                            کپچا</label>
+
+                                        <img src="" alt="captcha" class="captcha">
+                                        <input id="id_captcha_0" name="captcha_0" type="hidden" value="">
+                                        <input autocomplete="off" id="id_captcha_1" name="captcha_1" type="text">
+                                        <button type="button" class="captcha-refresh btn-link" style="color:#15987e"><i class="fa fa-refresh"></i></button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" value=" " name="terms" id="id_terms">
+                                            <small>
+                                                با  <a target="_blank" href="{% url 'rules' %}">شرایط استفاده از سرویس</a>موافقم
+                                            </small>
+                                        </label>
+                                    </div>
+                                    <div class="form-inline form-group">
+                                        <button type="button" id="signup-submit" class="btn btn-primary btn-xs">
+                                            ثبت نام
+                                        </button>
+                                    </div>
+                                </form>
+                                </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="navbar-toggle"><i class="fa fa-close fa-lg"></i></button>
+                        <ul id="one-page-menu" role="menu" class="nav navbar-nav navbar-right">
+                            <li><a href="#readmore" title="Read More" data-ref="readmore" style="font-weight: 400;">آشنایی</a></li>
+                            <li><a href="#importance" title="Importance" data-ref="importance" style="font-weight: 400;">اهمیت</a></li>
+                            <li><a href="#services" title="About us" data-ref="about" style="font-weight: 400;">امکانات</a></li>
+                            <li><a href="#demo" title="Demo" data-ref="demo" style="font-weight: 400;">دمو</a></li>
+                            <li><a href="#guide" title="Guide" data-ref="guide" style="font-weight: 400;">آموزش</a></li>
+                            <li><a href="#pricing" title="Pricing" data-ref="pricing" style="font-weight: 400;">قیمت گذاری</a></li>
+                            <li><a href="#contactus" title="Contacts" data-ref="contacts" style="font-weight: 400;">ارتباط با ما</a></li>
+                        </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    <div class="limited-content">
+    </div>
+
+
+    <section id="home" class="demo-1 rtl">
+        <div id="slider" class="sl-slider-wrapper">
+            <div class="sl-slider rtl">
+                <div data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25"
+                     data-slice1-scale="2" data-slice2-scale="2" class="sl-slide">
+                    <div class="sl-slide-inner banner-bg">
+                        <div class="slide-container">
+                            <div class="slide-content text-center gray-shade">
+                                <h2 class="main-title">
+                                    با پوشه&nbsp;<span class="text-primary">قدرتمند&nbsp;</span>شوید
+                                </h2>
+                                <blockquote>
+                                    <div>
+                                        <p>
+برای کاربران خود اعلان (پوش نوتیفیکیشن- Push Notification) بفرستید و با  آنها در ارتباط باشید
+                                        </p>
+
+                                        <p></p>
+                                    </div>
+                                    <p></p>
+                                    <a href="#demo" class="btn btn-warning btn-lg easedScroll">دموی پوشه</a>
+                                        <a class=" btn btn-primary btn-lg SignupBtn">
+                                            ثبت نام
+                                        </a>
+                                    <p></p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                        <section class="call-to-action bg-primary sep-top-md sep-bottom-md col-md-12 col-lg-12 col-sm-12 col-xs-12" style="position:absolute; bottom:0;">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-6 text-center">
+                                  <h5 class="action-title upper light">فرصت شغلی در توسعه سرویس پوشه</h5>
+                                </div>
+                                <div class="col-md-6 text-center"><a href="#job" class="btn btn-light btn-bordered btn-lg">توضیحات</a></div>
+                              </div>
+                            </div>
+                          </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="readmore" class="sep-top-2x sep-bottom-3x rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 text-left">
+                    <div class="sep-top-md sep-bottom-sm">
+                        <div class="bordered-left section-title">
+                            <h2 class="upper">
+                                <span class="label-colored"> پوشه </span> چیست؟
+                            </h2>
+                        </div>
+                        <p class="lead">پوشه شامل یک کتابخانه برای توسعه دهندگان نرم افزارهای تلفن همراه می باشد که با قرار دادن آن در نرم افزار خود می توانند از طریق پنل پوشه برای کاربرانشان اعلان(Push Notification - پوش نوتیفیکیشن) ارسال کنند</p>
+
+                        <div class="sep-top-xs">
+                            <a href="#services" data-wow-delay=".5s"
+                               class="btn btn-primary btn-lg wow bounceInLeft easedScroll">
+                                امکانات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div data-device="macbook" data-orientation="landscape" data-color="black" class="device-mockup">
+                        <div class="device">
+                            <div class="screen">
+                                <img src="static/images/laptop-screen.jpg" alt="" width="577" height="433"
+                                     class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="importance">
+        <div id="parallax2" class="parallax">
+            <div class="info-bg sep-top-2x sep-bottom-2x">
+                <div class="container">
+                    <div class="row white-shade">
+                        <div class="col-md-12 text-center">
+                            <h2>مزایای ارسال اعلان</h2>
+
+                            <div data-navitagion="false" data-slide-speed="300" data-pagination-speed="400"
+                                 data-single-item="true" data-auto-height="true" data-auto-play="true"
+                                 class="owl-carousel owl-theme pagination-light">
+                                <div class="item ">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-5">
+                                                <div data-wow-delay=".5s" class="wow bounceInLeft">
+                                                    <img src="static/images/pushe-importance-1.png" alt=""
+                                                         class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4 info-text">
+                                                <div data-wow-delay=".5s" class="wow bounceInRight bordered-right">
+                                                    <p>
+                                                        زمانی که سیستم دریافت اعلان در یک نرم افزار فعال است امکان اینکه
+                                                        کاربر آن را ترک کرده و نرم افزار را فراموش کند کاهش می یابد..
+                                                        بر اساس آمار 50 % کاربرانی که سیستم دریافت اعلان فعال داشته و از
+                                                        طرف نرم افزار اعلان دریافت می کنند پس از 2 ماه همچنان از نرم
+                                                        افزار استفاده میکنند.
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item ">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-5">
+                                                <div data-wow-delay=".5s" class="wow bounceInLeft">
+                                                    <img src="static/images/pushe-importance-2.png" alt=""
+                                                         class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4 info-text">
+                                                <div data-wow-delay=".5s" class="wow bounceInRight bordered-right">
+                                                    <p>
+                                                        ﻿فرستادن اعلان تاثیر چشمگیری بر میزان استفاده کاربر از نرم افزار
+                                                        دارد.
+                                                        <br>
+                                                        نرم افزارهایی که برای کاربران خود اعلان می فرستند به نسبت سایر
+                                                        نرم افزارها 88% بیشتر مورد استفاده قرار می گیرند.
+                                                        <br>
+                                                        همچنین فاصله زمانی بازگشت دوباره کاربر به نرم افزار ، در صورتی
+                                                        که اعلان دریافت کند، تا 55%کاهش می یابد
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-5">
+                                                <div data-wow-delay=".5s" class="wow bounceInLeft">
+                                                    <img src="static/images/pushe-importance-3.png" alt=""
+                                                         class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4 info-text">
+                                                <div data-wow-delay=".5s" class="wow bounceInRight bordered-right">
+                                                    <p>
+                                                        فرستادن اعلان در درصد کاربرانی که در ماههای اول پس از نصب یک نرم
+                                                        افزار از آن استفاده مداوم می کنند بسیار موثر است.
+                                                        مشاهده شده است که کاربرانی که اعلان دریافت می کنند در مقایسه با
+                                                        سایر کاربران پس از گذشت تقریبا 6 ماه از نصب نرم افزار ، 2 تا 3
+                                                        برابر اشتیاق بیشتر برای استفاده از آن از خود نشان می دهند.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="sep-top-3x sep-bottom-3x rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="section-title">
+                        <h2 class="bordered-right upper">
+                            امکانات<br>پوشه
+                        </h2>
+
+                        <p class="lead text-justify">
+                            "پوشه" سرویسی است برای ارسال اعلان (Push Notification - پوش نوتیفیکیشن) به کاربران نرم افزارهای موبایل. از
+                            طریق این سرویس میتوانید با کاربران خود ارتباط موثر برقرار کنید و آمار استفاده آنها از نرم
+                            افزار خود را به صورت چشم گیری افزایش دهید.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">
+                        <div class="icon-content img-circle">
+                            <i class="fa fa-lightbulb-o"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5>مزیت پوشه برای شما چیست؟</h5>
+                            <p class="text-justify">
+                                با "پوشه" نیازی به داشتن سرور مجزا برای ارسال اعلان ندارید.کافی است ثبت نام کنید و یک پنل حرفه ای و کد مربوط به نرم افزار را در اختیار داشته باشید و از خوبیهای ارسال اعلان سود ببرید.
+                            </p>
+                        </div>
+                    </div>
+                    <div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">
+                        <div class="icon-content img-circle">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5>ارتباط موثر با کاربران خود</h5>
+                            <p class="text-justify">
+                                از این سرویس می توانید برای آگاه کردن کاربران خود از رویدادی خاص استفاده کنید. به او اعلام کنید که نرم افزار شما را به روز کند و یا پیشنهاد خرید درون برنامه ای خود را به او معرفی کنید و او را از نرم افزار جدیدتان آگاه کنید.
+                            </p>
+                        </div>
+                    </div>
+                    <div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">
+                        <div class="icon-content img-circle">
+                            <i class="fa fa-filter"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5>فیلتر کردن کاربران (به زودی)</h5>
+                            <p class="text-justify">
+                                شما میتوانید کاربران خود را بر اساس رفتارشان فیلتر کنید و از این طریق نرخ پاسخ آنها را افزایش دهید. برخی از فیلترهایی که "پوشه" در اختیار شما قرار میدهد عبارتست از: ارسال بر اساس منطقه جغرافیایی، ارسال بر اساس آخرین زمان استفاده از نرم افزار، ارسال بر اساس فعال یا فعال نبودن کاربر و ...
+                            </p>
+                        </div>
+                    </div>
+                    <div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">
+                        <div class="icon-content img-circle">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5>زمان بندی ارسال (به زودی)</h5>
+                            <p class="text-justify">
+                                شما میتوانید  ارسال اعلان خود را زمان بندی کنید و در زمانی مناسب اعلانها را برای کاربران خود ارسال نمایید تا بیشترین پاسخ را داشته باشید و کمترین مزاحمت را ایجاد کنید.
+                            </p>
+                        </div>
+                    </div>
+                    <!--<div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">-->
+                        <!--<div class="icon-content img-circle">-->
+                                <!--<i class="fa fa-line-chart"></i>-->
+                        <!--</div>-->
+                        <!--<div class="icon-box-content">-->
+                            <!--<h5>نمایش دقیق آمار</h5>-->
+                            <!--<p class="text-justify">-->
+                                <!--"پوشه" به صورت دقیق درصد کلیک کاربران، میزان دریافت موفق پیام و پاسخ کاربر به سوال شما را نشان میدهد. این آمار برای هر اعلان و هر کاربر به صورت مجزا قابل نمایش است.-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div data-wow-delay=".5s" class="icon-box icon-lg sep-top-md icon-gradient wow bounceInRight">-->
+                        <!--<div class="icon-content img-circle">-->
+                            <!--<i class="fa fa-exchange"></i>-->
+                        <!--</div>-->
+                        <!--<div class="icon-box-content">-->
+                            <!--<h5>از کاربران خود بازخورد بگیرید</h5>-->
+                            <!--<p class="text-justify">-->
+                                <!--با "پوشه" میتوانید یک اعلان بفرستید و در زمینه ای نظر کاربر را جویا شوید و پاسخ او را دریافت کنید. و یا او را با فشردن دکمه، به دیدن صفحه اینترنتی که مشخص کرده اید، هدایت کنید.-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="slogan" class="parallax slogan-bg rtl">
+        <div class="section-shade sep-top-5x sep-bottom-5x">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <div class="section-title">
+                            <div class="bordered-left light">
+                                <h2 class="upper small-space line-height-150">
+                                    با
+                                    <span>&nbsp;پوشه&nbsp;</span>
+                                    همیشه در کنار کاربرانتان باشید
+                                </h2>
+
+                                <p class="lead x2">
+                                    سرویسی برای توسعه دهندگان نرم افزار موبایل
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--&lt;!&ndash; &ndash;&gt;-->
+    <!--<section id="counter" class="bg-primary rtl">-->
+        <!--<div class="container">-->
+            <!--<div id="timer-wrapper" class="row">-->
+                <!--<div class="col-md-4 text-center sep-top-md sep-bottom-md">-->
+                    <!--<span data-from="0" data-to="{{ installation_count }}" data-speed="2500" data-refresh-interval="50" class="timer light">-->
+                         <!--{{ installation_count }}-->
+                    <!--</span>-->
+                    <!--<p class="lead x2 light upper timer-title">-->
+                        <!--کاربر فعال-->
+                    <!--</p>-->
+                    <!--<p class="light lighter">-->
+                        <!--تعداد کل کاربرانی که از پوشه اعلان دریافت می کنند-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 text-center sep-top-md sep-bottom-md">-->
+                    <!--<span data-from="0" data-to="{{ application_count }}" data-speed="2500" data-refresh-interval="50" class="timer light">-->
+                        <!--{{ application_count }}-->
+                    <!--</span>-->
+                    <!--<p class="lead x2 light upper timer-title">-->
+                        <!--نرم افزار نصب شده-->
+                    <!--</p>-->
+                    <!--<p class="light lighter">-->
+                        <!--نرم افزارهایی که پوشه بر روی آنها نصب است-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 text-center sep-top-md sep-bottom-md">-->
+                    <!--<span data-from="0" data-to="{{ message_count }}" data-speed="2500" data-refresh-interval="50" class="timer light">-->
+                        <!--{{ message_count }}-->
+                    <!--</span>-->
+                    <!--<p class="lead x2 light upper timer-title">-->
+                        <!--اعلان ارسال شده-->
+                    <!--</p>-->
+                    <!--<p class="light lighter">-->
+                        <!--تعداد اعلانهایی که برای کاربران فرستاده شده-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <section id="demo" class="sep-top-3x">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="section-title">
+                        <h2 class="bordered-left upper wow flipInX">
+                            دمو
+                            <br><br>
+                            Demo
+                        </h2>
+
+                        <p class="lead wow flipInX rtl text-justify">
+						"پوشه" این امکان را برای شما فراهم میکند که اعلانهای خود را بنابر نیاز خود در قالبهای نمایشی متفاوت ارسال کنید. 
+						<br>
+						 برای آشنایی بیشتر با قابلیتهای پوشه میتوانید نرم افزار دمو را دانلود کنید و با نام کاربری demo و کلمه عبور 1234 وارد پنل شوید و انواع اعلان را ارسال و مشاهده کنید.
+                        </p>
+                    </div>
+                    <blockquote class="theme">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td style="border-color: transparent;">
+                                    <a href="https://play.google.com/store/apps/details?id=co.ronash.pushesample" target="_blank">
+                                      <img alt="Get it on Google Play"
+                                           src="static/images/googleplay-logo.png" />
+                                    </a>
+                                    <footer class="cite small">اپلیکیشن دمو</footer>
+                                </td>
+                                <td style="border-color: transparent;">
+                                    <a href="https://github.com/ronashco" target="_blank" class="icon-content inverter img-circle">
+                                    <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                    </a>
+                                    <footer class="cite small">کد نمونه</footer>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            <hr>
+                            <a href="{% url 'admin:login' %}" type="button" class="btn btn-light btn-sm">ورود به پنل</a>
+                            <p class="rtl"><b>نام کاربری: demo</b></p>
+                            <p class="rtl"><b>کلمه عبور: 1234</b></p>
+                  </blockquote>
+                </div>
+                <div class="col-sm-2 col-xs-2 col-md-2"></div>
+                <div class="col-sm-8 col-xs-8 col-md-4">
+                    <div class="device-content">
+                        <div data-device="galaxy_s5" data-orientation="portrait" data-color="white"
+                             class="device-mockup">
+                            <div class="device">
+                                <div class="screen">
+                                    <div data-navitagion="false" data-slide-speed="300" data-pagination-speed="400"
+                                         data-single-item="true" data-auto-height="true" data-auto-play="true"
+                                         class="owl-carousel owl-theme">
+                                        <!-- Start Item Slide-->
+                                        <div class="item"><img src="static/images/push-sample-1.jpg" alt=""
+                                                               class="img-responsive"></div>
+                                        <div class="item"><img src="static/images/push-sample-2.jpg" alt=""
+                                                               class="img-responsive"></div>
+                                        <div class="item"><img src="static/images/push-sample-3.jpg" alt=""
+                                                               class="img-responsive"></div>
+                                        <!-- End Item Slide-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-primary sep-top-md sep-bottom-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="lead x2 light wow bounceInLeft">
+                            شما می توانید به سادگی و بدون نیاز به کد نویسی برای کاربران خود اعلان بفرستید
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="guide" class="sep-top-lg sep-bottom-md rtl" >
+        <div class="container">
+          <div class="row">
+            <div class="container">
+                <h2 class="bordered-right upper">
+آموزش نصب
+                </h2>
+                <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-6 sep-top-2x">
+                    <div class="icon-box icon-horizontal icon-lg">
+                        <div data-wow-delay=".5s" class="icon-content img-circle wow bounceInUp">
+                            <i class="fa fa-android"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5 class="upper">Native Android</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 sep-top-2x">
+                    <div class="icon-box icon-horizontal icon-lg">
+                        <div data-wow-delay=".5s" class="icon-content img-circle wow bounceInUp">
+                            <a href="{% url 'docs' %}#install-unity" target="_blank"> <img src="static/images/unity.png" width="70%"/></a>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5 class="upper">Unity</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 sep-top-2x">
+                    <div class="icon-box icon-horizontal icon-lg">
+                        <div data-wow-delay=".5s" class="icon-content img-circle wow bounceInUp">
+                            <a href="{% url 'docs' %}#install-b4a" target="_blank"><img src="static/images/b4a.png" width="70%"/></a>
+                        </div>
+                        <div class="icon-box-content">
+                            <h5 class="upper">Basic4Android</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                <div id="filters" class="btn-group  sep-top-md btn-group-justified ltr">
+                    <a data-filter=".eclipse" class="btn btn-default btn-lg">Eclipse</a>
+                    <a data-filter=".android-studio" class="btn btn-default btn-primary btn-lg ">Android Studio</a>
+                </div>
+                <div id="isotope" class="portfolio-full sep-top-md" style="position: relative; height: auto;">
+                    <div style="position: absolute; left: 0px; top: 0px;);" class="item-full eclipse">
+                        <div class="container">
+                            <div class="col-md-5">
+                                <div class="section-title">
+                                    <p class="lead text-justify">
+                                        <div>
+                                          <ol class="text-justify">
+                                              <li>
+                                                  یک حساب کاربری برای خود بسازید و وارد
+                                                  <a href="/panel">
+                                                      پنل
+                                                  </a>
+                                                  شوید و یک اپلیکیشن ایجاد کنید.
+                                              </li>
+                                              <li>
+                                کتابخانه پوشه مربوط به اکلیپس را
+                                <a href="http://static.pushe.co/sdk/pushe-0.9.1.zip" target="_blank" style="color:blue">از این لینک </a>
+                                دانلود و آن را اکسترکت کنید.
+                                              </li>
+                                              <li>
+در اکلیپس پروژه آندروید خود را باز کرده، سپس از منوی
+                                                  <br>
+                                                  File > Import > Android > Exiting Android Code Into Workspace
+                                                  <br>
+فولدر
+                                                  pushe
+                                                  را انتخاب کرده و گزینه
+                                                  Copy projects into workspace
+                                                  را نیز انتخاب کنید.
+                                                  <br>
+                                              </li>
+                                              <li>
+                                                  از پنل فایل منیفست را دانلود و محتویات آن را با کمک یک ادیتور در فایل
+                                                  AndroidManifest.xml
+                                                  پروژه خود جایگذاری کنید.
+                                              </li>
+                                              <li class="text-justify">
+                                                  از
+                                                  <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank" style="color:blue">این لینک</a>
+                                                  کتابخانه های مورد نیاز Google Play Services  را دانلود و اکسترکت کنید و آنها را در پروژه خود import کنید. تیک Copy to my projects را بزنید.
+                                              </li>
+                                              <li>
+                                                  در
+                                                  Package Explorer
+                                                   بر روی پروژه خود کلیک راست کرده و گزینه
+                                                  properties
+                                                  را انتخاب کنید. سپس در صفحه
+                                                  Android,
+                                                  گزینه
+                                                  Add
+                                                  را زده و کتابخانه
+                                                  Pushe و کتابخانه های google-play-services
+                                                  را انتخاب کنید.
+
+                                              </li>
+                                              <li>
+                                                  در
+                                                  MainActivity.java
+                                              <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                                                  و در
+                                                  onStart
+                                                  آن
+                                              <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                                                  را وارد کنید
+                                              </li>
+                                              <li>
+                                                  هم اکنون می توانید با نصب نرم افزار بر روی تلفن همراه خود، از پنل پوشه برای آن پوش نوتیفیکیشن ارسال کنید.
+                                              </li>
+                                          </ol>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-6">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                  <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/JpPFE/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                                </div>
+                                <div class="sep-top-md" style="text-align:center;">
+                                    <a href="{% url 'docs' %}#install-eclipse"  data-wow-delay=".5s"
+                                       class="btn btn-primary btn-lg">
+اطلاعات بیشتر
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: absolute; left: 0px; top: 0px;);" class="item-full android-studio">
+                        <div class="container">
+                            <div class="col-md-5">
+                                <div class="section-title">
+                                    <p class="lead text-justify">
+                                        <div>
+                                          <ol class="text-justify">
+                                              <li>
+                                                  یک حساب کاربری برای خود بسازید و وارد
+                                                  <a href="/panel">
+                                                      پنل
+                                                  </a>
+                                                  شوید
+                                              </li>
+                                              <li>
+                                                  یک اپلیکیشن جدید ایجاد کنید و فایل در اختیار گذاشته شده را دانلود کنید.
+                                              </li>
+                                              <li>
+                                                  منیفست دانلود شده را داخل AndroidManifest.xml پروژه خود قرار دهید.
+                                              </li>
+                                              <li>
+در
+                                                  build.gradle
+                                                  مربوط به
+                                                  app,
+                                                  گوگل پلی سرویس و پروژه پوشه را در قسمت
+                                                  dependencies
+                                                 وارد کنید.
+                                              <pre style="direction: ltr; text-align: left; font-family: monospace;">
+dependencies&lcub;
+compile 'co.ronash.pushe:android-lib:0.9.1'
+compile 'com.google.android.gms:play-services-gcm:7.5.0'
+&rcub;</pre>
+                                                  <p>**می توانید از ورژن بالاتر از 7.5.0 هم استفاده نمایید.</p>
+                                              </li>
+                                              <li>
+                                                  در
+                                                  MainActivity.java
+                                                <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                                                  و در
+                                                  onStart
+                                                  آن
+                                                <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                                                  را وارد کنید
+                                              </li>
+                                              <li>
+                                                  هم اکنون می توانید با نصب نرم افزار بر روی تلفن همراه خود، از پنل پوشه برای آن پوش نوتیفیکیشن ارسال کنید.
+                                              </li>
+                                          </ol>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-6">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                  <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/HVuXo/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                                </div>
+                                <div class="sep-top-md" style="text-align:center;">
+                                    <a href="{% url 'docs' %}#install-android-studio"  data-wow-delay=".5s"
+                                       class="btn btn-primary btn-lg">
+اطلاعات بیشتر
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <!--<hr>-->
+        <!--<div class="container sep-top-xs ltr">-->
+    <!--<div class="row">-->
+<!--insert guide page code here-->
+    <!--</div>-->
+<!--</div>-->
+        </div>
+      </section>
+    <section id="pricing" class="parallax pricing-bg rtl">
+        <div class="section-shade sep-top-2x sep-bottom-3x">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div data-wow-delay="1s" class="section-title sep-bottom-lg wow bounceInUp">
+                            <div class="icon-box icon-md">
+                                <div class="icon-content img-circle">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                            </div>
+                            <div class="light">
+                                <h2>
+                                    قیمت گذاری
+                                </h2>
+                                <div class="sep-top-xs text-center">
+                                    <img id='brgwgwmd' style='cursor:pointer' onclick='window.open("http://trustseal.enamad.ir/Verify.aspx?id=69&p=hwmbjzpg", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, resizable=0, width=580, height=600, top=30")' alt='' src='http://trustseal.enamad.ir/logo.aspx?id=69&p=kzoezpfv'/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="panel panel-success" style="border-radius:6px">
+                            <div class="panel-heading" style="border-radius:6px">
+                                <h1 class="panel-title text-center">رایگان</h1>
+                            </div>
+                            <p class="text-center sep-top-sm" style="color:green">
+                                کمتر از
+                            </p>
+                            <h4 class="text-center">
+                                500,000
+                            </h4>
+                            <p class="text-center">
+                                کاربر در هر اپلیکیشن
+                            </p>
+                            <hr>
+                            <div class="panel-body text-center">
+                                <h5>تمامی امکانات رایگان</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="panel panel-info" style="border-radius:6px">
+                            <div class="panel-heading" style="border-radius:6px">
+                                <h3 class="panel-title text-center">حرفه ای</h3>
+                            </div>
+                            <p class="text-center sep-top-sm" style="color:red">
+                                بیش از
+                            </p>
+                            <h4 class="text-center">
+                                500,000
+                            </h4>
+                            <p class="text-center">
+                                کاربر در هر اپلیکیشن
+                            </p>
+                            <hr>
+                            <div class="panel-body text-center">
+                                <h5>ماهانه 4 ریال برای هر کاربر اضافه</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start Portfolio section-->
+    <section id="job" >
+        <section id="portfolio-gallery" data-folder="/portfolio" >
+          <ul id="isotope2" class="portfolio isotope">
+            <li class="item itemn django">
+              <img src="static/images/job/django1.png" alt="Extreme Freestyle" class="img-responsive">
+              <div class="mask">
+                <div class="mask-content">
+                  <div class="mask-wrapper text-center rtl"><a href="mailto:job@pushe.co" target="_blank" class="info" ><i class="fa fa-envelope fa-border"></i></a><a href="static/images/job/django2.png" target="_blank" class="info"><i class="fa fa-expand fa-border"></i></a>
+                    <h4 class="upper">django</h4><span >مسلط به Python و Django</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="item itemn node">
+              <!-- images should be in 1:1 format or multiples (2:1. 1:2, ...)--><img src="static/images/job/node1.png" alt="Design Studio" class="img-responsive">
+              <div class="mask">
+                <div class="mask-content">
+                  <div class="mask-wrapper text-center rtl"><a href="mailto:job@pushe.co" target="_blank" class="info" ><i class="fa fa-envelope fa-border"></i></a><a href="static/images/job/node2.png" target="_blank" class="info" ><i class="fa fa-expand fa-border"></i></a>
+                    <h4 class="upper">node.js</h4><span >مسلط به AndgularJS و node.js</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!--<li class="item itemn devops">-->
+              <!--&lt;!&ndash; images should be in 1:1 format or multiples (2:1. 1:2, ...)&ndash;&gt;<img src="static/images/job/devops1.png" alt="Business Card" class="img-responsive">-->
+              <!--<div class="mask">-->
+                <!--<div class="mask-content">-->
+                  <!--<div class="mask-wrapper text-center rtl"><a href="mailto:job@pushe.co" class="info" target="_blank"><i class="fa fa-envelope fa-border"></i></a><a href="static/images/job/devops2.png" class="info" target="_blank"><i class="fa fa-expand fa-border"></i></a>-->
+                    <!--<h4 class="upper">Dev Ops</h4><span >با تسلط بالا به لینوکس</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</li>-->
+            <li class="item itemn android">
+              <!-- images should be in 1:1 format or multiples (2:1. 1:2, ...)--><img src="static/images/job/android1.jpg" alt="Business Card" class="img-responsive">
+              <div class="mask">
+                <div class="mask-content">
+                  <div class="mask-wrapper text-center rtl"><a href="mailto:job@pushe.co" class="info" target="_blank"><i class="fa fa-envelope fa-border"></i></a><a href="static/images/job/android2.jpg" class="info" target="_blank"><i class="fa fa-expand fa-border"></i></a>
+                    <h4 class="upper">Android</h4><span >تسلط بر توسعه اپلیکیشن های اندروید</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+    </section>
+    <!-- End Portfolio section-->
+    <section id="contactus" class="bg-primary sep-top-lg sep-bottom-lg rtl">
+        <div class="container">
+            <!--     Start icon box-->
+            <div class="icon-box icon-md fixed-section">
+                <div class="icon-content img-circle">
+                    <i class="fa fa-check"></i>
+                </div>
+            </div>
+            <!--     End icon box-->
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="section-title">
+                        <div class="light">
+                            <h3 class="upper small-space">
+                                با ما در ارتباط باشید
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="section-title">
+                        <div class="light">
+                            <p class="lead lighter">
+                                از آخرین اخبار و پست های ما در شبکه های اجتماعی دیدن کنید و ما را دنبال کنید.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.5s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="http://www.linkedin.com/company/pushe-co" target="_blank"
+                                   class="icon-content inverter img-circle">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.5s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="http://google.com/+PusheCo" target="_blank"
+                                   class="icon-content inverter img-circle" >
+                                    <i class="fa fa-google-plus" style="padding-top: 17px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.5s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="https://github.com/ronashco" target="_blank"
+                                   class="icon-content inverter img-circle">
+                                    <i class="fa fa-github" style="padding-top: 15px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.5s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="https://careers.stackoverflow.com/company/pushe" target="_blank"
+                                   class="icon-content inverter img-circle">
+                                    <i class="fa fa-stack-overflow" style="padding-top: 15px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5 text-center">
+                    <div class="section-title">
+                        <div class="light">
+                            <p class="lead lighter">
+                                سوالی در ذهن شما باقی مانده؟ با ما در تماس باشید.
+                            </p>
+                        </div>
+                        <div class="sep-top-md">
+                            <a href="mailto:info@pushe.co" class="btn btn-ahmadi btn-lg">ارسال ایمیل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+                <footer id="footer" class="no-print">
+            <div class="inner sep-bottom-md rtl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <img src="static/images/logo-white.png" alt="لوگوی پوشه" class="logo">
+                                <small class="sep-top-xs sep-bottom-md">
+                                    پوشه، سامانه ارسال اعلان (Push Notification)به کاربران تلفن همراه
+                                </small>
+                            </div>
+                            <div class="widget">
+                                <a href="http://ronash.co" target="_blank">
+                                    <img src="static/images/logo-ronash.png" alt="لوگوی روناش" class="logo">
+                                </a>
+                                <small class="sep-top-xs sep-bottom-md no-space">
+                                    محصولی از شرکت
+                                    <a href="http://ronash.co" target="_blank"> تجارت همراه روناش</a>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <h6 class="upper widget-title">صفحات مرتبط</h6>
+                                <ul class="widget-post sep-top-xs">
+                                    <li>
+                                        <a href="{% url 'privacy' %}" class="title-post" style="font-weight: 900;font-size: large;">
+حریم خصوصی
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'rules' %}" class="title-post" style="font-weight: 900;font-size: large;">
+                                            قوانین استفاده
+                                        </a>
+                                    </li>
+								    <li>
+                                        <a href="{% url 'faq' %}" class="title-post" style="font-weight: 900;font-size: large;">
+                                            سوالات متداول
+										</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'docs' %}" class="title-post" style="font-weight: 900;font-size: large;">
+راهنمای نصب و استفاده
+										</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <h6 class="upper widget-title">تماس با ما</h6>
+                                <ul class="widget-address sep-top-xs">
+                                    <li>
+                                        <small>تهران، اکباتان، خیابان شهید نفیسی، پلاک 15، واحد 23<br></small>
+                                        <i class="fa fa-map-marker fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small>021-44668276<br>021-44670626</small>
+                                        <i class="fa fa-phone fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small><a href="mailto:info@pushe.co">info@pushe.co</a><br><a href="#"></a></small>
+                                        <i class="fa fa-envelope fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small>شنبه تا پنج شنبه<br>8 صبح الی 5 بعد از ظهر</small>
+                                        <i class="fa fa-clock-o fa-lg"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <h6 class="upper widget-title">گزارش تخلف و شکایت</h6>
+                                     <small class="widget sep-top-xs text-justify">
+                                         در صورت مشاهده هر گونه تخلف شکایت خود را
+                                       <a href="#" data-toggle="modal" data-target="#violation">در این فرم</a>
+                                         ثبت کنید.
+                                     </small>
+                                <!-- Modal -->
+                                    <div class="modal fade" id="violation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title text-center" id="myModalLabel">ثبت شکایات و تخلفات</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                              <div class="contact-form">
+                                                  <div id="successMessage" style="display: none;" class="alert alert-success text-center">
+                                                      <p><i class="fa fa-check-circle fa-2x"></i></p>
+                                                      <p>با تشکر از پیام شما، به زودی با شما تماس گرفته خواهد شد.</p>
+                                                  </div>
+                                                  <div id="failureMessage" style="display:none" class="alert alert-danger text-center">
+                                                      <p><i class="fa fa-times-circle fa-2x"></i></p>
+                                                      <p>ارسال پیام با خطا مواجه شد، لطفا مجدد تلاش کنید.</p>
+                                                  </div>
+                                                  <div id="incompleteMessage" style="display:none" class="alert alert-warning text-center">
+                                                      <p><i class="fa fa-exclamation-triangle fa-2x"></i></p>
+                                                      <p>لطفا تمام فیلدهای اجباری را پر کنید.</p>
+                                                  </div>
+                                                  <form id="contactForm" action="{% url 'add_complaint' %}" method="post" class="validate" novalidate="novalidate" style="color:#909090">
+                                                        
+                                                      <div class="row">
+                                                        <div class="col-md-6 sep-top-xs">
+                                                          <div class="form-group">
+                                                            <label for="name" class="upper">نام شما</label>
+                                                            <input id="name" type="text" placeholder="" name="name" class="form-control input-lg required" aria-required="true" style="color:black;border-color:black">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-6 sep-top-xs">
+                                                          <div class="form-group">
+                                                            <label for="email" class="upper">ایمیل شما</label>
+                                                            <input id="email" type="email" placeholder="" name="email" class="form-control input-lg required email" aria-required="true" style="color:black;border-color:black">
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="row">
+                                                        <div class="col-md-6 sep-top-xs">
+                                                          <div class="form-group">
+                                                            <label for="phone" class="upper">تلفن تماس شما</label>
+                                                            <input id="phone" type="text" placeholder="" name="phone" class="form-control input-lg" aria-required="false" style="color:black;border-color:black">
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="row">
+                                                        <div class="col-md-12 sep-top-xs">
+                                                          <div class="form-group">
+                                                            <label for="comment" class="upper">ثبت شکایت</label>
+                                                            <textarea id="comment" placeholder="" rows="9" name="description" class="form-control input-lg required" aria-required="true" style="color:black;border-color:black"></textarea>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="row">
+                                                        <div class="col-md-12 sep-top-xs">
+                                                          <div class="form-group text-center">
+                                                            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;ثبت</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">انصراف</button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <!--input#subject.form-control.input-lg.required(type='text', placeholder='Subject of your message', name='subject')
+                                                      -->
+                                                    </form>
+                                              </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                <h6 class="upper widget-title sep-top-xs">
+                                    <a href="{% url 'aboutus' %}" class="title-post" style="font-weight: 900;font-size: large;color:white !important">
+                                        درباره ما
+                                    </a>
+                                </h6>
+                                </div>
+                            <div class="sep-top-xs">
+                                <img id='brgwgwmd' style='cursor:pointer' onclick='window.open("http://trustseal.enamad.ir/Verify.aspx?id=69&p=hwmbjzpg", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, resizable=0, width=580, height=600, top=30")' alt='' src='http://trustseal.enamad.ir/logo.aspx?id=69&p=kzoezpfv'/>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-3 col-sm-6">-->
+                            <!--<div class="widget sep-top-lg">-->
+                                <!--<script type="text/javascript" src="http://www.zarinpal.com/webservice/TrustCode"></script>-->
+                                <!--<noscript>-->
+                                    <!--<a href="https://www.zarinpal.com/users/receptive_websites">پذیرنده زرین پال</a>-->
+                                <!--</noscript>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="copyright sep-top-xs sep-bottom-xs rtl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <small>تمامی حقوق برای وبسایت پوشه محفوظ می باشد. 1394</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <div id="back_to_top"><a href="#" class="fa fa-arrow-up fa-lg"></a></div>
+</div>
+
+<!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+<script src="static/js/vendor/modernizr.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src='static/js/base.js'></script>
+<script src='static/js/docs.min.js'></script>
+<script src='static/js/vendor/queryloader2.min.js'></script>
+<script src='static/js/vendor/owl.carousel.js'></script>
+<script src='static/js/vendor/jquery.ba-cond.min.js'></script>
+<script src='static/js/vendor/jquery.slitslider.js'></script>
+<script src='static/js/vendor/idangerous.swiper.js'></script>
+<script src='static/js/vendor/jquery.fitvids.js'></script>
+<script src='static/js/vendor/jquery.countTo.js'></script>
+<script src='static/js/vendor/TweenMax.min.js'></script>
+<script src='static/js/vendor/ScrollToPlugin.min.js'></script>
+<script src='static/js/vendor/jquery.scrollmagic.min.js'></script>
+<script src='static/js/vendor/jquery.easypiechart.js'></script>
+<script src='static/js/vendor/jquery.validate.js'></script>
+<script src='static/js/vendor/wow.min.js'></script>
+<script src='static/js/vendor/jquery.placeholder.js'></script>
+<script src='static/js/vendor/jquery.easing.1.3.min.js'></script>
+<script src='static/js/vendor/jquery.waitforimages.min.js'></script>
+<script src='static/js/vendor/imagesloaded.pkgd.min.js'></script>
+<script src='static/js/vendor/isotope.pkgd.min.js'></script>
+<script src='static/js/vendor/jquery.fillparent.min.js'></script>
+<script src='static/js/vendor/raphael-min.js'></script>
+<script src='static/js/vendor/bootstrap.js'></script>
+<script src='static/js/vendor/jquery.bootstrap-touchspin.min.js'></script>
+<script src='static/accounts/js/accounts.js' async></script>
+<script src='static/js/main.js'></script>
+<!--<script src='static/js/video.js'></script>-->
+
+
+
+    <!--Structured Data-->
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+                "logo": "http://pushe.co/static/images/logo-dark.png",
+                "url" : "http://pushe.co",
+                "name" : "Ronash",
+                "contactPoint" : [
+                                  {   "@type" : "ContactPoint",
+                                      "telephone" : "+98-21-4466-8276",
+                                      "contactType" : "customer service"
+                                  } , {
+                                      "@type" : "ContactPoint",
+                                      "telephone" : "+98-21-4467-0626",
+                                      "contactType" : "sales"
+                                  }
+                                  ],
+                "sameAs" : [ "https://www.linkedin.com/company/pushe-co",
+                             "https://plus.google.com/+PusheCo"]
+        }
+    </script>
+    <script type="application/ld+json">
+        {  "@context" : "http://schema.org",
+           "@type" : "WebSite",
+           "name" : "Pushe",
+           "alternateName" : "پوشه",
+           "url" : "http://pushe.co"
+        }
+    </script>
+
+<!--Google Analytics-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65205637-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+</html>

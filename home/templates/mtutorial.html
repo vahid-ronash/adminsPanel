@@ -1,0 +1,88 @@
+{% extends 'pushe/base.html' %}
+
+{% block navigation %}
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="حریم خصوصی پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+    <meta name="keywords" content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+    <meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+راهنما
+{% endblock %}
+
+{% block onepage-content %}
+      <section  class="header-section fading-title parallax tutorial-bg rtl">
+        <div class="section-shade sep-top-3x sep-bottom-3x">
+          <div class="container">
+            <div class="section-title upper light">
+              <h2 class="small-space"><span class="text-primary"></span></h2>
+              <p class="lead upper"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End header Section-->
+ <section id="services" class="sep-top-3x sep-bottom-3x rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 ">
+                    <div class="section-title">
+                        <h2 class="bordered-right upper">راهنمای اپلیکیشن</h2>
+                    </div>
+
+                        <p class="lead text-justify">
+                           در این بخش چگونگی استفاده از اپلیکیشن دمو توضیح داده می شود.
+                        </p>
+                        <h5>
+                            ورود به پنل
+                        </h5>
+                            <ol class="text-justify">
+                                <li>
+                                    در ابتدا با استفاده از نام کاربری و کلمه عبور دمو وارد پنل شوید. برای آموزش استفاده از پنل به
+                                    <a style="color:blue" href="http://pushe.co/documentation">
+صفحه آموزش
+                                    </a>
+مراجعه کنید.
+                                    <blockquote class="theme">
+                                        <a href="{% url 'admin:login' %}" type="button" class="btn btn-light btn-sm">ورود به پنل</a>
+                                        <p class="rtl"><b>نام کاربری: demo</b></p>
+                                        <p class="rtl"><b>کلمه عبور: 1234</b></p>
+                                    </blockquote>
+                                </li>
+                                <li>
+    در پنل به صفحه نصبها بروید و با پیدا کردن IMEI خود در لیست نصبها، برای خود یک پوش تست ارسال کنید.
+                                </li>
+                                <li>
+                                   با رفتن به صفحه اعلان ها میتوانید انواع اعلان را برای خود ارسال کنید و با قابلیتهای پوشه آشنا شوید.
+                                </li>
+                            </ol>
+                        <h5>
+                            تب محتوای پیام
+                        </h5>
+                            <p class="lead text-justify">
+                                در اپلیکیشن یک تب با عنوان محتوای پیام  وجود دارد. پیامهایی که برای این اپلیکیشن فرستاده می شود با جزییات در این بخش نشان داده می شود. همچنین در صورتی که در اعلان خود یک JSON دلخواه قرار داده باشید، محتوای آن JSON در این تب نمایش داده میشود.
+                            </p>
+                        <!--<h5>-->
+                            <!--تب کانال دلخواه-->
+                        <!--</h5>-->
+                            <!--<p class="lead text-justify">-->
+                                <!--همانطور که در توضیحات-->
+                                <!--<a style="color:blue" href="http://pushe.co/documentation/#panel-filter">پنل پوشه</a>-->
+                                <!--بیان شد، شما میتوانید علاوه بر فیلترهایی که پوشه در اختیار شما قرار میدهد، با فراخوانی تابع pushe.subscribe(this,"your-channel-name") در کد خود، کاربران خود را در گروهی عضو کنید و از آن به بعد با انتخاب آن گروه در قسمت فیلترها، تنها برای آن گروه اعلان ارسال کنید.-->
+                            <!--</p>-->
+                            <!--<p class="lead text-justify">-->
+<!--در این تب شما میتوانید خود را در یک کانال دلخواه عضو کنید و از طریق پنل دمو برای آن کانال اعلان ارسال کنید.-->
+                            <!--</p>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+{% block footer %}
+{%endblock %}
+

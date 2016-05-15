@@ -1,0 +1,156 @@
+{% extends 'pushe/base.html' %}
+
+{% block meta %}
+<meta name="description"
+      content="راهنمای استفاده از پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+<meta name="keywords"
+      content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+<meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+راهنمای استفاده
+{% endblock %}
+
+{% block onepage-content %}
+<section class="header-section fading-title parallax tutorial-bg rtl">
+    <div class="section-shade sep-top-3x sep-bottom-3x">
+        <div class="container">
+            <div class="section-title upper light">
+                <h2 class="small-space">راهنمای <span class="text-primary">استفاده</span></h2>
+
+                <p class="lead upper">آموزش نحوه استفاده از سرویس پوشه</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End header Section-->
+<div class="container sep-top-lg">
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <img src="{% static 'images/apple-touch-icon.png' %}" width="90%"/>
+                </div>
+                <h5 style="color:white">
+                    آموزش پنل
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="http://pushe.co/documentation/#panel" class="btn btn-sm btn-light btn-bordered rtl">آموزش استفاده</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl disabled">فیلم</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <img src="{% static 'images/android_studio.png' %}" width="90%"/>
+                </div>
+                <h5 style="color:white">
+                    Android Studio
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="http://pushe.co/documentation/#install-android-studio" class="btn btn-sm btn-light btn-bordered rtl">آموزش نصب</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl" data-toggle="modal" data-target="#android-studio">فیلم</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">دانلود SDK</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <img src="{% static 'images/eclipse.png' %}" width="80%"/>
+                </div>
+                <h5 style="color:white">
+                    Eclipse
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="http://pushe.co/documentation/#install-eclipse" class="btn btn-sm btn-light btn-bordered rtl">آموزش نصب</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl disabled">فیلم</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">دانلود SDK</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <img src="{% static 'images/b4a.png' %}" width="100%"/>
+                </div>
+                <h5 style="color:white">
+                    B4A
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">آموزش نصب</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">فیلم</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">دانلود SDK</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <img src="{% static 'images/unity_black.png' %}" width="100%"/>
+                </div>
+                <h5 style="color:white">
+                    Unity
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">آموزش نصب</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">فیلم</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl">دانلود SDK</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-md-6">
+          <blockquote class="theme">
+            <div class="icon-box icon-horizontal icon-lg">
+                <div data-wow-delay=".5s" class="icon-content wow bounceInUp animated" style="visibility: visible; animation-delay: 0.5s;">
+                    <i class="fa fa-apple"></i>
+                </div>
+                <h5 style="color:white">
+                    IOS
+                </h5>
+                <hr>
+                <div class="btn-group btn-group-justified">
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl disabled">آموزش نصب</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl disabled">فیلم</a>
+                    <a href="#" class="btn btn-sm btn-light btn-bordered rtl disabled">دانلود SDK</a>
+                </div>
+            </div>
+          </blockquote>
+        </div>
+        <!--Modals-->
+        <div class="modal fade" id="android-studio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">آموزش نصب کتابخانه پوشه در آندروید استدیو</h4>
+              </div>
+              <div class="modal-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/cW68S/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                  </div>
+              </div>
+            </div>
+        </div>
+</div>
+    </div>
+</div>
+{% endblock %}

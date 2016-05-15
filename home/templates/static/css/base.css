@@ -1,0 +1,380 @@
+.display-none {
+    display: none;
+}
+
+.ctn .form-control {
+    display: inline-block;
+    width: 300px;
+}
+
+.starred {
+    color: red;
+}
+
+.ctn {
+    background-color: white;
+    min-height: 300px;
+}
+
+.form-field {
+    padding: 10px;
+    vertical-align: top;
+    list-style-type: none;
+
+}
+
+.form-field .form-field-label {
+    display: inline-block;
+    font-size: 13px;
+    width: 200px;
+    color: #555;
+    padding-right: 30px;
+    vertical-align: top;
+    padding-top: 17px;
+}
+
+.form-field .form-field-alert {
+    background: #ec692f;
+    border: 1px solid #d44e12;
+    color: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    box-shadow: 0 2px 3px #ccc;
+}
+
+.form-field .form-field-alert ul {
+    list-style: none;
+}
+
+.limited-content {
+    width: 880px;
+    margin: 0 auto;
+    background: #eaeaea;
+    padding: 10px 10px;
+}
+
+/*
+Footer alignment in responsive layout
+*/
+
+@media (max-width: 767px){
+#footer li, ul {
+    padding-right:0px !important;
+    padding-left:0px !important;
+}
+}
+
+
+/* Our added codes */
+.alert {
+    text-align: center;
+    padding: 10px;
+    font-size: smaller;
+    text-align: right;
+}
+
+/*  Header Backgrounds */
+.banner-bg {
+    background: url("../images/bg-banner.jpg") !important;
+    background-position: right bottom !important;
+    background-size: cover !important;
+}
+
+.slogan-bg {
+    background: url("../images/bg-slogan.jpg") !important;
+      background-size: cover !important;
+}
+
+.pricing-bg {
+    background: url("../images/bg-pricing.jpg") !important;
+      background-size: cover !important;
+}
+
+.privacy-bg {
+    background: url("../images/bg-privacy.jpg") !important;
+      background-size: cover !important;
+}
+
+.rules-bg {
+    background: url("../images/bg-rules.jpg") !important;
+      background-size: cover !important;
+}
+
+.faq-bg {
+    background: url("../images/bg-faq.jpg") !important;
+      background-size: cover !important;
+}
+
+.maboutus-bg {
+    background: url("../images/bg-maboutus.jpg") !important;
+      background-size: cover !important;
+}
+
+.aboutus-bg {
+    background: url("../images/bg-aboutus.jpg") !important;
+      background-size: cover !important;
+}
+
+.contact-bg {
+    background: url("../images/bg-contact.jpg") !important;
+      background-size: cover !important;
+}
+
+.invoice-bg {
+    background: url("../images/bg-invoice.jpg") !important;
+      background-size: cover !important;
+}
+
+.upgrade-bg {
+    background: url("../images/bg-upgrade.jpg") !important;
+      background-size: cover !important;
+}
+
+.profile-bg {
+    background: url("../images/bg-profile.jpg") !important;
+      background-size: cover !important;
+}
+
+.info-bg{
+    background: url("../images/bg-importance.jpg") !important;
+          background-size: cover !important;
+}
+
+.tutorial-bg{
+    background: url("../images/bg-tutorial.jpg") !important;
+          background-size: cover !important;
+}
+
+.login-bg{
+    background: url("../images/bg-login.jpg") !important;
+          background-size: cover !important;
+}
+
+.forgot-bg{
+    background: url("../images/bg-forgot_password.jpg") !important;
+          background-size: cover !important;
+}
+
+.white-shade{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.gray-shade{
+    background-color: rgba(0,0,0,.3) !important;
+}
+
+/*Instead of slider css*/
+
+.demo-1 .sl-slider-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.sl-slider-wrapper {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.sl-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.sl-slide, .sl-slides-wrapper, .sl-slide-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.sl-slide {
+  z-index: 1;
+}
+
+.sl-slide, .sl-slides-wrapper, .sl-slide-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.sl-content-wrapper {
+  position: absolute;
+}
+.sl-content {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+/*End of Slider css*/
+
+
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSans-Bold.eot?#') format('eot'), /* IE6�8 */ url('../fonts/IRANSans-Bold.woff2') format('woff2'), /* Chrome36+, Opera24+*/ url('../fonts/IRANSans-Bold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSans-Black.eot?#') format('eot'), /* IE6�8 */ url('../fonts/IRANSans-Black.woff2') format('woff2'), /* Chrome36+, Opera24+*/ url('../fonts/IRANSans-Black.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSans-UltraLight.eot?#') format('eot'), /* IE6�8 */ url('../fonts/IRANSans-UltraLight.woff2') format('woff2'), /* Chrome36+, Opera24+*/ url('../fonts/IRANSans-UltraLight.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSans-Light-Expanded.eot?#') format('eot'), /* IE6�8 */ url('../fonts/IRANSans-Light-Expanded.woff2') format('woff2'), /* Chrome36+, Opera24+*/ url('../fonts/IRANSans-Light-Expanded.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'IRANSans-web';
+    src: url('../fonts/IRANSANSExpanded.eot?#') format('eot'), /* IE6�8 */ url('../fonts/IRANSANSExpanded.woff2') format('woff2'), /* Chrome36+, Opera24+*/ url('../fonts/IRANSANSExpanded.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Ir-Sans';
+    src: url('../fonts/iranian-sans.woff') format('woff');
+}
+
+
+/* Self Defined */
+.no-space{
+    padding-top: initial;
+}
+
+.text-justify{
+    text-align:justify;
+}
+
+.line-height-150{
+    line-height: 1.5;
+}
+
+.info-text{
+    margin-top: 10%;
+}
+
+.info-text > div > p{
+    color: rgb(55, 55, 55);
+    text-align: justify;
+    direction: rtl;
+    vertical-align: middle;
+}
+
+.icon-disabled{
+    border: solid 1px;
+    background-color: initial !important;
+    color:  #909090 !important;
+}
+.text-disabled{
+    color: #909090 !important;
+}
+.btn-ahmadi{
+  color: #1ABC9C;
+  background-color: white;
+  border-color: #1ABC9C;
+}
+
+.rtl {
+    direction: rtl;
+ }
+
+.ltr {
+    direction:ltr;
+}
+
+
+/*orderd list*/
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+
+}
+
+ol > li {
+  display: table;
+  counter-increment: item;
+  margin-bottom: 0.6em;
+
+}
+
+ol > li:before {
+  content: counters(item, ".") ". ";
+  display: table-cell;
+  padding-left: .6em;
+              font-size: 1.3em;
+              color:black;
+
+
+}
+
+li ol > li {
+  margin: 0;
+
+
+}
+
+li ol > li:before {
+  content: counters(item, ".") " ";
+                font-size: 1em;
+                color:inherit;
+
+
+}
+
+/* no print */
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+/* hidden div */
+.hidden-div {
+    position: absolute;
+    margin: -2em !important;
+}
+
+/* reduce h1 and h2 font size */
+.h1size{
+font-size:2em;
+}
+.h2size{
+font-size:1.5em;
+}
+
+/* Wrap long words */
+.long_word {
+    word-wrap: break-word;
+}
+
+
+.ajax-loading {
+    color: #1abc9c;
+    text-align: center;
+}
+/* Price Panel Title
+.price-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 3em !important;
+    color: inherit;
+}

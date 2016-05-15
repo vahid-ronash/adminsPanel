@@ -1,0 +1,69 @@
+{% extends 'pushe/base.html' %}
+{% block navigation %}
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="سوالات متداول درباره پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+    <meta name="keywords" content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+    <meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+درباره ما
+{% endblock %}
+
+{% block onepage-content %}
+      <section  class="header-section fading-title parallax maboutus-bg rtl">
+        <div class="section-shade sep-top-3x sep-bottom-3x">
+          <div class="container">
+            <div class="section-title upper light">
+              <h2 class="small-space"><span class="text-primary"></span></h2>
+              <p class="lead upper"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End header Section-->
+ <section id="services" class="sep-top-3x sep-bottom-3x rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 ">
+                    <div class="section-title">
+                        <h2 class="bordered-right upper">پوشه<br> چیست؟</h2>
+                    </div>
+
+                        <p class="lead text-justify">
+                            "پوشه" سرویسی است برای ارسال اعلان (Push Notification - پوش نوتیفیکیشن) به کاربران نرم افزارهای موبایل. از
+                            طریق این سرویس میتوانید با کاربران خود ارتباط موثر برقرار کنید و آمار استفاده آنها از نرم
+                            افزار خود را به صورت چشم گیری افزایش دهید.
+                        </p>
+                        <p class="lead text-justify">
+                          پوشه شامل یک کتابخانه برای توسعه دهندگان نرم افزارهای تلفن همراه می باشد که با قرار دادن آن در نرم افزار خود می توانند از طریق پنل پوشه برای کاربرانشان اعلان(Push Notification - پوش نوتیفیکیشن) ارسال کنند
+                        </p>
+                        <p class="lead text-justify">
+                          این سرویس محصول شرکت "تجارت همراه روناش" است که در مردادماه سال 1394 رسما آغاز به کار کرده است.
+                        </p>
+                        <p class="lead text-justify">
+                            برای آشنایی بیشتر با قابلیتهای پوشه به آدرس:
+                            <a style="color:blue" href="http://pushe.co" target="_blank">
+                                http://pushe.co
+                            </a>
+                            مراجعه کنید. و از طریق نصب اپلیکیشن دمو و با وارد شدن به پنل با اطلاعات مربوط به کاربر دمو، برای خود پوش نوتیفیکیشن ارسال کنید.
+                        </p>
+
+                </div>
+                <div class="col-md-offset-2 col-md-4 sep-top-md ltr">
+                    <blockquote class="theme">
+                        <a href="{% url 'admin:login' %}" type="button" class="btn btn-light btn-sm">ورود به پنل</a>
+                        <p class="rtl"><b>نام کاربری: demo</b></p>
+                        <p class="rtl"><b>کلمه عبور: 1234</b></p>
+                    </blockquote>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block footer %}
+{%endblock %}

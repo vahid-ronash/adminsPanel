@@ -1,0 +1,166 @@
+{% extends 'pushe/base.html' %}
+
+{% block navigation %}
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="حریم خصوصی پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+    <meta name="keywords" content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+    <meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+تماس با ما
+{% endblock %}
+
+{% block onepage-content %}
+      <section  class="header-section fading-title parallax contact-bg rtl">
+        <div class="section-shade sep-top-3x sep-bottom-3x">
+          <div class="container">
+            <div class="section-title upper light">
+              <h2 class="small-space"><span class="text-primary"> </span></h2>
+              <p class="lead upper"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End header Section-->
+      <section id="contactus" class="bg-primary sep-top-lg sep-bottom-lg rtl">
+        <div class="container">
+            <!--     Start icon box-->
+            <div class="icon-box icon-md fixed-section">
+                <div class="icon-content img-circle">
+                    <i class="fa fa-check"></i>
+                </div>
+            </div>
+            <!--     End icon box-->
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="section-title">
+                        <div class="light">
+                            <h3 class="upper small-space">
+                                با ما در ارتباط باشید
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="section-title">
+                        <div class="light">
+                            <p class="lead lighter">
+                                از آخرین اخبار و پست های ما در شبکه های اجتماعی دیدن کنید و ما را دنبال کنید.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 "></div>
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.5s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="http://www.linkedin.com/company/pushe-co" target="_blank"
+                                   class="icon-content inverter img-circle">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            <div data-wow-delay="0.7s" class="icon-box icon-horizontal icon-sm wow bounceInRight">
+                                <a href="http://google.com/+PusheCo" target="_blank"
+                                   class="icon-content inverter img-circle">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 "></div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5 text-center">
+                    <div class="section-title">
+                        <div class="light">
+                            <p class="lead lighter">
+                                سوالی در ذهن شما باقی مانده؟ با ما در تماس باشید.
+                            </p>
+                        </div>
+                        <div class="sep-top-md">
+                            <a href="mailto:info@pushe.co" class="btn btn-ahmadi btn-lg">ارسال ایمیل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer id="footer">
+            <div class="inner sep-bottom-md rtl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <img src="{% static 'images/logo-white.png' %}" alt="لوگوی پوشه" class="logo">
+                                <small class="sep-top-xs sep-bottom-md">
+                                    پوشه، سامانه ارسال اعلان (Push Notification)به کاربران تلفن همراه
+                                </small>
+                            </div>
+                            <div class="widget">
+                                <a href="http://ronash.co" target="_blank">
+                                    <img src="{% static 'images/logo-ronash.png' %}" alt="لوگوی روناش" class="logo">
+                                </a>
+                                <small class="sep-top-xs sep-bottom-md no-space">
+                                    محصولی از شرکت
+                                    <a href="http://ronash.co" target="_blank"> تجارت الکترونیک روناش</a>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="widget sep-top-lg">
+                                <h6 class="upper widget-title">تماس با ما</h6>
+                                <ul class="widget-address sep-top-xs">
+                                    <li>
+                                        <small>تهران، اکباتان، خیابان شهید نفیسی، پلاک 15، واحد 23<br></small>
+                                        <i class="fa fa-map-marker fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small>021-44668276<br>021-44670626</small>
+                                        <i class="fa fa-phone fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small><a href="mailto:info@pushe.co">info@pushe.co</a><br><a href="#"></a></small>
+                                        <i class="fa fa-envelope fa-lg"></i>
+                                    </li>
+                                    <li>
+                                        <small>شنبه تا پنج شنبه<br>8 صبح الی 5 بعد از ظهر</small>
+                                        <i class="fa fa-clock-o fa-lg"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-3 col-sm-6">-->
+                            <!--<div class="widget sep-top-lg">-->
+                                <!--<script type="text/javascript" src="http://www.zarinpal.com/webservice/TrustCode"></script>-->
+                                <!--<noscript>-->
+                                    <!--<a href="https://www.zarinpal.com/users/receptive_websites">پذیرنده زرین پال</a>-->
+                                <!--</noscript>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="copyright sep-top-xs sep-bottom-xs rtl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <small>تمامی حقوق برای وبسایت پوشه محفوظ می باشد. 1394</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+{% endblock %}
+{% block footer %}
+{%endblock %}
+

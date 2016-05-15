@@ -1,0 +1,462 @@
+{% extends 'pushe/base.html' %}
+
+{% block meta %}
+    <meta name="description"
+          content="سوالات متداول درباره پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+    <meta name="keywords"
+          content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+    <meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+    سوالات متداول
+{% endblock %}
+
+{% block onepage-content %}
+    <section class="header-section fading-title parallax faq-bg rtl">
+        <div class="section-shade sep-top-3x sep-bottom-3x">
+            <div class="container">
+                <div class="section-title upper light">
+                    <h2 class="small-space">سوالات<span class="text-primary">متداول</span></h2>
+
+                    <p class="lead upper">آنچه بیشتر کاربران در رابطه با پوشه می پرسند</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End header Section-->
+    <section class="sep-top-md sep-bottom-md rtl">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <ul class="nav nav-pills sep-bottom-md">
+                        <li class="active "><a data-toggle="pill" href="#general">عمومی</a></li>
+                        <li><a data-toggle="pill" href="#android-studio">Android Studio</a></li>
+                        <li><a data-toggle="pill" href="#android-eclipse">Eclipse</a></li>
+                        <!--<li><a data-toggle="pill" href="#android-unity">Unity</a></li>-->
+                    </ul>
+                    <div class="tab-content">
+                        <div id="general" class="tab-pane fade in active">
+                            <div id="accordion1" class="accordion-group">
+                                <!-- start accordion item-->
+                                <div class="accordion-item panel">
+                                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                                            data-parent="#accordion1"
+                                                                            href="#collapse1-1"
+                                                                            class="accordion-toggle">
+                                        جدول پیامهای خطا و توضیحات
+                                        <i class="accordion-icon fa fa-plus"></i></a></div>
+                                    <div id="collapse1-1" class="row accordion-body panel-collapse collapse">
+                                        <div>
+در هنگام نصب کتابخانه پوشه بر روی logcat شما پیامهایی داده می شود. برخی از این پیامها تنها اطلاع رسانی هستند و برخی از آنها پیامهای خطا می باشند. در جدول زیر این دو دسته پیامها را مشاهده می کنید:
+                                        </div>
+                                        <div class="col-md-8">
+                                          <h5>پیامهای اطلاع رسانی</h5>
+                                            <br>
+                                          <table class="table table-bordered rtl">
+                                            <thead>
+                                              <tr>
+                                                <th style="text-align:center">ردیف</th>
+                                                <th style="text-align:center">پیام</th>
+                                                <th style="text-align:center">توضیح</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td rowspan="1" class="ltr">"Trying to register to GCM"</td>
+                                                    <td >در حال تلاش برای ثبت نام در GCM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td rowspan="1" class="ltr">"Successfully registered to GCM"</td>
+                                                    <td >با موفقیت در GCM ثبت شد</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td rowspan="1" class="ltr">"Trying to register to Pushe"</td>
+                                                    <td>در حال تلاش برای ثبت نام در "پوشه"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td rowspan="1" class="ltr">"Successfully registered to pushe"</td>
+                                                    <td>با موفقیت در "پوشه" ثبت شد</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td rowspan="1" class="ltr">"Trying to subscribe to channel: " + channel</td>
+                                                    <td>در حال تلاش برای عضویت در کانال "نام کانال شما"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td rowspan="1" class="ltr">"Successfully subscribed to channel: " + channel</td>
+                                                    <td>با موفقیت در کانال "نام کانال شما"اضافه شد</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td rowspan="1" class="ltr">"Trying to unsubscribe from channel: " + channel</td>
+                                                    <td>در حال تلاش برای خارج شدن از کانال "نام کانال شما"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td rowspan="1" class="ltr">"Successfully unsubscribed from channel: " + channel</td>
+                                                    <td>با موفقیت از کانال "نام کانال شما" خارج شد</td>
+                                                </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                        <div class="col-md-8">
+                                          <h5>پیام های خطا</h5>
+                                            <br>
+                                          <table class="table table-bordered rtl">
+                                            <thead>
+                                              <tr>
+                                                <th style="text-align:center">ردیف</th>
+                                                <th style="text-align:center">پیام</th>
+                                                <th style="text-align:center">راه حل</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td rowspan="1" class="ltr">"bad topic name, topic name must just contains [a-zA-Z0-9-_.~%]{1,900}"</td>
+                                                    <td >نام کنال خود را به خوبی انتخاب نکرده اید. نام انتخابی باید تنها شامل [a-zA-Z0-9-_.~%] باشد.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td rowspan="1" class="ltr">"Initializing Pushe failed, " </td>
+                                                    <td >این خطا ممکن است به دلایل مختلف پیش بیاید. با بخش پشتیبانی تماس بگیرید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td rowspan="1" class="ltr">"Pushe must be initialized before unsubscribing from a topic"</td>
+                                                    <td >تابع Pushe.initialize را باید در کد MainActivity.java فراخوانی کنید. به آموزش نصب مراجعه کنید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Token not found"</td>
+                                                    <td >کد مربوط به meta-data پوشه را در مانیفست خود قرار نداده اید. این کد را از فایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Token is null"</td>
+                                                    <td >توکن موجود در مانیفست خالی است. این توکن را ازفایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید. </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td rowspan="1" class="ltr">"Failed to load meta-data from manifest, Bad Token"</td>
+                                                    <td >فرمت توکن قرار داده شده اشتباه است. توکن صحیح را از فایل مانیفست در اختیار گذاشته شده در پنل، به مانیفست اپلیکیشن خود اضافه کنید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td rowspan="1" class="ltr">"Google play services problem: " + result</td>
+                                                    <td >گوگل پلی سرویس استفاده شده نصب نشده است و یا به روز نیست. به صفحه آموزش مراجعه کنید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td rowspan="1" class="ltr">"Pushe must be initialized before subscribing to a topic"</td>
+                                                    <td >تابع Pushe.initialize را باید در کد MainActivity.java فراخوانی کنید. به آموزش نصب مراجعه کنید.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td rowspan="1" class="ltr">“GCM error:” + error </td>
+                                                    <td >با بخش پشتیبانی تماس بگیرید.</td>
+                                                </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end accordion item-->
+                                <!-- start accordion item-->
+                                <div class="accordion-item panel">
+                                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                                            data-parent="#accordion1"
+                                                                            href="#collapse1-2"
+                                                                            class="accordion-toggle collapsed">
+                                         پوشه بر روی چه نسخه اندروید کار می کند؟
+                                        <i class="accordion-icon fa fa-plus"></i></a>
+                                    </div>
+                                    <div id="collapse1-2" class="row accordion-body panel-collapse collapse">
+                                        <div>
+                                            <p class="text-justify">
+                                                برای کار کردن کتابخانه پوشه سیستم عامل دستگاه باید حداقل نسخه 4.1.0 اندروید باشد به همین دلیل ورژن min sdk در پروژه خود را باید حداقل 16 قرار دهید. همچنین بر روی آن Google Play Services (با هر نسخه ای) نصب باشد. تعداد کاربران زیر نسخه 4.0.3 بسیار کم هستند و در دنیا زیر 7.3% کاربران هستند و با توجه به اینکه گوشیها در حال به روز شدن هستند این مقدار روز به روز هم کمتر می شود.
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <h5>توزیع استفاده از نسخه های Android</h5>
+                                            <br>
+                                          <table class="table table-bordered ltr">
+                                            <thead>
+                                              <tr>
+                                                <th>Version</th>
+                                                <th>Codename</th>
+                                                <th>API</th>
+                                                <th>Distribution</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="danger">
+                                                    <td>2.2</td>
+                                                    <td rowspan="1">Froyo</td><td>8</td><td>0.2%</td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <td>2.3.3 -<br>2.3.7</td>
+                                                    <td rowspan="1">Gingerbread</td><td>10</td><td>3.8%</td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <td>4.0.3 -<br>4.0.4</td>
+                                                    <td rowspan="1">Ice Cream Sandwich</td><td>15</td><td>3.3%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>4.1.x</td>
+                                                    <td rowspan="3">Jelly Bean</td><td>16</td><td>11.0%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>4.2.x</td>
+                                                    <td>17</td><td>13.9%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>4.3</td>
+                                                    <td>18</td><td>4.1%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>4.4</td>
+                                                    <td rowspan="1">KitKat</td><td>19</td><td>37.8%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>5.0</td>
+                                                    <td rowspan="2">Lollipop</td><td>21</td><td>15.5%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>5.1</td>
+                                                    <td>22</td><td>10.1%</td>
+                                                </tr>
+                                                <tr class="success">
+                                                    <td>6.0</td>
+                                                    <td rowspan="1">Marshmallow</td><td>23</td><td>0.3%</td>
+                                                </tr>
+                                            </tbody>
+                                          </table>
+                                      <a href="http://developer.android.com/about/dashboards/index.html" target="_blank" style="color:blue">منبع</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{% static 'images/docs/android-distribution.jpg' %}" width="100%" class="image-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end accordion item-->
+                                <!-- start accordion item-->
+                                <div class="accordion-item panel">
+                                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                                            data-parent="#accordion1"
+                                                                            href="#collapse1-3"
+                                                                            class="accordion-toggle">
+                                        اجرای اپلیکیشن در ایمولاتور
+                                        <i class="accordion-icon fa fa-plus"></i></a></div>
+                                    <div id="collapse1-3" class="row accordion-body panel-collapse collapse">
+                                        <div class="col-md-9">
+                                            از آنجا که اجرای اپلیکیشن حاوی کتابخانه پوشه نیازمند Google Play Services است، توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end accordion item-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion1"-->
+                                                                            <!--href="#collapse1-4"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse1-4" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                            </div>
+                        </div>
+                        <div id="android-studio" class="tab-pane fade">
+                            <div id="accordion2" class="accordion-group">
+                                <!-- start accordion item-->
+                                <div class="accordion-item panel">
+                                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                                            data-parent="#accordion2"
+                                                                            href="#collapse2-1"
+                                                                            class="accordion-toggle collapsed">
+                                        دستور گریدل کار نمی کند
+                                        <i class="accordion-icon fa fa-plus"></i></a></div>
+                                    <div id="collapse2-1" class="row accordion-body panel-collapse collapse">
+                                        <div class="col-md-9">
+                                            <ol>
+                                                <li>
+در تنظیمات اندروید استدیو و در بخش gradle تیک Offline work را بردارید.
+                                                    <img src="{% static 'images/docs/studio-work-offline.jpg' %}" width="100%" class="image-responsive">
+                                                </li>
+                                                <li>
+                                                   برای نصب Google Play Services از طریق گریدل باید از عبور کننده از فیلتر استفاده کنید.
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end accordion item-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion2"-->
+                                                                            <!--href="#collapse2-2"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse2-2" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion2"-->
+                                                                            <!--href="#collapse2-3"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse2-3" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion2"-->
+                                                                            <!--href="#collapse2-4"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse2-4" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                            </div>
+                        </div>
+                        <div id="android-eclipse" class="tab-pane fade">
+                            <div id="accordion3" class="accordion-group">
+                                <!-- start accordion item-->
+                                <div class="accordion-item panel">
+                                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                                            data-parent="#accordion3"
+                                                                            href="#collapse3-1"
+                                                                            class="accordion-toggle collapsed">
+خطای NoClassdefFoundError
+                                        <i class="accordion-icon fa fa-plus"></i></a></div>
+                                    <div id="collapse3-1" class="row accordion-body panel-collapse collapse">
+                                        <div class="col-md-9">
+                                        <p>
+                                            عموما این مشکل به دلیل به روز نبودن فایل android-support-v4.jar  در اکلیپس شما است.
+                                        </p>
+                                        <p class="text-justify">
+                                            یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل android-support-v4.jar می باشد. برای به روز رسانی
+                                            <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank" style="color:blue">این فایل </a>
+                                            را دانلود کنید و آن را جایگزین فایل android-support-v4.jar پروژه خود کنید. برای این کار به Workspace خود بروید و وارد فولدر پروژه و سپس وارد فولدر libs شوید و این فایل را جایگزین کنید و اگر این فایل از قبل موجود نیست آن را در این فولدر قرار دهید.
+                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end accordion item-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion3"-->
+                                                                            <!--href="#collapse3-2"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse3-2" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion3"-->
+                                                                            <!--href="#collapse3-3"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse3-3" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion3"-->
+                                                                            <!--href="#collapse3-4"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse3-4" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                            </div>
+                        </div>
+                        <!--<div id="android-unity" class="tab-pane fade">-->
+                            <!--<div id="accordion4" class="accordion-group">-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion4"-->
+                                                                            <!--href="#collapse4-1"-->
+                                                                            <!--class="accordion-toggle collapsed">-->
+                                        <!--این کتابخانه با چه نسخه ای از UNITY سازگار می باشد؟-->
+                                        <!--<i class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse4-1" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9">-->
+                                            <!--این کتابخانه با نسخه ۵ به بعد سازگار می باشد.-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!-- end accordion item-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion4"-->
+                                                                            <!--href="#collapse4-2"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse4-2" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion4"-->
+                                                                            <!--href="#collapse4-3"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse4-3" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+                                <!--&lt;!&ndash; start accordion item&ndash;&gt;-->
+                                <!--<div class="accordion-item panel">-->
+                                    <!--<div class="accordion-heading upper"><a data-toggle="collapse"-->
+                                                                            <!--data-parent="#accordion4"-->
+                                                                            <!--href="#collapse4-4"-->
+                                                                            <!--class="accordion-toggle"><i-->
+                                            <!--class="accordion-icon fa fa-plus"></i></a></div>-->
+                                    <!--<div id="collapse4-4" class="row accordion-body panel-collapse collapse">-->
+                                        <!--<div class="col-md-9"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; end accordion item&ndash;&gt;-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+{% endblock %}

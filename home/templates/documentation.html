@@ -1,0 +1,1287 @@
+{% extends 'pushe/base.html' %}
+
+{% block meta %}
+<meta name="description"
+      content="آموزش استفاده از پوشه، سامانه ارسال اعلان(پوش نوتیفیکیشن Push Notification) به نرم افزارهای تلفن همراه.">
+<meta name="keywords"
+      content="Push Notification, Android, Unity, iOS, اعلان, آندروید, پوش نوتیفیکیشن, یونیتی, آی او اس">
+<meta name="author" content="Ronash">
+{% endblock %}
+
+{% block title %}
+راهنمای استفاده
+{% endblock %}
+
+{% block onepage-content %}
+<section class="header-section fading-title parallax tutorial-bg rtl">
+    <div class="section-shade sep-top-3x sep-bottom-3x">
+        <div class="container">
+            <div class="section-title upper light">
+                <h2 class="small-space">راهنمای <span class="text-primary">استفاده</span></h2>
+
+                <p class="lead upper">آموزش نحوه استفاده از سرویس پوشه</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End header Section-->
+<section class="sep-top-md">
+<div class="container bs-docs-container rtl">
+    <div class="row">
+        <div class="col-md-3" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" style="padding-top:100px">
+                <ul class="nav bs-docs-sidenav">
+
+                    <li class="active">
+                        <a href="#panel"><h5>آموزش پنل</h5></a>
+                        <ul class="nav">
+                            <li><a href="#panel-newapp"><h6>ایجاد اپلیکیشن جدید</h6></a></li>
+                            <li><a href="#panel-push"><h6>ایجاد و ارسال اعلان</h6></a></li>
+                            <li><a href="#panel-filter"><h6>فیلتر مخاطبان
+                            <span style="color:red">(به زودی)</span>
+                            </h6></a></li>
+                            <!--<li><a href="#panel-history">نتایج و تاریخچه</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#install"><h5>آموزش نصب</h5></a>
+                        <ul class="nav">
+                            <li><a href="#install-android-studio"><h6>Android Studio</h6></a></li>
+                            <li><a href="#install-eclipse"><h6>Eclipse</h6></a></li>
+                            <li><a href="#install-unity"><h6>Unity</h6></a></li>
+                            <li><a href="#install-b4a"><h6>Basic4Android</h6></a></li>
+                            <!--<li><a href="#customize"><h6>شخصی سازی</h6></a> </li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://pushe.co/faq/" target="_blank"><h5>سوالات متداول</h5></a>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    بالای صفحه
+                </a>
+            </nav>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="bs-docs-section">
+                <h1 id="panel" class="page-header hidden-div"></h1>
+                <h1 class="h1size">
+                    آموزش پنل
+                </h1>
+                <div class="sep-bottom-md sep-top-md">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/HVjCM/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                    </div>
+                </div>
+                <div class="row">
+                <p class="col-md-9 text-justify">
+                    پنل پوشه این امکان را به شما میدهد که به راحتی با تنظیم فیلدهای در اختیار
+                    گذاشته شده، از تمامی امکاناتی که یک اعلان (پوش نوتیفیکیشن - Push Notification)
+                    دارد، بهره مند شوید. برای این کار کافی است تنها در سایت "پوشه" ثبت نام کنید و با وارد شدن به
+                    پنل، اپلیکیشن خود را ثبت کنید و با دریافت کتابخانه پوشه و قرار دادن آن در اپلیکیشن خود از امکانات
+                     ارسال و نمایش یک پوش نوتیفیکیشن حرفه ای استفاده کنید.
+                </p>
+                </div>
+
+                <h2 id="panel-newapp" class="hidden-div"></h2>
+                <h2 class="h2size">
+                    ایجاد اپلیکیشن جدید
+                </h2>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        ثبت اپلیکیشن جدید
+                    </h6>
+                    <div class="col-md-6">
+                          <ol class="text-justify">
+                            <li>وارد پنل اعضا بشوید</li>
+                            <li>وارد بخش اپلیکیشنها شوید</li>
+                            <li>بر روی دایره قرمز رنگ پایین سمت چپ کلیک کنید</li>
+                            <li>اطلاعات درخواست شده را وارد کنید و دکمه ذخیره را بزنید. شما به صفحه اپلکیشنها بازگردانده میشوید و اپلیکیشن شما اضافه شده است</li>
+                          </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% static 'images/docs/new-app.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/new-app.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+نصب پوشه در اپلیکیشن
+                    </h6>
+                    <div class="col-md-6">
+                          <ol class="text-justify">
+                            <li>به صفحه اپلیکیشنها بروید</li>
+                            <li>با استفاده از روش نصب توضیح داده شده در ادامه، کتابخانه را در اپلیکیشن خود قرار دهید.</li>
+                          </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% static 'images/docs/new-app-aar.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/new-app-aar.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+تست
+                    </h6>
+                    <p class="col-md-9 text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید، میتوانید صحت نصب را از طریق زیر آزمایش کنید.<p>
+                    <div class="col-md-6">
+                          <ol class="text-justify">
+                            <li>از پنل اعضا وارد بخش نصبها بشوید</li>
+                            <li>اپلیکیشن تولید شده را در گوشی خود نصب و اجرا کنید (دقت کنید دسترسی به اینترنت داشته باشید)</li>
+                            <li>پس از گذشت مدت زمان کوتاهی یک ردیف به جدول نصبها اضافه میشود که مشخصات نصب گوشی تلفن همراه شما را نشان میدهد</li>
+                            <li>با زدن بر روی دکمه تست، یک پوش نوتیفیکیشن تست به گوشی شما فرستاده میشود</li>
+                          </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% static 'images/docs/test.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/test.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+
+                <h2 id="panel-push" class="hidden-div"></h2>
+                <h2 class="h2size">
+                    ایجاد و ارسال اعلان
+                </h2>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+مشخصات ظاهری پوش نوتیفیکیشن
+                    </h6>
+                    <p class="text-justify col-md-9">
+                        یک اعلان (پوش نوتیفیکیشن - Push Notification) به صورتهای مختلفی میتواند نمایش داده بشود و از اجزای متعددی تشکیل شده است. شکلهای زیر این اجزا را نشان داده است. توجه داشته باشید که آیکون، عنوان و متن در حالت مفصل میتواند با حالت کوچک متفاوت باشد.
+                    </p>
+					<p class="text-justify col-md-9">
+                        برای آزمایش قابلیتهای پوشه و حالتهای مختلف اعلان می توانید اپلیکیشن دمو برای تست استفاده کنید.
+                    </p>
+                    <div class="row col-md-12">
+                        <blockquote class="theme">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td style="border-color: transparent;">
+                                    <a href="https://play.google.com/store/apps/details?id=co.ronash.pushesample" target="_blank">
+                                      <img alt="Get it on Google Play"
+                                           src="../static/images/googleplay-logo.png" />
+                                    </a>
+                                    <footer class="cite small">اپلیکیشن دمو</footer>
+                                </td>
+                                <td style="border-color: transparent;">
+                                    <a href="https://github.com/ronashco" target="_blank" class="icon-content inverter img-circle">
+                                    <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                    </a>
+                                    <footer class="cite small">کد نمونه</footer>
+                                </td>
+                                <td style="border-color: transparent;">
+                                     <a href="{% url 'admin:login' %}" type="button" class="btn btn-light btn-sm">ورود به پنل</a>
+                                     <p class="rtl"><b>نام کاربری: demo</b></p>
+                                     <p class="rtl"><b>کلمه عبور: 1234</b></p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                  </blockquote>
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                        <h6>
+                        اعلان کوچک
+                        </h6></div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <a href="{% static 'images/docs/small-notif.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/small-notif.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                        <h6>
+                            اعلان مفصل
+                        </h6>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <a href="{% static 'images/docs/big-notif.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/big-notif.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+تعیین عملکردها
+                    </h6>
+                    <p class="text-justify col-md-9">
+                        با انتخاب نوع عملکرد در بخش تنظیمات پوش نوتیفیکیشن و یا دکمه های پوش نوتیفیکیشن، میتوان تعیین کرد که با کلیک شدن بر روی پوش نوتیفیکیشن چه اتفاقی بیفتد. عملکردهای زیر در پوشه تعریف شده است:
+                    </p>
+                    <div class="col-md-6">
+                          <ol class="text-justify">
+                            <li>باز کردن اپلیکیشن: با کلیک کاربر بر روی پوش نوتیفیکیشن، اپلیکیشن شما باز میشود</li>
+                            <li>باز کردن url: با کلیک کاربر بر روی پوش نوتیفیکیشن، مرورگر باز میشود و آدرس اینترنتی که شما تعیین کرده اید را نشان میدهد. توجه داشته باشید که باید آدرس را با فرمت روبرو وارد کنید: http://example.com</li>
+                            <li>باز کردن صفحه دیالوگ:
+                                <span style="color:red">(به زودی)</span>
+                                از آنجا که یک پوش نوتیفیکیشن حالتی گذرا دارد و ممکن است حتی دست کاربر به اشتباه بر روی آن بخورد و بسته شود، شما میتوانید از گزینه نمایش در دیالوگ استفاده کنید. در اینصورت با کلیک کردن کاربر بر روی پوش نوتیفیکیشن یک صفحه استاندارد دیالوگ باز میشود که همان محتوای پوش نوتیفیکیشن در آن نمایش داده میشود و با این کار کاربر وقت بیشتری را برای خواندن متن آن میگذارد.
+                            </li>
+                            <li>امتیاز دهی به نرم  افزار: با انتخاب این گزینه، پاپ آپ مربوط به امتیاز دهی به اپلیکیشن شما در استور مورد نظر باز میشود و کاربر به امتیاز دادن به اپلیکیشن شما تشویق میشود.</li>
+                            <li>باز کردن بازارها با انتخاب اولویت: شما میتوانید از این طریق اپلیکیشنهای جدید خود را برای کاربران خود تبلیغ کنید. برای او یک پوش نوتیفیکیشن تبلیغی اپلیکیشن خود را بفرستید. با کلیک کاربر بر روی پوش نوتیفیکیشن، صفحه رفتن به بازارگاهها برای نصب اپلیکیشن باز میشود. همچنین شما میتوانید برای باز کردن بازارگاهها اولویت بندی کنید. اگر کاربر نرم افزار بازارگاه اولویت اول شما را نداشت، اولویت دوم شما پیشنهاد میشود و همینطور یک به یک نرم افزارهای بازارگاهها با اولویت شما چک میشود.</li>
+                          </ol>
+                    </div>
+                    <div class="col-md-6 col-sm-8 col-sm-offset-2">
+                        <a href="{% static 'images/docs/dialog.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/dialog.jpg' %}" width="70%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+قرار دادن دکمه
+                    </h6>
+                    <p class="text-justify col-md-9">
+                        شما میتوانید برای اعلان (پوش نوتیفیکیشن - Push Notification)های خود دکمه تعریف کنید. تعداد این دکمه ها میتواند 1 تا 3 عدد باشد. برای هر دکمه میتوانید یک عملکرد مجزا تعریف کنید.
+                    </p>
+                    <div class="col-md-6">
+                        <br>
+                        <h6>
+دکمه های اعلان
+                        </h6>
+                    </div>
+                        <div class="col-md-offset-2 col-md-8">
+                            <a href="{% static 'images/docs/buttons.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/buttons.jpg' %}" width="100%" class="image-responsive"></a>
+                        </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+اطلاعات پیشرفته
+                        <span style="color:red">(به زودی)</span>
+                    </h6>
+                    <p class="text-justify col-md-9">
+                        شما میتوانید با تنظیم اطلاعات پیشرفته امکانات ویژه ای را به اعلان (پوش نوتیفیکیشن - Push Notification) خود اضافه کنید.
+                    </p>
+                    <div class="col-md-9">
+                        <ol class="text-justify">
+                            <li>صدا: شما میتوانید صدای زنگ پوش نوتیفیکیشن خود را چیزی بجز صدای پیش فرض گوشی کاربر انتخاب کنید. صداهایی مانند : هواپیما، صدای زنگ و …</li>
+                            <li>رنگ LED: شما میتوانید تعیین کنید که به هنگام دریافت پوش نوتیفیکیشن بوسیله گوشی کاربر LED گوشی چه رنگی را نشان بدهد</li>
+                            <li>روشن شدن صفحه نمایش گوشی: با انتخاب این گزینه هنگامیکه گوشی پوش نوتیفیکیشن را دریافت میکند صفحه نمایش گوشی روشن میشود که موجب میشود جلب توجه بیشتری کند</li>
+                            <li>
+                                <p>
+                                    کلید جایگزینی پوش نوتیفیکیشنهای متوالی: شما میتوانید برای پوش نوتیفیکیشنهای خود کلید جایگزینی تعریف کنید. با گذاشتن کلید جایگزینی، در صورتیکه پوش نوتیفیکیشن اولی که این کلید را دارد هنوز به کاربر نرسیده باشد و شما پوش نوتیفیکیشن دوم را با همان کلید جایگزینی فرستاده باشید، پوش نوتیفیکیشن دوم جایگزین پوش نوتیفیکیشن اول میشود. به طور مثال فرض کنید شما یک اپلیکیشن تقویم دارید و وقایع روز را با پوش توتیفیکیشن برای کاربر میفرستید. شما میتوانید برای این پوش نوتیفیکیشنها یک کلید جایگزینی واحد انتخاب کنید. کلیدی مانند: replace. حالا فرض کنید شما امروز پوش نوتیفیکیشن مربوط به وقایع امروز را میفرستید ولی گوشی کاربر امروز خواموش بوده است و یا اینترنت نداشته است، فردا که شما پوش نوتیفیکیشن مربوط به روز بعد را میفرستید، دیگر پوش نوتیفیکیشن دیروز ارزشی ندارد و شما میتوانید در پوش نوتیفیکیشن جدید خود با قرار دادن همان کلید، مشخص کنید که پوش نوتیفیکیشن جدید جایگزین پوش نوتیفیکیشن دیروز بشود.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    نمایش یا عدم نمایش پوش نوتیفیکیشن: شما میتوانید انتخاب کنید که پوش نوتیفیکیشن به کاربر نمایش داده بشود یا خیر. ممکن است شما بخواهید از طریق پوش نوتیفیکیشن تنها یکسری اطلاعات را به اپلیکیشن منتقل کنید و نیازی به نمایش متنی به کاربر نیست. با انتخاب این گزینه کاربر متوجه دریافت پوش نوتیفیکیشن نمیشود و پوش نوتیفیکیشن به اپلیکیشن تحویل میشود. شاید پر کاربرد ترین این پوش نوتیفیکیشنها ارسال اطلاعات از طریق JSON دلخواه باشد که اطلاعاتی دلخواه و از قبل تعریف شده را برای اپلیکیشن بفرستد.
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                         <!--<div class="col-md-6">-->
+                            <!--<a href="{% static 'images/docs/setting-panel.jpg' %}" target="_blank" style="cursor:zoom-in"> <img src="{% static 'images/docs/setting-panel.jpg' %}" width="100%" class="image-responsive"></a>-->
+                        <!--</div>-->
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+زمان بندی ارسال
+                        <span style="color:red">(به زودی)</span>
+                    </h6>
+                    <p class="text-justify col-md-9">
+برای بالا بردن رضایت کاربرانتان، استفاده از زمان مناسب رایر ارسال پوش نوتیفیکیشن از اهمیت بالایی برخوردار است. شما باید مراقب باشید که پوش نوتیفیکیشن را در زمانی برای کاربر ارسال کنید که برای او مزاحمت ایجا نکند. همچنین در نظر داشته باشید که بر حسب محتوای اعلان خود باید زمانی را انتخاب کنید که فکر میکند بیشترین بازخورد را دارد.
+                    </p>
+                    <div class="col-md-9">
+                        <ol class="text-justify">
+                            <li>
+                                <p>تنظیم زمان: شما میتوانید از قبل پوش نوتیفیکیشن های خود را زمانبندی کنید که در تاریخ و ساعتی مشخص ارسال شود.<p>
+                            </li>
+                            <li>
+                                <p>تاخیر در نمایش: با انتخاب گزینه تاخیر در نمایش، تا وقتیکه کاربر به سراغ گوشی خود نرفته باشد، پوش نوتیفیکیشن نمایش داده نمیشود و از این طریق برای کاربر مزاحمت ایجا د نمیشود و بعلاوه نمایش پوش نوتیفیکیشن هم جلب توجه بیشتری میکند.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        ایجاد اعلان شخصی سازی شده
+                    </h6>
+                    <p class="text-justify col-md-9">
+شما میتوانید علاوه بر اطلاعاتی که از طریق تنظیمات در پنل ما انجام میدهید، هر داده دلخواهی را که میخواهید در قالب JSON به اپلیکیشن خود منتقل کنید. به طور مثال شما میخواهید به کاربران خود سکه رایگان هدیه بدهید. میتوانید با تعریف این مقدار در اپلیکیشن خود مقدار آن را از طریق JSON به اپلیکیشن منتقل کنید. توجه کنید که حجم کل پوش نوتیفیکیشن نباید بیشتر از 4 کیلوبایت باشد. برای این کار در فیلد مربوط مقدار JSON دلخواه خود را در قالب {'key':'value'} قرار دهید.
+                    </p>
+                    <p class="col-md-9">
+                        در روش نصب کتابخانه توضیحات تکمیلی داده شده است.
+                    </p>
+                </div>
+                <hr>
+                <!-- end item-->
+                <h2 id="panel-filter" class="hidden-div"></h2>
+                <h2 class="h2size">
+                    فیلتر مخاطبان
+                    <span style="color:red">(به زودی)</span>
+                </h2>
+                <div class="row">
+                    <p class="text-justify col-md-9">
+                        شما میتوانید تعیین کنید که اعلان (پوش نوتیفیکیشن - Push Notification) شما به کدامیک از کاربران شما فرستاده شود. با این کار رضایت کاربان خود را افزایش میدهید و نرخ پاسخ کاربران به پوش نوتیفیکیشن شما افزایش میابد. ارسال یک متن برای تمامی کاربران یک روش بهینه و مناسب نیست و با دسته بندی کاربران خود میتوانید موفقیت بیشتری کسب کنید.
+                    </p>
+                    <div class="col-md-offset-2 col-md-8">
+                        <a href="{% static 'images/docs/filters.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/filters.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+ارسال به گوشی تست
+                    </h6>
+                    <div class="col-md-9">
+                        <p class="text-justify">
+                            شما میتوانید قبل از اینکه پوش نوتیفیکیشنی را برای همه کاربران خود بفرستید آن را برای گوشی خود بفرستید تا نمایش آن را ببینید. برای اینکار از لیست گوشیهای تست میتوانید یکی را انتخاب کنید. اولین گوشی که شما نرم افزار را بر روی آن نصب کرده اید به صورت پیش فرض در لیست گوشیهای تست قرار دارد. در صورت نیاز شما میتوانید گوشی تست خود را از طریق صفحه حساب کاربری حذف و اضافه کنید.
+ برای این کار ابتدا به صفحه نصبها بروید و از لیست نصبها مشخصه کاربری خود را پیدا کنید. اگر دسترسی IMEI را به هنگام نصب اضافه کرده باشید، مشخصه شما همان IMEI شما خواهد بود. در غیر این صورت میتوانید گوشی خود را با استفاده از سورت کردن ستون زمان نصب پیدا کنید. پس از آن به صفحه حساب کاربری بروید و در قسمت دستگاههای من این مشخصه را اضافه کنید. از این پس هنگام ارسال در فیلترها میتوانید دستگاه خود را فیلتر کنید تا تنها برای آن پوش نوتیفیکیشن ارسال شود.
+                        </p>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <a href="{% static 'images/docs/account.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/account.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                    <div class="col-md-offset-2 sep-top-sm col-md-8">
+                        <a href="{% static 'images/docs/filter-imei.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/filter-imei.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+ارسال بر اساس استانها
+                    </h6>
+                    <div class="col-md-9">
+                        <p class="text-justify">
+                            در صورتیکه شما دسترسی به موقعیت جغرافیایی را در نرم افزار خود داده باشید، میتوانید به کاربران خود بر اساس موقعیت استانی آنها پوش نوتیفیکیشن ارسال کنید. به طور مثال شما اپلیکیشن ایرانگردی دارید و میخواهید یک پیشنهاد سفر به کاربران خود در مشهد بدهید. با انتخاب استان خراسان رضوی تنها برای آن استان فرستاده میشود.
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+فیلتر بر اساس آخرین استفاده کاربر
+                    </h6>
+                    <div class="col-md-9">
+                        <p class="text-justify"> شما میتوانید تعیین کنید پوش نوتیفیکیشن برای کاربرانی فرستاده شود که آخرین باری که اپلیشکین شما را دیده است امروز بوده یا دو هفته پیش و از این طریق کاربرانی را که کدتی است از اپلیکیشن شما استفاده نکرده اند برای استفاده مجدد ورجوع تشویق کنید</p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+فیلتر بر اساس تعداد بازدید
+                    </h6>
+                    <div class="col-md-9">
+                        <p class="text-justify">شما میتوانید کاربران خود را بر اساس میزانی که از اپلیکیشن شما استفاده کرده است دسته بندی کنید. از این طریق میتوایند محتوای پوش نوتیفیکیشن خود را برای اینکه بازخورد بهتری داشته باشد برای گروههای مختلف کاربران خود متفاوت بفرستید. مطمئنا رفتار کاربران طرفدار اپلیکیشن شما که ده ها بار اپلیکیشن شما را باز کرده است با کاربرانی که تنها یکبار اپلیکیشن شما را باز کرده اند متفاوت است و شما میتوانید برای ترغیب آنها به استفاده از اپلیکیشن شما متن های متفاوت بفرستید</p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+ارسال به کانال دلخواه
+                    </h6>
+                    <div class="col-md-10">
+                        <p class="text-justify">
+                            شما می توانید کاربران خود را در دسته های دلخواه دسته بندی کنید و هنگام ارسال پوش نوتیفیکیشن مشخص کنید که برای کدام دسته ارسال شود. برای ایجاد این قابلیت در اپلیکیشن خود به
+                            <a href="#chanel" style="color:blue">این آموزش</a>
+                            مراجعه کنید.
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+
+            <div class="bs-docs-section">
+                <h1 id="install" class="page-header hidden-div"></h1>
+                <h1  class="page-header h1size">
+                    آموزش نصب
+                </h1>
+                <h2 id="install-android-studio" class="hidden-div"></h2>
+                <h2 class="h2size">
+Android Studio
+                </h2>
+                 <!--Video -->
+                <div class="container">
+                    <div class="col-md-8 sep-bottom-md">
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/HVuXo/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- start item-->
+                <div class="row col-md-12">
+                    <blockquote class="theme">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="border-color: transparent;">
+                                <a href="https://github.com/ronashco/pushe-android-studio-sample" target="_blank" class="icon-content inverter img-circle">
+                                <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                </a>
+                                <footer class="cite small">کد نمونه</footer>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+              </blockquote>
+                </div>
+				<div class="row">
+                    <br>
+                    <h6>
+                        تغییرات در Build.gradle
+                    </h6>
+                    <div class="col-md-6">
+                          <ol class="text-justify">
+                              <li>
+                                <p>در build.gradle مربوط به اپلیکیشن وارد شوید. مراقب باشید اشتباها به فایل gradle مربوط به پروژه وارد نشوید.</p>
+                              </li>
+                              <li>
+                                <p>کد زیر را در dependencies اضافه کنید.</p>
+                              </li>
+                              <li>در بالای صفحه سمت راست sync را بزنید تا گریدل سینک شود.</li>
+                          </ol>
+                    </div>
+                   <div class="col-md-6">
+                        <pre style="direction: ltr; text-align: left; font-family: monospace;">
+dependencies&lcub;
+compile 'co.ronash.pushe:android-lib:0.9.1'
+compile 'com.google.android.gms:play-services-gcm:7.5.0'
+&rcub;</pre>
+                    </div>
+                </div>
+                <div class="row ">
+                    <p style="color:red"><b>
+** توجه:
+                    </b></p>
+                    <p class="text-justify">
+                        در صورتی که با دانلود کتابخانه گوگل پلی سرویس با مشکل روبرو شدید، از
+                        <a style="color:blue" href="http://static.pushe.co/useful-links/google-play-services/android-studio/sdk.zip" target="_blank">
+                          این لینک
+                        </a>
+                        فایل در اختیار گذاشته شده را دانلود و اکسترکت کنید و فولدر extras به همراه زیر فولدرهای آن را در فولدر SDK خود با آدرس زیر قرار دهید. برای پیدا کردن محل دقیق فولدر SDK خود می توانید آدرس آن را از داخل فایل local.properties پیدا کنید.
+                    </p >
+                    <p style="direction:ltr " class="long_word">
+                        ...\AppData\Local\Android\sdk
+                    </p>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row ">
+                    <h6>
+                        تغییرات AndroidManifest.xml
+                    </h6>
+                    <div>
+                        <ol class="text-justify">
+                            <li>
+                                وارد پنل کاربری پوشه شوید و در قسمت اپلیکیشن ها، فایل مربوط به منیفست اپلیکیشن خود را دانلود کنید.
+                            </li>
+                            <li>
+                                فایل دانلود شده را در یک برنامه ادیتور باز کنید و محتویات آن را به AndroidManifest.xml پروژه خود اضافه کنید.
+                            </li>
+                        </ol>
+                        <p class="text-justify">
+                            برخی از دسترسی ها (Permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. در نسخه های بعدی سرویس شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید. پس اگر قصد استفاده از این قابلیت را در آینده دارید از ابتدا این دسترسی ها را قرار دهید تا در آینده نیاز به، به روز رسانی اپلیکیشن خود نداشته باشید.
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row ">
+                    <h6>
+                        تغییرات MainActivity.java
+                    </h6>
+                    <div>
+                        <ol class="text-justify">
+                            <li>
+                                در قسمت import، کد روبرو را وارد کنید.
+                                <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                            </li>
+                            <li>
+                                در onStart کد روبرو را وارد کنید.
+                        <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                            </li>
+                            <p>
+                                    اگر در تابع بالا مقدار true گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا false را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                            </p>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        تست و عیب یابی
+                    </h6>
+                    <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید، میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید. <p>
+                    <div class="col-md-6">
+                        <ol class="text-justify">
+                            <li>به صفحه نصب ها بروید.</li>
+                            <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که متعلق به گوشی شما است.</li>
+                            <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                        </ol>
+                        <div class="row ">
+                            <p style="color:red"><b>
+        ** توجه:
+                            </b></p>
+                            <p class="text-justify">
+                                توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% static 'images/docs/test.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/test.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h2 id="json" class="hidden-div"></h2>
+                    <h6>
+                        دریافت اطلاعات دلخواه JSON
+                    </h6>
+                    <div class="col-md-9">
+                    <p class="text-justify">
+                        شما میتوانید از طریق پنل برای اپلیکیشن خود اطلاعات دلخواه در قالب یک JSON ارسال کنید. برای اینکه بتوانید از این اطلاعات در اپلیکیشن خود استفاده کنید مراحل زیر را انجام دهید.
+                    </p>
+                        <ol class="text-justify">
+                            <li>
+در پروژه خود یک class جدید ایجاد کنید و برای آن یک نام انتخاب کنید. پیشنهاد ما نام MyPushListener می باشد.
+                                <br>
+                                <img src="{% static 'images/docs/create-class.jpg' %}" width="100%" class="image-responsive">
+                                <br><br>
+                                <img src="{% static 'images/docs/class-name.jpg' %}" width="100%" class="image-responsive">
+                            </li>
+                            <li>
+                                کد روبرو را در آن قرار دهید. بر روی PusheListenerServiceو JSONObject که به رنگ قرمز در آمده اند رفته و کلید Alt+Enter را بزنید.
+                               <pre style="direction: ltr; text-align: left; font-family: monospace;">
+&lt;service
+    android:name=".MyPushListener"
+    android:exported="false"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="co.ronash.pushe.RECEIVE" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;</pre>
+                            </li>
+                            <li>
+                                کد روبرو را در ManifestAndroid.xml زیر تگ &lt;application&gt; اضافه کنید.
+                            <pre style="direction: ltr; text-align: left; font-family: monospace;">
+public class MyPushListener extends PusheListenerService &lcub;
+    @Override
+    public void onMessageReceived(JSONObject message) &lcub;
+        // Your code
+    &rcub;
+&rcub;</pre>
+                            </li>
+                            <li>
+                                از این طریق JSON دریافت میشود و با قرار دادن کد خود به جای your code میتوانید از آن استفاده کنید.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <h2 id="install-eclipse" class="hidden-div"></h2>
+                <h2 class="h2size">
+Eclipse
+                </h2>
+                <!-- Video -->
+                <div class="container">
+                    <div class="col-md-8 sep-bottom-md">
+                        <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="http://www.aparat.com/video/video/embed/videohash/JpPFE/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- start item-->
+				<div class="row col-md-12">
+                    <blockquote class="theme">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="border-color: transparent;">
+                                <a href="https://github.com/ronashco/pushe-eclipse-sample" target="_blank" class="icon-content inverter img-circle">
+                                <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                </a>
+                                <footer class="cite small">کد نمونه</footer>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+              </blockquote>
+                </div>
+                <p class="text-justify">پیش از نصب کتابخانه پوشه باید اطمینان داشته باشید که ورژن Google Play Services شما کمتر از ورژن 7.5.0  نباشد. همچنین فایل android-support-v4.jar  در اپلیکیشن شما قرار داشته باشد و قدیمی نباشد. برای اطمینان از این امر موارد زیر را انجام دهید.</p>
+                <p class="text-justify" >
+                    همچنین اگر تمایل دارید
+                    <span style="color:red">حجم نهایی پوشه بر روی اپلیکیشن شما کمتر بشود، </span>
+                    به جای استفاده از کتابخانه کامل گوگل پلی سرویس، از کتابخانه ای که در زیر آمده است، استفاده نمایید.
+                </p>
+                <p p class="text-justify">
+                    <span style="color:red">توجه داشته باشید </span>
+                    اگر در اپلیکیشن خود برای استفاده دیگری از گوگل پلی سرویس استفاده می کنید، ریسورس های کتابخانه ای زیر ناقص است و برای مقاصد دیگر غیر از پوشه کارایی ندارد.
+                </p>
+                <br>
+                <div id="accordion1" class="accordion-group">
+                <!-- start accordion item-->
+                <div class="accordion-item panel">
+                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                            data-parent="#accordion1"
+                                                            href="#collapse1-1"
+                                                            class="accordion-toggle collapsed">نصب  Google Play Services<i
+                                class="accordion-icon fa fa-plus"></i></a></div>
+                    <div id="collapse1-1" class="row accordion-body panel-collapse collapse">
+                        <!-- start item-->
+                        <div class="container">
+                            <div class="col-md-8">
+                                <p  class="text=justify">برای استفاده از سرویس پوشه باید در ابتدا کتابخانه Google Play Services را به پروژه خود اضافه کنید. برای این کار طبق روند زیر پیش بروید. </p>
+                                <div>
+                                    <br>
+                                    <ol class="text-justify">
+                                        <li>
+                                            <p class="text-justify">
+                                                دو کتابخانه
+                                                <span style="font-weight:bold">google-play-services-base.jar و google-play-services-gcm.jar</span>
+                                                را
+                                        <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank" style="color:blue">از این لینک</a>
+                                        دانلود و اکسترکت کنید.
+                                             </p>
+                                        </li>
+                                        <li>
+                                            بر روی File > Import کلیک کنید،
+                                            <p style="direction:ltr">Android > Existing Android Code into Workspace</p>
+                                            را انتخاب کنید و به محل دانلود کتابخانه های بالا بروید و هر دو کتابخانه را انتخاب کنید. تیک Copy projects into workspace را بزنید و کتابخانه ها را به پروژه اضافه کنید.
+                                        </li>
+                                    </ol>
+                                </div>
+                                <hr>
+                                <!-- end item-->
+                                <!-- start item-->
+                                <div class="row">
+                                <h6>
+                                    مستثنا کردن در ProGuard
+                                </h6>
+                                <div class="col-md-10">
+                                    <p>در صورت استفاده نکردن از Android Studio، برای اینکه از دستکاری کردن کلاسهای مورد نیاز بوسیله پروگارد جلوگیری کنید، خطوط زیر را به فایل proguard-project.txt اضافه کنید.</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <pre style="direction: ltr; text-align: left; font-family: monospace;">
+            -keep class * extends java.util.ListResourceBundle {
+                protected Object[][] getContents();
+            }
+
+            -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+                public static final *** NULL;
+            }
+
+            -keepnames @com.google.android.gms.common.annotation.KeepName class *
+            -keepclassmembernames class * {
+                @com.google.android.gms.common.annotation.KeepName *;
+            }
+
+            -keepnames class * implements android.os.Parcelable {
+                public static final ** CREATOR;}</pre>
+                                 </div>
+                            </div>
+                                <!-- end item-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item panel">
+                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                            data-parent="#accordion1"
+                                                            href="#collapse1-2"
+                                                            class="accordion-toggle collapsed">به روز رسانی android-support-v4<i
+                                class="accordion-icon fa fa-plus"></i></a></div>
+                    <div id="collapse1-2" class="row accordion-body panel-collapse collapse">
+                        <div class="container">
+                            <div class="col-md-8">
+                            <p class="text-justify">
+                                یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل android-support-v4.jar می باشد. برای به روز رسانی
+                                <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank" style="color:blue">این فایل </a>
+                                را دانلود کنید و آن را جایگزین فایل android-support-v4.jar پروژه خود کنید. برای این کار به Workspace خود بروید و وارد فولدر پروژه و سپس وارد فولدر libs شوید و این فایل را جایگزین کنید و اگر این فایل از قبل موجود نیست آن را در این فولدر قرار دهید.
+                            </p>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- end accordion item-->
+                </div>
+                <h5>نصب کتابخانه پوشه</h5>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        Import کردن کتابخانه
+                    </h6>
+                        <ol class="text-justify">
+                            <li>
+                                کتابخانه پوشه مربوط به اکلیپس را
+                                <a href="http://static.pushe.co/sdk/pushe-0.9.1.zip" target="_blank" style="color:blue">از این لینک </a>
+                                دانلود و آن را اکسترکت کنید.
+                            </li>
+                            <li>
+                                در نرم افزار اکلیپس، بر روی File > Import کلیک کنید، Android > Existing Android Code into Workspace را انتخاب کنید و به محل فولدر اکسترکت شده بالا بروید و فولدر Pushe را انتخاب کنید. تیک Copy projects into workspace را بزنید. و کتابخانه پوشه را به پروژه اضافه کنید.
+                            </li>
+                            <li>
+                                پوشه و گوگل پلی را در Dependency های پروژه خود اضافه کنید. بر روی پروژه خود کلیک راست کنید و به شاخه Properties -> Android -> Library بروید و با فشردن کلید Add را زده و کتابخانه Pushe و کتابخانه های google-play-services را انتخاب کنید.
+                            </li>
+                        </ol>
+                <hr>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row ">
+                    <h6>
+                        تغییرات AndroidManifest.xml
+                    </h6>
+                    <div>
+                        <ol class="text-justify">
+                            <li>
+                                وارد پنل کاربری پوشه شوید و در قسمت اپلیکیشن ها، فایل مربوط به منیفست اپلیکیشن خود را دانلود کنید.
+                            </li>
+                            <li>
+                                فایل دانلود شده را در یک برنامه ادیتور باز کنید و محتویات آن را به AndroidManifest.xml پروژه خود اضافه کنید.
+                            </li>
+                        </ol>
+                        <p class="text-justify">
+                            برخی از دسترسی ها (Permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. در نسخه های بعدی سرویس شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید. پس اگر قصد استفاده از این قابلیت را در آینده دارید از ابتدا این دسترسی ها را قرار دهید تا در آینده نیاز به، به روز رسانی اپلیکیشن خود نداشته باشید.
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row ">
+                    <h6>
+                        تغییرات MainActivity.java
+                    </h6>
+                    <div>
+                        <ol class="text-justify">
+                            <li>
+                                در قسمت import، کد روبرو را وارد کنید.
+                                <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                            </li>
+                            <li>
+                                در onStart کد روبرو را وارد کنید.
+                        <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                            </li>
+                            <p>
+                                    اگر در تابع بالا مقدار true گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا false را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                            </p>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        تست و عیب یابی
+                    </h6>
+                    <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید، میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید. <p>
+                    <div class="col-md-6">
+                        <ol class="text-justify">
+                            <li>به صفحه نصب ها بروید.</li>
+                            <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که متعلق به گوشی شما است.</li>
+                            <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                        </ol>
+                        <div class="row ">
+                            <p style="color:red"><b>
+        ** توجه:
+                            </b></p>
+                            <p class="text-justify">
+                                توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                       <a href="{% static 'images/docs/test.jpg' %}" target="_blank" style="cursor:zoom-in"> <img src="{% static 'images/docs/test.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <h2 id="install-unity" class="hidden-div"></h2>
+                <h2 class="h2size">
+Unity
+                </h2>
+                <div class="row col-md-12">
+                    <blockquote class="theme">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="border-color: transparent;">
+                                <a href="https://github.com/ronashco/pushe-unity-sample" target="_blank" class="icon-content inverter img-circle">
+                                <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                </a>
+                                <footer class="cite small">کد نمونه</footer>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </blockquote>
+                </div>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        Import کردن کتابخانه
+                    </h6>
+                        <ol class="text-justify">
+                            <li>
+فایل Pushe.unitypackage را
+                                <a href="http://static.pushe.co/sdk/pushe-0.9.1.unitypackage" target="_blank" style="color:blue">از این لینک </a>
+دانلود کنید.
+                            </li>
+                            <li>
+                                در پروژه یونیتی خود بر روی فولدر Assets کلیک راست کنید و از Import Package ، بر روی Custom Package کلیک کنید و فایل پکیج دانلود شده بالا را آدرس دهی کنید.
+                            </li>
+                            <li>
+                               از مسیر Assets/Source ، پریفب PusheGameObject را درگ کرده و در پنجره ی Hierarchy رها کنید.
+                            </li>
+                        </ol>
+                <hr>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        تنظیمات پروژه
+                    </h6>
+                        <ol class="text-justify">
+                            <li>
+                                از منوی File گزینه ی Build Settings را فشار دهید
+                            </li>
+                            <li>
+                       در بین پلتفرم ها Android را انتخاب کنید و دکمه ی Player Setting را بزنید
+                            </li>
+                            <li>
+                                در قسمت other settings ، مقدار Minimum API Level را بر روی 16 تنظیم کنید
+                            </li>
+                            <li>
+در قسمت Bundle Identifier از همین پنجره، نام اپلیکیشن خود را انتخاب کنید
+                            </li>
+                        </ol>
+                <hr>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        تغییرات منیفست
+                    </h6>
+                        <ol class="text-justify">
+                            <li>
+                                وارد
+                                <a href="http://pushe.co/panel/platform/application/add/" target="_blank" style="color:blue">پنل پوشه</a>
+                              بشوید و اپلیکیشن خود را با همان نام درج شده در Bundle Identifier وارد کنید.
+                            </li>
+                            <li>
+                                فایل منیفست در اختیار گذاشته شده را دانلود کنید
+                            </li>
+                            <li>
+                                فایل Manifest در اختیار گذاشته شده را دانلود کرده و محتوای آن را در منیفست خود در مسیر Assets/Plugins/Android ادغام نمایید.
+                            <div class="row ">
+                            <p style="color:red"><b>
+        ** توجه:
+                            </b></p>
+                            <p class="text-justify">
+                                اگر فایل AndroidManifest.xml در این مسیر موجود نیست، ابتدا این فایل را از مسیر
+C:\Program Files\Unity\Editor\Data\PlaybackEngines\androidplayer\apk
+کپی کرده و در مسیر Assets/Plugins/Android در پروژه ی خود Paste نمایید.
+                            </p>
+                        </div>
+                            </li>
+                        </ol>
+
+                        <p class="text-justify">
+                            برخی از دسترسی ها (Permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. در نسخه های بعدی سرویس شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید. پس اگر قصد استفاده از این قابلیت را در آینده دارید از ابتدا این دسترسی ها را قرار دهید تا در آینده نیاز به، به روز رسانی اپلیکیشن خود نداشته باشید.
+                        </p>
+                <hr>
+                </div>
+                <!-- end item-->
+                <p class="text-justify">
+                  پروژه شما آماده است و می توانید گوشی خود را به کامپیوتر وصل کنید از منوی File گزینه Build & Run را انتخاب کنید و پروژه را بر روی گوشی خود تست کنید.
+                </p>
+                <hr>
+                <div class="row">
+                    <h6>
+                        تست و عیب یابی
+                    </h6>
+                    <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید، میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید. <p>
+                    <div class="col-md-6">
+                        <ol class="text-justify">
+                            <li>به صفحه نصب ها بروید.</li>
+                            <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که متعلق به گوشی شما است.</li>
+                            <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                        </ol>
+                        <div class="row ">
+                            <p style="color:red"><b>
+        ** توجه:
+                            </b></p>
+                            <p class="text-justify">
+                                توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                       <a href="{% static 'images/docs/test.jpg' %}" target="_blank" style="cursor:zoom-in"> <img src="{% static 'images/docs/test.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <hr>
+                <!-- end item-->
+                <h2 id="install-b4a" class="hidden-div"></h2>
+                <h2 class="h2size">
+Basic4Android
+                </h2>
+                <div class="row col-md-12">
+                    <blockquote class="theme">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="border-color: transparent;">
+                                <a href="https://github.com/ronashco/pushe-b4a-sample" target="_blank" class="icon-content inverter img-circle">
+                                <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                </a>
+                                <footer class="cite small">کد نمونه</footer>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </blockquote>
+                </div>
+                <p class="text-justify">پیش از نصب کتابخانه پوشه باید اطمینان داشته باشید که ورژن Google Play Services شما کمتر از ورژن 7.5.0  نباشد. همچنین فایل android-support-v4.jar  در اپلیکیشن شما قرار داشته باشد و قدیمی نباشد. برای اطمینان از این امر موارد زیر را انجام دهید.</p>
+                <p class="text-justify" >
+                    همچنین اگر تمایل دارید
+                    <span style="color:red">حجم نهایی پوشه بر روی اپلیکیشن شما کمتر بشود، </span>
+                    به جای استفاده از کتابخانه کامل گوگل پلی سرویس، از کتابخانه ای که در زیر آمده است، استفاده نمایید.
+                </p>
+                <p p class="text-justify">
+                    <span style="color:red">توجه داشته باشید </span>
+                    اگر در اپلیکیشن خود برای استفاده دیگری از گوگل پلی سرویس استفاده می کنید، ریسورس های کتابخانه ای زیر ناقص است و برای مقاصد دیگر غیر از پوشه کارایی ندارد.
+                </p>
+                <br>
+                <div id="accordion2" class="accordion-group">
+                <!-- start accordion item-->
+                <div class="accordion-item panel">
+                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                            data-parent="#accordion2"
+                                                            href="#collapse2-1"
+                                                            class="accordion-toggle collapsed">نصب  Google Play Services<i
+                                class="accordion-icon fa fa-plus"></i></a></div>
+                    <div id="collapse2-1" class="row accordion-body panel-collapse collapse">
+                        <!-- start item-->
+                        <div class="container">
+                            <div class="col-md-8">
+                                <p  class="text=justify">
+                                    برای استفاده از سرویس پوشه باید در ابتدا کتابخانه های مورد نیاز Google Play Services را به پروژه خود اضافه کنید. برای این کار طبق روند زیر پیش بروید.
+                                </p>
+                                <div>
+                                    <br>
+                                    <ol class="text-justify">
+                                        <li>
+                                            <p class="text-justify">
+                                                دو کتابخانه
+                                                <span style="font-weight:bold">google-play-services-base.jar و google-play-services-gcm.jar</span>
+                                                را
+                                        <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank" style="color:blue">از این لینک</a>
+                                        دانلود و اکسترکت کنید.
+                                             </p>
+                                        </li>
+                                        <li>
+                                            فایلهای google-play-services-base.jar و google-play-services-gcm.jar را از داخل فولدر اکسترکت شده در فولدر Additional Libraries نرم افزار B4A کپی کنید. (معمولا این فولدر در آدرس: C:\Program Files\Anywhere Software\Basic4android\Libraries قرار دارد)
+                                        </li>
+                                    </ol>
+                                </div>
+                                <hr>
+                                <!-- end item-->
+                                <!-- start item-->
+                                <div class="row">
+                                <h6>
+                                    مستثنا کردن در ProGuard
+                                </h6>
+                                <div class="col-md-10">
+                                    <p>در صورت استفاده نکردن از Android Studio، برای اینکه از دستکاری کردن کلاسهای مورد نیاز بوسیله پروگارد جلوگیری کنید، خطوط زیر را به فایل proguard-project.txt اضافه کنید.</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <pre style="direction: ltr; text-align: left; font-family: monospace;">
+            -keep class * extends java.util.ListResourceBundle {
+                protected Object[][] getContents();
+            }
+
+            -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+                public static final *** NULL;
+            }
+
+            -keepnames @com.google.android.gms.common.annotation.KeepName class *
+            -keepclassmembernames class * {
+                @com.google.android.gms.common.annotation.KeepName *;
+            }
+
+            -keepnames class * implements android.os.Parcelable {
+                public static final ** CREATOR;}</pre>
+                                 </div>
+                            </div>
+                                <!-- end item-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item panel">
+                    <div class="accordion-heading upper"><a data-toggle="collapse"
+                                                            data-parent="#accordion2"
+                                                            href="#collapse2-2"
+                                                            class="accordion-toggle collapsed">قرار دادن android-support-v4.jar<i
+                                class="accordion-icon fa fa-plus"></i></a></div>
+                    <div id="collapse2-2" class="row accordion-body panel-collapse collapse">
+                        <div class="container">
+                            <div class="col-md-8">
+                            <p class="text-justify">
+                                یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل android-support-v4.jar می باشد. برای استفاده از آن مراحل زیر را انجام دهید.
+                            </p>
+                            <ol>
+                                <li>
+                                    فایل کتابخانه android-support-v4.jar را
+                                    <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank" style="color:blue">از این لینک</a>
+دانلود کنید.
+                                </li>
+                                <li>
+                                     فایل دانلود شده را در فولدر Additional Libraries نرم افزار B4A کپی کنید. (معمولا این فولدر در آدرس: C:\Program Files\Anywhere Software\Basic4android\Libraries قرار دارد)
+                                </li>
+                            </ol>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- end accordion item-->
+                </div>
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        افزودن کتابخانه پوشه
+                    </h6>
+                    <ol>
+                        <li>
+                            کتابخانه پوشه و ملزومات B4A را
+                            <a href="https://static.pushe.co/sdk/pushe-0.9.1-b4a.zip" target="_blank" style="color:blue">از این لینک </a>
+                            دانلود کنید و پس از اکسترکت کردن، فایل pushe.jar را در فولدر Additional Libraries قرار دهید.
+                        </li>
+                        <li>
+                            فایل
+                            <b>PushePlugin.jar</b>
+و منیفست مربوط به آن
+                            <b>PushePlugin.xml</b>
+را از فولدر اکسترکت شده کپی کنید و در فولدر Additional Libraries قرار دهید.
+                        </li>
+                        <li>
+                            در نرم افزار B4A در پنجره Libraries کلیک راست کنید و صفحه را Refresh کنید. و کتابخانه PushePlugin را انتخاب کنید.
+                        </li>
+                        <li>
+                            در کلاس Main در قسمت Sub Globals کد زیر را قرار هید:
+                            <pre style="direction: ltr; text-align: left; font-family: monospace;">Dim p As Pushe</pre>
+                        </li>
+                        <li>
+                            در کلاس Main در قسمت Activity Create کد زیر را وارد کنید:
+                            <pre style="direction: ltr; text-align: left; font-family: monospace;">p.initialize(True)</pre>
+                        </li>
+                            <p>
+                                    اگر در تابع بالا مقدار true گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا false را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                            </p>
+                    </ol>
+                <hr>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                       اضافه کردن Resource ها
+                    </h6>
+                    <p class="text-justify">
+                         برای افزودن فایلهای Resourse کتابخانه پوشه و کتابخانه گوگل پلی سرویس، کدهای زیر را در کلاس Main پروژه خود و در بخش Project Attributes وارد نمایید:
+                    </p>
+                    <pre style="direction: ltr; text-align: left; font-family: monospace;">
+#AdditionalRes: &lt; google play service-base library res folder path &gt; , com.google.android.gms
+#AdditionalRes: &lt; google play service-gcm library res folder path &gt; , com.google.android.gms
+#AdditionalRes: &lt; library res folder path &gt;, co.ronash.pushe
+                    </pre>
+                    <p class="text-justify">
+                        به جای &lt; play service library res folder path &gt; آدرس فولدر res داخل فولدر اکسترکت شده Google-Play-Services را آدرس دهی کنید. به جای &lt; library res folder path& &gt; آدرس فولدر res داخل فولدر اکسترکت شده کتابخانه پوشه را آدرس دهی کنید.
+                    </p>
+                    <p class="text-justify">
+                        به طور مثال اگر دو فولدر اکسترکت شده را در دسکتاپ قرار داده باشید با توجه به آدرس دسکتاپ از آدرس دهی زیر استفاده کنید:
+                    </p>
+                    <pre style="direction: ltr; text-align: left; font-family: monospace;">
+#AdditionalRes: C:\Users\Your-UserName\DesktopGoogle play service-low size\google-play-services-base-7.5.0\res , com.google.android.gms
+#AdditionalRes: C:\Users\Your-UserName\Desktop\Google play service-low size\google-play-services-gcm-7.5.0\res , com.google.android.gms
+#AdditionalRes: C:\Users\Your-UserName\Desktop\pushe-0.9.1\res , co.ronash.pushe
+                    </pre>
+                <hr>
+                </div>
+                <!-- end item-->
+
+                <!-- start item-->
+                <div class="row">
+                    <h6>
+                        تغییرات در AndroidManifest.xml
+                    </h6>
+                    <ol class="text-justify">
+                        <li>
+                            وارد پنل پوشه شوید و اپلیکیشن خود ثبت کنید. توجه داشته باشید که از همان Package Name استفاده کنید که در Build Configuration خود ثبت کرده اید.
+                        </li>
+                        <li>
+                           فایل منیفست مربوط به B4A را دانلود کنید. منیفست پروژه را از طریق Project>Manifest Editor در نرم افزار B4A باز کنید و محتویات داخل فایل را در آن جایگذاری کنید.
+                        </li>
+                    </ol>
+
+                        <p class="text-justify">
+                            برخی از دسترسی ها (Permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. در نسخه های بعدی سرویس شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید. پس اگر قصد استفاده از این قابلیت را در آینده دارید از ابتدا این دسترسی ها را قرار دهید تا در آینده نیاز به، به روز رسانی اپلیکیشن خود نداشته باشید.
+                        </p>
+                <hr>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <p class="text-justify">
+                  پروژه شما آماده است و می توانید گوشی خود را به کامپیوتر وصل کنید از منوی File گزینه Build & Run را انتخاب کنید و پروژه را بر روی گوشی خود تست کنید.
+                </p>
+                <hr>
+                <div class="row">
+                    <h6>
+                        تست و عیب یابی
+                    </h6>
+                    <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید، میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید. <p>
+                    <div class="col-md-6">
+                        <ol class="text-justify">
+                            <li>به صفحه نصب ها بروید.</li>
+                            <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که متعلق به گوشی شما است.</li>
+                            <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                        </ol>
+                        <div class="row ">
+                            <p style="color:red"><b>
+        ** توجه:
+                            </b></p>
+                            <p class="text-justify ">
+                                توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% static 'images/docs/test.jpg' %}" target="_blank" style="cursor:zoom-in"><img src="{% static 'images/docs/test.jpg' %}" width="100%" class="image-responsive"></a>
+                    </div>
+                </div>
+                <!-- end item-->
+                <!-- start item-->
+                <!--<hr>-->
+                <!--<div class="row">-->
+                    <!--<h6>-->
+                        <!--دریافت اطلاعات دلخواه JSON-->
+                    <!--</h6>-->
+                    <!--<p class="text-justify col-md-9">-->
+                    <!--شما میتوانید از طریق پنل برای اپلیکیشن خود اطلاعات دلخواه در قالب یک JSON ارسال کنید. برای اینکه بتوانید از این اطلاعات در اپلیکیشن خود استفاده کنید مراحل زیر را انجام دهید.-->
+                    <!--<p>-->
+                    <!--<div class="col-md-9">-->
+                        <!--<ol class="text-justify">-->
+                            <!--<li>-->
+                                <!--برای دریافت JSON شما باید یک receiver به پروژه خود اضافه کنید. برای این کار-->
+                                <!--<a href="http://static.pushe.co/useful-links/b4a/MessageReceived.bas" target="_blank" style="color:blue">این ماژول</a>-->
+                                <!--را دانلود کنید.-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--از مسیر project>add existing module در نرم افزار b4a، ماژول دانلود شده بالا را انتخاب کنید.-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--در کلاس Main در قسمت Sub Globals کد زیر که مربوط به دریافت پوش نوتیفیکیشن معمولی است را پاک کنید:-->
+                                <!--<pre style="direction: ltr; text-align: left; font-family: monospace;">Dim p As PusheLib</pre>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--در کلاس Main در قسمت Activity Create کد زیر که مربوط به دریافت پوش نوتیفیکیشن معمولی است را پاک کنید:-->
+                                <!--<pre style="direction: ltr; text-align: left; font-family: monospace;">p.initialize()</pre>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                               <!--در کلاس Main در قسمت Activity Create کد زیر را وارد کنید:-->
+                                <!--<pre style="direction: ltr; text-align: left; font-family: monospace;">StartService(MessageReceived)</pre>-->
+                            <!--</li>-->
+                            <!--<li>-->
+<!--از این طریق JSON دریافت میشود و با قرار دادن کد خود به جای your code میتوانید از آن استفاده کنید.-->
+                            <!--</li>-->
+                        <!--</ol>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!-- end item-->
+                <!--<hr>-->
+                <!--<div class="row">-->
+                    <!--<h2 id="customize" class="hidden-div"></h2>-->
+                    <!--<h2 class="h2size">-->
+                        <!--شخصی سازی-->
+                    <!--</h2>-->
+<!-- 					<div class="row col-md-12">
+                    <blockquote class="theme">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td style="border-color: transparent;">
+                                <a href="https://play.google.com/store/apps/details?id=co.ronash.pushesample" target="_blank">
+                                  <img alt="Get it on Google Play"
+                                       src="../static/images/googleplay-logo.png" />
+                                </a>
+                                <footer class="cite small">اپلیکیشن دمو</footer>
+                            </td>
+                            <td style="border-color: transparent;">
+                                <a href="https://github.com/ronashco" target="_blank" class="icon-content inverter img-circle">
+                                <i class="fa fa-github-square fa-4x" style="color: black"></i>
+                                </a>
+                                <footer class="cite small">کد نمونه</footer>
+                            </td>
+                            <td style="border-color: transparent;">
+                                 <a href="{% url 'admin:login' %}" type="button" class="btn btn-light btn-sm">ورود به پنل</a>
+                                 <p class="rtl"><b>نام کاربری: demo</b></p>
+                                 <p class="rtl"><b>کلمه عبور: 1234</b></p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+					</blockquote>
+					</div> -->
+                <!--<h2 id="chanel" class="hidden-div"></h2>-->
+                    <!--<h6>-->
+<!--ارسال به کانال دلخواه-->
+                    <!--</h6>-->
+                <!--&lt;!&ndash; start item&ndash;&gt;-->
+                <!--<div class="row">-->
+
+                    <!--<div class="col-md-10">-->
+                        <!--<p class="text-justify">-->
+                            <!--شما میتوانید در اپلیکیشن خود با فرا خواندن تابع-->
+                        <!--<span style="direction:ltr">pushe.subscribe(this,your-channel-name)</span>-->
+                            <!--یک کانال دلخواه بسازید. و از آن به بعد به این کانال تعریف شده پوش نوتیفیکیشن بفرستید. به طور مثال شما یک نرم افزار خبری دارید و در نرم افزار خود از کاربر خود میپرسید که به چه نوع اخباری علاقمند است؟ اخبار ورزشی یا سیاسی و یا … و هر کدام را که او انتخاب کرد او را در آن کانال ثبت نام میکنید و از آن پس میتوانید پوش نوتیفیکیشن ورزشی خود را تنها به کاربران کانال ورزشی ارسال کنید. با استفاده از فراخوانی تابع-->
+                        <!--<span style="direction:ltr">pushe.unsubscribe(this,your-channel-name)</span>-->
+                            <!--می توانید کاربران را از کانال دلخواه عضو شده، خارج کنید.-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<hr>-->
+                <!--&lt;!&ndash; end item&ndash;&gt;-->
+                <!--</div>-->
+
+            </div>
+
+         </div>
+    </div>
+    </div>
+</div>
+</section>
+{% endblock %}
