@@ -1,98 +1,100 @@
-<div>
-    <div class="box-body b-t">
-        <button type="button" ng-click="appsTableCtrl.startNewApplication()" class="btn btn-sm btn-info">
-            <i class="fa fa-plus">
-            </i> {{'ADD_NEW_APP' | translate}}
-        </button>
+<simple-modal mcontrol="appsTableCtrl.manifestDialog" mid="manifestDialog" mtitle="{{'DOWNLOAD_MANIFEST' | translate}}" mclass="modal-sm">
+    <div ng-repeat="provider in appsTableCtrl.providers" class="radio ltr">
+        <label mdl-upgrade for="provradio{{$index}}" class="mdl-radio mdl-js-radio">
+            <input type="radio" class="mdl-radio__button" id="provradio{{$index}}" ng-model="appsTableCtrl.selectedProvider" name="optionsRadios" value="{{provider.value}}">
+            {{provider.name}}
+        </label>
     </div>
+    <button class="btn btn-primary"
+            ng-click="appsTableCtrl.downloadManifest()"
+            ng-disabled="!appsTableCtrl.selectedRow.senderID || !appsTableCtrl.selectedProvider" >
+        {{'DOWNLOAD_MANIFEST'|translate}}
+    </button>
+</simple-modal>
+
+<simple-modal mcontrol="appsTableCtrl.confirmRemoveDialog" mid="confirmDialog" mtitle="{{'YOU_SURE_TITLE' | translate}}" mclass="modal-sm">
+    <div class="text-center p-lg">
+        <p>{{'ARE_YOU_SURE_TEXT' | translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">{{'NO'|translate}}</button>
+        <button type="button" class="btn danger p-x-md" data-dismiss="modal" ng-click="appsTableCtrl.sendRemoveApplication()">{{'YES'|translate}}</button>
+    </div>
+</simple-modal>
+
+<div>
     <div class="box">
-        <table st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped">
+        <table ng-show="appsTableCtrl.displayed && appsTableCtrl.displayed.length" st-table="appsTableCtrl.displayed" st-pipe="appsTableCtrl.callServer" class="table table-striped text-center">
             <thead>
             <tr>
-                <th st-sort="application_id">{{'PACKNAME' | translate}}</th>
-                <th st-sort="provider">{{'PROVIDER' | translate}}</th>
-                <th width="160"></th>
+                <th  class="text-center" st-sort="application_id">{{'PACKNAME' | translate}}</th>
+                <th  class="text-center" st-sort="creation_datetime">{{'CREATION_TIME' | translate}}</th>
+                <th  class="text-center" st-sort="active_users">{{'ACTIVE_USER_COUNT' | translate}}</th>
+                <th  class="text-center">{{'DOWNLOAD_MANIFEST' | translate}}</th>
+                <th  class="text-center">{{'REMOVE' | translate}}</th>
             </tr>
             <tr>
-                <th colspan="4"><input st-search="''" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
+                <th colspan="5"><input st-search="'application_id'" class="form-control" placeholder="{{'GLOBAL_SEARCH_PLACEHOLDER' | translate}}..." type="text"/></th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-if="appsTableCtrl.addMode">
-                <td>
-                    <div class="md-form-group float-label">
-                        <input class="md-input" ng-model="appsTableCtrl.newApp.application_id" focus-me="appsTableCtrl.addFocusStart">
-                        <label>{{'PACKNAME' | translate}}</label>
-                    </div>
-                </td>
-                <td>
-                    <div class="md-form-group float-label">
-                        <ui-select ng-model="appsTableCtrl.newApp.provider">
-                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                                <span ng-bind="appsTableCtrl.newApp.provider.name"></span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
-                                <span ng-bind="item.name"></span>
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" ng-click="appsTableCtrl.addMode=false" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
-                    <button type="button" ng-click="appsTableCtrl.addNewApplication(appsTableCtrl.newApp)" class="btn btn-sm btn-success">{{'OK' | translate}}</button>
-                </td>
-            </tr>
-            <tr ng-repeat="row in appsTableCtrl.displayed">
+            <tr ng-repeat="row in appsTableCtrl.displayed" >
                 <td>
                     <div>
                         {{row.application_id}}
                     </div>
-                    <div uib-collapse="!row.showDetail">
-                        <label>sender ID: </label>{{row.senderID}}
+                    <small ng-if="row.provider && row.provider!=='none'">{{'PROVIDER' | translate}} : {{row.provider}}</small>
+                </td>
+                <td>
+                    <div class="">
+                        {{row.creation_datetime|jalali}}
                     </div>
                 </td>
                 <td>
-                    <div class="" ng-if="row.isEditing">
-                        <ui-select ng-model="row.provider">
-                            <ui-select-match placeholder="{{'PROVIDER' | translate}}">
-                                <span ng-bind="row.provider.name"></span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="item in (appsTableCtrl.providerList | filter: $select.search)">
-                                <span ng-bind="item.name"></span>
-                            </ui-select-choices>
-                        </ui-select>
+                    <div >
+                        {{row.active_users}}
                     </div>
-                    <div class="" ng-if="!row.isEditing">
-                        {{row.provider}}
+                    <div ng-if="!row.active_users">
+                        <a class="text-primary" ui-sref="users.documentation" href="#/documentation">{{'LEARN_INSTALL' | translate}}</a>
                     </div>
                 </td>
                 <td>
-                    <div ng-if="!row.isEditing">
-                        <button type="button" ng-click="appsTableCtrl.showDetail(row)" class="btn btn-sm white">
-                            <i class="fa fa-ellipsis-v"></i>
-                        </button>
-                        <button type="button" ng-click="appsTableCtrl.startEdit(row)" class="btn btn-sm white">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                    <div ng-if="row.isEditing">
-                        <button type="button" ng-click="appsTableCtrl.cancelEdit(row)" class="btn btn-sm btn-secondary">{{'CANCEL' | translate}}</button>
-                        <button type="button" ng-click="appsTableCtrl.commitEdit(row)" class="btn btn-sm btn-secondary">{{'OK' | translate}}</button>
-                    </div>
+                    <button type="button" ng-click="appsTableCtrl.showManifestDialog(row)" class="btn btn-sm white">
+                        <i class="fa fa-download"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" ng-click="appsTableCtrl.removeApplication(row)" class="btn btn-sm white">
+                        <i class="fa fa-trash"></i>
+                    </button>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
                 <td colspan="7" class="text-center">
-                    <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
+                    <div st-pagination="" st-items-by-page="appsTableCtrl.rowInPage" st-displayed-pages="appsTableCtrl.displayedPage" class="m-a-0 ng-isolate-scope">
                     </div>
                 </td>
             </tr>
             </tfoot>
         </table>
+        <div class="col-md-6 col-md-offset-3">
+        <div class="box" ng-if="appsTableCtrl.displayed && !appsTableCtrl.displayed.length">
+            <div class="box-header warn text-center p-a">
+                شما تاکنون اپلیکیشنی در پوشه ایجاد نکرده اید.
+                <br>
+                 برای شروع روی دکمه ایجاد اپلیکیشن کلیک کنید.
+            </div>
+            <div class="box-body dker">
+                <div class="text-center">
+                    <button class="btn btn-fw info" ng-click="startApplicationWizard()">
+                        ایجاد اپلیکیشن
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+        </div>
+    <div class="col-md-3"></div>
 </div>

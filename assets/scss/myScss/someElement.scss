@@ -1,17 +1,70 @@
 @import "elements/imageUpload";
+@import "elements/progress-wizard";
 @import "elements/table";
-@import "elements/wizard";
 @import "elements/table";
 @import "elements/pace";
 
 
 .ace_editor { height: 200px; }
 
-
-.publicError{
+.publicErrors{
   z-index: 10000;
-  position: absolute;
-  min-width: 50%;
+  position: fixed;
+  top:10px;
+  width:100%;
+  .errorList{
+    position: static;
+    .publicError{
+      margin: 2px auto;
+      width:50%;
+    }
+  }
+}
+
+
+.scrollabeTable{
+  position:relative;
+  .searchToggle{
+    position:absolute;
+    left:5px;
+    top:5px;
+  }
+  table{
+    overflow:auto;
+    .table-bordered, thead>tr>th {
+      border-color: rgba(120,130,140,.045);
+    }
+    thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #eceeef;
+    }
+    thead th {
+      position: relative;
+      vertical-align: bottom;
+      text-align: center;
+      text-overflow: ellipsis;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0;
+      height: 48px;
+      font-size: 12px;
+      color: rgba(0,0,0,.54);
+      padding-bottom: 8px;
+      box-sizing: border-box;
+    }
+    td, th{
+      padding: .75rem;
+      line-height: 1.5;
+      vertical-align: top;
+      border-top: 1px solid #eceeef;
+    }
+  }
+  .loadingTable{
+    width:100%;
+    position: absolute;
+    margin:10px;
+  }
+  //height:500px;
 }
 
 .errorShow{
@@ -25,7 +78,7 @@
 no-captcha>div>div{
   margin:auto;
 }
-@media (min-width: 992px) {
+@media (min-width: 543px) {
   .hasCaptcha{
     width:345px;
   }

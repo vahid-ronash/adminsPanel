@@ -6,24 +6,54 @@
     'use strict';
     angular
         .module('app')
-        .config(function($provide,EnvironmentConfig) {
+        .config(['$provide','EnvironmentConfig',function($provide,EnvironmentConfig) {
             if(EnvironmentConfig.mode==="production")return true;
             $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
-        })
-        .run(function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
+        }])
+        .run(["$httpBackend","$filter","$rootScope","EnvironmentConfig","URLS",function($httpBackend,$filter,$rootScope,EnvironmentConfig,URLS) {
             if(EnvironmentConfig.mode==="production")return true;
             
             $rootScope.serverAddress="";
             var appList = [
-                {id:1,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:1,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
-                {id:2,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
-                {id:3,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
-                {id:4,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
-                {id:5,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
+                {id:1,active_users:15,provider:'Puzzely',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:2,active_users:0,provider:'JOAPP',name: 'Pushe Sample Eclipse', application_id:'co.ronash.pushesampleeclipse'},
+                {id:3,active_users:1321,provider:'JOAPP',name: 'Pushe Sample Android Studio', application_id:'co.ronash.pushesampleas'},
+                {id:4,active_users:51,provider:'',name: 'Pushe Sample Unity', application_id:'co.ronash.pushesampleunity'},
+                {id:5,active_users:91,provider:'JOAPP',name: 'Pushe Sample B4A', application_id:'co.ronash.pushesampleb4a'},
+                {id:6,active_users:101,provider:'',name: 'دموی پوشه', application_id:'co.ronash.pushesample'}
             ];
-            $httpBackend.whenGET(/api\/platform\/applications\/\d\//).respond({credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',results:appList});
-            $httpBackend.whenGET(/api\/platform\/applications\/\?.*/).respond({count:appList.length,results:appList});
+            for(var i in appList){
+                appList[i].creation_datetime=getRandomTime();
+            }
+            $httpBackend.whenGET(/api\/v1\/applications\/\?.*/).respond(function(method, url, keys,headers,param){
+                var searchFilters=JSON.parse(JSON.stringify(param));
+                searchFilters.ordering && delete searchFilters.ordering;
+                searchFilters.offset && delete searchFilters.offset;
+                searchFilters.limit && delete searchFilters.limit;
+                var filtered = param ? $filter('filter')(appList, searchFilters) : appList;
+
+                if (param.ordering) {
+                    var order = param.ordering;
+                    var isReverse = (order[0] === "-");
+                    if (isReverse) order = order.substr(1);
+                    filtered = $filter('orderBy')(filtered, order, isReverse);
+                }
+                var result = filtered.slice(parseInt(param.offset), parseInt(param.offset)+ parseInt(param.limit));
+
+                var resultobj={
+                    results: result,
+                    numberOfPages: Math.ceil(filtered.length / param.limit)
+                };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
+                return [200, resultobj, {}];
+            });
+            $httpBackend.whenGET(/api\/v1\/applications\/.*\/$/).respond(
+                {
+                    credentials:'{"node":"asdvsadfv","gcm":"asdvsadfv"}',
+                    results:appList
+                }
+            );
             $httpBackend.whenGET(URLS.URL_APP).respond({count:appList.length,results:appList});
             $httpBackend.whenPUT(URLS.URL_APP).respond({success:true});
             //mock has problem with /userApp/:id expression so we just can delete id=1
@@ -92,27 +122,50 @@
             $httpBackend.whenPOST(URLS.URL_UPLOAD_IMAGE).respond(function(method, url, data){
                 return [200, {success:true}, {}];
             });
-            var randomsItems = [];
+
+            function getRandomTime(){
+                var d=new Date();
+                d.setHours(Math.floor(Math.random() * -20000));
+                return d.toJSON();
+            }
+
+            var randomsInstallationItems = [];
             function createRandomItem(id) {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
+                var mobileModels = ['Sumsong', 'LG', 'i phone', 'motorola', 'nokia'];
                 return {
                     id: id,
-                    application_id: apps[Math.floor(Math.random() * apps.length)],
+                    application: Math.floor(Math.random() * apps.length),
                     instance_id: Math.floor(Math.random() * 10000000),
-                    creation_time: Math.floor(Math.random() * 10000),
-                    last_visit: Math.floor(Math.random() * 10000),
-                    test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/'
+                    creation_time: getRandomTime(),
+                    test:'/platform/notify/'+Math.floor(Math.random() * 1000000)+'/',
+                    imei: Math.floor(Math.random() * 621616132155),
+                    smart_device:mobileModels[Math.floor(Math.random() * 5)]+" "+Math.floor(Math.random() * 9000+1000)
                 };
             }
-            for (var i = 0; i < 1000; i++) {
-                randomsItems.push(createRandomItem(i));
+            for (i = 0; i < 1000; i++) {
+                randomsInstallationItems.push(createRandomItem(i));
             }
-            $httpBackend.whenGET(/api\/platform\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+            function filterData(param,data){
                 var searchFilters=JSON.parse(JSON.stringify(param));
                 searchFilters.ordering && delete searchFilters.ordering;
                 searchFilters.offset && delete searchFilters.offset;
                 searchFilters.limit && delete searchFilters.limit;
-                var filtered = param ? $filter('filter')(randomsItems, searchFilters) : randomsItems;
+                for(var i in searchFilters){
+                    if(i.indexOf('__lte')){
+                        var field=i.substr(i.indexOf('__lte'));
+                        data=data.filter(function(row){
+                            return row[field]<=searchFilters[i];
+                        });
+                    }
+                    if(i.indexOf('__gte')){
+                        var field=i.substr(i.indexOf('__gte'));
+                        data=data.filter(function(row){
+                            return row[field]>=searchFilters[i];
+                        });
+                    }
+                }
+                var filtered = param ? $filter('filter')(data, searchFilters) : data;
 
                 if (param.ordering) {
                     var order = param.ordering;
@@ -126,8 +179,37 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
+                return resultobj;
+            }
+            $httpBackend.whenGET(/api\/v1\/installations\/\?.*/).respond(function(method, url, keys,headers,param){
+                var resultobj=filterData(param,randomsInstallationItems);
+                return [200, resultobj, {}];
+                // return [504, "<html><body>its an error i mocked to show here</body></html>"];
+            });
+            var imeiList=[];
+            var imeiHash={};
+            for(var c =Math.floor(Math.random()*4);c<100 ;c+=Math.floor(Math.random()*10+1)){
+                imeiList.push({imei:randomsInstallationItems[c].imei,name:randomNameBuilder(2)});
+                imeiHash[randomsInstallationItems[c].imei]=1;
+            }
+            $httpBackend.whenPOST(/api\/v1\/installations\/\d+\/send_test_notification\//).respond(function(method, url, keys,headers,param){
+                var params=JSON.parse(JSON.stringify(param));
+                params.id=25615;
+                return {data:params};
+            });
+            $httpBackend.whenGET(URLS.URL_IMEI).respond({results:imeiList});
+            $httpBackend.whenGET(/api\/v1\/installations\/favorites\/\?.*/).respond(function(method, url, keys,headers,param){
+                var rn=randomsInstallationItems.filter(function(installation){
+                    if(imeiHash[installation.imei])return true;
+                    else return false;
+                });
+                var resultobj=filterData(param,rn);
                 return [200, resultobj, {}];
             });
+            $httpBackend.whenDELETE(/api\/v1\/favorites\/\.*\//).respond(true);
+            $httpBackend.whenPOST(URLS.URL_IMEI).respond(true);
 
 
             var randomsNotifItems = [];
@@ -142,29 +224,37 @@
             }
             function createRandomNotif() {
                 var apps = ['Pushe Sample B4A', 'Pushe Sample B4A', 'دموی پوشه', 'Pushe Sample Unity', 'Pushe Sample Eclipse'];
-                var sent_count=Math.floor(Math.random() * 10)+1;
-                var clickdismissCount=Math.floor(Math.random() * sent_count);
-                var clickedCount=Math.floor(Math.random() *clickdismissCount);
+                var sentCount=Math.floor(Math.random() * 10)+1;
+                var clickDismissCount=Math.floor(Math.random() * sentCount);
+                var clickedCount=Math.floor(Math.random() *clickDismissCount);
                 return {
                     notification_data:{
                         title:randomNameBuilder(4),
                         content:randomNameBuilder(7),
                     },
-                    application:apps[Math.floor(Math.random() * apps.length)],
-                    send_time:Math.floor(Math.random() * 10000000),
-                    status:Math.floor(Math.random() * 5)?"ارسال شده":"ارسال نشده",
-                    sent_count:sent_count,
-                    delivered_count:Math.floor(Math.random() * sent_count),
+                    application:Math.floor(Math.random() * apps.length),
+                    send_time:getRandomTime(),
+                    status:Math.floor(Math.random() * 5)+1,
+                    sent_count:sentCount,
+                    delivered_count:Math.floor(Math.random() * sentCount),
 
                     clicked_count:clickedCount,
-                    dismissed_count:clickdismissCount- clickedCount
+                    dismissed_count:clickDismissCount- clickedCount
                 };
             }
+            $httpBackend.whenGET(URLS.URL_GET_DASHBOARD_DATA).respond(
+                {
+                    installations:32062,
+                    applications:5,
+                    notifications:3512
+                }
+            );
+
             for (var ni = 0; ni < 1000; ni++) {
                 randomsNotifItems.push(createRandomNotif());
             }
             // $httpBackend.whenGET(getRegex(URLS.URL_NOTIF,"\\?.*")).respond(function(method, url, keys,headers,param){
-            $httpBackend.whenGET(/api\/notification\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
+            $httpBackend.whenGET(/api\/v1\/notifications\/\?.*/).respond(function(method, url, keys,headers,param){
                 // var filters=angular.fromJson(keys);
 
                 //fake call to the server, normally this service would serialize table state to send it to the server (with query parameters for example) and parse the response
@@ -187,6 +277,8 @@
                     results: result,
                     numberOfPages: Math.ceil(filtered.length / param.limit)
                 };
+                if(!searchFilters.offset)resultobj.previous="we have previous";
+                if(parseInt(param.offset)+ parseInt(param.limit)<filtered.length)resultobj.next="we have next";
                 return [200, resultobj, {}];
             });
             $httpBackend.whenPOST(URLS.URL_NOTIF).respond(function(method, url, keys,headers,param){
@@ -218,8 +310,9 @@
             //$httpBackend.whenDELETE(/.*/).passThrough();
             //$httpBackend.whenPUT(/.*/).passThrough();
             $httpBackend.whenGET(/app\/.*\.html/).passThrough();
+            $httpBackend.whenGET(/assets\/.*\.xml/).passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationButtonSetter/notificationButtonTemplate.html").passThrough();
             $httpBackend.whenGET("app/notifications/notifWizardSteps/notificationAction/notificationActionTemplate.html").passThrough();
             $httpBackend.whenGET("app/shared/sxWizardCopy/wizardTemplate.html").respond("<div></div>");
-        });
+        }]);
 })());

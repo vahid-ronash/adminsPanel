@@ -12,25 +12,22 @@ describe('notification steps : ', function() {
 
     it('step 2 controller test working', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{},behavior:{}};
-        $controller('step2Controller', {$scope:$scope});
-        expect($scope.step2Ctrl).toBeDefined(true);
+        $scope.wizard={steps:{}};
+        var controller=$controller('step2Controller', {$scope:$scope});
+        expect(controller).toBeDefined(true);
     }));
 
     it('step 2 test watch', inject(function ($rootScope) {
         var $scope = $rootScope.$new();
-        $scope.$context={data:{stepData:[{}]},behavior:{}};
-        $controller('step2Controller', {$scope:$scope});
+        $scope.wizard={steps:{},canSendNotification:false};
+        var controller=$controller('step2Controller', {$scope:$scope});
 
-        $scope.$context.behavior.leaving({},function(){});
-        $scope.$context.behavior.entering({},function(){});
-        
-        expect($scope.step2Ctrl.data.title.length).toEqual(0);
-        $scope.step2Ctrl.data.content="sdcr";
-        $scope.step2Ctrl.dataChange();
-        expect($scope.$context.data.canSendNotification).toBe(false);
-        $scope.step2Ctrl.data.title="asdasd";
-        $scope.step2Ctrl.dataChange();
-        expect($scope.$context.data.canSendNotification).toBe(true);
+        expect(controller.data.title.length).toEqual(0);
+        controller.data.content="sdcr";
+        controller.dataChange();
+        expect($scope.wizard.canSendNotification).toBe(false);
+        controller.data.title="asdasd";
+        controller.dataChange();
+        expect($scope.wizard.canSendNotification).toBe(true);
     }));
 });

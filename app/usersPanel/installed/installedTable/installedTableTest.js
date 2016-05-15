@@ -36,24 +36,24 @@ describe('test installed table controller and services : ', function () {
         });
     });
 
-    it("test installedResource with page",function () {
-        installedTableController.callServer({
-            pagination:{
-                start:1,number:10
-            },
-            search:{
-                predicateObject:{
-                    instance_id:'1'
-                }
-            },
-            sort:{
-                predicate:'instance_id',
-                reverse:false
-            }
-        }).then(function(){
-            deferred.resolve(installedTableController.displayed.length>0);
-        });
-        $timeout.flush();
-        expect(this.valueToVerify).toEqual(true);
-    });
+    // it("test installedResource with page",function () {
+    //     installedTableController.callServer({
+    //         pagination:{
+    //             start:1,number:10
+    //         },
+    //         search:{
+    //             predicateObject:{
+    //                 instance_id:'1'
+    //             }
+    //         },
+    //         sort:{
+    //             predicate:'instance_id',
+    //             reverse:false
+    //         }
+    //     }).then(function(){
+    //         deferred.resolve(installedTableController.displayed.length>0);
+    //     });
+    //     $timeout.flush();
+    //     expect(this.valueToVerify).toEqual(true);
+    // });
 });

@@ -1,0 +1,13 @@
+body{
+  background-image: url("../images/background.jpg") ;
+  background-size: cover ;
+}
+
+.box-color-transparent{
+	background-color: rgba(250, 255, 255, 0.5);
+	position: relative;
+	margin-bottom: 1.5rem;
+}
+.btn-cursor-default{
+	cursor: default;
+}

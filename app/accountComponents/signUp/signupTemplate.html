@@ -1,4 +1,4 @@
-<div class="dark bg-auto w-full">
+<div class="bg-auto w-full">
     <!--class="fade-in-right-big smooth pos-rlt" has problem with modal-->
     <div class="fade-in-right-big smooth pos-rlt">
 
@@ -34,12 +34,6 @@
                               class="mdl-textfield__error errorShow" ng-class="form.password.strengthType">{{form.password.$error.strength}}</span>
                         <span ng-show="caps_state && passFocus" class="mdl-textfield__error errorShow">{{'CAPS_LOCK_ON'|translate}}</span>
                     </div>
-                    <!--<password-strength min="signupCtrl.minStrength" strength="signupCtrl.strength" password="signupCtrl.data.password"></password-strength>-->
-                    <!--<div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
-                    <!--<input name="password" class="mdl-textfield__input" ng-model="signupCtrl.data.password" type="password" id="registerPass" pattern=".{3,}">-->
-                    <!--<label class="mdl-textfield__label" for="registerPass">{{'PASSWORD' | translate}}</label>-->
-                    <!--<span class="mdl-textfield__error">{{'MINIMUM_PASS_LEN'|translate}}</span>-->
-                    <!--</div>-->
                     <!--PASSWORD END-->
 
 
@@ -54,31 +48,32 @@
                     <!--RE PASSWORD END-->
 
                     <!--AGREEMENT-->
-                    <div class="m-b-md">
+                    <div class="m-b-md text-sm">
                         <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                             <input required type="checkbox" ng-model="signupCtrl.agreement" id="checkbox-1"
                                    class="mdl-checkbox__input" checked>
-                            <a data-toggle="modal" data-target="#myModal" class="text-primary _600 ng-binding">{{'TERMS'| translate}}</a>
-                            <span class="mdl-checkbox__label">{{'AGREE' | translate}}</span>
+                            <a data-toggle="modal" data-target="#termsModal" class="text-primary _600 ng-binding">
+                                {{'TERMS'| translate}}
+                            </a>
+                            <span class="mdl-checkbox__label text-sm">{{'AND' | translate}}</span>
+                            <a data-toggle="modal" data-target="#privacyModal" class="text-primary _600 ng-binding">
+                                {{'PRIVACY'| translate}}
+                            </a>
+                            <span class="mdl-checkbox__label text-sm">{{'AGREE' | translate}}</span>
                         </label>
                     </div>
 
-                    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
-                         aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">{{'TERMS' | translate}}</h4>
-                                </div>
-                                <div class="modal-body" style="max-height: 500px;overflow:auto;">
-                                    <terms-content></terms-content>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--TERMS MODAL-->
+                    <simple-modal mcontrol="signupCtrl.termsModal" mclass="modal-lg" mid="termsModal" mtitle="{{'TERMS' | translate}}">
+                        <terms-content></terms-content>
+                    </simple-modal>
+                    <!--TERMS MODAL END-->
+
+                    <!--PRIVACY MODAL-->
+                    <simple-modal mcontrol="signupCtrl.privacyModal" mclass="modal-lg" mid="privacyModal" mtitle="{{'PRIVACY' | translate}}">
+                        <privacy-content></privacy-content>
+                    </simple-modal >
+                    <!--PRIVACY MODAL END-->
 
                     <!--RE CAPTCHA-->
                     <div class="" style="margin:18px -33px">
@@ -105,17 +100,15 @@
                     <!--SUBMIT END-->
 
                     <br>
-                    <div class="m-t">
-                        <small class="alert alert-warning" ng-if="signupCtrl.registerError.err">{{signupCtrl.registerError.err}}</small>
-                    </div>
+                    <small class="text-danger errorShow" ng-bind="signupCtrl.registerError.err"></small>
                 </form>
                 <div ng-show="signupCtrl.successed" class="p-t p-b">
                     <span>{{'REGISTER_RESPONSE_MSG'|translate}}</span>
                     <a ui-sref="signin" href="account/signin"  class="btn primary btn-block">{{'SIGNIN' | translate}}</a>
                 </div>
             </div>
-            <div class="p-v-lg text-center">
-                <div>{{'HAVE_ACCOUNT' | translate}}
+            <div class="p-a-md box-color-transparent r box-shadow-z1 text-color m-a p-v-lg text-center">
+                <div class="text-sm">{{'HAVE_ACCOUNT' | translate}}
                     <a ui-sref="signin" href="#/account/signin" class="text-primary _600">{{'SIGNIN' | translate}}</a>
                 </div>
             </div>

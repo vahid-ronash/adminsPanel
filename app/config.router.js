@@ -25,15 +25,22 @@
                         controller: 'usersPanelController',
                         controllerAs: 'panelCtrl'
                     })
+                    .state('users.faq',{
+                        url:'/faq',
+                        templateUrl: 'app/usersPanel/faq/faq.html',
+                        controller: 'faqController',
+                        controllerAs: 'faqCtrl',
+                        pageName:'FAQ'
+                    })
                     .state('users.dashboard',{
                         url:'/dashboard',
                         templateUrl: 'app/usersPanel/dashboard/dashboard.html',
                         controller: 'dashboardController',
-                        controllerAs: 'dashboard',
+                        controllerAs: 'dashboardCtrl',
                         pageName:'DASHBOARD'
                     })
-                    .state('users.apps',{
-                        url:'/apps',
+                    .state('users.applications',{
+                        url:'/applications',
                         templateUrl: 'app/usersPanel/userApplications/userApplications.html',
                         controller: 'userApplicationController',
                         controllerAs: 'appCtrl',
@@ -48,14 +55,40 @@
                         pageName:'INSTALLED'
 
                     })
-                    .state('users.notification', {
-                        url:'/notification',
+                    .state('users.allNotification', {
+                        url:'/notification/all',
                         templateUrl: 'app/usersPanel/notifications/notifications.html',
                         controller: 'notificationsController',
                         controllerAs:'notifsCtrl',
                         //resolve: need delay
-                        pageName:'NOTIFICATIONS'
-
+                        pageName:'NOTIFICATIONS',
+                        params:{status:null}
+                    })
+                    .state('users.sentNotification', {
+                        url:'/notification/sent',
+                        templateUrl: 'app/usersPanel/notifications/notifications.html',
+                        controller: 'notificationsController',
+                        controllerAs:'notifsCtrl',
+                        //resolve: need delay
+                        pageName:'NOTIFICATIONS',
+                        params:{status:'SENT'}
+                    })
+                    .state('users.inqueueNotification', {
+                        url:'/notification/inqueue',
+                        templateUrl: 'app/usersPanel/notifications/notifications.html',
+                        controller: 'notificationsController',
+                        controllerAs:'notifsCtrl',
+                        //resolve: need delay
+                        pageName:'NOTIFICATIONS',
+                        params:{status:''}
+                    })
+                    .state('home', {
+                        url:'/home',
+                        templateUrl: 'app/home/homeTemplate.html',
+                        controller: 'homeController',
+                        controllerAs:'homeCtrl',
+                        access: {isFree: true}
+                        //resolve: need delay
                     })
                     .state('signin', {
                         url:'/account/signin',
@@ -81,6 +114,23 @@
                         access: {isFree: true}
                         //resolve: need delay
                     })
+                    .state('users.documentation', {
+                        url:'/documentation',
+                        templateUrl: 'app/usersPanel/documentation/documentation.html',
+                        controller: 'docController',
+                        controllerAs:'docCtrl',
+                        pageName:'DOCUMENTATION',
+                        access: {isFree: false}
+                        //resolve: need delay
+                    })
+                    .state('users.privacy', {
+                        url:'/privacy',
+                        templateUrl: 'app/usersPanel/privacy/privacy.html',
+                        controller: 'privacyController',
+                        controllerAs:'privacyCtrl',
+                        access: {isFree: false}
+                        //resolve: need delay
+                    })
                     .state('users.profile', {
                         url:'/account/profile',
                         templateUrl: 'app/accountComponents/profile/profile.html',
@@ -89,13 +139,11 @@
                         access: {isFree: false}
                         //resolve: need delay
                     })
-                    .state('users.changePassword', {
-                        url:'/account/change-password',
-                        templateUrl: 'app/accountComponents/changePassword/changePassword.html',
-                        controller: 'changePasswordController',
-                        controllerAs:'changePassCtrl',
+                    .state('users.changePassword',{
+                        url:'/change-password',
+                        templateUrl: 'app/accountComponents/changePassword/changePasswordPage.html',
+                        pageName:'CHANGE_PASSWORD',
                         access: {isFree: false}
-                        //resolve: need delay
                     })
                     .state('resetPassword', {
                         url:'/reset-password/:token/',
@@ -108,15 +156,19 @@
                 if (EnvironmentConfig.mode=='production') {
                     $urlRouterProvider.when('', '/dashboard');
                     $urlRouterProvider.otherwise('/dashboard');
-                }
-                // Hashbang in HTML5 Mode
-                // $locationProvider.html5Mode({//server must support (ali vakilzade promised that is support)
-                //     enabled: true,
-                //     requireBase: false
-                // });
 
+                    // Hashbang in HTML5 Mode
+                    // $locationProvider.html5Mode({//server must support (ali vakilzade promised that is support)
+                    //     enabled: true,
+                    //     requireBase: false
+                    // });
+                }
             }])
-        .run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Auth) {
+        .run(['$rootScope', '$state', 'AuthService','$templateCache', function ($rootScope, $state, Auth,$templateCache) {
+
+            ace.config.set('basePath', 'assets/js');
+            window.define = window.define || ace.define;
+
             $rootScope.errorAlert=function(e){
                 $rootScope.alertMSG={
                     text:e.error.message,
@@ -124,6 +176,15 @@
                     className:'alert'
                 };
             };
+
+            $templateCache.put('template/smart-table/pagination.html',
+                '<nav ng-if="numPages && pages.length >= 1"><ul class="pagination">' +
+                '<li ng-show="currentPage>1" ng-class=""><a ng-click="selectPage(currentPage-1)"><i class="fa fa-fw fa-angle-double-right"></i></a></li>' +
+                '<li ng-class=""><a ng-click="">{{currentPage}}</a></li>' +
+                // '<li ng-repeat="page in currentPage" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a></li>' +
+                // '<li ng-repeat="page in pages" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a></li>' +
+                '<li ng-show="currentPage<numPages" ng-class=""><a ng-click="selectPage(currentPage+1)"><i class="fa fa-fw fa-angle-double-left"></i></a></li>' +
+                '</ul></nav>');
 
             $rootScope.$on('$stateChangeStart', function (event,toState,toParams) {//,prev
                 if (toState.redirectTo) {

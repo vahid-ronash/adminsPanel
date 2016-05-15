@@ -34,18 +34,21 @@
                 $scope.alertMSGS.splice(index, 1);
             };
             $rootScope.handleError=function(data){
-                //TODO:if user was exited from server and we save it on localstorage
-                if(data.status == 403 && data.data && data.data.detail==="Authentication credentials were not provided."){//&& data.data.detail===""
-                    $AuthService.logout();
+                if(data.localError){
+                    $scope.alertMSGS.push(data.localError);
+                    return;
+                }
+                if(data.status == 403 && data.data && data.data.Authentication=="required"){//&& data.data.detail===""
+                    return $AuthService.logout();
                 }
                 if(typeof data.data==="object") {
-                    for (var title in data.data) {
-                        var text = data.data[title];
-                        if (typeof text !== "string")text = text.join("\n");
-                        if (data.data.hasOwnProperty(title)) {
+                    for (var dataKey in data.data) {
+                        var dataValue = data.data[dataKey];
+                        if (typeof dataValue !== "string")dataValue = dataValue.join("\n");
+                        if (data.data.hasOwnProperty(dataKey)) {
                             var newAlert = {
-                                title: title,
-                                text: text,
+                                title: dataKey,
+                                text: dataValue,
                                 verbose: JSON.stringify(data)
                             };
 
@@ -61,10 +64,9 @@
                         if(data.data.indexOf('(404)')>-1){
                             $scope.alertMSGS.push({title: "not found (404)", text: 'request not implemented'});
                         }
-                        else if (data.data.indexOf("Time-out")) {
-
+                        else if(data.data.indexOf('<html')>-1){
+                            $scope.alertMSGS.push({type:'danger',title: "Error "+data.status, html: data.data})
                         }
-                        else $scope.alertMSGS.push({title: "Error", text: data.data});
                     }
                     else
                         $scope.alertMSGS.push({title: "wrong Error", text: JSON.stringify(data)});

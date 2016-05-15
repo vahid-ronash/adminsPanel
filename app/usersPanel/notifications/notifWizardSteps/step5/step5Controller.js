@@ -14,25 +14,32 @@
     angular
         .module('app')
         .controller('step5Controller', ['$scope', function ($scope) {
-            // var thisController=this;
-            var asThisController=$scope.step5Ctrl={};
-            var contextData=$scope.$context.data;
-            $scope.$context.behavior.leaving = function(options, callback) {
-                if(asThisController.aceSession) {
-                    var value = asThisController.aceSession.getDocument().getValue();
-                    if (value.length > 0 && asThisController.aceSession.getAnnotations().length > 0) {
-                        callback(false);
-                        $scope.$context.validationError = $filter('translate')('JSON_INCORRECT');
+            var thisController=this;
+            $scope.wizard.steps[5]={
+                leave:function(){
+                    if(thisController.aceSession) {
+                        var value = thisController.aceSession.getDocument().getValue();
+                        if (value.length > 0 && thisController.aceSession.getAnnotations().length > 0) {
+                            $scope.wizard.error= $filter('translate')('JSON_INCORRECT');
+                            return false;
+                        }
+                        else {
+                            $scope.wizard.steps[5].data={custom_content: value};
+                            return true;
+                        }
                     }
-                    else {
-                        contextData.stepData[4] = {json: value};
-                        callback(true);
-                    }
+                },
+                enter:function(){
+                    return true;
+                },
+                reset:function(){
+                    if(thisController.aceSession)
+                        thisController.aceSession.getDocument().setValue("");
                 }
             };
-
-            asThisController.aceLoaded = function(_editor) {
-                asThisController.aceSession = _editor.getSession();
+            
+            thisController.aceLoaded = function(_editor) {
+                thisController.aceSession = _editor.getSession();
             };
         }]);
 })());

@@ -1,0 +1,903 @@
+<div class="container">
+    <div class="p-a-md">
+        <div class="row p-t-md">
+            <div class="col-sm-3 col-sm-push-9 box">
+                <div bs-affix data-offset-top="-80" class="pos-stc-sm text affix-top p-a">
+                    <h5>آموزش نصب</h5>
+                    <hr>
+                    <div class="m-b nav-active-accent">
+                        <ul class="nav nav-pills nav-stacked" ui-nav>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#android_studio" ui-scroll-to="android_studio">اندروید استدیو</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#eclipse" ui-scroll-to="build">اکلیپس</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#b4a" ui-scroll-to="includes">بیسیک4اندروید</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unity" ui-scroll-to="css">یونیتی</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-sm-pull-3">
+                <div class="container box p-a">
+                    <div id="android_studio">
+                        <h3 class="m-t-lg m-b">اندروید استدیو</h3>
+                            <div class="box">
+                                <div class="box-header dker">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                             <a data-toggle="modal" data-target="#as_Modal" >
+                                                <i class="fa fa-play-circle fa-3x" style="color: black">
+                                                </i>
+                                                <footer class="cite ">فیلم آموزش</footer>
+                                             </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="https://github.com/pusheco/android-studio-sample" target="_blank" class="icon-content inverter img-circle">
+                                                <i class="fa fa-github-square fa-3x" style="color: black"></i>
+                                                <footer class="cite">کد نمونه</footer>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <p style="font-weight:bold">فایل های مورد نیاز</p>
+                                    <ol>
+                                        <ul>
+                                            <a href="http://static.pushe.co/sdk/pushe-lib-0.10.0.aar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه: pushe-lib-0.1.0.aar</a>
+                                        </ul>
+                                        <ul>
+                                            <a href="http://static.pushe.co/useful-links/google-play-services/android-studio/sdk.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه گوگل پلی سرویس</a>
+                                        </ul>
+                                    </ol>
+                                </div>
+                            </div>
+                        <!--Video -->
+                        <div class="modal fade bd-example-modal-lg" id="as_Modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="as_ModalLabel">آموزش نصب</h4>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item"
+                                                    src="http://www.aparat.com/video/video/embed/videohash/HVuXo/vt/frame"
+                                                    allowFullScreen="true" webkitallowfullscreen="true"
+                                                    mozallowfullscreen="true"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                            <h5>
+                                <span class="label rounded label-lg  pos-rlt m-r-xs">1</span>
+                                ایمپورت کردن کتابخانه
+                            </h5>
+                            <div class="box blue p-a">
+                                در برخی از موارد دانلود از سایت jcenter با اختلال روبرو می شود. در این حالت از روش اضافه کردن دستی به منظور ایمپورت کردن کتابخانه استفاده کنید.
+                            </div>
+                            <h6>
+                                روش 1: با استفاده از Gradle
+                            </h6>
+                            <ol class="text-justify">
+                                <li>
+                                    <p>
+                                        در
+                                        <code>build.gradle</code>
+                                        مربوط به اپلیکیشن وارد شوید. مراقب باشید اشتباها به فایل
+                                        <code>gradle</code>
+                                        مربوط به پروژه وارد نشوید.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        کد زیر را در
+                                        <code>dependencies</code>
+                                        اضافه کنید.
+                                    </p>
+                                  <pre style="direction: ltr; text-align: left; font-family: monospace;">
+dependencies&lcub;
+compile 'co.ronash.android:pushe-base:0.10.0'
+compile 'com.google.android.gms:play-services-gcm:7.5.0'
+          &rcub;</pre>
+                                </li>
+                                <li>
+                                    در بالای صفحه سمت راست
+                                    <code>sync</code>
+                                    را بزنید تا گریدل سینک شود.
+                                </li>
+                            </ol>
+                            <h6>
+                                روش 2: اضافه کردن دستی
+                            </h6>
+                            <h5 class="text-sm">
+                                قرار دادن کتابخانه در اپلیکیشن
+                            </h5>
+                            <ol>
+                                <li>
+                                    کتابخانه پوشه را
+                                    <a target="_blank" href="http://static.pushe.co/sdk/pushe-lib-0.10.0.aar"
+                                       >از این لینک</a>
+                                    دانلود کنید.
+                                </li>
+                                <li>
+                                    به محیط اندروید استدیو وارد شوید و از مسیر
+                                    <code>File>New>New Module>Import .JAR or .AAR Package</code>
+                                    فایل دانلود شده را در پروژه خود وارد کنید.
+                                </li>
+                            </ol>
+                            <h5 class="text-sm">
+                                اضافه کردن Dependencies
+                            </h5>
+                            <ol>
+                                <li>
+                                    <p>
+                                        در
+                                        <code>build.gradle</code>
+                                        مربوط به اپلیکیشن وارد شوید. مراقب باشید اشتباها به فایل
+                                        <code>gradle</code>
+                                        مربوط به پروژه وارد نشوید.
+                                    </p>
+                                </li>
+                                <li>
+                                    کد روبرو را در
+                                    <code>gradle</code>
+                                    وارد کنید. دقت کنید در کد عبارت
+                                    <code>pushe-lib-0.10.0</code>
+                                    باید با نام
+                                    <code>subproject name</code>
+                                    در هنگام وارد کردن ماژول در پروژه یکی باشد.
+                                <pre style="direction: ltr; text-align: left; font-family: monospace;">
+dependencies&lcub;
+compile project (':pushe-lib-0.10.0')
+compile 'com.google.android.gms:play-services-gcm:7.5.0'
+        &rcub;</pre>
+                                </li>
+                                <li>
+                                    در بالای صفحه سمت راست
+                                    <code>sync</code>
+                                    را بزنید تا گریدل سینک شود.
+                                </li>
+                                <li class="text-justify">
+                                    در صورتی که با دانلود کتابخانه گوگل پلی سرویس با مشکل روبرو شدید، از
+                                    <a href="http://static.pushe.co/useful-links/google-play-services/android-studio/sdk.zip" target="_blank">این لینک</a>
+                                    فایل در اختیار گذاشته شده را دانلود و اکسترکت کنید و فولدر
+                                    <code>extras</code>
+                                    به همراه زیر فولدرهای آن را در فولدر
+                                    <code>sdk</code>
+                                    خود با آدرس زیر قرار دهید. برای پیدا کردن محل دقیق فولدر
+                                    <code>sdk</code>
+                                    خود می توانید آدرس آن را از داخل فایل
+                                    <code>local.propertie</code>
+                                    پیدا کنید.
+                                    <code style="direction:ltr " class="long_word">...\AppData\Local\Android\sdk</code>
+                                </li>
+                            </ol>
+                            <h5>
+                                <span class="label rounded label-lg  pos-rlt m-r-xs">2</span>
+                                تغییرات AndroidManifest.xml
+                            </h5>
+                            <div>
+                                <ol class="text-justify">
+                                    <li>
+                                        وارد پنل کاربری پوشه شوید و در قسمت اپلیکیشن ها، فایل مربوط به منیفست
+                                        اپلیکیشن خود را دانلود کنید.
+                                    </li>
+                                    <li>
+                                        فایل دانلود شده را در یک برنامه ادیتور باز کنید و محتویات آن را به
+                                        <code>AndroidManifest.xml</code>
+                                        پروژه خود اضافه کنید.
+                                    </li>
+                                </ol>
+                                <p class="text-justify">
+                                    برخی از دسترسی ها (permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال
+                                    هدفمند اعلان به کاربران است. شما قادر خواهید بود با استفاده از این دسترسی ها
+                                    کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید.
+                                </p>
+                            </div>
+                        <hr>
+                            <!-- end item-->
+                            <!-- start item-->
+                                <h5>
+                                    <span class="label rounded label-lg  pos-rlt m-r-xs">3</span>
+                                    تغییرات MainActivity.java
+                                </h5>
+                                <div>
+                                    <ol class="text-justify">
+                                        <li>
+                                            در قسمت
+                                            <code>import</code>
+                                            ، کد روبرو را وارد کنید.
+                                            <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                                        </li>
+                                        <li>
+                                            در
+                                            <code>onCreate</code>
+                                            کد روبرو را وارد کنید.
+                                            <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                                        </li>
+                                        <p>
+                                            اگر در تابع بالا مقدار
+                                            <code>true</code>
+                                            گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا
+                                            <code>false</code>
+                                            را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                                        </p>
+                                    </ol>
+                                </div>
+                            <hr>
+                            <!-- end item-->
+                            <!-- start item-->
+                                <h5>
+                                    <span class="label rounded label-lg  pos-rlt m-r-xs">4</span>
+                                    تست و عیب یابی
+                                </h5>
+
+                                <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید،
+                                    میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید.
+
+                                <p>
+                                    <ol class="text-justify">
+                                        <li>به صفحه نصب ها بروید.</li>
+                                        <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که
+                                            متعلق به گوشی شما است.
+                                        </li>
+                                        <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                                    </ol>
+                                <div class="box warn p-a">
+                                    توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                                </div>
+                            <hr>
+                            <!-- end item-->
+                            <!-- start item-->
+                                </h2>
+                                <h5>
+                                    <span class="label rounded label-lg  pos-rlt m-r-xs">5</span>
+                                    دریافت اطلاعات دلخواه JSON
+                                </h5>
+                                    <p class="text-justify">
+                                        شما میتوانید از طریق پنل برای اپلیکیشن خود اطلاعات دلخواه در قالب یک
+                                        <code>JSON</code>
+                                        ارسال کنید. برای اینکه بتوانید از این اطلاعات در اپلیکیشن خود استفاده کنید مراحل زیر را انجام دهید.
+                                    </p>
+                                    <ol class="text-justify">
+
+                                        <li>
+                                            کد روبرو را در
+                                            <code>AndroidManifest.xml</code>
+                                            زیر تگ
+                                            <code>&lt;application&gt;</code>
+                                            اضافه کنید.
+                                        <pre style="direction: ltr; text-align: left; font-family: monospace;">
+&lt;service
+    android:name=".MyPushListener"
+    android:exported="false"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="co.ronash.pushe.RECEIVE" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;</pre>
+                                        </li>
+                                        <li>
+                                            در پروژه خود یک
+                                            <code>class</code>
+                                            جدید ایجاد کنید و برای آن یک نام انتخاب کنید. پیشنهاد ما نام
+                                            <code>MyPushListener</code>
+                                            می باشد.
+                                        </li>
+                                        <li>
+                                            کد روبرو را در آن قرار دهید. بر روی
+                                            <code>PusheListenerService</code>
+                                            و
+                                            <code>JSONObject</code>
+                                            که به رنگ قرمز در آمده اند رفته و کلید
+                                            <code>Alt+Enter </code>
+                                            را بزنید.
+
+                                            <pre style="direction: ltr; text-align: left; font-family: monospace;">
+public class MyPushListener extends PusheListenerService &lcub;
+                                @Override
+    public void onMessageReceived(JSONObject message) &lcub;
+                                // Your code
+                                &rcub;
+                                &rcub;</pre>
+                                        </li>
+                                        <li>
+                                            از این طریق
+                                            <code>JSON</code>
+                                            دریافت میشود و با قرار دادن کد خود به جای
+                                            <code>your code</code>
+                                            می توانید از آن استفاده کنید.
+                                        </li>
+                                    </ol>
+                    </di>
+                </div>
+                    <div id="eclipse">
+                        <hr>
+                        <h3 class="m-t-lg m-b">اکلیپس</h3>
+                        <div class="box">
+                                <div class="box-header dker">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                             <a data-toggle="modal" data-target="#eclipse_modal" >
+                                                <i class="fa fa-play-circle fa-3x" style="color: black">
+                                                </i>
+                                                <footer class="cite ">فیلم آموزش</footer>
+                                             </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="https://github.com/pusheco/eclipse-sample" target="_blank" class="icon-content inverter img-circle">
+                                                <i class="fa fa-github-square fa-3x" style="color: black"></i>
+                                                <footer class="cite">کد نمونه</footer>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <p style="font-weight:bold">فایل های مورد نیاز</p>
+                                    <ol>
+                                        <ul>
+                                            <a href="http://static.pushe.co/0-10-0/Pushe-0.10.0.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه: pushe-0.1.0</a>
+                                        </ul>
+                                        <ul>
+                                            <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه گوگل پلی سرویس</a>
+                                        </ul>
+                                        <ul>
+                                            <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه android-support-v4.jar</a>
+                                        </ul>
+                                    </ol>
+                                </div>
+                            </div>
+                        <div class="modal fade bd-example-modal-lg" id="eclipse_modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="eclipse_myModalLabel">آموزش نصب</h4>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item"
+                                                    src="http://www.aparat.com/video/video/embed/videohash/JpPFE/vt/frame"
+                                                    allowFullScreen="true" webkitallowfullscreen="true"
+                                                    mozallowfullscreen="true"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">1</span>
+                            Import کردن کتابخانه
+                        </h5>
+                        <ol class="text-justify">
+                            <li>
+                                کتابخانه پوشه مربوط به اکلیپس را
+                                <a href="http://static.pushe.co/sdk/pushe-0.10.0.zip" target="_blank">از این لینک </a>
+                                دانلود و آن را اکسترکت کنید.
+                            </li>
+                            <li>
+                                در نرم افزار اکلیپس، بر روی
+                                <code>File > Import</code>
+                                کلیک کنید،
+                                <code>Android > Existing Android Code into Workspace</code>
+                                را انتخاب کنید و به محل فولدر اکسترکت شده بالا بروید و فولدر Pushe را انتخاب کنید. تیک
+                                <code>Copy projects into workspace</code>
+                                را بزنید. و کتابخانه پوشه را به پروژه اضافه کنید.
+                            </li>
+                            <li>
+                                پوشه را در
+                                <code>Dependency</code>
+                                های پروژه خود اضافه کنید. بر روی پروژه خود کلیک راست کنید و به شاخه
+                                <code>Properties -> Android -> Library</code>
+                                بروید و با فشردن کلید
+                                <code>Add</code>
+                                کتابخانه
+                                <code>Pushe</code>
+                                را انتخاب کنید.
+                            </li>
+                        </ol>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">2</span>
+                            تغییرات AndroidManifest.xml
+                        </h5>
+                        <div>
+                            <ol class="text-justify">
+                                <li>
+                                    وارد پنل کاربری پوشه شوید و در قسمت اپلیکیشن ها، فایل مربوط به منیفست
+                                    اپلیکیشن خود را دانلود کنید.
+                                </li>
+                                <li>
+                                    فایل دانلود شده را در یک برنامه ادیتور باز کنید و محتویات آن را به
+                                    <code>AndroidManifest.xml</code>
+                                    پروژه خود اضافه کنید.
+                                </li>
+                            </ol>
+                            <p class="text-justify">
+                                برخی از دسترسی ها (permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال
+                                هدفمند اعلان به کاربران است. شما قادر خواهید بود با استفاده از این دسترسی ها
+                                کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید.
+                            </p>
+                        </div>
+                    <hr>
+                        <!-- end item-->
+                        <!-- start item-->
+                            <h5>
+                                <span class="label rounded label-lg  pos-rlt m-r-xs">3</span>
+                                تغییرات MainActivity.java
+                            </h5>
+                            <div>
+                                <ol class="text-justify">
+                                    <li>
+                                        در قسمت
+                                        <code>import</code>
+                                        ، کد روبرو را وارد کنید.
+                                        <pre style="direction: ltr; text-align: left; font-family: monospace;">import co.ronash.pushe.Pushe;</pre>
+                                    </li>
+                                    <li>
+                                        در
+                                        <code>onCreate</code>
+                                        کد روبرو را وارد کنید.
+                                        <pre style="direction: ltr; text-align: left; font-family: monospace;">Pushe.initialize(this,true);</pre>
+                                    </li>
+                                    <p>
+                                        اگر در تابع بالا مقدار
+                                        <code>true</code>
+                                        گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا
+                                        <code>false</code>
+                                        را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                                    </p>
+                                </ol>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">4</span>
+                            اضافه کردن گوگل پلی سرویس
+                        </h5>
+                        <div class="box blue p-a">
+                            توجه داشته باشید اگر در اپلیکیشن خود برای استفاده دیگری از گوگل پلی سرویس استفاده می کنید، ریسورس های کتابخانه ای زیر ناقص است و برای مقاصد دیگر غیر از پوشه کارایی ندارد.
+                        </div>
+                        <ol class="text-justify">
+                                        <li>
+                                            <p class="text-justify">
+                                                دو کتابخانه
+                                                <code>google-play-services-base.jar و google-play-services-gcm.jar</code>
+                                                را
+                                        <a href="http://static.pushe.co/useful-links/Google%20play%20service-low%20size.zip" target="_blank" >از این لینک</a>
+                                        دانلود و اکسترکت کنید.
+                                             </p>
+                                        </li>
+                                        <li>
+                                            بر روی
+                                            <code>File > Import</code>
+                                            کلیک کنید.
+                                            <code style="direction:ltr">Android > Existing Android Code into Workspace</code>
+                                            را انتخاب کنید و به محل دانلود کتابخانه های بالا بروید و هر دو کتابخانه را انتخاب کنید. تیک
+                                            <code>Copy projects into workspace </code>
+                                            را بزنید و کتابخانه ها را به پروژه اضافه کنید.
+                                        </li>
+                                        <li>
+                                            این دو کتابخانه گوگل پلی را در
+                                            <code>Dependency</code>
+                                            های پروژه خود اضافه کنید. بر روی پروژه خود کلیک راست کنید و به شاخه
+                                            <code>Properties -> Android -> Library</code>
+                                            بروید و با فشردن کلید
+                                            <code>Add</code>
+                                            کتابخانه های
+                                            <code>google-play-services-base</code>
+                                            و کتابخانه های
+                                            <code>google-play-services-gcm</code>
+                                            را انتخاب کنید.
+                                        </li>
+                        </ol>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">5</span>
+                            اضافه کردن android-support-v4.jar
+                        </h5>
+                        <p class="text-justify">
+                            یکی از مقدمات مهم برای صحیح اجرا شدن کتابخانه پوشه، وجود داشتن و قدیمی نبودن فایل
+                            <code>android-support-v4.jar</code>
+                            می باشد. برای به روز رسانی
+                                <a href="http://static.pushe.co/useful-links/android-support-v4.jar" target="_blank">این فایل </a>
+                            ا دانلود کنید و آن را جایگزین فایل
+                            <code>android-support-v4.jar</code>
+                            پروژه خود کنید. برای این کار به
+                            <code>Workspace</code>
+                            خود بروید و وارد فولدر پروژه و سپس وارد فولدر
+                            <code>libs</code>
+                            شوید و این فایل را جایگزین کنید و اگر این فایل از قبل موجود نیست آن را در این فولدر قرار دهید.
+                        </p>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">6</span>
+                            مستثنا کردن در پروگارد
+                        </h5>
+                        <p class="text-justify">
+                            در صورتیکه پروژه خود را پروگارد می کنید، کد زیر را در فایل پروگارد خود اضافه کنید.
+                        </p>
+                        <pre style="direction: ltr; text-align: left; font-family: monospace;">
+#Ronash proguard
+-keep public class co.ronash.pushe.Pushe {
+    public static void initialize(android.content.Context, boolean);
+    public static void subscribe(android.content.Context, java.lang.String);
+    public static void unsubscribe(android.content.Context, java.lang.String);
+}
+
+-keep public class co.ronash.pushe.PusheListenerService {
+    public void onMessageReceived(org.json.JSONObject, org.json.JSONObject);
+}
+
+# what is the usage of these ?
+#-keep public class co.ronash.pushe.log.handlers.*
+#-keepclassmembers public class co.ronash.pushe.log.handlers.* {
+#    public &lt;init&gt;(android.content.Context, java.util.Map);
+#}
+
+-keep public class co.ronash.pushe.receiver.UpdateReceiver
+
+
+# google gms proguard
+-keep public class com.google.android.gms.**
+-dontwarn com.google.android.gms.**
+
+# google paly services proguard
+-keep class * extends java.util.ListResourceBundle {
+    protected Object[][] getContents();
+}
+
+-keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+    public static final *** NULL;
+}
+
+-keepnames @com.google.android.gms.common.annotation.KeepName class *
+-keepclassmembernames class * {
+    @com.google.android.gms.common.annotation.KeepName *;
+}
+
+-keepnames class * implements android.os.Parcelable {
+    public static final ** CREATOR;}
+                        </pre>
+
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">7</span>
+                            تست و عیب یابی
+                        </h5>
+
+                        <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید،
+                            میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید.
+
+                        <p>
+                            <ol class="text-justify">
+                                <li>به صفحه نصب ها بروید.</li>
+                                <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که
+                                    متعلق به گوشی شما است.
+                                </li>
+                                <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                            </ol>
+                        <div class="box warn p-a">
+                            توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                        </div>
+                    <hr>
+                    <!-- end item-->
+                    <!-- start item-->
+                        </h2>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">8</span>
+                            دریافت اطلاعات دلخواه JSON
+                        </h5>
+                            <p class="text-justify">
+                                شما میتوانید از طریق پنل برای اپلیکیشن خود اطلاعات دلخواه در قالب یک
+                                <code>JSON</code>
+                                ارسال کنید. برای اینکه بتوانید از این اطلاعات در اپلیکیشن خود استفاده کنید مراحل زیر را انجام دهید.
+                            </p>
+                            <ol class="text-justify">
+
+                                <li>
+                                    کد روبرو را در
+                                    <code>AndroidManifest.xml</code>
+                                    زیر تگ
+                                    <code>&lt;application&gt;</code>
+                                    اضافه کنید.
+                                <pre style="direction: ltr; text-align: left; font-family: monospace;">
+&lt;service
+android:name=".MyPushListener"
+android:exported="false"&gt;
+&lt;intent-filter&gt;
+&lt;action android:name="co.ronash.pushe.RECEIVE" /&gt;
+&lt;/intent-filter&gt;
+&lt;/service&gt;</pre>
+                                </li>
+                                <li>
+                                    در پروژه خود یک
+                                    <code>class</code>
+                                    جدید ایجاد کنید و برای آن یک نام انتخاب کنید. پیشنهاد ما نام
+                                    <code>MyPushListener</code>
+                                    می باشد.
+                                </li>
+                                <li>
+                                    کد روبرو را در آن قرار دهید. بر روی
+                                    <code>PusheListenerService</code>
+                                    و
+                                    <code>JSONObject</code>
+                                    که به رنگ قرمز در آمده اند رفته و کلید
+                                    <code>Alt+Enter </code>
+                                    را بزنید.
+
+                                    <pre style="direction: ltr; text-align: left; font-family: monospace;">
+public class MyPushListener extends PusheListenerService &lcub;
+                        @Override
+public void onMessageReceived(JSONObject message) &lcub;
+                        // Your code
+                        &rcub;
+                        &rcub;</pre>
+                                </li>
+                                <li>
+                                    از این طریق
+                                    <code>JSON</code>
+                                    دریافت میشود و با قرار دادن کد خود به جای
+                                    <code>your code</code>
+                                    می توانید از آن استفاده کنید.
+                                </li>
+                            </ol>
+
+
+                    </div>
+                    <div id="b4a">
+                        <hr>
+                        <h3 class="m-t-lg m-b">بیسیک 4 اندروید</h3>
+                        <div class="box">
+                                <div class="box-header dker">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                             <a data-toggle="modal" data-target="#b4a_Modal" >
+                                                <i class="fa fa-play-circle fa-3x" style="color: black">
+                                                </i>
+                                                <footer class="cite ">فیلم آموزش</footer>
+                                             </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="https://github.com/pusheco/b4a-sample" target="_blank" class="icon-content inverter img-circle">
+                                                <i class="fa fa-github-square fa-3x" style="color: black"></i>
+                                                <footer class="cite">کد نمونه</footer>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="box-body">
+                                    <p style="font-weight:bold">فایل های مورد نیاز</p>
+                                    <ol>
+                                        <ul>
+                                            <a href="http://static.pushe.co/0-10-0/b4a-requirements.zip" target="_blank"><span class="nav-icon"><i class="material-icons">&#xe2c4;</i></span>کتابخانه پوشه و ملزومات آن</a>
+                                        </ul>
+                                    </ol>
+                                </div>
+                            </div>
+                            <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">1</span>
+                            Import کردن کتابخانه
+                            </h5>
+                            <ol>
+                                <li>
+                                    کتابخانه پوشه و ملزومات
+                                    <code>B4A</code>
+                                    را
+                                    <a href="https://static.pushe.co/sdk/pushe-0.10.0-b4a.zip" target="_blank">از این لینک </a>
+                                    دانلود کنید و پس از اکسترکت کردن، فایل های
+                                        <ul>
+                                            <li>pushe-0-10-0.jar</li>
+                                            <li>PushePlugin.jar</li>
+                                            <li>PushePlugin.xml</li>
+                                            <li>android-support-v4.jar</li>
+                                            <li>google-play-services-base.jar</li>
+                                            <li>google-play-services-gcm.jar</li>
+                                        </ul>
+                                    را در فولدر
+                                    <code>Additional libraries</code>
+                                    قرار دهید.
+                                </li>
+                                <li>
+                                    در نرم افزار
+                                    <code>B4A</code>
+                                    در پنجره
+                                    <code>Libraries</code>
+                                    کلیک راست کنید و صفحه را
+                                    <code>Refresh</code>
+                                    کنید و کتابخانه
+                                    <code>PushePlugin</code>
+                                    را انتخاب کنید.
+                                </li>
+                                <li>
+                                    در کلاس
+                                    <code>Main</code>
+                                    در قسمت
+                                    <code>Sub Globals</code>
+                                    کد زیر را قرار دهید:
+                                    <pre style="direction: ltr; text-align: left; font-family: monospace;">Dim p As Pushe</pre>
+                                </li>
+                                <li>
+                                    در کلاس
+                                    <code>Main</code>
+                                    در قسمت
+                                    <code>Activity Create</code>
+                                    کد زیر را وارد کنید:
+                                    <pre style="direction: ltr; text-align: left; font-family: monospace;">p.initialize(True)</pre>
+                                </li>
+                                <p class="text-justify">
+                                    اگر در تابع بالا مقدار
+                                    <code>true</code>
+                                    گذاشته شود و دستگاه کاربر شما گوگل پلی سرویس نداشته باشد و یا آن را غیرفعال کرده باشد دیالوگی باز می شود و به کاربر پیشنهاد نصب گوگل پلی سرویس داده می شود تا قابلیت دریافت و ارسال پوش نوتیفیکیشن فعال شود. اگر در تابع بالا
+                                    <code>false</code>
+                                    را قرار دهید، این دیالوگ برای کاربر باز نمی شود.
+                                </p>
+                            </ol>
+                            <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">2</span>
+                                اضافه کردن ریسورس ها
+                            </h5>
+                            <p class="text-justify">
+                                برای افزودن فایلهای
+                                <code>Resource</code>
+                                کتابخانه پوشه و کتابخانه گوگل پلی سرویس، کدهای زیر را در کلاس
+                                <code>Main</code>
+                                پروژه خود و در بخش
+                                <code>Project Attributes</code>
+                                وارد نمایید:
+                            </p>
+                            <pre style="direction: ltr; text-align: left; font-family: monospace;">
+#AdditionalRes: &lt; google play service-base library res folder path &gt; , com.google.android.gms
+#AdditionalRes: &lt; library res folder path &gt;, co.ronash.pushe
+                            </pre>
+                            <p class="text-justify">
+                                به جای
+                                <code>&lt; play service library res folder path &gt;</code>
+                                آدرس فولدر
+                                <code>res</code>
+                                داخل فولدر اکسترکت شده
+                                <code>Google-Play-Services</code>
+                                را آدرس دهی کنید. به جای
+                                <code>&lt; library res folder path& &gt;</code>
+                                آدرس فولدر
+                                <code>res</code>
+                                داخل فولدر اکسترکت شده کتابخانه پوشه را آدرس دهی کنید.
+                            </p>
+                            <p class="text-justify">
+                                به طور مثال اگر دو فولدر اکسترکت شده را در دسکتاپ قرار داده باشید با توجه به آدرس دسکتاپ از آدرس دهی زیر استفاده کنید:
+                            </p>
+                            <pre style="direction: ltr; text-align: left; font-family: monospace;">
+#AdditionalRes: C:\Users\Your-UserName\DesktopGoogle play service-low size\google-play-services-base\res , com.google.android.gms
+#AdditionalRes: C:\Users\Your-UserName\Desktop\pushe-0.10.0\reFs , co.ronash.pushe
+                            </pre>
+                            <h5>
+                                <span class="label rounded label-lg  pos-rlt m-r-xs">3</span>
+                                تغییرات AndroidManifest.xml
+                            </h5>
+                            <ol class="text-justify">
+                                <li>
+                                    وارد پنل پوشه شوید و اپلیکیشن خود ثبت کنید. توجه داشته باشید که از همان
+                                    <code>Package Name</code>
+                                    استفاده کنید که در
+                                    <code>Build Configuration</code>
+                                    خود ثبت کرده اید.
+                                </li>
+                                <li>
+                                    فایل منیفست مربوط به
+                                    <code>B4A</code>
+                                    را دانلود کنید. منیفست پروژه را از طریق
+                                    <code>Project>Manifest Editor</code>
+                                    در نرم افزار
+                                    <code>B4A</code>
+                                    باز کنید و محتویات داخل فایل را در آن جایگذاری کنید.
+                                </li>
+                            </ol>
+                            <p class="text-justify">
+                                برخی از دسترسی ها (permissions) برای پوشه اختیاری است. این دسترسی ها برای ارسال هدفمند اعلان به کاربران است. شما قادر خواهید بود با استفاده از این دسترسی ها کاربران خود را دسته بندی کنید و اعلانهای خود را هدفمند ارسال کنید.
+                            </p>
+                        </div>
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">4</span>
+                            تست و عیب یابی
+                        </h5>
+
+                        <p class="text-justify">پس از اینکه فایل کتابخانه را مطابق با آموزش داده شده نصب کردید،
+                            میتوانید پروژه را اجرا و بر روی دستگاه خود نصب و تست کنید.
+
+                        <p>
+                            <ol class="text-justify">
+                                <li>به صفحه نصب ها بروید.</li>
+                                <li>بعد از گذشت زمان کوتاهی یک ردیف مشخصات نصب به لیست نصب ها اضافه می شود که
+                                    متعلق به گوشی شما است.
+                                </li>
+                                <li>یک اعلان تست ارسال کنید.دقت کنید تلفن همراه شما به اینترنت متصل باشد.</li>
+                            </ol>
+                        <div class="box warn p-a">
+                            توصیه می شود اپلیکیشن را بر روی موبایل یا تلبت اجرا و تست کنید. اگر می خواهید اپلیکیشن را بر روی Emulator تست کنید، بر روی ایمولاتور شما باید Google API نصب باشد.
+                        </div>
+
+                        <h5>
+                            <span class="label rounded label-lg  pos-rlt m-r-xs">5</span>
+                            اضافه کردن رسیور دریافت JSON دلخواه
+                        </h5>
+                    شما میتوانید از طریق پنل برای اپلیکیشن خود اطلاعات دلخواه در قالب یک
+                        <code>JSON</code>
+                    ارسال کنید. برای اینکه بتوانید از این اطلاعات در اپلیکیشن خود استفاده کنید مراحل زیر را انجام دهید.
+                        <ol>
+                            <li>
+                                برای دریافت
+                                <code>JSON</code>
+                                شما باید یک
+                                <code>receiver</code>
+                                به پروژه خود اضافه کنید. (این فایل در فولدر ملزومات که دانلود کردید قرار دارد)
+                            </li>
+                            <li>
+                                از مسیر
+                                <code>project>add existing module</code>
+                                در نرم افزار
+                                <code>B4A</code>
+                                ، ماژول
+                                <code>PusheJsonService.bas</code>
+                                را انتخاب کنید.
+                            </li>
+                            <li>
+                                کد زیر را در منیفست خود اضافه کنید:
+                        <pre style="direction: ltr; text-align: left; font-family: monospace;">
+AddManifestText(
+&lt;permission android:name="$PACKAGE$.permission.C2D_MESSAGE" android:protectionLevel="signature" /&gt;)
+AddPermission($PACKAGE$.permission.C2D_MESSAGE)
+AddPermission(com.google.android.c2dm.permission.RECEIVE)
+' Push Service Receiver Attribute
+SetReceiverAttribute(PusheJsonService, android:permission, "com.google.android.c2dm.permission.SEND")
+' Service Receiver Text
+AddReceiverText(PusheJsonService,
+&lt;intent-filter&gt;
+&lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+&lt;category android:name="$PACKAGE$" /&gt;
+&lt;/intent-filter&gt;
+&lt;intent-filter&gt;
+&lt;action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;
+&lt;category android:name="$PACKAGE$" /&gt;
+&lt;/intent-filter&gt;)</pre>
+                            </li>
+                            از این طریق
+                            <code>JSON</code>
+                            دریاقت می شود و با قرار دادن کد خود به جای
+                            <code>your code</code>
+                            در ماژول
+                            <code>PusheJsonService.bas</code>
+                            می توانید از اطلاعات دریافت شده استفاده کنید.
+                        </ol>
+                        <div class="modal fade bd-example-modal-lg" id="b4a_Modal" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="b4a_myModalLabel">آموزش نصب</h4>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 500px;overflow:auto;">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item"
+                                                    src="http://www.aparat.com/video/video/embed/videohash/Qyfbz/vt/frame"
+                                                    allowFullScreen="true" webkitallowfullscreen="true"
+                                                    mozallowfullscreen="true"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -12,7 +12,7 @@
     'use strict';
     angular
         .module("app")
-        .controller('notificationTableController', ['$scope', 'notificationResource', function ($scope, $notificationResource) {
+        .controller('notificationTableController', ['$scope', 'notificationResource','$stateParams','$window','panelServices', function ($scope, $notificationResource,$stateParams,$window,panelServices) {
             var thisController = this;
             /**
              * @ngdoc method
@@ -22,32 +22,60 @@
              * request to load page it will called by smart table
              * @param {object} tableState   served by smart table
              */
+            thisController.search={};
+            thisController.displayed=[];
+            thisController.rowInPage=20;
+            thisController.lastTableState=0;
+            //set table height
+            thisController.tableHeight=$window.innerHeight-56-64-100;//height of header footer and margin
+            thisController.rowInPage=Math.floor(thisController.tableHeight/55*2);//heightOfRow=55
+
+
+            panelServices.loadApplications().then(function(results){
+                thisController.appList=results;
+            });
+
             thisController.callServer=function(tableState){
                 thisController.isLoading = true;
-                var pagination = tableState.pagination;
+                thisController.lastTableState=tableState;
 
+                //PAGINATION
+                var pagination = tableState.pagination;
                 var filters={
                     offset:pagination.start || 0,
-                    limit:pagination.number || 10
+                    limit:pagination.number || thisController.rowInPage
                 };
+
+                //SORT
                 if(tableState.sort.predicate){
                     filters.ordering=(tableState.sort.reverse?"-":"")+tableState.sort.predicate;
                 }
-                
-                filters=angular.extend(filters,tableState.search.predicateObject);
 
-                return $notificationResource.query(filters).then(function (result) {
-                    if(!result)return;
-                    thisController.displayed = result;
-                    for(var i=0;i<thisController.displayed.length;i++){
-                        var di=thisController.displayed[i];
+                //SEARCH
+                filters=angular.extend(filters,tableState.search.predicateObject);
+                if($stateParams.status)filters.status=$stateParams.status;
+
+                function serverCallback(result){
+                    var resData=result.data.results;
+                    for(var i=0;i<resData.length;i++){
+                        var di=resData[i];
                         var sum=di.clicked_count+di.dismissed_count;
                         if(!sum){di.clicked_count=di.dismissed_count=1;sum=2}
                         di.clickedPrecent=Math.floor(100*di.clicked_count/sum);
                     }
-                    tableState.pagination.numberOfPages = 5;//TODO:result.numberOfPages;//set the number of pages so the pagination can update
+                    if(pagination.start===0)
+                        thisController.displayed = resData;
+                    else if(resData.length){
+                        thisController.displayed=thisController.displayed.concat(resData);
+                    }
+                    thisController.hasNoResult=thisController.displayed.length?false:true;
+
+                    if(result.data.previous)thisController.hasPrevious=true;
+                    if(result.data.next)thisController.hasNext=true;
+
                     thisController.isLoading = false;
-                });
+                }
+                return $notificationResource.query(filters).then(serverCallback);
             };
         }]);
 })());

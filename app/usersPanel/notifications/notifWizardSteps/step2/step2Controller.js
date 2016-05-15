@@ -3,7 +3,7 @@
  */
 /**
  * @ngdoc controller
- * @name app.controller.step1Controller
+ * @name app.controller.step2Controller
  * @description
  * control notification wizard step 2
  * it gives title text icon ticker fields
@@ -14,62 +14,65 @@
     angular
         .module('app')
         .controller('step2Controller', ['$scope','$filter','notificationResource', function ($scope,$filter,notificationResource) {
-            //var thisController=this;
-            var contextData = $scope.$context.data;
-            contextData.canSendNotification = false;
+            var thisController = this;
 
-            var asThisController = $scope.step2Ctrl = {};
-            asThisController.data = {
-                title: "",
-                content: "",
-                ticker: "",
-                icon:"",
-                action: {}
-            };
-            asThisController.resultIcon="";
-            
-            $scope.$context.behavior.leaving = function (options, callback) {
-                contextData.stepData[1] = asThisController.data;
-                if(contextData.canSendNotification)
-                    callback(true);
-                else {
-                    callback(false);
-                    $scope.$context.validationError=$filter('translate')('REQUIRE_TEXT_TITLE');
+            thisController.resultIcon="";
+
+            $scope.wizard.steps[2]={
+                leave:function(){
+                    if($scope.wizard.canSendNotification) {
+                        $scope.wizard.steps[2].data=thisController.data;
+                        return true;
+                    }
+                    else {
+                        $scope.wizard.error=$filter('translate')('REQUIRE_TEXT_TITLE');
+                        return false;
+                    }
+                },
+                enter:function(){
+                    thisController.focusStart=true;
+                    thisController.isMessageHidden = $scope.wizard.steps[1].data.isHidden;
+                    if (thisController.isMessageHidden)$scope.wizard.canSendNotification=true;
+                },
+                reset:function(){
+                    thisController.data = {
+                        title: "",
+                        content: "",
+                        ticker: "",
+                        icon:"",
+                        action: {}
+                    };
+                    thisController.focusStart=true;
+                    thisController.selectedFile = 0;
+                    thisController.isUploaded=false;
                 }
             };
-            $scope.$context.behavior.entering = function (options, callback) {
-                asThisController.focusStart=true;
-                asThisController.isMessageHidden = contextData.stepData[0].isHidden;
-                if (asThisController.isMessageHidden)contextData.canSendNotification=true;
-                callback(true);
+            $scope.wizard.steps[2].reset();
+
+            thisController.dataChange=function(){
+                var data=thisController.data;
+                $scope.wizard.canSendNotification = !!(thisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length);
             };
 
-            asThisController.focusStart=true;
-            asThisController.dataChange=function(){
-                var data=asThisController.data;
-                contextData.canSendNotification = !!(asThisController.isMessageHidden || data.title && data.content && data.title.length && data.content.length);
+            thisController.changeImage=function(){
+                thisController.selectedFile = 0;
+                thisController.isUploaded=false;
             };
-            asThisController.selectedFile = 0;
-            asThisController.changeImage=function(){
-                asThisController.selectedFile = 0;
-                asThisController.isUploaded=false;
-            };
-            asThisController.isUploaded=false;
-            //TODO:image should have origin image
-            asThisController.upload = function () {
-                asThisController.isUploading = true;
-                notificationResource.uploadImage(asThisController.resultIcon,asThisController.selectedFile,function success(res){
+
+            thisController.upload = function () {
+                thisController.isUploading = true;
+                notificationResource.uploadImage(thisController.resultIcon,thisController.selectedFile,function success(res){
                     if(res.data) {
-                        asThisController.data.icon = res.data.url;
-                        asThisController.iconURL = res.data.url;
+                        thisController.data.icon = res.data.url;
+                        thisController.iconURL = res.data.url;
                     }
-                    asThisController.isUploading=false;
-                    asThisController.isUploaded=true;
+                    thisController.isUploading=false;
+                    thisController.isUploaded=true;
                 },function failed(err){
                     $scope.$root.handleError(err);
-                    asThisController.isUploaded=true;
+                    thisController.isUploaded=true;
                 },function uploadProgress(progressData){
-                    asThisController.uploadData = progressData;
+                    thisController.uploadData = progressData;
                 });
             };
         }]);

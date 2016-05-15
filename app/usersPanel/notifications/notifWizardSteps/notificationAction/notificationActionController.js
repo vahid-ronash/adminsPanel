@@ -30,7 +30,7 @@
 
             $scope.actionData=thisController.actionData=angular.extend({
                 action_type:actionTypeMap[thisController.buttonClickActionList[0].id],
-                url:""
+                action_url:""
             },$scope.actionData);
         }]);
 })());

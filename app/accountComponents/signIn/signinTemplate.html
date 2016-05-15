@@ -1,15 +1,15 @@
-<div class="dark bg-auto w-full">
+<div class="bg-auto w-full">
     <div class="fade-in-right-big smooth pos-rlt">
 
         <div class="center-block w-xxl w-auto-xs p-y-md hasCaptcha">
-            <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
+            <div  class="p-a-md box-color r box-shadow-z1 text-color m-a">
                 <div class="m-b text-sm">
                     {{ 'SIGNIN_MSG' | translate }}
                 </div>
-                <form name="signinForm" ng-submit="signinCtrl.login()">
+                <form name="signinForm"  ng-submit="signinCtrl.login()">
 
                     <!--EMAIL-->
-                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div ng-hide="signinCtrl.isAsDemo" mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input name="email"
                                ng-model-options="{ updateOn:'default blur' }"
                                type="text"
@@ -18,7 +18,6 @@
                                focus-me="focusEmail" ng-init="focusEmail=true"
                                pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
                                id="signEmail">
-
                         <label class="mdl-textfield__label" for="signEmail">{{'EMAIL' | translate}}</label>
                         <span class="mdl-textfield__error">{{'NOT_VALID_EMAIL'|translate}}</span>
                         <!--<div ng-show="!signinCtrl.data.email.length && signinForm.$submitted">-->
@@ -32,7 +31,7 @@
 
 
                     <!--PASSWORD-->
-                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div ng-hide="signinCtrl.isAsDemo" mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input name="password" class="mdl-textfield__input text-left" ng-focus="passFocus=true"
                                ng-blur="passFocus=false"
                                ng-model="signinCtrl.data.password" type="password" id="signPass">
@@ -42,7 +41,7 @@
                     <!--PASSWORD END-->
 
 
-                    <div class="m-b-md">
+                    <div ng-hide="signinCtrl.isAsDemo" class="m-b-md">
                         <!--REMEMBER ME-->
                         <label mdl-upgrade class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
                             <input type="checkbox" ng-model="signinCtrl.data.rememberMe" id="checkbox-1"
@@ -53,10 +52,10 @@
                     </div>
 
                     <!--RE CAPTCHA-->
-                    <div ng-if="signinCtrl.data.email==='demo@pushe.co'" class="" style="margin:18px -33px">
+                    <div class="" style="margin:18px -33px">
                         <no-captcha
                                 g-recaptcha-response="signinCtrl.data.gRecaptchaResponse"
-                                control="noCaptchaControl"
+                                control="signinCtrl.noCaptchaControl"
                         >
                         </no-captcha>
                     </div>
@@ -65,7 +64,7 @@
                     <!--SUBMIT-->
                     <div ng-if="!signinCtrl.isSigningIn">
                         <button type="submit"
-                                ng-disabled="form.$invalid || signinCtrl.isSigningIn || (signinCtrl.data.email==='demo@pushe.co' && !signinCtrl.data.gRecaptchaResponse)"
+                                ng-disabled="form.$invalid || signinCtrl.isSigningIn || (signinCtrl.isAsDemo && !signinCtrl.data.gRecaptchaResponse)"
                                 class="btn primary btn-block p-x-md">
                             <!--class="btn-block mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;colored">-->
                             {{'SIGNIN' | translate}}
@@ -79,20 +78,28 @@
                     </button>
                     <!--SUBMIT END-->
 
-                    <small class="mdl-textfield__error errorShow" ng-bind="signinCtrl.loginError.err"></small>
+                    <br>
+                    <small class="text-danger errorShow" ng-bind="signinCtrl.loginError.err"></small>
                 </form>
             </div>
-            <div class="p-v-lg text-center">
+            <div class="p-a-md box-color-transparent r box-shadow-z1 text-color m-a p-v-lg text-center">
                 <div class="m-b">
-                    <a ng-if="!signinForm.email.$viewValue" class="text-primary _600"
+                    <button class="btn btn-sm p-x-md" ng-if="!signinForm.email.$viewValue"
                        ng-click="signinCtrl.loginAsDemo()">
                         {{'AS_DEMO' | translate}}
+                    </button>
+                </div>
+                <div class="m-b">
+                    <a ui-sref="forgotPassword" href="#/account/forgot-password" class="text-primary _600 text-sm">
+                        {{'FORGOT'| translate}}
                     </a>
                 </div>
-                <div class="m-b"><a ui-sref="forgotPassword" href="#/account/forgot-password" class="text-primary _600">{{'FORGOT'
-                    | translate}}</a></div>
-                <div>{{'HAVENT_ACCOUNT' | translate}}<a ui-sref="signup" href="#/account/signup"
-                                                        class="text-primary _600">{{'SIGNUP' | translate}}</a></div>
+                <div class="text-sm">
+                    {{'HAVENT_ACCOUNT' | translate}}
+                    <a ui-sref="signup" href="#/account/signup" class="text-primary _600">
+                        {{'SIGNUP' | translate}}
+                    </a>
+                </div>
             </div>
         </div>
 

@@ -10,8 +10,8 @@ describe('test dashboard Controller', function() {
         $controller = _$controller_;
     }));
 
-    it('name has to inherit from parent scope', function () {
-        var controller = $controller('dashboardController', { "$scope": {app:{name:"adminsPanel"}} });
-        expect(controller.app.name.length>0).toEqual(true);
-    });
+    // it('name has to inherit from parent scope', function () {
+    //     var controller = $controller('dashboardController', { "$scope": {app:{name:"adminsPanel"}} });
+    //     expect(controller.app.name.length>0).toEqual(true);
+    // });
 });

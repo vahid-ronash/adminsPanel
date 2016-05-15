@@ -46,7 +46,10 @@
 
             thisController.sendChangeRequest=function(){
                 $scope.$root.ErrorContent=thisController.error={err:""};
-                if(thisController.data.password!==thisController.repassword){
+                if(thisController.controlStrength.isWeak()){
+                    thisController.error=$filter('translate')('PASS_IS_WEAK');
+                }
+                else if(thisController.data.password!==thisController.repassword){
                     thisController.error=$filter('translate')('PASS_NOT_MATCH');
                     thisController.data.password="";
                     thisController.repassword="";
@@ -58,7 +61,7 @@
                         }
                         else  if(result.changed) {
                             thisController.successed=true;
-                            var alertText=thisController.alert  = $filter('translate')('PASS_CHANGED');
+                            // var alertText=thisController.alert  = $filter('translate')('PASS_CHANGED');
                             // evt.preventDefault();
                             // var sec=7;
                             // setInterval(function(){

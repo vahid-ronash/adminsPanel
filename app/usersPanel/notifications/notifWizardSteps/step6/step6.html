@@ -16,40 +16,40 @@
         <ui-select ng-model="step6Ctrl.data.voice.selected">
             <ui-select-match placeholder="{{'SELECT_VOICE' | translate}}">
                 <span>{{$select.selected.name}}</span>
-                <audio ng-if="$select.selected" controls> <source src="{{$select.selected.path}}" type="audio/ogg"> </audio>
+                <audio ng-if="step6Ctrl.data.voice.selected.path" controls> <source ng-src="{{step6Ctrl.data.voice.selected.path}}" type="audio/ogg"> </audio>
             </ui-select-match>
             <ui-select-choices repeat="item in (step6Ctrl.voiceList | filter: $select.search)">
                 <span ng-bind="item.name"></span>
-                <audio ng-if="item.path" controls> <source src="{{item.path}}" type="audio/ogg"> </audio>
+                <audio ng-if="item.path" controls> <source ng-src="{{item.path}}" type="audio/ogg"> </audio>
             </ui-select-choices>
         </ui-select>
     </div>
 </div>
 
 <!--VIBRATE-->
-<div>
-    <div class="m-b-md">
-        <label class="md-check">
-            <input type="checkbox" ng-model="step6Ctrl.data.vibrate.isOn"><i class="primary"></i>{{'VIBRATE' | translate}}
-        </label>
-    </div>
-    <div uib-collapse="!step6Ctrl.data.vibrate.isOn">
-        <div class="conatainer">
-            <div class="form-group col-xs-6">
-                <label>{{'ON_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step6Ctrl.data.vibrate.onTime" >
-                    <option ng-repeat="option in step6Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-6">
-                <label>{{'OFF_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step6Ctrl.data.vibrate.offTime">
-                    <option ng-repeat="option in step6Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div>-->
+    <!--<div class="m-b-md">-->
+        <!--<label class="md-check">-->
+            <!--<input type="checkbox" ng-model="step6Ctrl.data.vibrate.isOn"><i class="primary"></i>{{'VIBRATE' | translate}}-->
+        <!--</label>-->
+    <!--</div>-->
+    <!--<div uib-collapse="!step6Ctrl.data.vibrate.isOn">-->
+        <!--<div class="conatainer">-->
+            <!--<div class="form-group col-xs-6">-->
+                <!--<label>{{'ON_TIME' | translate}}</label>-->
+                <!--<select class="form-control" ng-model="step6Ctrl.data.vibrate.onTime" >-->
+                    <!--<option ng-repeat="option in step6Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div class="form-group col-xs-6">-->
+                <!--<label>{{'OFF_TIME' | translate}}</label>-->
+                <!--<select class="form-control" ng-model="step6Ctrl.data.vibrate.offTime">-->
+                    <!--<option ng-repeat="option in step6Ctrl.vibrateTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 <!--LED-->
 <div>
@@ -60,24 +60,47 @@
     </div>
     <div uib-collapse="!step6Ctrl.data.LED.isOn">
         <div class="container">
-            <div class="form-group col-xs-2">
-                <label>{{'ON_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step6Ctrl.data.LED.onTime">
-                    <option ng-repeat="option in step6Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
-                </select>
-            </div>
-            <div class="form-group col-xs-2">
-                <label>{{'OFF_TIME' | translate}}</label>
-                <select class="form-control" ng-model="step6Ctrl.data.LED.offTime">
-                    <option ng-repeat="option in step6Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>
-                </select>
-            </div>
+            <!--<div class="form-group col-xs-2">-->
+                <!--<label>{{'ON_TIME' | translate}}</label>-->
+                <!--<select class="form-control" ng-model="step6Ctrl.data.LED.onTime">-->
+                    <!--<option ng-repeat="option in step6Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div class="form-group col-xs-2">-->
+                <!--<label>{{'OFF_TIME' | translate}}</label>-->
+                <!--<select class="form-control" ng-model="step6Ctrl.data.LED.offTime">-->
+                    <!--<option ng-repeat="option in step6Ctrl.LEDTimes" value="{{option}}">{{option}}{{'TIME_SECOND' | translate}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
             <div class="form-group col-xs-3">
                 <label>{{'COLOR' | translate}}</label>
                 <select class="form-control" ng-model="step6Ctrl.data.LED.color">
-                    <option ng-repeat="option in step6Ctrl.LEDColors" value="{{option}}">{{option}}</option>
+                    <option ng-repeat="option in step6Ctrl.LEDColors" ng-value="option.value" ng-bind="option.name"></option>
                 </select>
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    <div class="m-b-md">
+
+        <label class="md-check">
+            <input type="checkbox" ng-model="step6Ctrl.data.delayWhileIdle"><i class="primary"></i>{{'DELAY_WHILE_IDLE' | translate}}
+        </label>
+
+        <div class="form-group col-xs-3">
+            <label>{{'COLLAPSE_KEY' | translate}}</label>
+            <select class="form-control" ng-model="step6Ctrl.data.collapseKey">
+                <option ng-repeat="option in step6Ctrl.collapseStates" ng-value="option.value" ng-bind="option.name"></option>
+            </select>
+        </div>
+        <label class="md-check">
+            <label>{{'TIME_TO_LIVE' | translate}}</label>
+            <select class="form-control" ng-model="step6Ctrl.data.timeToLive">
+                <option ng-repeat="option in step6Ctrl.timeToLiveList" ng-value="option.value" ng-bind="option.name"></option>
+            </select>
+        </label>
+    </div>
+
 </div>

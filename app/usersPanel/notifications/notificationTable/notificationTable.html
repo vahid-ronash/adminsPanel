@@ -1,59 +1,115 @@
-<div class="box">
-    <table st-table="notifTableCtrl.displayed" st-pipe="notifTableCtrl.callServer" class="table table-striped">
-        <thead>
-        <tr>
-            <th st-sort="title">{{'NOTIF_TITLE' | translate}}</th>
-            <th st-sort="text">{{'TEXT' | translate}}</th>
-            <th st-sort="application">{{'APPLICATION' | translate}}</th>
-            <th st-sort="sendTime">{{'SENDTIME' | translate}}</th>
-            <th st-sort="status">{{'STATUS' | translate}}</th>
-            <th st-sort="contactCount">{{'CLICK_DISMISS' | translate}}</th>
-            <th st-sort="contactReceive">{{'CONTACT_RECEIVE' | translate}}</th>
-        </tr>
-        <tr>
-            <th><input st-search="'title'" class="form-control" placeholder="{{'NOTIF_TITLE' | translate}}.." type="text"/></th>
-            <th><input st-search="'text'" class="form-control" placeholder="{{'TEXT' | translate}}.." type="text"/></th>
-            <th><input st-search="'application'" class="form-control" placeholder="{{'APPLICATION' | translate}}" type="text"/></th>
-            <th><input st-search="'sendTime'" class="form-control" placeholder="{{'LASTSEEN_PLACE_HOLDER' | translate}}" type="text"/></th>
-            <th><input st-search="'status'" class="form-control" placeholder="{{'STATUS' | translate}}" type="text"/></th>
-            <th><input st-search="'contactCount'" class="form-control" placeholder="{{'CLICK_DISMISS' | translate}}" type="text"/></th>
-            <th><input st-search="'contactReceive'" class="form-control" placeholder="{{'CONTACT_RECEIVE' | translate}}" type="text"/></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="row in notifTableCtrl.displayed">
-            <td> {{row.notification_data.title}} </td>
-            <td> {{row.notification_data.content}} </td>
-            <td> {{row.filters.caritera.application}} </td>
-            <td> {{row.send_time}} </td>
-            <td> {{row.status}} </td>
-            <td>
-                <uib-progressbar
-                        type="success"
-                        class="progress-striped active"
-                        max="row.clicked_count+row.dismissed_count"
-                        value="row.clicked_count">
-                        <i>{{row.clickedPrecent}}%</i>
-                </uib-progressbar>
-            </td>
-            <td>
-                <uib-progressbar
-                        type="success"
-                        class="progress-striped active"
-                        max="row.sent_count"
-                        value="row.delivered_count">
-                        <i>{{row.delivered_count}}/{{row.sent_count}}</i>
-                </uib-progressbar>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="7" class="text-center">
-                <div st-pagination="" st-items-by-page="6" st-displayed-pages="7" class="m-a-0 ng-isolate-scope">
+<div ng-hide="notifTableCtrl.hasNoResult" class="row">
+    <div ng-class="{'hidden-md-down col-md-6 col-lg-9':notifTableCtrl.startSearch,'col-sx-12':!notifTableCtrl.startSearch}">
+        <div class="box">
+            <div class="scrollabeTable">
+                <div class="searchToggle">
+                    <label ng-hide="" mdl-upgrade class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect"
+                           for="icon-toggle-search">
+                        <input ng-model="notifTableCtrl.startSearch" type="checkbox" id="icon-toggle-search"
+                               class="mdl-icon-toggle__input" checked>
+                        <i class="mdl-icon-toggle__label material-icons">search</i>
+                    </label>
                 </div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+                <table
+                        ng-style="{'height':notifTableCtrl.tableHeight}"
+                        fixed-header st-pagination-scroll
+                        st-table="notifTableCtrl.displayed"
+                        st-pipe="notifTableCtrl.callServer"
+                        class="table table-striped text-center">
+                    <thead>
+                    <tr>
+                        <th st-sort="title">{{'NOTIF_TITLE' | translate}}</th>
+                        <th st-sort="text">{{'TEXT' | translate}}</th>
+                        <th st-sort="sendTime">{{'SENDTIME' | translate}}</th>
+                        <th st-sort="status">{{'STATUS' | translate}}</th>
+                        <!--<th st-sort="application">{{'APPLICATION' | translate}}</th>-->
+                        <th st-sort="contactReceive">{{'CONTACT_RECEIVE' | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in notifTableCtrl.displayed">
+                        <td>{{row.notification_data.title}}</td>
+                        <td>{{row.notification_data.content}}</td>
+                        <td>{{row.send_time | jalali}}</td>
+                        <td>{{row.status|notificationStatus}}</td>
+                        <!--<td>{{row.application|appName}}</td>-->
+                        <td>
+                            <uib-progressbar
+                                    type="success"
+                                    class="progress-striped active"
+                                    max="row.sent_count"
+                                    value="row.delivered_count">
+                                <i>{{row.delivered_count}}/{{row.recipient_count}}</i>
+                            </uib-progressbar>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div ng-show="notifTableCtrl.isLoading" class="loadingTable">
+                    <div class="sk-wave" style="width:auto;margin:auto;height:24px;">
+                        <div ng-repeat="i in [1, 2, 3, 4 ,5]" class="sk-rect sk-rect{{i}}"
+                             style="color:green;margin:0 1px 0 ;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div ng-class="{'col-xs-12 col-md-6 col-lg-3 animated ':notifTableCtrl.startSearch,'hide animated':!notifTableCtrl.startSearch}">
+        <div class="box">
+            <button type="button" class="hidden-sm-up p-a-1 close" ng-click="notifTableCtrl.startSearch=false">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <form class="p-a-1">
+
+                <!--filter by application-->
+                <div class="m-t">
+                    <select class="form-control" ng-model="notifTableCtrl.search.application">
+                        <option value="">{{'SEARCH_BY_APPLICATION'|translate}}</option>
+                        <option ng-repeat="option in notifTableCtrl.appList" ng-value="option.id" ng-bind="option.application_id"></option>
+                    </select>
+                </div>
+
+                <!--filter by date-->
+                <div class="ltr m-t">
+                    <adm-dtp ng-model='notifTableCtrl.search.send_time' options='{calType: "jalali",autoClose:true,multiple:false, format: "YYYY/MM/DD", default: ""}'></adm-dtp>
+                </div>
+
+                <!--filter by title-->
+                <div>
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input text-left"
+                               ng-model="installTableCtrl.search.title"
+                               type="text" id="titleTextSearch"
+                        >
+                        <label class="mdl-textfield__label" for="titleTextSearch">{{'NOTIF_TITLE' | translate}}</label>
+                    </div>
+                </div>
+
+                <!--filter by text-->
+                <div>
+                    <div mdl-upgrade class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input text-left"
+                               ng-model="installTableCtrl.search.title"
+                               type="text" id="textTextSearch"
+                        >
+                        <label class="mdl-textfield__label" for="textTextSearch">{{'TEXT' | translate}}</label>
+                    </div>
+                </div>
+
+
+                <!--run search by imei or device model-->
+                <div class="text-center m-t-2">
+                    <button ng-click="installTableCtrl.runSearch()" class="mdl-button mdl-js-ripple-effect">
+                        {{'SEARCH'|translate}}
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div ng-show="notifTableCtrl.hasNoResult">
+    <h4 class="text-center m-t-3">{{'NO_RESULT'|translate}}</h4>
 </div>

@@ -19,80 +19,149 @@
      </div>
    </div>
  -->
+
 <div class="left navside white dk" layout="column">
-    <div class="navbar no-radius">
-        <!-- brand -->
-        <a class="navbar-brand">
-            <img src="assets/images/logo.png" alt="." >
-            <!--class="hide"-->
-            <!--<span class="hidden-folded inline">{{app.name}}</span>-->
+    <div class="navbar ng-scope p-a-md">
+        <a class="navbar-brand ng-scope">
+            <img src="assets/images/logo.png" alt="." style="max-height:none" >
+
+            <!--TODO: CHANGE STYLE TO CSS-->
         </a>
-        <!-- / brand -->
     </div>
-    <div flex class="hide-scroll">
-        <nav class="scroll nav-light">
-            <ul class="nav ng-scope" ui-nav="">
+<div class="nav-stacked nav-active-{{app.setting.theme.primary}}" flex>
+            <ul class="nav ng-scope " ui-nav="">
                 <li ui-sref-active="active">
-                    <a href="#/dashboard" ui-sref="users.dashboard"><span class="nav-text">{{'DASHBOARD' | translate}}</span></a>
+                    <a href="#/dashboard" ui-sref="users.dashboard">
+                        <span class="nav-icon"><i class="material-icons">&#xe871;</i></span>
+                        <span class="nav-text">{{'DASHBOARD' | translate}}</span>
+                    </a>
                 </li>
-                <li class="nav-header hidden-folded">
-                    <small class="text-muted">Main</small>
-                </li>
-                <li>
-                    <a><span class="nav-text">{{'APPLICATIONS' | translate}}</span></a>
+                <li ui-sref-active="active">
+                    <a class="hide" ui-sref="users.applications"></a>
+                    <a>
+                        <span class="nav-caret text-muted"><i class="material-icons">&#xe5c5;</i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe8f9;</i></span>
+                        <span class="nav-text">{{'APPLICATIONS' | translate}}</span>
+                    </a>
                     <ul class="nav-sub">
                         <li ui-sref-active="active">
-                            <a href="#/apps" ui-sref="users.apps">
+                            <a href="#/apps" ui-sref="users.applications">
+                                <!--<span class="nav-icon"><i class="fa fa-list-ol"></i></span>-->
                                 <span class="nav-text">{{'APPLICATIONS_LIST' | translate}}</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/apps/create" ui-sref="users.createApp">
+                            <a ng-click="startApplicationWizard()">
+                                <!--<span class="nav-icon"><i class="fa fa-plus-square"></i></span>-->
                                 <span class="nav-text">{{'CREATE_APPLICATION' | translate}}</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li ui-sref-active="active">
-                    <a href="#/installed" ui-sref="users.installed"><span class="nav-text">{{'INSTALLED' | translate}}</span></a>
+                    <a href="#/installed" ui-sref="users.installed">
+                        <span class="nav-icon"><i class="material-icons">&#xe7fd;</i></span>
+                        <span class="nav-text">{{'INSTALLED' | translate}}</span>
+                    </a>
                 </li>
-                <li>
-                    <a><span class="nav-text">{{'NOTIFICATIONS' | translate}}</span></a>
+                <li ui-sref-active="active">
+                    <a>
+                        <span class="nav-caret text-muted"><i class="fa fa-caret-down"></i></span>
+                        <span class="nav-icon"><i class="material-icons">&#xe158;</i></span>
+                        <span class="nav-text">{{'NOTIFICATIONS' | translate}}</span>
+                    </a>
                     <ul class="nav-sub">
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'ADD_NOTIFICATION' | translate}}</a>
+                        <li ui-sref-active="active" >
+                            <a ng-click="startNotificationWizard()">
+                                <!--<span class="nav-icon"><i class="material-icons">&#xe148;</i></span>-->
+                                <span class="nav-text">{{'ADD_NOTIFICATION' | translate}}</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" >
+                            <a href="#/notification/all" ui-sref="users.allNotification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_ALL' | translate}}</span>
+                            </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_ALL' | translate}}</a>
+                            <a href="#/notification/sent" ui-sref="users.sentNotification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-text">{{'NOTIF_SENT' | translate}}</span>
+                            </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_SENT' | translate}}</a>
+                        <li  ui-sref-active="active">
+                            <a href="#/notification/inqueue" ui-sref="users.inqueueNotification">
+                                <!--<span class="nav-icon"><i class="fa fa-pencil"></i></span>-->
+                                <span class="nav-label"><b class="label label-sm teal">8</b></span>
+                                <span class="nav-text">{{'NOTIF_SENDING' | translate}}</span>
+                                <!--TODO have link count-->
+                            </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_SENDING' | translate}}</a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_PROGRAMMED' | translate}}</a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_DRAFT' | translate}}</a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a href="#/notification" ui-sref="users.notification">{{'NOTIF_REMOVED' | translate}}</a>
-                        </li>
+                        <!--<li ui-sref-active="active">-->
+                            <!--<a href="#/notification" ui-sref="users.notification({status:CREATED})">-->
+                                <!--&lt;!&ndash;<span class="nav-icon"><i class="fa fa-pencil"></i></span>&ndash;&gt;-->
+                                <!--<span class="nav-label"><b class="label label-sm teal">8</b></span>-->
+                                <!--<span class="nav-text">{{'NOTIF_PROGRAMMED' | translate}}</span>-->
+                                <!--&lt;!&ndash;TODO have link count&ndash;&gt;-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li ui-sref-active="active">-->
+                            <!--<a href="#/notification" ui-sref="users.notification">-->
+                                <!--&lt;!&ndash;<span class="nav-icon"><i class="fa fa-pencil"></i></span>&ndash;&gt;-->
+                                <!--<span class="nav-text">{{'NOTIF_DRAFT' | translate}}</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <!--<li ui-sref-active="active">-->
+                            <!--<a href="#/notification" ui-sref="users.notification">-->
+                                <!--&lt;!&ndash;<span class="nav-icon"><i class="fa fa-pencil"></i></span>&ndash;&gt;-->
+                                <!--<span class="nav-text">{{'NOTIF_REMOVED' | translate}}</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
                     </ul>
                 </li>
             </ul>
-        </nav>
-    </div>
-    <div flex-no-shrink class="b-t">
-        <div class="row">
-            <div class="col-xs-7 text-center">
-                <a href="#/help" ui-sref="help"><span class="nav-text">{{'HELP' | translate}}</span></a>
-            </div>
-            <div class="col-xs-5">
-                <a><span class="nav-text">{{'SUPPORT' | translate}}</span></a>
-            </div>
-        </div>
-    </div>
+</div>
+
+<div flex-no-shrink  class="ng-scope nav-stacked">
+    <nav ui-nav>
+      <ul class="nav">
+        <li><div class="b-b b m-v-sm"></div></li>
+        <li ui-sref-active="active" class="no-bg">
+          <a href="#/documentation" ui-sref="users.documentation">
+            <span class="nav-icon">
+              <i class="material-icons">&#xe565;</i>
+            </span>
+            <span class="nav-text">{{'HELP' | translate}}</span>
+          </a>
+        </li>
+        <li class="no-bg">
+          <a href="mailto:support@pushe.co" target="_blank">
+            <span class="nav-icon">
+              <i class="material-icons">&#xe8fd;</i>
+            </span>
+            <span class="nav-text">
+              {{'SUPPORT' | translate}}
+            </span>
+          </a>
+        </li>
+        <li><div class="b-b b m-t-sm"></div></li>
+        <li class="no-bg">
+          <a>
+            <span class="nav-icon">
+             <i class="material-icons">call</i>
+            </span>
+            <span class="nav-text">{{'PHONE_NUMBER' | translate}}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+        <!--<div class="row">-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/documentation" ui-sref="users.documentation"><span class="nav-text">{{'HELP' | translate}}</span></a>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 text-center ">-->
+                <!--<a href="#/faq" ui-sref="users.faq"><span class="nav-text">{{'SUPPORT' | translate}}</span></a>-->
+            <!--</div>-->
+        <!--</div>-->
+</div>
 </div>

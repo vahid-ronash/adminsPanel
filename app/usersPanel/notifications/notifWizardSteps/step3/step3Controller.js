@@ -14,44 +14,51 @@
     angular
         .module('app')
         .controller('step3Controller', ['$scope','$filter','notificationResource', function ($scope,$filter,notificationResource) {
-            //var thisController=this;
-            var asThisController=$scope.step3Ctrl={};
-            var contextData=$scope.$context.data;
-            $scope.$context.behavior.leaving = function(options, callback) {
-                contextData.stepData[2]=asThisController.data;
-                callback(true);
+            var thisController=this;
+
+            $scope.wizard.steps[3]={
+                leave:function(){
+                    $scope.wizard.steps[3].data=thisController.data;
+                    return true;
+                },
+                enter:function(){
+                    thisController.focusStart=true;
+                    return true;
+                },
+                reset:function(){
+                    thisController.data={
+                        big_tiltle:"",
+                        big_content:"",
+                        summary:"",
+                        image:""
+                    };
+                    thisController.resultImg="";
+                    thisController.selectedFile=0;
+                }
             };
-            $scope.$context.behavior.entering = function (options, callback) {
-                asThisController.focusStart=true;
-                callback(true);
+            $scope.wizard.steps[3].reset();
+            
+            thisController.changeImage=function(){
+                thisController.selectedFile = 0;
+                thisController.isUploaded=false;
             };
-            asThisController.changeImage=function(){
-                asThisController.selectedFile = 0;
-                asThisController.isUploaded=false;
-            };
-            asThisController.data={
-                big_tiltle:"",
-                big_content:"",
-                summary:"",
-                image:""
-            };
-            asThisController.resultImg="";
-            asThisController.upload = function () {
-                asThisController.isUploading = true;
-                notificationResource.uploadImage(asThisController.resultImg,asThisController.selectedFile,function success(res){
+
+            thisController.upload = function () {
+                thisController.isUploading = true;
+                notificationResource.uploadImage(thisController.resultImg,thisController.selectedFile,function success(res){
                     if(res.data) {
-                        asThisController.data.image = res.data.url;
-                        asThisController.iconURL = res.data.url;
+                        thisController.data.image = res.data.url;
+                        thisController.iconURL = res.data.url;
                     }
-                    asThisController.isUploading=false;
-                    asThisController.isUploaded=true;
+                    thisController.isUploading=false;
+                    thisController.isUploaded=true;
                 },function failed(err){
                     $scope.$root.handleError(err);
-                    asThisController.isUploaded=true;
+                    thisController.isUploaded=true;
                 },function uploadProgress(progressData){
-                    asThisController.uploadData = progressData;
+                    thisController.uploadData = progressData;
                 });
             };
-            asThisController.selectedFile=0;
+
         }]);
 })());
